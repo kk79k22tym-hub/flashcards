@@ -332,12 +332,24 @@
             const senses = (item.senses && item.senses.length)
                 ? item.senses
                 : [{ pos: (item.partOfSpeech || [item.type === 'word' ? '単語' : '表現'])[0], meaning: item.japanese, category: item.category || '' }];
+            const circled = ['①','②','③','④','⑤','⑥','⑦','⑧','⑨','⑩'];
+            const showNumber = senses.length > 1;
             return `<div class="${compact ? 'space-y-1' : 'space-y-2'} text-left">${senses.map((sense, index) => `
                 <div class="${compact ? 'text-xs' : 'text-sm'} text-[#4a4540] leading-relaxed flex flex-wrap items-center gap-x-1.5 gap-y-1">
-                    <span class="font-bold text-[#334155]">${index + 1} ${sense.pos}：</span>
+                    ${showNumber ? `<span class="font-bold text-[#334155]">${circled[index] || (index + 1)}</span>` : ''}
+                    <span class="text-[11px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold">${sense.pos}</span><span class="font-bold text-[#334155]">：</span>
                     <span>${sense.meaning}</span>
                     ${sense.category ? `<span class="text-[10px] bg-[#f4efe8] text-[#5c534c] border border-[#e2dad1] px-1.5 py-0.5 rounded">${sense.category}</span>` : ''}
                 </div>`).join('')}</div>`;
+        }
+
+        function shuffleItems(items) {
+            const shuffled = [...items];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
         }
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -527,6 +539,7 @@
                     return st && st.weakRemaining > 0;
                 });
                 if (flashcardQueue.length === 0) return;
+                flashcardQueue = shuffleItems(flashcardQueue);
             } else {
                 let dueItems = [], priorityItems = [], newItems = [], futureItems = [];
                 rawDatabase.forEach(item => {
@@ -541,8 +554,13 @@
                         futureItems.push(item);
                     }
                 });
-                flashcardQueue = [...dueItems, ...priorityItems, ...newItems, ...futureItems];
-                if (flashcardQueue.length === 0) flashcardQueue = [...rawDatabase];
+                flashcardQueue = [
+                    ...shuffleItems(dueItems),
+                    ...shuffleItems(priorityItems),
+                    ...shuffleItems(newItems),
+                    ...shuffleItems(futureItems)
+                ];
+                if (flashcardQueue.length === 0) flashcardQueue = shuffleItems(rawDatabase);
             }
 
             currentCardIndex = 0;
@@ -617,9 +635,9 @@
 
             let backHtml = `
                 <div class="relative w-full pb-6">
-                    <div class="flex items-center justify-between gap-3 mb-4">
-                        <div class="text-2xl font-bold text-[#2b2927]">${item.english}</div>
-                        <button onclick="playSpeech(event, '${item.english.replace(/'/g, "\'")}')" class="w-9 h-9 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm shrink-0" aria-label="発音">
+                    <div class="relative flex items-center justify-center mb-4 min-h-[2.5rem]">
+                        <div class="text-2xl font-bold text-[#2b2927] text-center px-12">${item.english}</div>
+                        <button onclick="playSpeech(event, '${item.english.replace(/'/g, "\'")}')" class="absolute right-0 w-9 h-9 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm shrink-0" aria-label="発音">
                             <svg class="w-4 h-4 text-[#78829c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
                         </button>
                     </div>
