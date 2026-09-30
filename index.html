@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Noto Sans JP', 'Inter';
+            background-color: #f3f0ec;
+            color: #2b2927;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .fade-in {
+            animation: fadeIn 0.25s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .quiz-option-btn:focus {
+            outline: none;
+        }
+        .quiz-option-btn:focus:not(:focus-visible) {
+            outline: none;
+            box-shadow: none;
+        }
+        /* 役割ごとのタグ共通スタイル */
+        .tag-status-new { background-color: #f0ece5; color: #7c736c; }
+        .tag-status-learning { background-color: #fef3c7; color: #92400e; }
+        .tag-status-mastered { background-color: #78829c; color: white; }
+        
+        .tag-pos {
+            background-color: #e2e8f0;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+        }
+        .tag-category {
+            background-color: #f4efe8;
+            color: #5c534c;
+            border: 1px solid #e2dad1;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-24">
+
+    <header class="bg-[#78829c] text-white shadow-sm sticky top-0 z-40 border-b border-[#68728c]">
+        <div class="max-w-md mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <h1 class="font-bold text-lg tracking-wide text-white">Flashcards</h1>
+            </div>
+            <div class="text-xs bg-white/15 px-2.5 py-1 rounded-full font-medium shadow-inner text-white border border-white/20 flex items-center space-x-1.5" id="header-total-mastered-badge">
+                <svg class="w-3.5 h-3.5 text-indigo-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="6"></circle>
+                    <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+                </svg>
+                <span>完全習得 0 / 0</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-md mx-auto px-4 pt-4 pb-12" id="app-container">
+        
+        <!-- ================= 1. PROGRESS TAB ================= -->
+        <section id="tab-today" class="tab-content active fade-in">
+            <div class="mb-5 bg-gradient-to-r from-[#eef2f7] to-[#e8edf4] rounded-2xl p-5 text-[#2b2927] shadow-sm border border-[#e5dfd7]">
+                <div class="text-xs font-bold text-[#6b625b] uppercase tracking-wider mb-1">【単語マスターへの進捗】</div>
+                <div class="flex justify-between items-baseline mb-3">
+                    <div class="text-3xl font-extrabold text-[#2b2927]" id="overall-mastered-fraction">0 / 0</div>
+                    <div class="text-lg font-bold text-[#5c534c]" id="overall-mastered-percent">0.0%</div>
+                </div>
+                <div class="w-full bg-[#e5dfd7] rounded-full h-3 mb-4 overflow-hidden border border-[#dcd6ce]">
+                    <div id="overall-progress-bar" class="bg-gradient-to-r from-[#8ba7df] to-[#9c8edf] h-3 rounded-full transition-all duration-500" style="width: 0%"></div>
+                </div>
+                <button onclick="startFlashcards()" class="w-full bg-[#78829c] text-white font-bold py-3.5 rounded-xl text-sm shadow hover:bg-[#68728c] transition active:scale-95 flex items-center justify-center space-x-2 border border-[#68728c]">
+                    <span>学習を続ける</span>
+                </button>
+            </div>
+
+            <div class="bg-[#faf8f5] backdrop-blur-sm rounded-2xl p-5 shadow-sm border border-[#e5dfd7] mb-6 space-y-4">
+                <h3 class="font-bold text-[#2b2927] text-sm mb-2">カテゴリー別 習得状況</h3>
+                
+                <div>
+                    <div class="flex justify-between items-center text-xs font-semibold text-[#5c534c] mb-1">
+                        <span>【単語】</span>
+                        <span id="breakdown-words-text">0 / 0 (0.0%)</span>
+                    </div>
+                    <div class="w-full bg-[#f0ece5] rounded-full h-2.5 overflow-hidden border border-[#e2dad1]">
+                        <div id="bar-words" class="bg-[#78829c] h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center text-xs font-semibold text-[#5c534c] mb-1">
+                        <span>【表現】</span>
+                        <span id="breakdown-expr-text">0 / 0 (0.0%)</span>
+                    </div>
+                    <div class="w-full bg-[#f0ece5] rounded-full h-2.5 overflow-hidden border border-[#e2dad1]">
+                        <div id="bar-expr" class="bg-[#78829c] h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-[#faf8f5] rounded-2xl p-4 border border-[#e5dfd7] text-xs text-[#5c534c] space-y-2 shadow-sm">
+                <div class="font-bold text-[#2b2927] flex items-center space-x-1.5">
+                    <svg class="w-4 h-4 text-[#78829c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path>
+                    </svg>
+                    <span>SRS（間隔反復システム）について</span>
+                </div>
+                <p>・復習期限を迎えたカードや学習中の項目が最適なタイミングで自動提示されます。</p>
+                <p>・Got itを重ねて復習間隔を延ばし、完全習得を目指しましょう！</p>
+            </div>
+        </section>
+
+        <!-- ================= 2. WORDS TAB ================= -->
+        <section id="tab-words" class="tab-content fade-in">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="font-bold text-lg text-[#2b2927]">基礎単語一覧</h2>
+                <span class="text-xs text-[#6b625b] font-medium" id="word-count-label">全0語</span>
+            </div>
+
+            <div class="mb-4 space-y-2">
+                <div class="relative">
+                    <input type="text" id="word-search-input" placeholder="英語、日本語、変化形で検索..." oninput="handleWordSearch()" class="w-full bg-[#faf8f5] border border-[#e5dfd7] text-[#2b2927] rounded-xl px-4 py-2.5 text-sm pl-10 focus:outline-none focus:ring-2 focus:ring-[#78829c] shadow-sm placeholder-[#9c938c]">
+                    <svg class="w-4 h-4 text-[#7c736c] absolute left-3.5 top-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </div>
+                <div class="flex gap-2 overflow-x-auto pb-1 text-xs" id="word-category-filter-container">
+                    <button onclick="filterWordCategory('all')" class="cat-pill px-3 py-1.5 rounded-lg font-medium bg-[#78829c] text-white whitespace-nowrap shadow-sm">すべて</button>
+                </div>
+            </div>
+
+            <div id="words-list-container" class="space-y-2.5"></div>
+        </section>
+
+        <!-- ================= 3. EXPRESSIONS TAB ================= -->
+        <section id="tab-expressions" class="tab-content fade-in">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="font-bold text-lg text-[#2b2927]">よく使う表現・文の型一覧</h2>
+                <span class="text-xs text-[#6b625b] font-medium" id="expr-count-label">全0件</span>
+            </div>
+
+            <div class="mb-4">
+                <div class="relative">
+                    <input type="text" id="expr-search-input" placeholder="表現や意味で検索..." oninput="handleExprSearch()" class="w-full bg-[#faf8f5] border border-[#e5dfd7] text-[#2b2927] rounded-xl px-4 py-2.5 text-sm pl-10 focus:outline-none focus:ring-2 focus:ring-[#78829c] shadow-sm placeholder-[#9c938c]">
+                    <svg class="w-4 h-4 text-[#7c736c] absolute left-3.5 top-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </div>
+            </div>
+
+            <div id="expressions-list-container" class="space-y-3"></div>
+        </section>
+
+        <!-- ================= 4. QUIZ TAB ================= -->
+        <section id="tab-quiz" class="tab-content fade-in">
+            <div class="bg-[#faf8f5] backdrop-blur-sm rounded-2xl p-5 shadow-sm border border-[#e5dfd7] mb-4">
+                <h2 class="font-bold text-lg text-[#2b2927] mb-2">確認クイズモード</h2>
+                <p class="text-[#6b625b] text-xs mb-4">単語の意味、活用形・比較変化、実際の文の穴埋め問題をランダムに出題します。</p>
+                
+                <div id="quiz-setup-view">
+                    <div class="space-y-3 mb-4">
+                        <label class="block text-xs font-semibold text-[#5c534c]">クイズモード選択</label>
+                        <select id="quiz-mode-select" class="w-full bg-[#f4efe8] border border-[#e5dfd7] rounded-xl px-3 py-2.5 text-sm text-[#2b2927] font-medium focus:outline-none focus:ring-2 focus:ring-[#78829c]">
+                            <option value="mixed">総合ランダム (意味・活用・穴埋め)</option>
+                            <option value="en-to-ja">英単語 → 日本語訳</option>
+                            <option value="conjugation">活用形・比較変化クイズ</option>
+                            <option value="fill-blank">文の穴埋めクイズ</option>
+                        </select>
+                    </div>
+                    <button onclick="startQuiz()" class="w-full bg-[#78829c] text-white font-bold py-3.5 rounded-xl shadow-md hover:bg-[#68728c] transition active:scale-98">
+                        確認クイズを開始する
+                    </button>
+                </div>
+
+                <div id="quiz-play-view" class="hidden">
+                    <div class="flex justify-between items-center text-xs text-[#6b625b] mb-3">
+                        <span id="quiz-progress-text">問題 1 / 5</span>
+                        <button onclick="quitQuiz()" class="text-rose-600 font-medium hover:underline">やめる</button>
+                    </div>
+                    <div class="bg-[#f4efe8] border border-[#e5dfd7] rounded-xl p-4 mb-4 text-center">
+                        <span class="text-xs font-bold text-[#78829c] uppercase tracking-wider block mb-1" id="quiz-type-badge">総合クイズ</span>
+                        <div class="text-xl font-bold text-[#2b2927] my-2" id="quiz-question-text">Question</div>
+                    </div>
+                    <div id="quiz-options-container" class="space-y-2.5"></div>
+                </div>
+
+                <div id="quiz-result-view" class="hidden text-center py-4">
+                    <div class="text-3xl mb-2 text-[#78829c]">
+                        <svg class="w-12 h-12 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    </div>
+                    <h3 class="font-bold text-lg text-[#2b2927] mb-1">確認テスト完了！</h3>
+                    <p class="text-[#6b625b] text-sm mb-4">正解数: <span id="quiz-score-final" class="font-bold text-[#78829c] text-lg">0</span> / 5</p>
+                    <div class="flex gap-2">
+                        <button onclick="startQuiz()" class="flex-1 bg-[#78829c] text-white font-bold py-2.5 rounded-xl text-sm shadow hover:bg-[#68728c] transition">
+                            もう一度挑戦
+                        </button>
+                        <button onclick="resetQuizView()" class="flex-1 bg-[#f4efe8] border border-[#e5dfd7] text-[#5c534c] font-bold py-2.5 rounded-xl text-sm shadow hover:bg-[#eae4dc] transition">
+                            終了する
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 5. HARD (WEAK) TAB ================= -->
+        <section id="tab-hard" class="tab-content fade-in">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="font-bold text-lg text-[#2b2927]">苦手リスト・復習</h2>
+                <span class="text-xs text-rose-600 font-semibold" id="hard-count-label">要復習 0件</span>
+            </div>
+            <p class="text-[#6b625b] text-xs mb-4">Againを押した項目や苦手カウントが残っている項目がここに記録されます。Unsureを押すと苦手カウントが減り、0になると自動で解除されます。</p>
+
+            <div id="hard-practice-btn-container" class="mb-4"></div>
+            <div id="hard-list-container" class="space-y-2.5"></div>
+        </section>
+
+    </main>
+
+    <div id="flashcard-modal" class="fixed inset-0 bg-[#2b2927]/60 z-50 hidden flex flex-col justify-between p-4 sm:p-8 backdrop-blur-sm">
+        <div class="flex justify-between items-center max-w-md mx-auto w-full">
+            <div class="text-xs font-bold bg-[#faf8f5] border border-[#e5dfd7] px-3 py-1 rounded-full text-[#4a4540] shadow-sm" id="flashcard-counter">カード 1 / 10</div>
+            <button onclick="closeFlashcards()" class="w-9 h-9 rounded-full bg-[#faf8f5] hover:bg-[#f0ece5] text-[#2b2927] flex items-center justify-center font-bold text-lg border border-[#e5dfd7] shadow-sm">✕</button>
+        </div>
+        <div class="max-w-md mx-auto w-full flex-1 flex items-center justify-center py-4">
+            <div id="flashcard-card-body" onclick="handleCardBodyClick(event)" class="w-full bg-[#faf8f5] text-[#2b2927] rounded-3xl p-6 sm:p-8 shadow-xl border border-[#e5dfd7] min-h-[420px] flex flex-col justify-between cursor-pointer transform transition-all duration-300 relative overflow-y-auto max-h-[75vh]"></div>
+        </div>
+        <div class="max-w-md mx-auto w-full grid grid-cols-2 gap-3" id="flashcard-action-bar"></div>
+    </div>
+
+    <!-- DETAIL MODAL -->
+    <div id="detail-modal" class="fixed inset-0 bg-[#2b2927]/50 z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4 backdrop-blur-sm">
+        <div class="bg-[#faf8f5] text-[#2b2927] w-full max-w-md rounded-t-3xl sm:rounded-2xl max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col transform transition-transform border border-[#e5dfd7]">
+            <div class="sticky top-0 bg-[#faf8f5]/95 backdrop-blur-sm px-5 py-4 border-b border-[#e5dfd7] flex justify-between items-center z-10">
+                <div class="flex items-center space-x-2 flex-wrap gap-1.5" id="modal-tags-container"></div>
+                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-[#f4efe8] text-[#6b625b] flex items-center justify-center hover:bg-[#eae4dc] font-bold border border-[#e2dad1]">✕</button>
+            </div>
+            <div class="p-5 space-y-5" id="modal-body-content"></div>
+        </div>
+    </div>
+
+    <nav class="fixed bottom-0 left-0 right-0 bg-[#faf8f5]/95 backdrop-blur-md border-t border-[#e5dfd7] z-40 max-w-md mx-auto shadow-md">
+        <div class="grid grid-cols-5 py-2 text-center">
+            <button onclick="switchTab('today')" id="nav-btn-today" class="flex flex-col items-center justify-center group">
+                <div id="nav-bg-today" class="w-9 h-7 rounded-lg flex items-center justify-center transition-all bg-[#EAF2FF]">
+                    <svg class="w-5 h-5 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                </div>
+                <span id="nav-text-today" class="text-[10px] font-bold mt-1 text-[#5B7FD9]">進捗</span>
+            </button>
+            <button onclick="switchTab('words')" id="nav-btn-words" class="flex flex-col items-center justify-center group">
+                <div id="nav-bg-words" class="w-9 h-7 rounded-lg flex items-center justify-center transition-all bg-[#EAF6EF]/60">
+                    <svg class="w-5 h-5 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        <line x1="12" y1="6" x2="16" y2="6"></line>
+                        <line x1="12" y1="10" x2="16" y2="10"></line>
+                    </svg>
+                </div>
+                <span id="nav-text-words" class="text-[10px] font-medium mt-1 text-[#7c736c]">単語</span>
+            </button>
+            <button onclick="switchTab('expressions')" id="nav-btn-expressions" class="flex flex-col items-center justify-center group">
+                <div id="nav-bg-expressions" class="w-9 h-7 rounded-lg flex items-center justify-center transition-all bg-[#F0EDFF]/60">
+                    <svg class="w-5 h-5 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </div>
+                <span id="nav-text-expressions" class="text-[10px] font-medium mt-1 text-[#7c736c]">表現</span>
+            </button>
+            <button onclick="switchTab('quiz')" id="nav-btn-quiz" class="flex flex-col items-center justify-center group">
+                <div id="nav-bg-quiz" class="w-9 h-7 rounded-lg flex items-center justify-center transition-all bg-[#F0EDFF]/60">
+                    <svg class="w-5 h-5 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <circle cx="12" cy="12" r="6"></circle>
+                        <circle cx="12" cy="12" r="2"></circle>
+                    </svg>
+                </div>
+                <span id="nav-text-quiz" class="text-[10px] font-medium mt-1 text-[#7c736c]">クイズ</span>
+            </button>
+            <button onclick="switchTab('hard')" id="nav-btn-hard" class="flex flex-col items-center justify-center group">
+                <div id="nav-bg-hard" class="w-9 h-7 rounded-lg flex items-center justify-center transition-all bg-[#FCECEF]/60">
+                    <svg class="w-5 h-5 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </div>
+                <span id="nav-text-hard" class="text-[10px] font-medium mt-1 text-[#7c736c]">苦手</span>
+            </button>
+        </div>
+    </nav>
+
+    <script src="./data.js"></script>
+    <script>
+        let appData = { itemsState: {} };
+        let currentTab = 'today';
+        let selectedWordCategory = 'all';
+        let flashcardQueue = [];
+        let currentCardIndex = 0;
+        let isCardFlipped = false;
+        let isDedicatedWeakPractice = false;
+
+        let isWordsTabRendered = false;
+        let isExpressionsTabRendered = false;
+        let isHardTabRendered = false;
+        let lastWordSearchQuery = "";
+        let lastExprSearchQuery = "";
+
+        // タグ生成ヘルパー関数
+        function renderTagsHtml(item) {
+            let html = '';
+            const poses = item.partOfSpeech || (item.type === 'word' ? ['動詞'] : ['表現']);
+            poses.forEach(pos => {
+                html += `<span class="text-xs px-2 py-0.5 rounded font-medium tag-pos">${pos}</span>`;
+            });
+            if (item.category) {
+                html += `<span class="text-xs px-2 py-0.5 rounded font-medium tag-category">${item.category}</span>`;
+            }
+            return html;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadUserData();
+            initItemsState();
+            renderProgressTab();
+            updateNavStyles('today');
+        });
+
+        function loadUserData() {
+            const saved = localStorage.getItem('english_app_user_data_v8');
+            if (saved) {
+                try { appData = JSON.parse(saved); } catch(e) {}
+            }
+        }
+
+        function saveUserData() {
+            localStorage.setItem('english_app_user_data_v8', JSON.stringify(appData));
+        }
+
+        function initItemsState() {
+            rawDatabase.forEach(item => {
+                if (!appData.itemsState[item.id]) {
+                    appData.itemsState[item.id] = {
+                        status: 'new',
+                        correctCount: 0,
+                        errorCount: 0,
+                        actualErrorCount: 0,
+                        subScores: {},
+                        lastStudied: null,
+                        nextReview: null,
+                        interval: 0,
+                        srsStage: 0,
+                        weakRemaining: 0
+                    };
+                }
+                const st = appData.itemsState[item.id];
+                if (st.actualErrorCount === undefined) {
+                    st.actualErrorCount = st.errorCount || 0;
+                }
+                if (st.weakRemaining === undefined) {
+                    st.weakRemaining = (st.errorCount > 0) ? 3 : 0;
+                }
+            });
+            saveUserData();
+        }
+
+        function switchTab(tabId) {
+            currentTab = tabId;
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            const target = document.getElementById(`tab-${tabId}`);
+            if (target) target.classList.add('active');
+
+            updateNavStyles(tabId);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (tabId === 'today') {
+                renderProgressTab();
+            } else if (tabId === 'words') {
+                if (!isWordsTabRendered) {
+                    renderWordsTab();
+                    isWordsTabRendered = true;
+                }
+            } else if (tabId === 'expressions') {
+                if (!isExpressionsTabRendered) {
+                    renderExpressionsTab();
+                    isExpressionsTabRendered = true;
+                }
+            } else if (tabId === 'hard') {
+                renderHardTab();
+                isHardTabRendered = true;
+            }
+        }
+
+        function updateNavStyles(activeTabId) {
+            const navConfig = {
+                today: { bg: 'nav-bg-today', text: 'nav-text-today', activeBg: '#EAF2FF', inactiveBg: '#EAF2FF/60', activeColor: '#5B7FD9', inactiveColor: '#7c736c' },
+                words: { bg: 'nav-bg-words', text: 'nav-text-words', activeBg: '#EAF6EF', inactiveBg: '#EAF6EF/60', activeColor: '#4F8F70', inactiveColor: '#7c736c' },
+                expressions: { bg: 'nav-bg-expressions', text: 'nav-text-expressions', activeBg: '#F0EDFF', inactiveBg: '#F0EDFF/60', activeColor: '#6258D9', inactiveColor: '#7c736c' },
+                quiz: { bg: 'nav-bg-quiz', text: 'nav-text-quiz', activeBg: '#F0EDFF', inactiveBg: '#F0EDFF/60', activeColor: '#6258D9', inactiveColor: '#7c736c' },
+                hard: { bg: 'nav-bg-hard', text: 'nav-text-hard', activeBg: '#FCECEF', inactiveBg: '#FCECEF/60', activeColor: '#C65B70', inactiveColor: '#7c736c' }
+            };
+
+            Object.keys(navConfig).forEach(t => {
+                const conf = navConfig[t];
+                const bgEl = document.getElementById(conf.bg);
+                const textEl = document.getElementById(conf.text);
+                const svgEl = bgEl ? bgEl.querySelector('svg') : null;
+
+                if (t === activeTabId) {
+                    if (bgEl) {
+                        bgEl.style.backgroundColor = conf.activeBg;
+                        bgEl.style.opacity = '1';
+                    }
+                    if (textEl) {
+                        textEl.className = "text-[10px] font-bold mt-1";
+                        textEl.style.color = conf.activeColor;
+                    }
+                    if (svgEl) {
+                        svgEl.style.color = conf.activeColor;
+                    }
+                } else {
+                    if (bgEl) {
+                        bgEl.style.backgroundColor = conf.activeBg;
+                        bgEl.style.opacity = '0.55';
+                    }
+                    if (textEl) {
+                        textEl.className = "text-[10px] font-medium mt-1";
+                        textEl.style.color = "#7c736c";
+                    }
+                    if (svgEl) {
+                        svgEl.style.color = "#7c736c";
+                    }
+                }
+            });
+        }
+
+        function checkItemMastery(itemId) {
+            const st = appData.itemsState[itemId];
+            if (!st) return false;
+            return st.status === 'mastered' || st.srsStage >= 5;
+        }
+
+        let cachedStats = null;
+        let statsDirty = true;
+
+        function calculateProgressStats() {
+            if (!statsDirty && cachedStats) return cachedStats;
+
+            let totalCount = rawDatabase.length;
+            let totalMastered = 0;
+            let wordTotal = 0, wordMastered = 0;
+            let exprTotal = 0, exprMastered = 0;
+
+            rawDatabase.forEach(item => {
+                const isMastered = checkItemMastery(item.id);
+                if (item.type === 'word') {
+                    wordTotal++;
+                    if (isMastered) wordMastered++;
+                } else if (item.type === 'expression') {
+                    exprTotal++;
+                    if (isMastered) exprMastered++;
+                }
+                if (isMastered) totalMastered++;
+            });
+
+            cachedStats = {
+                totalCount,
+                totalMastered,
+                overallPercent: totalCount > 0 ? ((totalMastered / totalCount) * 100).toFixed(1) : "0.0",
+                wordTotal,
+                wordMastered,
+                wordPercent: wordTotal > 0 ? ((wordMastered / wordTotal) * 100).toFixed(1) : "0.0",
+                exprTotal,
+                exprMastered,
+                exprPercent: exprTotal > 0 ? ((exprMastered / exprTotal) * 100).toFixed(1) : "0.0"
+            };
+            statsDirty = false;
+            return cachedStats;
+        }
+
+        function renderProgressTab() {
+            const stats = calculateProgressStats();
+            document.getElementById('header-total-mastered-badge').innerHTML = `
+                <svg class="w-3.5 h-3.5 text-indigo-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="6"></circle>
+                    <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+                </svg>
+                <span>完全習得 ${stats.totalMastered} / ${stats.totalCount}</span>
+            `;
+            document.getElementById('overall-mastered-fraction').innerText = `${stats.totalMastered} / ${stats.totalCount}`;
+            document.getElementById('overall-mastered-percent').innerText = `${stats.overallPercent}%`;
+            document.getElementById('overall-progress-bar').style.width = `${stats.overallPercent}%`;
+            document.getElementById('breakdown-words-text').innerText = `${stats.wordMastered} / ${stats.wordTotal} (${stats.wordPercent}%)`;
+            document.getElementById('bar-words').style.width = `${stats.wordPercent}%`;
+            document.getElementById('breakdown-expr-text').innerText = `${stats.exprMastered} / ${stats.exprTotal} (${stats.exprPercent}%)`;
+            document.getElementById('bar-expr').style.width = `${stats.exprPercent}%`;
+        }
+
+        function startFlashcards(isWeakOnly = false) {
+            isDedicatedWeakPractice = isWeakOnly;
+            const now = new Date();
+            
+            if (isWeakOnly) {
+                flashcardQueue = rawDatabase.filter(item => {
+                    const st = appData.itemsState[item.id];
+                    return st && st.weakRemaining > 0;
+                });
+                if (flashcardQueue.length === 0) return;
+            } else {
+                let dueItems = [], priorityItems = [], newItems = [], futureItems = [];
+                rawDatabase.forEach(item => {
+                    const st = appData.itemsState[item.id];
+                    if (!st || st.status === 'new' || !st.lastStudied) {
+                        newItems.push(item);
+                    } else if (st.nextReview && new Date(st.nextReview) <= now) {
+                        dueItems.push(item);
+                    } else if (st.actualErrorCount > 0 || st.srsStage === 0) {
+                        priorityItems.push(item);
+                    } else {
+                        futureItems.push(item);
+                    }
+                });
+                flashcardQueue = [...dueItems, ...priorityItems, ...newItems, ...futureItems];
+                if (flashcardQueue.length === 0) flashcardQueue = [...rawDatabase];
+            }
+
+            currentCardIndex = 0;
+            isCardFlipped = false;
+            document.getElementById('flashcard-modal').classList.remove('hidden');
+            renderCurrentFlashcard();
+        }
+
+        function closeFlashcards() {
+            document.getElementById('flashcard-modal').classList.add('hidden');
+            isDedicatedWeakPractice = false;
+            statsDirty = true;
+            renderProgressTab();
+            if (isWordsTabRendered) renderWordsTab();
+            if (isExpressionsTabRendered) renderExpressionsTab();
+            if (isHardTabRendered) renderHardTab();
+        }
+
+        function handleCardBodyClick(e) {
+            if (!isCardFlipped) {
+                flipFlashcard(e);
+            }
+        }
+
+        function renderCurrentFlashcard() {
+            if (currentCardIndex >= flashcardQueue.length) {
+                if (isDedicatedWeakPractice) {
+                    closeFlashcards();
+                    return;
+                }
+                startFlashcards();
+                return;
+            }
+            isCardFlipped = false;
+            const item = flashcardQueue[currentCardIndex];
+            const st = appData.itemsState[item.id];
+            document.getElementById('flashcard-counter').innerText = `カード ${currentCardIndex + 1} / ${flashcardQueue.length}`;
+            
+            let errorBadgeHtml = '';
+            if (st && st.actualErrorCount > 0) {
+                errorBadgeHtml = `<div class="mb-3"><span class="text-xs bg-[#fdf0f2] text-rose-800 border border-rose-300 px-3 py-1 rounded-full font-medium shadow-sm">間違い回数: ${st.actualErrorCount}回</span></div>`;
+            }
+
+            const posText = (item.partOfSpeech || [item.type === 'word' ? '動詞' : '表現']).join('・');
+            document.getElementById('flashcard-card-body').innerHTML = `
+                ${errorBadgeHtml}
+                <div class="text-center my-auto flex flex-col items-center justify-center w-full">
+                    <div class="text-xs font-bold text-[#78829c] uppercase tracking-wider mb-2">${posText}</div>
+                    <div class="text-3xl sm:text-4xl font-extrabold text-[#2b2927] mb-2">${item.english}</div>
+                </div>
+                <button onclick="playSpeech(event, '${item.english}')" style="position: absolute; top: 72%; right: 8%; transform: translateY(-50%);" class="w-11 h-11 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm z-20" aria-label="発音">
+                    <svg class="w-5 h-5 text-[#78829c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
+                        <path d="M19 10v1a7 7 0 0 1-14 0v-1"></path>
+                        <line x1="12" y1="19" x2="12" y2="22"></line>
+                    </svg>
+                </button>
+                <div class="mt-4 pt-4 border-t border-[#e5dfd7] text-center">
+                    <span class="text-xs font-bold text-[#78829c] bg-[#f4efe8] px-4 py-2 rounded-xl inline-block shadow-sm border border-[#e5dfd7]">答えを見る</span>
+                </div>
+            `;
+            document.getElementById('flashcard-action-bar').innerHTML = `
+                <button onclick="closeFlashcards()" class="bg-[#f4efe8] hover:bg-[#eae4dc] text-[#5c534c] font-bold py-3 rounded-2xl text-sm transition border border-[#e5dfd7] col-span-2 shadow-sm">終了する</button>
+            `;
+        }
+
+        function flipFlashcard(e) {
+            if (e) e.stopPropagation();
+            if (isCardFlipped) return;
+            isCardFlipped = true;
+            const item = flashcardQueue[currentCardIndex];
+            
+            let backHtml = `
+                <div class="relative w-full pb-6">
+                    <div class="flex justify-between items-center mb-3">
+                        <div class="flex items-center space-x-1.5 flex-wrap gap-1">
+                            ${renderTagsHtml(item)}
+                        </div>
+                    </div>
+                    <div class="text-center mb-4 relative pt-1">
+                        <div class="text-2xl font-bold text-[#2b2927] mb-1">${item.english}</div>
+                        <div class="text-base font-semibold text-[#78829c] mb-2">${item.japanese}</div>
+                    </div>
+            `;
+            if (item.beginnerTip) {
+                backHtml += `<div class="text-left mb-3"><div class="text-xs text-[#5c534c] bg-[#f4efe8] p-3 rounded-xl border border-[#e5dfd7] leading-relaxed flex items-start space-x-2"><svg class="w-4 h-4 text-[#78829c] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg><span>${item.beginnerTip}</span></div></div>`;
+            }
+            if (item.type === 'word' && item.forms) {
+                backHtml += `<div class="space-y-2.5 bg-[#edf1f7] p-3.5 rounded-2xl border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] uppercase tracking-wider">活用形・変化と例文</div><div class="text-xs space-y-2.5">`;
+                item.forms.forEach(f => {
+                    backHtml += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0 relative"><div class="flex items-center justify-between mb-1"><div class="flex items-center space-x-2"><span class="text-sm font-bold text-[#2b2927]">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold">${f.label}</span></div><button onclick="playSpeech(event, '${f.formName}')" class="w-8 h-8 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-4 h-4 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></button></div><div class="text-[#2b2927] text-xs font-normal">"${f.example}" <span class="text-[#64748b] font-normal">(${f.exampleJa})</span></div></div>`;
+                });
+                backHtml += `</div></div>`;
+            } else if (item.type === 'expression') {
+                backHtml += `<div class="space-y-2 bg-[#edf1f7] p-4 rounded-2xl border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] uppercase">例文</div><div class="text-sm font-normal text-[#2b2927]">"${item.example}" <span class="text-[#64748b] font-normal">(${item.exampleJa})</span></div></div>`;
+            }
+            backHtml += `</div>`;
+            document.getElementById('flashcard-card-body').innerHTML = backHtml;
+
+            if (isDedicatedWeakPractice) {
+                document.getElementById('flashcard-action-bar').innerHTML = `
+                    <button onclick="handleWeakPracticeResult()" class="bg-[#78829c] hover:bg-[#68728c] text-white font-bold py-3 rounded-2xl text-sm shadow-md transition col-span-2 border border-[#68728c]">次へ</button>
+                `;
+            } else {
+                document.getElementById('flashcard-action-bar').innerHTML = `
+                    <button onclick="handleFlashcardResult('again')" class="bg-rose-100 hover:bg-rose-200 text-rose-800 font-bold py-3 rounded-2xl text-sm border border-rose-300 transition">Again</button>
+                    <button onclick="handleFlashcardResult('unsure')" class="bg-amber-100 hover:bg-amber-200 text-amber-800 font-bold py-3 rounded-2xl text-sm border border-amber-300 transition">Unsure</button>
+                    <button onclick="handleFlashcardResult('got_it')" class="bg-[#e8f8f1] hover:bg-[#d1f5e6] text-[#065f46] font-bold py-3 rounded-2xl text-sm shadow-md transition col-span-2 border border-[#34d399]">Got it</button>
+                `;
+            }
+        }
+
+        function handleWeakPracticeResult() {
+            currentCardIndex++;
+            renderCurrentFlashcard();
+        }
+
+        function handleFlashcardResult(result) {
+            const item = flashcardQueue[currentCardIndex];
+            const st = appData.itemsState[item.id];
+            const now = new Date();
+            let nextReviewDate = new Date();
+
+            if (result === 'got_it') {
+                st.correctCount++;
+                if (st.status === 'new') st.status = 'learning';
+                if (!st.srsStage || st.srsStage < 1) { st.srsStage = 1; nextReviewDate.setDate(now.getDate() + 1); }
+                else if (st.srsStage === 1) { st.srsStage = 2; nextReviewDate.setDate(now.getDate() + 3); }
+                else if (st.srsStage === 2) { st.srsStage = 3; nextReviewDate.setDate(now.getDate() + 7); }
+                else if (st.srsStage === 3) { st.srsStage = 4; nextReviewDate.setDate(now.getDate() + 14); }
+                else { st.srsStage = 5; st.status = 'mastered'; nextReviewDate.setDate(now.getDate() + 30); }
+            } else if (result === 'unsure') {
+                if (st.status === 'new') st.status = 'learning';
+                st.weakRemaining = Math.max(0, (st.weakRemaining || 0) - 1);
+                nextReviewDate.setDate(now.getDate() + 1);
+            } else {
+                st.errorCount++;
+                st.actualErrorCount = (st.actualErrorCount || 0) + 1;
+                st.weakRemaining = 3;
+                if (st.status === 'mastered') { st.status = 'learning'; st.srsStage = 1; }
+                nextReviewDate.setMinutes(now.getMinutes() + 5);
+            }
+            st.lastStudied = now.toISOString();
+            st.nextReview = nextReviewDate.toISOString();
+            if (checkItemMastery(item.id)) st.status = 'mastered';
+            statsDirty = true;
+            saveUserData();
+            currentCardIndex++;
+            renderCurrentFlashcard();
+        }
+
+        function renderWordsTab() {
+            const words = rawDatabase.filter(i => i.type === 'word');
+            document.getElementById('word-count-label').innerText = `全${words.length}語`;
+            const categories = ['all', ...new Set(words.map(w => w.category))];
+            document.getElementById('word-category-filter-container').innerHTML = categories.map(cat => {
+                const active = selectedWordCategory === cat ? 'bg-[#78829c] text-white' : 'bg-[#faf8f5] text-[#5c534c] border border-[#e5dfd7]';
+                return `<button onclick="filterWordCategory('${cat}')" class="cat-pill px-3 py-1.5 rounded-lg font-medium whitespace-nowrap shadow-sm transition ${active}">${cat === 'all' ? 'すべて' : cat}</button>`;
+            }).join('');
+
+            const query = document.getElementById('word-search-input').value.toLowerCase();
+            const filtered = words.filter(w => {
+                const matchCat = selectedWordCategory === 'all' || w.category === selectedWordCategory;
+                const matchQuery = !query || w.english.toLowerCase().includes(query) || w.japanese.includes(query);
+                return matchCat && matchQuery;
+            });
+
+            const container = document.getElementById('words-list-container');
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="text-center py-8 text-[#7c736c] text-sm">該当する単語が見つかりませんでした</div>`;
+                return;
+            }
+            container.innerHTML = filtered.map(w => {
+                const isMastered = checkItemMastery(w.id);
+                const st = appData.itemsState[w.id];
+                let tagClass = 'tag-status-new';
+                let tagText = '未学習';
+                if (isMastered) {
+                    tagClass = 'tag-status-mastered';
+                    tagText = '完全習得';
+                } else if (st.status === 'learning') {
+                    tagClass = 'tag-status-learning';
+                    tagText = '学習中';
+                }
+                return `<div onclick="openDetailModal('${w.id}')" class="bg-[#faf8f5] p-4 rounded-2xl border border-[#e5dfd7] shadow-sm flex items-center justify-between cursor-pointer hover:border-[#78829c] transition"><div><div class="flex items-center space-x-2 mb-1 flex-wrap gap-1"><span class="text-[10px] px-2 py-0.5 rounded-full font-medium ${tagClass}">${tagText}</span>${renderTagsHtml(w)}</div><div class="font-bold text-[#2b2927] text-base">${w.english}</div><div class="text-xs text-[#6b625b]">${w.japanese}</div></div><div class="text-xs font-medium text-[#78829c] bg-[#f4efe8] px-3 py-1.5 rounded-xl border border-[#e5dfd7]">詳細 →</div></div>`;
+            }).join('');
+        }
+
+        function filterWordCategory(cat) { 
+            selectedWordCategory = cat; 
+            renderWordsTab(); 
+        }
+
+        function handleWordSearch() { 
+            const query = document.getElementById('word-search-input').value.toLowerCase();
+            if (query !== lastWordSearchQuery) {
+                lastWordSearchQuery = query;
+                renderWordsTab(); 
+            }
+        }
+
+        function renderExpressionsTab() {
+            const items = rawDatabase.filter(i => i.type === 'expression');
+            document.getElementById('expr-count-label').innerText = `全${items.length}件`;
+            const query = document.getElementById('expr-search-input').value.toLowerCase();
+            const filtered = items.filter(item => !query || item.english.toLowerCase().includes(query) || item.japanese.includes(query));
+            const container = document.getElementById('expressions-list-container');
+            
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="text-center py-8 text-[#7c736c] text-sm">該当する表現が見つかりませんでした</div>`;
+                return;
+            }
+            container.innerHTML = filtered.map(item => {
+                const isMastered = checkItemMastery(item.id);
+                const st = appData.itemsState[item.id];
+                let tagClass = 'tag-status-new';
+                let tagText = '未学習';
+                if (isMastered) {
+                    tagClass = 'tag-status-mastered';
+                    tagText = '完全習得';
+                } else if (st.status === 'learning') {
+                    tagClass = 'tag-status-learning';
+                    tagText = '学習中';
+                }
+                return `<div onclick="openDetailModal('${item.id}')" class="bg-[#faf8f5] p-4 rounded-2xl border border-[#e5dfd7] shadow-sm cursor-pointer hover:border-[#78829c] transition"><div class="flex justify-between items-start mb-1"><div class="flex items-center space-x-2 flex-wrap gap-1"><span class="text-[10px] px-2 py-0.5 rounded-full font-medium ${tagClass}">${tagText}</span>${renderTagsHtml(item)}</div><span class="text-xs text-[#78829c] bg-[#f4efe8] px-2.5 py-1 rounded-lg border border-[#e5dfd7]">詳細 →</span></div><div class="font-bold text-[#2b2927] text-base mb-1">${item.english}</div><div class="text-xs font-semibold text-[#78829c] mb-2">${item.japanese}</div><div class="bg-[#f4efe8] p-2.5 rounded-xl text-xs text-[#4a4540] border border-[#e5dfd7]">例文: "${item.example.replace(/<\/?[^>]+(>|$)/g, "")}" <span class="text-[#7c736c]">(${item.exampleJa})</span></div></div>`;
+            }).join('');
+        }
+
+        function handleExprSearch() { 
+            const query = document.getElementById('expr-search-input').value.toLowerCase();
+            if (query !== lastExprSearchQuery) {
+                lastExprSearchQuery = query;
+                renderExpressionsTab(); 
+            }
+        }
+
+        function openDetailModal(id) {
+            const item = rawDatabase.find(i => i.id === id);
+            if (!item) return;
+            document.getElementById('modal-tags-container').innerHTML = renderTagsHtml(item);
+            const st = appData.itemsState[id];
+
+            let html = `
+                <div class="flex justify-between items-center mb-3 relative">
+                    <div class="text-center w-full">
+                        <div class="text-2xl font-bold text-[#2b2927] mb-1">${item.english}</div>
+                        <div class="text-sm font-semibold text-[#78829c]">${item.japanese}</div>
+                    </div>
+                    <div class="absolute right-0 top-1/2 transform -translate-y-1/2">
+                        <button onclick="playSpeech(event, '${item.english}')" class="w-10 h-10 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm shrink-0" aria-label="発音">
+                            <svg class="w-4 h-4 text-[#78829c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
+                        </button>
+                    </div>
+                </div>
+            `;
+            if (item.beginnerTip) {
+                html += `<div class="bg-[#f4efe8] rounded-xl p-3 border border-[#e5dfd7] text-left mb-4"><p class="text-xs text-[#5c534c] leading-relaxed flex items-start space-x-2"><svg class="w-4 h-4 text-[#78829c] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg><span>${item.beginnerTip}</span></p></div>`;
+            }
+
+            if (item.type === 'word' && item.forms) {
+                html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-3 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase tracking-wider">活用形・変化と例文一覧</div>`;
+                item.forms.forEach(f => {
+                    html += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0"><div class="flex items-center justify-between mb-1"><div class="flex items-center space-x-2"><span class="text-sm font-bold text-[#2b2927]">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold">${f.label}</span></div><button onclick="playSpeech(event, '${f.formName}')" class="w-7 h-7 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-3.5 h-3.5 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></button></div><div class="text-[#2b2927]">"${f.example}" <span class="text-[#64748b]">(${f.exampleJa})</span></div></div>`;
+                });
+                html += `<div class="pt-2 border-t border-[#e2e8f0] text-[#64748b]">変化タイプ: <b class="text-[#2b2927]">${item.changeType}</b></div></div>`;
+            } else if (item.type === 'expression') {
+                html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-2 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase">例文</div><div class="font-semibold text-[#2b2927]">"${item.example}" <span class="text-[#64748b]">(${item.exampleJa})</span></div></div>`;
+            }
+
+            const isMastered = checkItemMastery(id);
+            const reviewTimeStr = st.nextReview ? new Date(st.nextReview).toLocaleString('ja-JP', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '未定';
+            html += `<div class="pt-2 border-t border-[#e5dfd7] text-left"><div class="text-xs font-bold text-[#7c736c] uppercase mb-1">学習ステータス (次回復習: ${reviewTimeStr})</div><div class="grid grid-cols-3 gap-2 mb-3"><button onclick="updateItemStatus('${id}', 'new')" class="py-2 text-xs font-bold rounded-xl border ${st.status === 'new' ? 'bg-[#eae4dc] text-[#2b2927] border-[#dcd6ce]' : 'bg-[#f4efe8] text-[#7c736c] border-[#e5dfd7]'}">未学習</button><button onclick="updateItemStatus('${id}', 'learning')" class="py-2 text-xs font-bold rounded-xl border ${st.status === 'learning' ? 'bg-[#fef3c7] text-[#92400e] border-[#f59e0b]' : 'bg-[#f4efe8] text-[#7c736c] border-[#e5dfd7]'}">学習中</button><button onclick="updateItemStatus('${id}', 'mastered')" class="py-2 text-xs font-bold rounded-xl border ${isMastered ? 'bg-[#78829c] text-white border-[#68728c]' : 'bg-[#f4efe8] text-[#7c736c] border-[#e5dfd7]'}">完全習得</button></div></div>`;
+
+            document.getElementById('modal-body-content').innerHTML = html;
+            document.getElementById('detail-modal').classList.remove('hidden');
+        }
+
+        function closeModal() { document.getElementById('detail-modal').classList.add('hidden'); }
+
+        function updateItemStatus(id, status) {
+            appData.itemsState[id].status = status;
+            if (status === 'mastered') appData.itemsState[id].srsStage = 5;
+            else if (status === 'new') appData.itemsState[id].srsStage = 0;
+            statsDirty = true;
+            saveUserData();
+            openDetailModal(id);
+            renderProgressTab();
+            if (isWordsTabRendered) renderWordsTab();
+            if (isExpressionsTabRendered) renderExpressionsTab();
+            if (isHardTabRendered) renderHardTab();
+        }
+
+        let quizQuestions = [];
+        let currentQuizIdx = 0;
+        let quizScore = 0;
+
+        function startQuiz() {
+            const mode = document.getElementById('quiz-mode-select').value;
+            quizQuestions = generateQuizQuestions(mode, 5);
+            currentQuizIdx = 0;
+            quizScore = 0;
+            if (quizQuestions.length === 0) return;
+
+            document.getElementById('quiz-setup-view').classList.add('hidden');
+            document.getElementById('quiz-play-view').classList.remove('hidden');
+            document.getElementById('quiz-result-view').classList.add('hidden');
+            renderQuizQuestion();
+        }
+
+        function generateQuizQuestions(mode, count) {
+            const wordItems = rawDatabase.filter(i => i.type === 'word');
+            const generated = [];
+            for (let i = 0; i < count; i++) {
+                const item = wordItems[Math.floor(Math.random() * wordItems.length)];
+                const forms = item.forms || [];
+                let qTypes = mode === 'mixed' ? ['meaning', 'form_ask'] : (mode === 'en-to-ja' ? ['meaning'] : ['form_ask']);
+                const subType = qTypes[Math.floor(Math.random() * qTypes.length)];
+
+                if (subType === 'meaning') {
+                    const wrongs = wordItems.filter(w => w.id !== item.id).sort(() => 0.5 - Math.random()).slice(0, 3).map(w => w.japanese);
+                    const options = [item.japanese, ...wrongs].sort(() => 0.5 - Math.random());
+                    generated.push({
+                        itemId: item.id, subKey: 'meaning', typeBadge: '英単語 → 日本語訳',
+                        questionText: item.english, options, correctAnswer: item.japanese
+                    });
+                } else if (forms.length >= 2) {
+                    const targetForm = forms[Math.floor(Math.random() * forms.length)];
+                    const wrongs = forms.filter(f => f.formName !== targetForm.formName).map(f => f.formName).slice(0, 3);
+                    const options = [targetForm.formName, ...wrongs].sort(() => 0.5 - Math.random());
+                    generated.push({
+                        itemId: item.id, subKey: targetForm.label, typeBadge: '活用形クイズ',
+                        questionText: `「${item.japanese.split(',')[0]}」の${targetForm.label}は？`, options, correctAnswer: targetForm.formName
+                    });
+                } else {
+                    i--;
+                }
+            }
+            return generated;
+        }
+
+        function renderQuizQuestion() {
+            if (document.activeElement && typeof document.activeElement.blur === 'function') {
+                document.activeElement.blur();
+            }
+
+            if (currentQuizIdx >= quizQuestions.length) {
+                document.getElementById('quiz-play-view').classList.add('hidden');
+                document.getElementById('quiz-result-view').classList.remove('hidden');
+                document.getElementById('quiz-score-final').innerText = quizScore;
+                statsDirty = true;
+                renderProgressTab();
+                return;
+            }
+            const q = quizQuestions[currentQuizIdx];
+            document.getElementById('quiz-progress-text').innerText = `問題 ${currentQuizIdx + 1} / ${quizQuestions.length}`;
+            document.getElementById('quiz-type-badge').innerText = q.typeBadge;
+            document.getElementById('quiz-question-text').innerHTML = q.questionText;
+
+            const optionsContainer = document.getElementById('quiz-options-container');
+            optionsContainer.innerHTML = q.options.map(opt => `
+                <button type="button" data-option="${opt}" onclick="handleQuizAnswer('${opt.replace(/'/g, "\\'")}')" class="quiz-option-btn w-full bg-[#faf8f5] border border-[#e5dfd7] text-[#2b2927] font-bold py-3 px-4 rounded-xl shadow-sm hover:border-[#78829c] hover:bg-[#f4efe8] transition text-sm text-left">${opt}</button>
+            `).join('');
+        }
+
+        function handleQuizAnswer(selectedOption) {
+            const q = quizQuestions[currentQuizIdx];
+            const isCorrect = selectedOption === q.correctAnswer;
+            const itemSt = appData.itemsState[q.itemId];
+            if (isCorrect) { quizScore++; itemSt.correctCount++; } else { itemSt.errorCount++; itemSt.actualErrorCount = (itemSt.actualErrorCount || 0) + 1; itemSt.weakRemaining = 3; }
+            statsDirty = true;
+            saveUserData();
+            renderProgressTab();
+
+            const optionsContainer = document.getElementById('quiz-options-container');
+            const buttons = optionsContainer.querySelectorAll('button');
+
+            buttons.forEach(b => {
+                b.disabled = true;
+                const optVal = b.getAttribute('data-option');
+                if (optVal === q.correctAnswer) {
+                    b.className = "quiz-option-btn w-full bg-[#e8f8f1] border border-[#34d399] text-[#065f46] font-bold py-3 px-4 rounded-xl shadow-sm transition text-sm text-left";
+                } else if (optVal === selectedOption && !isCorrect) {
+                    b.className = "quiz-option-btn w-full bg-[#fdf0f2] border border-[#fb7185] text-[#9f1239] font-bold py-3 px-4 rounded-xl shadow-sm transition text-sm text-left";
+                } else {
+                    b.className = "quiz-option-btn w-full bg-[#faf8f5] opacity-60 border border-[#e5dfd7] text-[#2b2927] font-bold py-3 px-4 rounded-xl shadow-sm transition text-sm text-left";
+                }
+            });
+
+            optionsContainer.innerHTML += `<button type="button" onclick="nextQuizQuestion()" class="w-full mt-3 bg-[#78829c] text-white font-bold py-3 rounded-xl shadow hover:bg-[#68728c] transition">次の問題へ →</button>`;
+        }
+
+        function nextQuizQuestion() { 
+            currentQuizIdx++; 
+            renderQuizQuestion(); 
+        }
+        function quitQuiz() { 
+            if (document.activeElement && typeof document.activeElement.blur === 'function') {
+                document.activeElement.blur();
+            }
+            document.getElementById('quiz-play-view').classList.add('hidden'); 
+            document.getElementById('quiz-setup-view').classList.remove('hidden'); 
+        }
+        function resetQuizView() { 
+            if (document.activeElement && typeof document.activeElement.blur === 'function') {
+                document.activeElement.blur();
+            }
+            document.getElementById('quiz-result-view').classList.add('hidden'); 
+            document.getElementById('quiz-setup-view').classList.remove('hidden'); 
+        }
+
+        function renderHardTab() {
+            const hardItems = rawDatabase.filter(i => { const st = appData.itemsState[i.id]; return st && st.weakRemaining > 0; });
+            document.getElementById('hard-count-label').innerText = `要復習 ${hardItems.length}件`;
+            
+            const btnContainer = document.getElementById('hard-practice-btn-container');
+            if (hardItems.length > 0) {
+                btnContainer.innerHTML = `<button onclick="startFlashcards(true)" class="w-full bg-[#fb7185] text-white font-bold py-3.5 rounded-xl text-sm shadow hover:bg-[#f43f5e] transition active:scale-95 flex items-center justify-center space-x-2 border border-[#e11d48]"><span>苦手だけ練習する</span></button>`;
+            } else {
+                btnContainer.innerHTML = '';
+            }
+
+            const container = document.getElementById('hard-list-container');
+            if (hardItems.length === 0) {
+                container.innerHTML = `<div class="text-center py-12 bg-[#faf8f5] rounded-2xl border border-[#e5dfd7] shadow-sm p-6"><div class="text-3xl mb-2 text-[#78829c]">✨</div><h3 class="font-bold text-[#2b2927] text-sm mb-1">苦手な項目はありません！</h3><p class="text-[#7c736c] text-xs">クイズで間違えた項目やAgainを押した項目がここに記録されます。</p></div>`;
+                return;
+            }
+            container.innerHTML = hardItems.map(item => {
+                const st = appData.itemsState[item.id];
+                return `<div onclick="openDetailModal('${item.id}')" class="bg-[#faf8f5] p-4 rounded-2xl border border-[#e5dfd7] shadow-sm flex items-center justify-between cursor-pointer hover:border-[#78829c] transition"><div><div class="flex items-center space-x-2 mb-1"><span class="text-xs bg-[#fdf0f2] text-rose-800 border border-rose-300 px-2 py-0.5 rounded font-medium">間違い回数: ${st.actualErrorCount || 0}回</span></div><div class="font-bold text-[#2b2927] text-base">${item.english}</div><div class="text-xs text-[#6b625b]">${item.japanese}</div></div><div class="w-8 h-8 rounded-full bg-[#f4efe8] text-[#78829c] flex items-center justify-center font-bold text-sm border border-[#e5dfd7]">→</div></div>`;
+            }).join('');
+        }
+
+        function playSpeech(e, text) {
+            if (e) e.stopPropagation();
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const u = new SpeechSynthesisUtterance(text);
+                u.lang = 'en-US';
+                window.speechSynthesis.speak(u);
+            }
+        }
+    </script>
+</body>
+</html>
