@@ -48,6 +48,11 @@
             color: #5c534c;
             border: 1px solid #e2dad1;
         }
+
+        /* iPhone Safari: inputs below 16px trigger automatic page zoom. */
+        #word-search-input, #expr-search-input {
+            font-size: 16px !important;
+        }
     </style>
 </head>
 <body class="min-h-screen pb-24">
@@ -301,6 +306,8 @@
 
     <script src="./data.js"></script>
     <script>
+        // Stable storage key: keep this unchanged across UI/data updates so learning history survives.
+        const STORAGE_KEY = 'english_app_user_data_v9';
         let appData = { itemsState: {} };
         let currentTab = 'today';
         let selectedWordCategory = 'all';
@@ -343,13 +350,45 @@
                 </div>`).join('')}</div>`;
         }
 
+        function randomIndex(maxExclusive) {
+            if (maxExclusive <= 1) return 0;
+            if (window.crypto && window.crypto.getRandomValues) {
+                const maxUint = 0x100000000;
+                const limit = maxUint - (maxUint % maxExclusive);
+                const buf = new Uint32Array(1);
+                do { window.crypto.getRandomValues(buf); } while (buf[0] >= limit);
+                return buf[0] % maxExclusive;
+            }
+            return Math.floor(Math.random() * maxExclusive);
+        }
+
         function shuffleItems(items) {
             const shuffled = [...items];
             for (let i = shuffled.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
+                const j = randomIndex(i + 1);
                 [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
             }
             return shuffled;
+        }
+
+        function avoidPreviousStartOrder(queue) {
+            if (queue.length < 2) return queue;
+            let previous = [];
+            try { previous = JSON.parse(sessionStorage.getItem('flashcards_last_start_order') || '[]'); } catch(e) {}
+            const prefixLength = Math.min(3, queue.length, previous.length);
+            let candidate = [...queue];
+            const samePrefix = arr => prefixLength > 0 && arr.slice(0, prefixLength).every((item, i) => item.id === previous[i]);
+
+            if (samePrefix(candidate)) {
+                for (let attempt = 0; attempt < 20 && samePrefix(candidate); attempt++) {
+                    candidate = shuffleItems(queue);
+                }
+                if (samePrefix(candidate) && candidate.length > 1) {
+                    candidate = [...candidate.slice(1), candidate[0]];
+                }
+            }
+            try { sessionStorage.setItem('flashcards_last_start_order', JSON.stringify(candidate.map(item => item.id))); } catch(e) {}
+            return candidate;
         }
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -360,14 +399,14 @@
         });
 
         function loadUserData() {
-            const saved = localStorage.getItem('english_app_user_data_v9');
+            const saved = localStorage.getItem(STORAGE_KEY);
             if (saved) {
                 try { appData = JSON.parse(saved); } catch(e) {}
             }
         }
 
         function saveUserData() {
-            localStorage.setItem('english_app_user_data_v9', JSON.stringify(appData));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
         }
 
         function initItemsState() {
@@ -563,6 +602,7 @@
                 if (flashcardQueue.length === 0) flashcardQueue = shuffleItems(rawDatabase);
             }
 
+            flashcardQueue = avoidPreviousStartOrder(flashcardQueue);
             currentCardIndex = 0;
             isCardFlipped = false;
             document.getElementById('flashcard-modal').classList.remove('hidden');
@@ -649,15 +689,29 @@
             }
 
             if (item.forms && item.forms.length) {
-                backHtml += `<div class="space-y-2.5 bg-[#edf1f7] p-3.5 rounded-2xl border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] uppercase tracking-wider">活用・変化と例文</div><div class="text-xs space-y-2.5">`;
-                item.forms.forEach(f => {
-                    const spoken = String(f.formName).replace(/'/g, "\'");
-                    backHtml += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0 relative"><div class="flex items-center justify-between mb-1"><div class="flex items-center space-x-2"><span class="text-sm font-bold text-[#2b2927]">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold">${f.label}</span></div><button onclick="playSpeech(event, '${spoken}')" class="w-8 h-8 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-4 h-4 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></button></div><div class="text-[#2b2927] text-xs font-normal">"${f.example}" <span class="text-[#64748b] font-normal">(${f.exampleJa})</span></div></div>`;
-                });
-                if (item.changeType) {
-                    backHtml += `<div class="pt-1 text-[#64748b]">変化タイプ: <b class="text-[#2b2927]">${item.changeType}</b></div>`;
+                const regularForms = item.forms.filter(f => f.label !== '会話形');
+                const spokenForms = item.forms.filter(f => f.label === '会話形');
+
+                if (regularForms.length) {
+                    backHtml += `<div class="space-y-2.5 bg-[#edf1f7] p-3.5 rounded-2xl border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] uppercase tracking-wider">活用・変化と例文</div><div class="text-xs space-y-2.5">`;
+                    regularForms.forEach(f => {
+                        const spoken = String(f.formName).replace(/'/g, "\'");
+                        backHtml += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0 relative"><div class="flex items-center justify-between mb-1"><div class="flex items-center space-x-2"><span class="text-sm font-bold text-[#2b2927]">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold">${f.label}</span></div><button onclick="playSpeech(event, '${spoken}')" class="w-8 h-8 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-4 h-4 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></button></div><div class="text-[#2b2927] text-xs font-normal">"${f.example}" <span class="text-[#64748b] font-normal">(${f.exampleJa})</span></div></div>`;
+                    });
+                    if (item.changeType) {
+                        backHtml += `<div class="pt-1 text-[#64748b]">変化タイプ: <b class="text-[#2b2927]">${item.changeType}</b></div>`;
+                    }
+                    backHtml += `</div></div>`;
                 }
-                backHtml += `</div></div>`;
+
+                if (spokenForms.length) {
+                    backHtml += `<div class="space-y-2.5 bg-[#edf1f7] p-3.5 rounded-2xl border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] uppercase tracking-wider">口語</div><div class="text-xs space-y-2.5">`;
+                    spokenForms.forEach(f => {
+                        const spoken = String(f.formName).replace(/'/g, "\'");
+                        backHtml += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0 relative"><div class="flex items-center justify-between mb-1"><div class="flex items-center space-x-2"><span class="text-sm font-bold text-[#2b2927]">${f.formName}</span></div><button onclick="playSpeech(event, '${spoken}')" class="w-8 h-8 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-4 h-4 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></button></div><div class="text-[#2b2927] text-xs font-normal">"${f.example}" <span class="text-[#64748b] font-normal">(${f.exampleJa})</span></div></div>`;
+                    });
+                    backHtml += `</div></div>`;
+                }
             }
 
             backHtml += `</div>`;
@@ -830,15 +884,29 @@
             }
 
             if (item.forms && item.forms.length) {
-                html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-3 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase tracking-wider">活用・変化と例文一覧</div>`;
-                item.forms.forEach(f => {
-                    const formSpoken = String(f.formName).replace(/'/g, "\'");
-                    html += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0"><div class="flex items-center justify-between mb-1"><div class="flex items-center space-x-2"><span class="text-sm font-bold text-[#2b2927]">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold">${f.label}</span></div><button onclick="playSpeech(event, '${formSpoken}')" class="w-7 h-7 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-3.5 h-3.5 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div><div class="text-[#2b2927]">"${f.example}" <span class="text-[#64748b]">(${f.exampleJa})</span></div></div>`;
-                });
-                if (item.changeType) {
-                    html += `<div class="pt-2 border-t border-[#e2e8f0] text-[#64748b]">変化タイプ: <b class="text-[#2b2927]">${item.changeType}</b></div>`;
+                const regularForms = item.forms.filter(f => f.label !== '会話形');
+                const spokenForms = item.forms.filter(f => f.label === '会話形');
+
+                if (regularForms.length) {
+                    html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-3 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase tracking-wider">活用・変化と例文一覧</div>`;
+                    regularForms.forEach(f => {
+                        const formSpoken = String(f.formName).replace(/'/g, "\'");
+                        html += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0"><div class="flex items-center justify-between mb-1"><div class="flex items-center space-x-2"><span class="text-sm font-bold text-[#2b2927]">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold">${f.label}</span></div><button onclick="playSpeech(event, '${formSpoken}')" class="w-7 h-7 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-3.5 h-3.5 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div><div class="text-[#2b2927]">"${f.example}" <span class="text-[#64748b]">(${f.exampleJa})</span></div></div>`;
+                    });
+                    if (item.changeType) {
+                        html += `<div class="pt-2 border-t border-[#e2e8f0] text-[#64748b]">変化タイプ: <b class="text-[#2b2927]">${item.changeType}</b></div>`;
+                    }
+                    html += `</div>`;
                 }
-                html += `</div>`;
+
+                if (spokenForms.length) {
+                    html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-3 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase tracking-wider">口語</div>`;
+                    spokenForms.forEach(f => {
+                        const formSpoken = String(f.formName).replace(/'/g, "\'");
+                        html += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0"><div class="flex items-center justify-between mb-1"><div class="flex items-center space-x-2"><span class="text-sm font-bold text-[#2b2927]">${f.formName}</span></div><button onclick="playSpeech(event, '${formSpoken}')" class="w-7 h-7 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-3.5 h-3.5 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div><div class="text-[#2b2927]">"${f.example}" <span class="text-[#64748b]">(${f.exampleJa})</span></div></div>`;
+                    });
+                    html += `</div>`;
+                }
             }
 
             const isMastered = checkItemMastery(id);
