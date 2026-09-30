@@ -328,6 +328,18 @@
             return html;
         }
 
+        function renderSensesHtml(item, compact = false) {
+            const senses = (item.senses && item.senses.length)
+                ? item.senses
+                : [{ pos: (item.partOfSpeech || [item.type === 'word' ? '単語' : '表現'])[0], meaning: item.japanese, category: item.category || '' }];
+            return `<div class="${compact ? 'space-y-1' : 'space-y-2'} text-left">${senses.map((sense, index) => `
+                <div class="${compact ? 'text-xs' : 'text-sm'} text-[#4a4540] leading-relaxed flex flex-wrap items-center gap-x-1.5 gap-y-1">
+                    <span class="font-bold text-[#334155]">${index + 1} ${sense.pos}：</span>
+                    <span>${sense.meaning}</span>
+                    ${sense.category ? `<span class="text-[10px] bg-[#f4efe8] text-[#5c534c] border border-[#e2dad1] px-1.5 py-0.5 rounded">${sense.category}</span>` : ''}
+                </div>`).join('')}</div>`;
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
             loadUserData();
             initItemsState();
@@ -336,14 +348,14 @@
         });
 
         function loadUserData() {
-            const saved = localStorage.getItem('english_app_user_data_v8');
+            const saved = localStorage.getItem('english_app_user_data_v9');
             if (saved) {
                 try { appData = JSON.parse(saved); } catch(e) {}
             }
         }
 
         function saveUserData() {
-            localStorage.setItem('english_app_user_data_v8', JSON.stringify(appData));
+            localStorage.setItem('english_app_user_data_v9', JSON.stringify(appData));
         }
 
         function initItemsState() {
@@ -602,31 +614,34 @@
             if (isCardFlipped) return;
             isCardFlipped = true;
             const item = flashcardQueue[currentCardIndex];
-            
+
             let backHtml = `
                 <div class="relative w-full pb-6">
-                    <div class="flex justify-between items-center mb-3">
-                        <div class="flex items-center space-x-1.5 flex-wrap gap-1">
-                            ${renderTagsHtml(item)}
-                        </div>
+                    <div class="flex items-center justify-between gap-3 mb-4">
+                        <div class="text-2xl font-bold text-[#2b2927]">${item.english}</div>
+                        <button onclick="playSpeech(event, '${item.english.replace(/'/g, "\'")}')" class="w-9 h-9 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm shrink-0" aria-label="発音">
+                            <svg class="w-4 h-4 text-[#78829c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
+                        </button>
                     </div>
-                    <div class="text-center mb-4 relative pt-1">
-                        <div class="text-2xl font-bold text-[#2b2927] mb-1">${item.english}</div>
-                        <div class="text-base font-semibold text-[#78829c] mb-2">${item.japanese}</div>
-                    </div>
+                    <div class="mb-4">${renderSensesHtml(item)}</div>
             `;
+
             if (item.beginnerTip) {
                 backHtml += `<div class="text-left mb-3"><div class="text-xs text-[#5c534c] bg-[#f4efe8] p-3 rounded-xl border border-[#e5dfd7] leading-relaxed flex items-start space-x-2"><svg class="w-4 h-4 text-[#78829c] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg><span>${item.beginnerTip}</span></div></div>`;
             }
-            if (item.type === 'word' && item.forms) {
-                backHtml += `<div class="space-y-2.5 bg-[#edf1f7] p-3.5 rounded-2xl border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] uppercase tracking-wider">活用形・変化と例文</div><div class="text-xs space-y-2.5">`;
+
+            if (item.forms && item.forms.length) {
+                backHtml += `<div class="space-y-2.5 bg-[#edf1f7] p-3.5 rounded-2xl border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] uppercase tracking-wider">活用・変化と例文</div><div class="text-xs space-y-2.5">`;
                 item.forms.forEach(f => {
-                    backHtml += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0 relative"><div class="flex items-center justify-between mb-1"><div class="flex items-center space-x-2"><span class="text-sm font-bold text-[#2b2927]">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold">${f.label}</span></div><button onclick="playSpeech(event, '${f.formName}')" class="w-8 h-8 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-4 h-4 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></button></div><div class="text-[#2b2927] text-xs font-normal">"${f.example}" <span class="text-[#64748b] font-normal">(${f.exampleJa})</span></div></div>`;
+                    const spoken = String(f.formName).replace(/'/g, "\'");
+                    backHtml += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0 relative"><div class="flex items-center justify-between mb-1"><div class="flex items-center space-x-2"><span class="text-sm font-bold text-[#2b2927]">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold">${f.label}</span></div><button onclick="playSpeech(event, '${spoken}')" class="w-8 h-8 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-4 h-4 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></button></div><div class="text-[#2b2927] text-xs font-normal">"${f.example}" <span class="text-[#64748b] font-normal">(${f.exampleJa})</span></div></div>`;
                 });
+                if (item.changeType) {
+                    backHtml += `<div class="pt-1 text-[#64748b]">変化タイプ: <b class="text-[#2b2927]">${item.changeType}</b></div>`;
+                }
                 backHtml += `</div></div>`;
-            } else if (item.type === 'expression') {
-                backHtml += `<div class="space-y-2 bg-[#edf1f7] p-4 rounded-2xl border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] uppercase">例文</div><div class="text-sm font-normal text-[#2b2927]">"${item.example}" <span class="text-[#64748b] font-normal">(${item.exampleJa})</span></div></div>`;
             }
+
             backHtml += `</div>`;
             document.getElementById('flashcard-card-body').innerHTML = backHtml;
 
@@ -685,7 +700,8 @@
         function renderWordsTab() {
             const words = rawDatabase.filter(i => i.type === 'word');
             document.getElementById('word-count-label').innerText = `全${words.length}語`;
-            const categories = ['all', ...new Set(words.map(w => w.category))];
+            const allCategories = words.flatMap(w => (w.senses && w.senses.length) ? w.senses.map(s => s.category).filter(Boolean) : [w.category].filter(Boolean));
+            const categories = ['all', ...new Set(allCategories)];
             document.getElementById('word-category-filter-container').innerHTML = categories.map(cat => {
                 const active = selectedWordCategory === cat ? 'bg-[#78829c] text-white' : 'bg-[#faf8f5] text-[#5c534c] border border-[#e5dfd7]';
                 return `<button onclick="filterWordCategory('${cat}')" class="cat-pill px-3 py-1.5 rounded-lg font-medium whitespace-nowrap shadow-sm transition ${active}">${cat === 'all' ? 'すべて' : cat}</button>`;
@@ -693,9 +709,12 @@
 
             const query = document.getElementById('word-search-input').value.toLowerCase();
             const filtered = words.filter(w => {
-                const matchCat = selectedWordCategory === 'all' || w.category === selectedWordCategory;
-                const matchQuery = !query || w.english.toLowerCase().includes(query) || w.japanese.includes(query);
-                return matchCat && matchQuery;
+                const itemCats = (w.senses && w.senses.length) ? w.senses.map(s => s.category) : [w.category];
+                const matchCat = selectedWordCategory === 'all' || itemCats.includes(selectedWordCategory);
+                const formText = (w.forms || []).map(f => `${f.formName} ${f.label} ${f.example} ${f.exampleJa}`).join(' ');
+                const senseText = (w.senses || []).map(s => `${s.pos} ${s.meaning} ${s.category || ''}`).join(' ');
+                const haystack = `${w.english} ${w.japanese} ${w.searchKeywords || ''} ${formText} ${senseText}`.toLowerCase();
+                return matchCat && (!query || haystack.includes(query));
             });
 
             const container = document.getElementById('words-list-container');
@@ -703,6 +722,7 @@
                 container.innerHTML = `<div class="text-center py-8 text-[#7c736c] text-sm">該当する単語が見つかりませんでした</div>`;
                 return;
             }
+
             container.innerHTML = filtered.map(w => {
                 const isMastered = checkItemMastery(w.id);
                 const st = appData.itemsState[w.id];
@@ -715,7 +735,8 @@
                     tagClass = 'tag-status-learning';
                     tagText = '学習中';
                 }
-                return `<div onclick="openDetailModal('${w.id}')" class="bg-[#faf8f5] p-4 rounded-2xl border border-[#e5dfd7] shadow-sm flex items-center justify-between cursor-pointer hover:border-[#78829c] transition"><div><div class="flex items-center space-x-2 mb-1 flex-wrap gap-1"><span class="text-[10px] px-2 py-0.5 rounded-full font-medium ${tagClass}">${tagText}</span>${renderTagsHtml(w)}</div><div class="font-bold text-[#2b2927] text-base">${w.english}</div><div class="text-xs text-[#6b625b]">${w.japanese}</div></div><div class="text-xs font-medium text-[#78829c] bg-[#f4efe8] px-3 py-1.5 rounded-xl border border-[#e5dfd7]">詳細 →</div></div>`;
+                const spoken = String(w.english).replace(/'/g, "\'");
+                return `<div onclick="openDetailModal('${w.id}')" class="bg-[#faf8f5] p-4 rounded-2xl border border-[#e5dfd7] shadow-sm cursor-pointer hover:border-[#78829c] transition"><div class="flex items-center justify-between gap-3 mb-2"><div class="flex items-center gap-2 min-w-0"><div class="font-bold text-[#2b2927] text-base truncate">${w.english}</div><span class="text-[10px] px-2 py-0.5 rounded-full font-medium shrink-0 ${tagClass}">${tagText}</span></div><button onclick="playSpeech(event, '${spoken}')" class="w-8 h-8 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm shrink-0" aria-label="発音"><svg class="w-4 h-4 text-[#78829c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div>${renderSensesHtml(w, true)}</div>`;
             }).join('');
         }
 
@@ -770,34 +791,36 @@
         function openDetailModal(id) {
             const item = rawDatabase.find(i => i.id === id);
             if (!item) return;
-            document.getElementById('modal-tags-container').innerHTML = renderTagsHtml(item);
+            document.getElementById('modal-tags-container').innerHTML = '';
             const st = appData.itemsState[id];
+            const spoken = String(item.english).replace(/'/g, "\'");
 
             let html = `
-                <div class="flex justify-between items-center mb-3 relative">
-                    <div class="text-center w-full">
-                        <div class="text-2xl font-bold text-[#2b2927] mb-1">${item.english}</div>
-                        <div class="text-sm font-semibold text-[#78829c]">${item.japanese}</div>
-                    </div>
-                    <div class="absolute right-0 top-1/2 transform -translate-y-1/2">
-                        <button onclick="playSpeech(event, '${item.english}')" class="w-10 h-10 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm shrink-0" aria-label="発音">
+                <div class="mb-3">
+                    <div class="flex items-center justify-between gap-3 mb-3">
+                        <div class="text-2xl font-bold text-[#2b2927]">${item.english}</div>
+                        <button onclick="playSpeech(event, '${spoken}')" class="w-10 h-10 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm shrink-0" aria-label="発音">
                             <svg class="w-4 h-4 text-[#78829c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
                         </button>
                     </div>
+                    ${renderSensesHtml(item)}
                 </div>
             `;
+
             if (item.beginnerTip) {
                 html += `<div class="bg-[#f4efe8] rounded-xl p-3 border border-[#e5dfd7] text-left mb-4"><p class="text-xs text-[#5c534c] leading-relaxed flex items-start space-x-2"><svg class="w-4 h-4 text-[#78829c] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg><span>${item.beginnerTip}</span></p></div>`;
             }
 
-            if (item.type === 'word' && item.forms) {
-                html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-3 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase tracking-wider">活用形・変化と例文一覧</div>`;
+            if (item.forms && item.forms.length) {
+                html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-3 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase tracking-wider">活用・変化と例文一覧</div>`;
                 item.forms.forEach(f => {
-                    html += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0"><div class="flex items-center justify-between mb-1"><div class="flex items-center space-x-2"><span class="text-sm font-bold text-[#2b2927]">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold">${f.label}</span></div><button onclick="playSpeech(event, '${f.formName}')" class="w-7 h-7 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-3.5 h-3.5 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></button></div><div class="text-[#2b2927]">"${f.example}" <span class="text-[#64748b]">(${f.exampleJa})</span></div></div>`;
+                    const formSpoken = String(f.formName).replace(/'/g, "\'");
+                    html += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0"><div class="flex items-center justify-between mb-1"><div class="flex items-center space-x-2"><span class="text-sm font-bold text-[#2b2927]">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold">${f.label}</span></div><button onclick="playSpeech(event, '${formSpoken}')" class="w-7 h-7 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-3.5 h-3.5 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div><div class="text-[#2b2927]">"${f.example}" <span class="text-[#64748b]">(${f.exampleJa})</span></div></div>`;
                 });
-                html += `<div class="pt-2 border-t border-[#e2e8f0] text-[#64748b]">変化タイプ: <b class="text-[#2b2927]">${item.changeType}</b></div></div>`;
-            } else if (item.type === 'expression') {
-                html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-2 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase">例文</div><div class="font-semibold text-[#2b2927]">"${item.example}" <span class="text-[#64748b]">(${item.exampleJa})</span></div></div>`;
+                if (item.changeType) {
+                    html += `<div class="pt-2 border-t border-[#e2e8f0] text-[#64748b]">変化タイプ: <b class="text-[#2b2927]">${item.changeType}</b></div>`;
+                }
+                html += `</div>`;
             }
 
             const isMastered = checkItemMastery(id);
