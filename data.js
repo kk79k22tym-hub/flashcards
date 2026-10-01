@@ -255,7 +255,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則 A-B-A",
-    "beginnerTip": "話し手か相手のいる場所へ向かう動きに使います。I'm coming. は「（相手のところへ）今行く」の意味です。",
+    "beginnerTip": "話し手のいる方向への移動に使うのが基本です。",
     "searchKeywords": "come 来る 来る 移動"
   },
   {
@@ -295,7 +295,7 @@ const rawDatabase = [
       },
       {
         "label": "過去分詞",
-        "formName": "got / gotten",
+        "formName": "gotten",
         "example": "I have gotten better at English.",
         "exampleJa": "英語が上達しました。"
       },
@@ -306,8 +306,8 @@ const rawDatabase = [
         "exampleJa": "遅い時間になってきました。"
       }
     ],
-    "changeType": "不規則",
-    "beginnerTip": "意味が非常に多いので、前後の語とセットで意味を取るのが重要です。",
+    "changeType": "不規則 A-B-C（米語）",
+    "beginnerTip": "アメリカ英語では過去分詞は基本的に gotten を使います。have got は別の表現カードで扱います。",
     "searchKeywords": "get 得る／手に入れる／〜になる 得る／手に入れる／〜になる 基本動詞"
   },
   {
@@ -671,13 +671,13 @@ const rawDatabase = [
         "label": "過去分詞",
         "formName": "needed",
         "example": "We have needed this for a long time.",
-        "exampleJa": "長い間これが必要でした。"
+        "exampleJa": "私たちは長い間これを必要としていました。"
       },
       {
         "label": "ing形",
         "formName": "needing",
-        "example": "Needing help is okay.",
-        "exampleJa": "助けが必要でも大丈夫です。"
+        "example": "Needing help is normal.",
+        "exampleJa": "助けを必要とするのは普通のことです。"
       }
     ],
     "changeType": "規則変化 (-ed)",
@@ -736,13 +736,13 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "liking",
-        "example": "I am liking this new routine.",
-        "exampleJa": "この新しい習慣が気に入ってきました。"
+        "example": "There is nothing wrong with liking it.",
+        "exampleJa": "それを好きでも何も悪くありません。"
       }
     ],
     "changeType": "規則変化 (-ed)",
-    "beginnerTip": "「好き」の動詞と「〜のような」の前置詞は意味が大きく違います。会話では I'm liking this. のように「〜している形」で言うこともあります。",
-    "searchKeywords": "like 好きである／好む／〜のような 好きである／好む 〜のような 感情 比較"
+    "beginnerTip": "「好き」の動詞と「〜のような」の前置詞は意味が大きく違います。",
+    "searchKeywords": "like 好きである／好む／〜のような 好きである／好む 〜のような 感情"
   },
   {
     "id": "v_love",
@@ -753,11 +753,11 @@ const rawDatabase = [
     ],
     "category": "感情",
     "english": "love",
-    "japanese": "大好きだ／愛する／愛／愛情",
+    "japanese": "大好き／愛する／愛／愛情",
     "senses": [
       {
         "pos": "動詞",
-        "meaning": "大好きだ／愛する",
+        "meaning": "大好き／愛する",
         "category": "感情"
       },
       {
@@ -796,8 +796,8 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "loving",
-        "example": "I am loving this trip.",
-        "exampleJa": "この旅行をとても楽しんでいます。"
+        "example": "Loving someone can be difficult.",
+        "exampleJa": "誰かを愛することは難しいこともあります。"
       }
     ],
     "changeType": "規則変化 (-ed)",
@@ -869,19 +869,12 @@ const rawDatabase = [
     ],
     "category": "知覚",
     "english": "look",
-    "japanese": "見る／目を向ける／〜に見える／見た目／表情",
+    "japanese": "見る／目を向ける／見た目／表情",
     "senses": [
       {
         "pos": "動詞",
         "meaning": "見る／目を向ける",
         "category": "知覚"
-      },
-      {
-        "pos": "動詞",
-        "meaning": "〜に見える",
-        "category": "知覚",
-        "example": "She looks happy.",
-        "exampleJa": "彼女は幸せそうに見えます。"
       },
       {
         "pos": "名詞",
@@ -924,7 +917,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則変化 (-ed)",
-    "searchKeywords": "look 見る／目を向ける／見た目／表情 見る／目を向ける 見た目／表情 知覚 外見 〜に見える",
+    "searchKeywords": "look 見る／目を向ける／見た目／表情 見る／目を向ける 見た目／表情 知覚",
     "usageTags": [
       "目を向ける",
       "見た目"
@@ -988,7 +981,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則変化 (-ed)",
-    "searchKeywords": "watch じっと見る／視聴する／腕時計 じっと見る／視聴する 腕時計 知覚 持ち物",
+    "searchKeywords": "watch じっと見る／視聴する／腕時計 じっと見る／視聴する 腕時計 知覚",
     "usageTags": [
       "動きを見る",
       "視聴"
@@ -1242,8 +1235,8 @@ const rawDatabase = [
       {
         "label": "原形",
         "formName": "speak",
-        "example": "I speak English with my friends.",
-        "exampleJa": "友達とは英語で話します。"
+        "example": "I speak a little English.",
+        "exampleJa": "英語を少し話します。"
       },
       {
         "label": "三人称単数現在",
@@ -1375,14 +1368,14 @@ const rawDatabase = [
       {
         "label": "過去形",
         "formName": "asked",
-        "example": "I asked his name.",
-        "exampleJa": "彼の名前を尋ねました。"
+        "example": "I asked him his name.",
+        "exampleJa": "彼に名前を尋ねました。"
       },
       {
         "label": "過去分詞",
         "formName": "asked",
-        "example": "I have asked before.",
-        "exampleJa": "前にも尋ねました。"
+        "example": "I've asked that before.",
+        "exampleJa": "それは前にも聞いたことがあります。"
       },
       {
         "label": "ing形",
@@ -2077,8 +2070,8 @@ const rawDatabase = [
       {
         "label": "過去分詞",
         "formName": "remembered",
-        "example": "I have just remembered her name.",
-        "exampleJa": "彼女の名前をたった今思い出しました。"
+        "example": "I have remembered that day for years.",
+        "exampleJa": "その日を何年も覚えています。"
       },
       {
         "label": "ing形",
@@ -2261,13 +2254,11 @@ const rawDatabase = [
       },
       {
         "label": "複数形",
-        "formName": "times",
-        "example": "I have been there three times.",
-        "exampleJa": "そこへ3回行ったことがあります。"
+        "formName": "times"
       }
     ],
     "changeType": "意味によって数え方が変わる",
-    "beginnerTip": "「時間」は数えないことが多く、「〜回」の意味では times と数えます。",
+    "beginnerTip": "「時間」の time は数えないことが多く、「〜回」の意味では times と数えます。",
     "searchKeywords": "time 時間／回／機会 時間 回／機会 時間"
   },
   {
@@ -2400,18 +2391,11 @@ const rawDatabase = [
         "example": "My home is small.",
         "exampleJa": "私の家は小さいです。",
         "pos": "名詞"
-      },
-      {
-        "label": "副詞",
-        "formName": "home",
-        "example": "I am going home.",
-        "exampleJa": "家に帰ります。",
-        "pos": "副詞"
       }
     ],
     "changeType": "品詞で使い方が変わる",
     "beginnerTip": "go home の home の前には通常 to を付けません。",
-    "searchKeywords": "home 家／家庭／家へ／家に 家／家庭 家へ／家に 場所 移動"
+    "searchKeywords": "home 家／家庭／家へ／家に 家／家庭 家へ／家に 場所"
   },
   {
     "id": "n_food",
@@ -2644,8 +2628,8 @@ const rawDatabase = [
       {
         "label": "比較級",
         "formName": "worse",
-        "example": "Today is worse.",
-        "exampleJa": "今日はさらに悪いです。"
+        "example": "The weather is worse today.",
+        "exampleJa": "今日は天気がさらに悪いです。"
       },
       {
         "label": "最上級",
@@ -2923,8 +2907,8 @@ const rawDatabase = [
       {
         "label": "最上級",
         "formName": "most tired",
-        "example": "I was the most tired after the trip.",
-        "exampleJa": "旅行の後が一番疲れていました。"
+        "example": "Of everyone, I was the most tired after the trip.",
+        "exampleJa": "みんなの中で、旅行の後は私が一番疲れていました。"
       }
     ],
     "changeType": "more / most を使う",
@@ -3009,13 +2993,12 @@ const rawDatabase = [
       {
         "label": "比較級",
         "formName": "freer",
-        "example": "I feel freer now.",
-        "exampleJa": "今は前より自由に感じます。"
+        "lowFrequency": true
       }
     ],
     "changeType": "意味によって訳が大きく変わる",
-    "beginnerTip": "free は「暇」「無料」「自由」のどれかを文脈で判断します。",
-    "searchKeywords": "free 暇な／無料の／自由な 暇な 無料の 自由な 時間 買い物 状態"
+    "beginnerTip": "「暇な」の比較は freer より、more free time など別の言い方をすることが多いです。freer は主に「より自由な」の意味で使われます。",
+    "searchKeywords": "free 暇な／無料の／自由な 暇な 無料の 自由な 時間"
   },
   {
     "id": "adj_easy",
@@ -3121,8 +3104,8 @@ const rawDatabase = [
       {
         "label": "比較級",
         "formName": "more important",
-        "example": "Health is more important.",
-        "exampleJa": "健康の方が大切です。"
+        "example": "Health is more important than money.",
+        "exampleJa": "健康はお金より大切です。"
       },
       {
         "label": "最上級",
@@ -3196,16 +3179,10 @@ const rawDatabase = [
         "formName": "different",
         "example": "This one is different.",
         "exampleJa": "これは違います。"
-      },
-      {
-        "label": "比較表現",
-        "formName": "more different",
-        "example": "The two versions are more different than I expected.",
-        "exampleJa": "2つの版は思ったより違います。"
       }
     ],
     "changeType": "比較級は必要なとき more を使える",
-    "beginnerTip": "different from 〜 で「〜と違う」と表すのが基本です。",
+    "beginnerTip": "different は通常、語形を変えて比較する単語として覚える必要はありません。必要に応じて more different と言うことはあります。",
     "searchKeywords": "different 違う／異なる 違う／異なる 比較"
   },
   {
@@ -3384,11 +3361,11 @@ const rawDatabase = [
     ],
     "category": "確信度",
     "english": "maybe",
-    "japanese": "もしかすると／ひょっとしたら",
+    "japanese": "たぶん／もしかすると",
     "senses": [
       {
         "pos": "副詞",
-        "meaning": "もしかすると／ひょっとしたら",
+        "meaning": "たぶん／もしかすると",
         "category": "確信度"
       }
     ],
@@ -3397,12 +3374,12 @@ const rawDatabase = [
         "label": "基本用法",
         "formName": "maybe",
         "example": "Maybe I will stay home.",
-        "exampleJa": "もしかしたら家にいるかも。",
+        "exampleJa": "たぶん家にいます。",
         "pos": "副詞"
       }
     ],
     "beginnerTip": "probably より確信が弱い「もしかしたら」に近い使い方が多いです。",
-    "searchKeywords": "maybe たぶん／もしかすると たぶん／もしかすると 確信度 たぶん"
+    "searchKeywords": "maybe たぶん／もしかすると たぶん／もしかすると 確信度"
   },
   {
     "id": "adv_always",
@@ -3479,7 +3456,7 @@ const rawDatabase = [
         "label": "基本用法",
         "formName": "never",
         "example": "I never drink coffee at night.",
-        "exampleJa": "夜は決してコーヒーを飲みません。",
+        "exampleJa": "夜はコーヒーを飲みません。",
         "pos": "副詞"
       }
     ],
@@ -3545,18 +3522,11 @@ const rawDatabase = [
         "example": "I am still tired.",
         "exampleJa": "まだ疲れています。",
         "pos": "副詞"
-      },
-      {
-        "label": "形容詞",
-        "formName": "still",
-        "example": "Stay still.",
-        "exampleJa": "じっとしていて。",
-        "pos": "形容詞"
       }
     ],
     "changeType": "品詞で意味が変わる",
     "beginnerTip": "「まだ」の still と「じっとした」の still を文の形から見分けます。",
-    "searchKeywords": "still まだ／今でも／じっとした／動かない まだ／今でも じっとした／動かない 時間・状態 状態"
+    "searchKeywords": "still まだ／今でも／じっとした／動かない まだ／今でも じっとした／動かない 時間・状態"
   },
   {
     "id": "adv_now",
@@ -3567,7 +3537,7 @@ const rawDatabase = [
     ],
     "category": "時間",
     "english": "now",
-    "japanese": "今／今すぐ／現在／今この時",
+    "japanese": "今／今すぐ／今／現在",
     "senses": [
       {
         "pos": "副詞",
@@ -3576,10 +3546,10 @@ const rawDatabase = [
       },
       {
         "pos": "名詞",
-        "meaning": "現在／今この時",
+        "meaning": "今／現在",
         "category": "時間",
-        "example": "We need to act now.",
-        "exampleJa": "今、行動する必要があります。"
+        "example": "Now is the time to start.",
+        "exampleJa": "今こそ始める時です。"
       }
     ],
     "forms": [
@@ -3589,13 +3559,6 @@ const rawDatabase = [
         "example": "I have to go now.",
         "exampleJa": "今行かなければなりません。",
         "pos": "副詞"
-      },
-      {
-        "label": "名詞",
-        "formName": "now",
-        "example": "Now is the time to start.",
-        "exampleJa": "今こそ始める時です。",
-        "pos": "名詞"
       }
     ],
     "changeType": "品詞で使い方が変わる",
@@ -3704,8 +3667,7 @@ const rawDatabase = [
     "spokenForm": [
       "gonna"
     ],
-    "searchKeywords": "be going to + 動詞（原形） 〜する予定／〜するつもり gonna",
-    "beginnerTip": "予定・つもりのほか、It's going to rain.（雨が降りそう）のように、今の状況からの予測にも使います。"
+    "searchKeywords": "be going to + 動詞（原形） 〜する予定／〜するつもり 〜する予定／〜するつもり 予定"
   },
   {
     "id": "exp_want_to",
@@ -3748,7 +3710,7 @@ const rawDatabase = [
     "spokenForm": [
       "wanna"
     ],
-    "searchKeywords": "want to + 動詞（原形） 〜したい wanna"
+    "searchKeywords": "want to + 動詞（原形） 〜したい 〜したい 希望"
   },
   {
     "id": "exp_need_to",
@@ -3782,7 +3744,7 @@ const rawDatabase = [
     ],
     "example": "I need to study.",
     "exampleJa": "勉強する必要があります。",
-    "searchKeywords": "need to + 動詞（原形） 〜する必要がある "
+    "searchKeywords": "need to + 動詞（原形） 〜する必要がある 〜する必要がある 必要"
   },
   {
     "id": "exp_have_to",
@@ -3822,7 +3784,7 @@ const rawDatabase = [
     ],
     "example": "I have to work tomorrow.",
     "exampleJa": "明日は働かなければなりません。",
-    "searchKeywords": "have to + 動詞（原形） 〜しなければならない "
+    "searchKeywords": "have to + 動詞（原形） 〜しなければならない 〜しなければならない 義務"
   },
   {
     "id": "exp_be_able_to",
@@ -3844,8 +3806,8 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "be able to + 動詞（原形）",
-        "example": "I am able to work from home.",
-        "exampleJa": "在宅で働くことができます。"
+        "example": "I want to be able to speak English.",
+        "exampleJa": "英語を話せるようになりたいです。"
       },
       {
         "label": "過去形",
@@ -3856,8 +3818,8 @@ const rawDatabase = [
     ],
     "example": "I am able to work from home.",
     "exampleJa": "在宅で働くことができます。",
-    "beginnerTip": "can より時制を変えやすく、過去や完了形などで便利です。",
-    "searchKeywords": "be able to + 動詞（原形） 〜することができる "
+    "beginnerTip": "can と似ていますが、want to の後や未来・完了形など、can をそのまま置けない形でも使えます。",
+    "searchKeywords": "be able to + 動詞（原形） 〜することができる 〜することができる 可能"
   },
   {
     "id": "exp_have_you_ever",
@@ -3886,7 +3848,7 @@ const rawDatabase = [
     "example": "Have you ever been to Korea?",
     "exampleJa": "韓国に行ったことがありますか？",
     "beginnerTip": "ever は「今までに」という経験の範囲を強調します。",
-    "searchKeywords": "Have you ever + 動詞（過去分詞）? 今までに〜したことがありますか？ "
+    "searchKeywords": "Have you ever + 動詞（過去分詞）? 今までに〜したことがありますか？ 今までに〜したことがありますか？ 経験"
   },
   {
     "id": "exp_ive_never",
@@ -3915,7 +3877,7 @@ const rawDatabase = [
     "example": "I've never seen this before.",
     "exampleJa": "これを今まで一度も見たことがありません。",
     "beginnerTip": "never 自体に否定の意味があるので、not は通常付けません。",
-    "searchKeywords": "I've never + 動詞（過去分詞） 一度も〜したことがない "
+    "searchKeywords": "I've never + 動詞（過去分詞） 一度も〜したことがない 一度も〜したことがない 経験"
   },
   {
     "id": "exp_a_lot_of",
@@ -3944,7 +3906,7 @@ const rawDatabase = [
     "example": "I have a lot of friends.",
     "exampleJa": "友達がたくさんいます。",
     "beginnerTip": "数えられる名詞にも数えられない名詞にも使えます。",
-    "searchKeywords": "a lot of + 名詞 たくさんの〜 "
+    "searchKeywords": "a lot of + 名詞 たくさんの〜 たくさんの〜 量"
   },
   {
     "id": "exp_kind_of",
@@ -3981,7 +3943,7 @@ const rawDatabase = [
     "spokenForm": [
       "kinda"
     ],
-    "searchKeywords": "kind of ちょっと／なんとなく／ある意味 kinda"
+    "searchKeywords": "kind of ちょっと／なんとなく／ある意味 ちょっと／なんとなく／ある意味 会話"
   },
   {
     "id": "exp_a_little",
@@ -4010,7 +3972,7 @@ const rawDatabase = [
     "example": "I speak a little English.",
     "exampleJa": "英語を少し話します。",
     "beginnerTip": "a little は数えられないものや程度を表すときによく使います。",
-    "searchKeywords": "a little 少し／少しだけ "
+    "searchKeywords": "a little 少し／少しだけ 少し／少しだけ 量"
   },
   {
     "id": "exp_of_course",
@@ -4038,7 +4000,7 @@ const rawDatabase = [
     ],
     "example": "Of course I remember you.",
     "exampleJa": "もちろんあなたのことを覚えています。",
-    "searchKeywords": "of course もちろん "
+    "searchKeywords": "of course もちろん もちろん 会話"
   },
   {
     "id": "exp_i_think",
@@ -4072,7 +4034,7 @@ const rawDatabase = [
     ],
     "example": "I think this is good.",
     "exampleJa": "これは良いと思います。",
-    "searchKeywords": "I think + 文 〜だと思う "
+    "searchKeywords": "I think + 文 〜だと思う 〜だと思う 意見"
   },
   {
     "id": "exp_i_dont_know",
@@ -4107,7 +4069,7 @@ const rawDatabase = [
     "example": "I don't know the answer.",
     "exampleJa": "答えが分かりません。",
     "beginnerTip": "「知らない」と「分からない」の両方でよく使います。",
-    "searchKeywords": "I don't know 分からない／知らない "
+    "searchKeywords": "I don't know 分からない／知らない 分からない／知らない 会話"
   },
   {
     "id": "exp_what_do_you_mean",
@@ -4135,7 +4097,7 @@ const rawDatabase = [
     ],
     "example": "What do you mean by that?",
     "exampleJa": "それはどういう意味？",
-    "searchKeywords": "What do you mean? どういう意味？ "
+    "searchKeywords": "What do you mean? どういう意味？ どういう意味？ 会話"
   },
   {
     "id": "exp_can_i",
@@ -4164,7 +4126,7 @@ const rawDatabase = [
     "example": "Can I sit here?",
     "exampleJa": "ここに座ってもいいですか？",
     "beginnerTip": "許可を求めるときによく使います。",
-    "searchKeywords": "Can I + 動詞（原形）? 〜してもいいですか？／〜できますか？ "
+    "searchKeywords": "Can I + 動詞（原形）? 〜してもいいですか？／〜できますか？ 〜してもいいですか？／〜できますか？ 許可"
   },
   {
     "id": "adj_fast",
@@ -4195,15 +4157,15 @@ const rawDatabase = [
         "pos": "動詞",
         "meaning": "断食する",
         "category": "食事",
-        "example": "I fast for a day.",
-        "exampleJa": "私は1日断食します。"
+        "example": "I fast once a week.",
+        "exampleJa": "週に1回断食します。"
       },
       {
         "pos": "名詞",
         "meaning": "断食",
         "category": "食事",
-        "example": "I am doing a fast today.",
-        "exampleJa": "今日は断食をしています。"
+        "example": "He went on a three-day fast.",
+        "exampleJa": "彼は3日間断食しました。"
       }
     ],
     "forms": [
@@ -4227,7 +4189,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "fast → faster → fastest",
-    "beginnerTip": "fast は「速い／速く」以外に「断食する／断食」という意味もあります。",
+    "beginnerTip": "「速い／速く」が最も一般的です。fast には「断食する」「断食」という別の意味もあります。",
     "searchKeywords": "fast 速い／速く 速い 速く 断食する 断食 速さ"
   },
   {
@@ -4371,7 +4333,7 @@ const rawDatabase = [
         "label": "三人称単数現在",
         "formName": "keeps",
         "example": "She keeps her room clean.",
-        "exampleJa": "彼女は部屋をきれいに保ちます。"
+        "exampleJa": "彼女は部屋をきれいに保っています。"
       },
       {
         "label": "過去形",
@@ -4388,8 +4350,8 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "keeping",
-        "example": "I am keeping this for you.",
-        "exampleJa": "これ、取っておくね。"
+        "example": "I am keeping this ticket.",
+        "exampleJa": "このチケットは取っておきます。"
       }
     ],
     "changeType": "不規則変化",
@@ -4484,14 +4446,14 @@ const rawDatabase = [
       {
         "label": "過去分詞",
         "formName": "meant",
-        "example": "I have meant to call you.",
-        "exampleJa": "あなたに電話しようと思っていました。"
+        "example": "I have always meant to ask you.",
+        "exampleJa": "ずっとあなたに聞こうと思っていました。"
       },
       {
         "label": "ing形",
         "formName": "meaning",
-        "example": "I have been meaning to ask you something.",
-        "exampleJa": "前から聞きたいことがあったんだ。"
+        "example": "I left without meaning to upset you.",
+        "exampleJa": "あなたを傷つけるつもりはなく、その場を離れました。"
       }
     ],
     "changeType": "不規則変化",
@@ -4523,8 +4485,8 @@ const rawDatabase = [
       {
         "label": "三人称単数現在",
         "formName": "happens",
-        "example": "It happens to everyone.",
-        "exampleJa": "誰にでも起こります。"
+        "example": "It happens sometimes.",
+        "exampleJa": "そういうことは時々あります。"
       },
       {
         "label": "過去形",
@@ -4535,14 +4497,14 @@ const rawDatabase = [
       {
         "label": "過去分詞",
         "formName": "happened",
-        "example": "Nothing has happened yet.",
-        "exampleJa": "まだ何も起きていません。"
+        "example": "This has happened before.",
+        "exampleJa": "これは以前にも起きたことがあります。"
       },
       {
         "label": "ing形",
         "formName": "happening",
         "example": "What is happening?",
-        "exampleJa": "何が起きてるの？"
+        "exampleJa": "何が起きているの？"
       }
     ],
     "changeType": "規則変化",
@@ -4574,8 +4536,8 @@ const rawDatabase = [
       {
         "label": "三人称単数現在",
         "formName": "calls",
-        "example": "She calls her mom every night.",
-        "exampleJa": "彼女は毎晩お母さんに電話します。"
+        "example": "She calls me every day.",
+        "exampleJa": "彼女は毎日私に電話します。"
       },
       {
         "label": "過去形",
@@ -4586,14 +4548,14 @@ const rawDatabase = [
       {
         "label": "過去分詞",
         "formName": "called",
-        "example": "I have called him twice today.",
-        "exampleJa": "今日、彼に2回電話しました。"
+        "example": "I have called twice.",
+        "exampleJa": "2回電話しました。"
       },
       {
         "label": "ing形",
         "formName": "calling",
-        "example": "Thanks for calling me back.",
-        "exampleJa": "折り返しありがとう。"
+        "example": "I am calling a taxi.",
+        "exampleJa": "タクシーを呼んでいます。"
       }
     ],
     "changeType": "規則変化",
@@ -4644,7 +4606,7 @@ const rawDatabase = [
         "label": "ing形",
         "formName": "bringing",
         "example": "I am bringing some water.",
-        "exampleJa": "水を持っていきます。"
+        "exampleJa": "水を持ってきます。"
       }
     ],
     "changeType": "不規則変化",
@@ -4732,8 +4694,8 @@ const rawDatabase = [
       {
         "label": "三人称単数現在",
         "formName": "starts",
-        "example": "The movie starts at eight.",
-        "exampleJa": "映画は8時に始まります。"
+        "example": "The movie starts at seven.",
+        "exampleJa": "映画は7時に始まります。"
       },
       {
         "label": "過去形",
@@ -4744,14 +4706,14 @@ const rawDatabase = [
       {
         "label": "過去分詞",
         "formName": "started",
-        "example": "It has just started.",
-        "exampleJa": "ちょうど始まったところです。"
+        "example": "I have started a new job.",
+        "exampleJa": "新しい仕事を始めました。"
       },
       {
         "label": "ing形",
         "formName": "starting",
-        "example": "I am starting a new job.",
-        "exampleJa": "新しい仕事を始めます。"
+        "example": "It is starting to rain.",
+        "exampleJa": "雨が降り始めています。"
       }
     ],
     "changeType": "規則変化",
@@ -4816,11 +4778,11 @@ const rawDatabase = [
     ],
     "category": "基本動詞",
     "english": "let",
-    "japanese": "〜させてあげる／〜するのを許す",
+    "japanese": "〜させる／〜してもらう",
     "senses": [
       {
         "pos": "動詞",
-        "meaning": "〜させてあげる／〜するのを許す",
+        "meaning": "〜させる／〜してもらう",
         "category": "基本動詞"
       }
     ],
@@ -4857,8 +4819,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則変化",
-    "searchKeywords": "let 〜させる／〜してもらう 〜させる／〜してもらう 基本動詞 〜させる",
-    "beginnerTip": "let + 人 + 動詞の原形 で「人が〜するのを許す」。Let me try.（私にやらせて）が定番です。"
+    "searchKeywords": "let 〜させる／〜してもらう 〜させる／〜してもらう 基本動詞"
   },
   {
     "id": "v_show",
@@ -4937,8 +4898,8 @@ const rawDatabase = [
       {
         "label": "三人称単数現在",
         "formName": "moves",
-        "example": "He moves fast.",
-        "exampleJa": "彼は動きが速いです。"
+        "example": "The train moves slowly.",
+        "exampleJa": "その電車はゆっくり動きます。"
       },
       {
         "label": "過去形",
@@ -4949,13 +4910,13 @@ const rawDatabase = [
       {
         "label": "過去分詞",
         "formName": "moved",
-        "example": "We have moved twice.",
-        "exampleJa": "2回引っ越しました。"
+        "example": "We have moved the table.",
+        "exampleJa": "テーブルを動かしました。"
       },
       {
         "label": "ing形",
         "formName": "moving",
-        "example": "We are moving next month.",
+        "example": "I am moving next month.",
         "exampleJa": "来月引っ越します。"
       }
     ],
@@ -4988,8 +4949,8 @@ const rawDatabase = [
       {
         "label": "三人称単数現在",
         "formName": "turns",
-        "example": "The road turns right here.",
-        "exampleJa": "道はここで右に曲がります。"
+        "example": "This road turns left.",
+        "exampleJa": "この道は左に曲がっています。"
       },
       {
         "label": "過去形",
@@ -5000,14 +4961,14 @@ const rawDatabase = [
       {
         "label": "過去分詞",
         "formName": "turned",
-        "example": "It has turned cold.",
-        "exampleJa": "寒くなりました。"
+        "example": "I have turned off the lights.",
+        "exampleJa": "電気を消しました。"
       },
       {
         "label": "ing形",
         "formName": "turning",
-        "example": "It is turning cold.",
-        "exampleJa": "寒くなってきました。"
+        "example": "We are turning right here.",
+        "exampleJa": "ここで右に曲がります。"
       }
     ],
     "changeType": "規則変化",
@@ -5039,8 +5000,8 @@ const rawDatabase = [
       {
         "label": "三人称単数現在",
         "formName": "stays",
-        "example": "She stays with her aunt.",
-        "exampleJa": "彼女はおばの家に泊まります。"
+        "example": "She stays here every summer.",
+        "exampleJa": "彼女は毎年夏にここへ滞在します。"
       },
       {
         "label": "過去形",
@@ -5052,7 +5013,7 @@ const rawDatabase = [
         "label": "過去分詞",
         "formName": "stayed",
         "example": "I have stayed here before.",
-        "exampleJa": "前にここに泊まったことがあります。"
+        "exampleJa": "以前ここに泊まったことがあります。"
       },
       {
         "label": "ing形",
@@ -5244,25 +5205,25 @@ const rawDatabase = [
         "label": "三人称単数現在",
         "formName": "understands",
         "example": "She understands me.",
-        "exampleJa": "彼女は私を理解してくれます。"
+        "exampleJa": "彼女は私のことを理解してくれます。"
       },
       {
         "label": "過去形",
         "formName": "understood",
         "example": "I understood the question.",
-        "exampleJa": "質問を理解しました。"
+        "exampleJa": "質問の意味が分かりました。"
       },
       {
         "label": "過去分詞",
         "formName": "understood",
-        "example": "I have understood the basics.",
-        "exampleJa": "基本は理解できています。"
+        "example": "I have understood everything so far.",
+        "exampleJa": "ここまではすべて理解できています。"
       },
       {
         "label": "ing形",
         "formName": "understanding",
-        "example": "I am understanding it better.",
-        "exampleJa": "だんだん理解できています。"
+        "example": "Understanding this takes time.",
+        "exampleJa": "これを理解するには時間がかかります。"
       }
     ],
     "changeType": "不規則変化",
@@ -5301,19 +5262,19 @@ const rawDatabase = [
         "label": "過去形",
         "formName": "believed",
         "example": "I believed it was true.",
-        "exampleJa": "本当だと思っていました。"
+        "exampleJa": "それが本当だと思っていました。"
       },
       {
         "label": "過去分詞",
         "formName": "believed",
-        "example": "I have always believed in you.",
-        "exampleJa": "ずっとあなたを信じてきました。"
+        "example": "I have always believed that.",
+        "exampleJa": "ずっとそう信じてきました。"
       },
       {
         "label": "ing形",
         "formName": "believing",
-        "example": "Believing in yourself takes time.",
-        "exampleJa": "自分を信じるには時間がかかります。"
+        "example": "Believing in yourself is important.",
+        "exampleJa": "自分を信じることは大切です。"
       }
     ],
     "changeType": "規則変化",
@@ -5345,26 +5306,26 @@ const rawDatabase = [
       {
         "label": "三人称単数現在",
         "formName": "hopes",
-        "example": "She hopes to travel next year.",
-        "exampleJa": "彼女は来年旅行したいと思っています。"
+        "example": "She hopes to visit Japan.",
+        "exampleJa": "彼女は日本を訪れたいと思っています。"
       },
       {
         "label": "過去形",
         "formName": "hoped",
         "example": "I hoped to see you.",
-        "exampleJa": "会えたらいいと思っていました。"
+        "exampleJa": "あなたに会えたらいいと思っていました。"
       },
       {
         "label": "過去分詞",
         "formName": "hoped",
-        "example": "I have hoped for this for years.",
-        "exampleJa": "何年もこれを願ってきました。"
+        "example": "I have always hoped to visit.",
+        "exampleJa": "ずっと訪れたいと思っていました。"
       },
       {
         "label": "ing形",
         "formName": "hoping",
-        "example": "I am hoping for good news.",
-        "exampleJa": "良い知らせを期待しています。"
+        "example": "I am hoping to go next year.",
+        "exampleJa": "来年行けたらと思っています。"
       }
     ],
     "changeType": "規則変化",
@@ -5396,26 +5357,26 @@ const rawDatabase = [
       {
         "label": "三人称単数現在",
         "formName": "guesses",
-        "example": "She guesses right most of the time.",
-        "exampleJa": "彼女はたいてい当てます。"
+        "example": "He guesses the answer.",
+        "exampleJa": "彼は答えを推測します。"
       },
       {
         "label": "過去形",
         "formName": "guessed",
         "example": "I guessed wrong.",
-        "exampleJa": "推測を間違えました。"
+        "exampleJa": "予想が外れました。"
       },
       {
         "label": "過去分詞",
         "formName": "guessed",
-        "example": "I have never guessed it right.",
-        "exampleJa": "一度も当てられたことがありません。"
+        "example": "I should have guessed.",
+        "exampleJa": "気づくべきでした。"
       },
       {
         "label": "ing形",
         "formName": "guessing",
         "example": "I am just guessing.",
-        "exampleJa": "当てずっぽうだよ。"
+        "exampleJa": "ただの推測です。"
       }
     ],
     "changeType": "規則変化",
@@ -5447,13 +5408,13 @@ const rawDatabase = [
         "label": "原形",
         "formName": "seem",
         "example": "You seem tired.",
-        "exampleJa": "疲れているように見えます。"
+        "exampleJa": "疲れているようですね。"
       },
       {
         "label": "三人称単数現在",
         "formName": "seems",
-        "example": "She seems nice.",
-        "exampleJa": "彼女は感じが良さそうです。"
+        "example": "It seems fine.",
+        "exampleJa": "問題なさそうです。"
       },
       {
         "label": "過去形",
@@ -5464,8 +5425,13 @@ const rawDatabase = [
       {
         "label": "過去分詞",
         "formName": "seemed",
-        "example": "It has seemed strange lately.",
-        "exampleJa": "最近ずっと変な感じがします。"
+        "example": "It has always seemed strange to me.",
+        "exampleJa": "私にはずっと不思議に思えます。"
+      },
+      {
+        "label": "ing形",
+        "formName": "seeming",
+        "lowFrequency": true
       }
     ],
     "changeType": "規則変化",
@@ -5504,8 +5470,8 @@ const rawDatabase = [
       {
         "label": "原形",
         "formName": "sound",
-        "example": "Does that sound good?",
-        "exampleJa": "それでいい？"
+        "example": "That sounds good.",
+        "exampleJa": "それいいね。"
       },
       {
         "label": "三人称単数現在",
@@ -5522,14 +5488,14 @@ const rawDatabase = [
       {
         "label": "過去分詞",
         "formName": "sounded",
-        "example": "It has sounded better before.",
-        "exampleJa": "以前の方がよく聞こえました。"
+        "example": "It has sounded better in the past.",
+        "exampleJa": "以前の方がよく聞こえたことがあります。"
       },
       {
         "label": "ing形",
         "formName": "sounding",
-        "example": "It is sounding better.",
-        "exampleJa": "よく聞こえるようになっています。"
+        "example": "The plan is sounding better now.",
+        "exampleJa": "その案はだんだん良さそうに思えてきました。"
       }
     ],
     "changeType": "",
@@ -5625,13 +5591,13 @@ const rawDatabase = [
         "label": "原形",
         "formName": "matter",
         "example": "It does not matter.",
-        "exampleJa": "大丈夫／問題ありません。"
+        "exampleJa": "問題ありません。"
       },
       {
         "label": "三人称単数現在",
         "formName": "matters",
         "example": "It matters to me.",
-        "exampleJa": "私には重要です。"
+        "exampleJa": "私には大切です。"
       },
       {
         "label": "過去形",
@@ -5642,8 +5608,13 @@ const rawDatabase = [
       {
         "label": "過去分詞",
         "formName": "mattered",
-        "example": "It has always mattered.",
-        "exampleJa": "ずっと重要でした。"
+        "example": "It has always mattered to me.",
+        "exampleJa": "私にとってずっと大切なことです。"
+      },
+      {
+        "label": "ing形",
+        "formName": "mattering",
+        "lowFrequency": true
       }
     ],
     "changeType": "",
@@ -5695,10 +5666,10 @@ const rawDatabase = [
         "label": "ing形",
         "formName": "missing",
         "example": "I am missing home.",
-        "exampleJa": "故郷が恋しいです。"
+        "exampleJa": "家が恋しいです。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
+    "changeType": "不規則変化",
     "searchKeywords": "miss 逃す／乗り遅れる／恋しく思う 逃す／乗り遅れる／恋しく思う 感情"
   },
   {
@@ -5829,8 +5800,8 @@ const rawDatabase = [
       {
         "label": "三人称単数現在",
         "formName": "decides",
-        "example": "She decides quickly.",
-        "exampleJa": "彼女は決めるのが早いです。"
+        "example": "She decides what to buy.",
+        "exampleJa": "彼女は何を買うか決めます。"
       },
       {
         "label": "過去形",
@@ -5841,14 +5812,14 @@ const rawDatabase = [
       {
         "label": "過去分詞",
         "formName": "decided",
-        "example": "We have decided to move.",
-        "exampleJa": "引っ越すことに決めました。"
+        "example": "I have decided to stay.",
+        "exampleJa": "残ることに決めました。"
       },
       {
         "label": "ing形",
         "formName": "deciding",
         "example": "I am still deciding.",
-        "exampleJa": "まだ決めているところです。"
+        "exampleJa": "まだ決めかねています。"
       }
     ],
     "changeType": "規則変化",
@@ -5939,8 +5910,8 @@ const rawDatabase = [
       {
         "label": "三人称単数現在",
         "formName": "follows",
-        "example": "He follows me everywhere.",
-        "exampleJa": "彼はどこへでもついてきます。"
+        "example": "He follows the rules.",
+        "exampleJa": "彼はルールを守ります。"
       },
       {
         "label": "過去形",
@@ -5951,14 +5922,14 @@ const rawDatabase = [
       {
         "label": "過去分詞",
         "formName": "followed",
-        "example": "I have followed this team for years.",
-        "exampleJa": "何年もこのチームを追いかけています。"
+        "example": "I have followed your advice.",
+        "exampleJa": "あなたの助言に従ってきました。"
       },
       {
         "label": "ing形",
         "formName": "following",
-        "example": "Are you following me?",
-        "exampleJa": "話についてこれてる？"
+        "example": "I am following your instructions.",
+        "exampleJa": "あなたの指示どおりに進めています。"
       }
     ],
     "changeType": "規則変化",
@@ -6086,14 +6057,14 @@ const rawDatabase = [
       {
         "label": "原形",
         "formName": "receive",
-        "example": "I will receive it tomorrow.",
-        "exampleJa": "明日受け取ります。"
+        "example": "I received your message.",
+        "exampleJa": "メッセージを受け取りました。"
       },
       {
         "label": "三人称単数現在",
         "formName": "receives",
         "example": "She receives a lot of emails.",
-        "exampleJa": "彼女はたくさんメールを受け取ります。"
+        "exampleJa": "彼女はたくさんのメールを受け取ります。"
       },
       {
         "label": "過去形",
@@ -6104,14 +6075,14 @@ const rawDatabase = [
       {
         "label": "過去分詞",
         "formName": "received",
-        "example": "I have received your message.",
-        "exampleJa": "メッセージを受け取りました。"
+        "example": "I have received your email.",
+        "exampleJa": "あなたのメールを受け取りました。"
       },
       {
         "label": "ing形",
         "formName": "receiving",
-        "example": "Are you receiving my messages?",
-        "exampleJa": "私のメッセージ届いてる？"
+        "example": "We are receiving a lot of messages.",
+        "exampleJa": "たくさんのメッセージが届いています。"
       }
     ],
     "changeType": "規則変化",
@@ -6143,26 +6114,26 @@ const rawDatabase = [
       {
         "label": "三人称単数現在",
         "formName": "reaches",
-        "example": "She reaches for her phone.",
-        "exampleJa": "彼女はスマホに手を伸ばします。"
+        "example": "The train reaches Tokyo at noon.",
+        "exampleJa": "その電車は正午に東京へ着きます。"
       },
       {
         "label": "過去形",
         "formName": "reached",
         "example": "I reached home late.",
-        "exampleJa": "遅く家に着きました。"
+        "exampleJa": "家に着くのが遅くなりました。"
       },
       {
         "label": "過去分詞",
         "formName": "reached",
-        "example": "I have reached my goal.",
-        "exampleJa": "目標に達しました。"
+        "example": "We have reached the hotel.",
+        "exampleJa": "ホテルに着きました。"
       },
       {
         "label": "ing形",
         "formName": "reaching",
-        "example": "I am reaching for my bag.",
-        "exampleJa": "バッグに手を伸ばしています。"
+        "example": "We are reaching the end.",
+        "exampleJa": "もうすぐ終わりです。"
       }
     ],
     "changeType": "規則変化",
@@ -6195,7 +6166,7 @@ const rawDatabase = [
     "example": "I happened to see her.",
     "exampleJa": "たまたま彼女を見かけました。",
     "beginnerTip": "予定ではなく偶然そうなったことを表します。",
-    "searchKeywords": "happen to + 動詞（原形） たまたま〜する 偶然"
+    "searchKeywords": "happen to + 動詞（原形） たまたま〜する たまたま〜する 偶然"
   },
   {
     "id": "exp_pick_up",
@@ -6224,7 +6195,7 @@ const rawDatabase = [
     "example": "I will pick you up at the station.",
     "exampleJa": "駅まで迎えに行きます。",
     "beginnerTip": "意味が多い句動詞です。人なら「迎えに行く」、物なら「拾う／受け取る」など文脈で判断します。",
-    "searchKeywords": "pick up 拾う／迎えに行く／受け取る 日常"
+    "searchKeywords": "pick up 拾う／迎えに行く／受け取る 拾う／迎えに行く／受け取る 日常"
   },
   {
     "id": "exp_find_out",
@@ -6253,7 +6224,7 @@ const rawDatabase = [
     "example": "I found out the truth.",
     "exampleJa": "真実を知りました。",
     "beginnerTip": "find は「見つける」、find out は調べたりして「知る／分かる」です。",
-    "searchKeywords": "find out 知る／突き止める 理解"
+    "searchKeywords": "find out 知る／突き止める 知る／突き止める 理解"
   },
   {
     "id": "exp_look_for",
@@ -6282,7 +6253,7 @@ const rawDatabase = [
     "example": "I am looking for my key.",
     "exampleJa": "鍵を探しています。",
     "beginnerTip": "look at は「見る」、look for は「探す」です。",
-    "searchKeywords": "look for 探す 行動"
+    "searchKeywords": "look for 探す 探す 行動"
   },
   {
     "id": "exp_look_like",
@@ -6311,7 +6282,7 @@ const rawDatabase = [
     "example": "You look like your mother.",
     "exampleJa": "お母さんに似ていますね。",
     "beginnerTip": "look like は主に見た目・外見からの判断。seem は状況や雰囲気も含めて「〜のようだ」と言えます。",
-    "searchKeywords": "look like 〜のように見える／〜に似ている 見た目",
+    "searchKeywords": "look like 〜のように見える／〜に似ている 〜のように見える／〜に似ている 見た目",
     "usageTags": [
       "見た目・外見",
       "似た表現：seem"
@@ -6344,7 +6315,7 @@ const rawDatabase = [
     ],
     "example": "I get up at seven.",
     "exampleJa": "7時に起きます。",
-    "searchKeywords": "get up 起きる／立ち上がる 日常"
+    "searchKeywords": "get up 起きる／立ち上がる 起きる／立ち上がる 日常"
   },
   {
     "id": "exp_come_back",
@@ -6372,8 +6343,8 @@ const rawDatabase = [
     ],
     "example": "Come back soon.",
     "exampleJa": "早く戻ってきて。",
-    "beginnerTip": "come は話し手か相手のいる場所へ向かうイメージなので、come back は「（そちらへ／こちらへ）戻ってくる」です。",
-    "searchKeywords": "come back 戻ってくる 移動"
+    "beginnerTip": "come は話し手側へ来るイメージなので come back は「こちらへ戻ってくる」。",
+    "searchKeywords": "come back 戻ってくる 戻ってくる 移動"
   },
   {
     "id": "exp_go_back",
@@ -6402,7 +6373,7 @@ const rawDatabase = [
     "example": "I want to go back there.",
     "exampleJa": "そこへ戻りたいです。",
     "beginnerTip": "go は話し手から離れる方向の移動なので go back は「戻っていく」イメージです。",
-    "searchKeywords": "go back 戻る／戻っていく 移動"
+    "searchKeywords": "go back 戻る／戻っていく 戻る／戻っていく 移動"
   },
   {
     "id": "exp_get_back",
@@ -6431,7 +6402,7 @@ const rawDatabase = [
     "example": "What time did you get back?",
     "exampleJa": "何時に戻ったの？",
     "beginnerTip": "get back は「戻る」以外に get it back で「取り戻す」もあります。",
-    "searchKeywords": "get back 戻る／取り戻す 移動"
+    "searchKeywords": "get back 戻る／取り戻す 戻る／取り戻す 移動"
   },
   {
     "id": "exp_grow_up",
@@ -6460,7 +6431,7 @@ const rawDatabase = [
     "example": "I grew up in Japan.",
     "exampleJa": "日本で育ちました。",
     "beginnerTip": "grow → grew → grown の不規則変化も一緒に覚えます。",
-    "searchKeywords": "grow up 育つ／大人になる 人生"
+    "searchKeywords": "grow up 育つ／大人になる 育つ／大人になる 人生"
   },
   {
     "id": "exp_hang_out",
@@ -6489,7 +6460,7 @@ const rawDatabase = [
     "example": "Do you want to hang out this weekend?",
     "exampleJa": "今週末遊ばない？",
     "beginnerTip": "友人と気軽に一緒に過ごすときによく使います。",
-    "searchKeywords": "hang out 遊ぶ／一緒に過ごす 友人"
+    "searchKeywords": "hang out 遊ぶ／一緒に過ごす 遊ぶ／一緒に過ごす 友人"
   },
   {
     "id": "exp_give_up",
@@ -6517,7 +6488,7 @@ const rawDatabase = [
     ],
     "example": "Do not give up.",
     "exampleJa": "諦めないで。",
-    "searchKeywords": "give up 諦める／やめる 行動"
+    "searchKeywords": "give up 諦める／やめる 諦める／やめる 行動"
   },
   {
     "id": "exp_take_care_of",
@@ -6546,7 +6517,7 @@ const rawDatabase = [
     "example": "I will take care of it.",
     "exampleJa": "私が対応します。",
     "beginnerTip": "人・動物の世話だけでなく、問題や仕事を「対処する」意味でも使います。",
-    "searchKeywords": "take care of 世話をする／対処する 日常"
+    "searchKeywords": "take care of 世話をする／対処する 世話をする／対処する 日常"
   },
   {
     "id": "exp_have_got",
@@ -6575,7 +6546,7 @@ const rawDatabase = [
     "example": "I have got a problem.",
     "exampleJa": "問題があります。",
     "beginnerTip": "アメリカ英語でも have got は使います。通常の過去分詞 gotten と混同せず、まとまりとして覚えます。",
-    "searchKeywords": "have got 持っている／〜がある 所有"
+    "searchKeywords": "have got 持っている／〜がある 持っている／〜がある 所有"
   },
   {
     "id": "adv_just",
@@ -7788,34 +7759,34 @@ const rawDatabase = [
     ],
     "forms": [
       {
-        "label": "短縮形（I）",
-        "formName": "I'm",
-        "example": "I'm ready.",
+        "label": "現在形",
+        "formName": "am / is / are",
+        "example": "I am ready.",
         "exampleJa": "私は準備できています。"
       },
       {
-        "label": "短縮形（you）",
-        "formName": "you're",
-        "example": "You're right.",
-        "exampleJa": "あなたの言う通りです。"
+        "label": "過去形",
+        "formName": "was / were",
+        "example": "I was tired.",
+        "exampleJa": "私は疲れていました。"
       },
       {
-        "label": "短縮形（he / she / it）",
-        "formName": "he's / she's / it's",
-        "example": "She's busy.",
-        "exampleJa": "彼女は忙しいです。"
+        "label": "過去分詞",
+        "formName": "been",
+        "example": "I have been busy.",
+        "exampleJa": "ずっと忙しかったです。"
       },
       {
-        "label": "短縮形（we / they）",
-        "formName": "we're / they're",
-        "example": "They're outside.",
-        "exampleJa": "彼らは外にいます。"
+        "label": "ing形",
+        "formName": "being",
+        "example": "He is being quiet.",
+        "exampleJa": "彼は静かにしています。"
       }
     ],
-    "example": "I'm ready.",
+    "example": "I am ready.",
     "exampleJa": "私は準備できています。",
     "beginnerTip": "主語によって be 動詞が変わります。",
-    "searchKeywords": "I am（I'm） 私は〜です／〜にいる 省略形",
+    "searchKeywords": "I am（I'm） 私は〜です／〜にいる 私は〜です／〜にいる 省略形",
     "contractions": [
       "I'm",
       "you're",
@@ -7889,34 +7860,40 @@ const rawDatabase = [
     ],
     "forms": [
       {
-        "label": "短縮形（I）",
-        "formName": "I've",
-        "example": "I've seen it.",
-        "exampleJa": "それを見たことがあります。"
+        "label": "原形",
+        "formName": "have",
+        "example": "I have a question.",
+        "exampleJa": "質問があります。"
       },
       {
-        "label": "短縮形（you）",
-        "formName": "you've",
-        "example": "You've done enough.",
-        "exampleJa": "十分やりました。"
+        "label": "三人称単数現在",
+        "formName": "has",
+        "example": "She has a car.",
+        "exampleJa": "彼女は車を持っています。"
       },
       {
-        "label": "短縮形（he / she / it）",
-        "formName": "he's / she's / it's",
-        "example": "She's been busy.",
-        "exampleJa": "彼女はずっと忙しいです。"
+        "label": "過去形",
+        "formName": "had",
+        "example": "I had more time yesterday.",
+        "exampleJa": "昨日はもっと時間がありました。"
       },
       {
-        "label": "短縮形（we / they）",
-        "formName": "we've / they've",
-        "example": "We've been there.",
-        "exampleJa": "そこへ行ったことがあります。"
+        "label": "過去分詞",
+        "formName": "had",
+        "example": "I have had this phone for years.",
+        "exampleJa": "このスマホを何年も使っています。"
+      },
+      {
+        "label": "ing形",
+        "formName": "having",
+        "example": "I am having lunch.",
+        "exampleJa": "昼食を食べています。"
       }
     ],
-    "example": "I've seen it.",
-    "exampleJa": "それを見たことがあります。",
+    "example": "I have a question.",
+    "exampleJa": "質問があります。",
     "beginnerTip": "アメリカ英語では所有の have は省略せず I have ... と言うことも多く、I’ve は現在完了で特によく使います。",
-    "searchKeywords": "I have（I've） 私は持っている／〜したことがある・〜してきた 省略形",
+    "searchKeywords": "I have（I've） 私は持っている／〜したことがある・〜してきた 私は持っている／〜したことがある・〜してきた 省略形",
     "contractions": [
       "I've",
       "you've",
@@ -7999,7 +7976,7 @@ const rawDatabase = [
     "example": "I'll call you later.",
     "exampleJa": "あとで電話するね。",
     "beginnerTip": "未来・意志を表す will の省略形です。",
-    "searchKeywords": "I will（I'll） 私は〜するつもり／〜するだろう 省略形",
+    "searchKeywords": "I will（I'll） 私は〜するつもり／〜するだろう 私は〜するつもり／〜するだろう 省略形",
     "contractions": [
       "I'll",
       "you'll",
@@ -8081,7 +8058,7 @@ const rawDatabase = [
     "example": "I'd like some coffee.",
     "exampleJa": "コーヒーが欲しいです。",
     "beginnerTip": "'d は would だけでなく had の省略にもなります。後ろが動詞の原形なら would、過去分詞なら had と判断しやすいです。",
-    "searchKeywords": "I would（I'd） 私は〜するだろう／〜したい 省略形",
+    "searchKeywords": "I would（I'd） 私は〜するだろう／〜したい 私は〜するだろう／〜したい 省略形",
     "contractions": [
       "I'd",
       "you'd",
@@ -8157,7 +8134,7 @@ const rawDatabase = [
     "example": "I'd already eaten.",
     "exampleJa": "私はすでに食べ終わっていました。",
     "beginnerTip": "'d は had だけでなく would の省略にもなります。後ろが過去分詞なら had と判断しやすいです。",
-    "searchKeywords": "I had（I'd） 〜していた／〜し終わっていた（過去のある時点より前） 省略形",
+    "searchKeywords": "I had（I'd） 〜していた／〜し終わっていた（過去のある時点より前） 〜していた／〜し終わっていた（過去のある時点より前） 省略形",
     "contractions": [
       "I'd",
       "you'd",
@@ -8245,7 +8222,7 @@ const rawDatabase = [
     "example": "I don't know.",
     "exampleJa": "分かりません。",
     "beginnerTip": "do の時制・主語に合わせて don’t / doesn’t / didn’t が変わります。",
-    "searchKeywords": "do not（don't） 〜しない 省略形",
+    "searchKeywords": "do not（don't） 〜しない 〜しない 省略形",
     "contractions": [
       "don't",
       "doesn't",
@@ -8305,7 +8282,7 @@ const rawDatabase = [
     "example": "I can't go.",
     "exampleJa": "行けません。",
     "beginnerTip": "cannot は通常1語で書き、会話では can’t が非常によく使われます。",
-    "searchKeywords": "cannot（can't） 〜できない 省略形",
+    "searchKeywords": "cannot（can't） 〜できない 〜できない 省略形",
     "contractions": [
       "can't",
       "couldn't"
@@ -8358,7 +8335,7 @@ const rawDatabase = [
     "example": "She isn't here.",
     "exampleJa": "彼女はここにいません。",
     "beginnerTip": "主語と時制に合わせて形が変わります。",
-    "searchKeywords": "be not（isn't / aren't） 〜ではない／〜にいない 省略形",
+    "searchKeywords": "be not（isn't / aren't） 〜ではない／〜にいない 〜ではない／〜にいない 省略形",
     "contractions": [
       "isn't",
       "aren't",
@@ -8425,7 +8402,7 @@ const rawDatabase = [
     "example": "I haven't finished yet.",
     "exampleJa": "まだ終わっていません。",
     "beginnerTip": "have / has / had に応じて省略形が変わります。",
-    "searchKeywords": "have not（haven't） まだ〜していない／〜したことがない 省略形",
+    "searchKeywords": "have not（haven't） まだ〜していない／〜したことがない まだ〜していない／〜したことがない 省略形",
     "contractions": [
       "haven't",
       "hasn't",
@@ -8478,7 +8455,7 @@ const rawDatabase = [
     ],
     "example": "I am old enough to travel alone.",
     "exampleJa": "1人で旅行できる年齢です。",
-    "searchKeywords": "enough to + 動詞（原形） 〜するのに十分…／十分〜なので…できる 程度"
+    "searchKeywords": "enough to + 動詞（原形） 〜するのに十分…／十分〜なので…できる 〜するのに十分…／十分〜なので…できる 程度"
   },
   {
     "id": "exp_too_to",
@@ -8506,6 +8483,6 @@ const rawDatabase = [
     ],
     "example": "I am too tired to go out.",
     "exampleJa": "疲れすぎて外出できません。",
-    "searchKeywords": "too ... to + 動詞（原形） 〜すぎて…できない 程度"
+    "searchKeywords": "too ... to + 動詞（原形） 〜すぎて…できない 〜すぎて…できない 程度"
   }
 ];
