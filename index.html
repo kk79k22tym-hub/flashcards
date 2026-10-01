@@ -182,10 +182,12 @@
                     <div class="space-y-3 mb-4">
                         <label class="block text-xs font-semibold text-[#5c534c]">クイズモード選択</label>
                         <select id="quiz-mode-select" class="w-full bg-[#f4efe8] border border-[#e5dfd7] rounded-xl px-3 py-2.5 text-sm text-[#2b2927] font-medium focus:outline-none focus:ring-2 focus:ring-[#78829c]">
-                            <option value="mixed">総合ランダム (意味・活用・穴埋め)</option>
+                            <option value="mixed">総合ランダム (意味・英単語・活用・穴埋め・省略形)</option>
                             <option value="en-to-ja">英単語 → 日本語訳</option>
+                            <option value="ja-to-en">日本語 → 英単語</option>
                             <option value="conjugation">活用形・比較変化クイズ</option>
-                            <option value="fill-blank">文の穴埋めクイズ</option>
+                            <option value="fill-blank">文の穴埋めクイズ（タイピング）</option>
+                            <option value="contraction">省略形クイズ</option>
                         </select>
                     </div>
                     <button onclick="startQuiz()" class="w-full bg-[#78829c] text-white font-bold py-3.5 rounded-xl shadow-md hover:bg-[#68728c] transition active:scale-98">
@@ -195,7 +197,7 @@
 
                 <div id="quiz-play-view" class="hidden">
                     <div class="flex justify-between items-center text-xs text-[#6b625b] mb-3">
-                        <span id="quiz-progress-text">問題 1 / 5</span>
+                        <span id="quiz-progress-text">問題 1 / 10</span>
                         <button onclick="quitQuiz()" class="text-rose-600 font-medium hover:underline">やめる</button>
                     </div>
                     <div class="bg-[#f4efe8] border border-[#e5dfd7] rounded-xl p-4 mb-4 text-center">
@@ -210,7 +212,7 @@
                         <svg class="w-12 h-12 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                     </div>
                     <h3 class="font-bold text-lg text-[#2b2927] mb-1">確認テスト完了！</h3>
-                    <p class="text-[#6b625b] text-sm mb-4">正解数: <span id="quiz-score-final" class="font-bold text-[#78829c] text-lg">0</span> / 5</p>
+                    <p class="text-[#6b625b] text-sm mb-4">正解数: <span id="quiz-score-final" class="font-bold text-[#78829c] text-lg">0</span> / 10</p>
                     <div class="flex gap-2">
                         <button onclick="startQuiz()" class="flex-1 bg-[#78829c] text-white font-bold py-2.5 rounded-xl text-sm shadow hover:bg-[#68728c] transition">
                             もう一度挑戦
@@ -378,6 +380,23 @@
         function renderSensesHtml(item, compact = false) {
             const senses = getItemSenses(item);
             return `<div class="text-left">${renderSenseRow(senses[0], compact, false, 0)}</div>`;
+        }
+
+        function renderUsageTagsHtml(item) {
+            if (!Array.isArray(item.usageTags) || !item.usageTags.length) return '';
+            return '<div class="flex flex-wrap gap-1.5 mt-2">' + item.usageTags.map(tag => '<span class="text-[10px] bg-[#eef2f7] text-[#5f6f8d] border border-[#d8e0eb] px-2 py-0.5 rounded-full">' + tag + '</span>').join('') + '</div>';
+        }
+
+        function renderComparisonNote(item) {
+            if (!item.comparisonNote) return '';
+            return '<div class="text-left mb-3"><div class="text-xs text-[#5c534c] bg-[#f4efe8] p-3 rounded-xl border border-[#e5dfd7] leading-relaxed"><span class="font-bold text-[#78829c]">使い分け：</span>' + item.comparisonNote + '</div></div>';
+        }
+
+        function renderContractionsSection(item) {
+            const list = Array.isArray(item.contractions) ? item.contractions : [];
+            if (!list.length) return '';
+            const note = item.contractionNote ? '<div class="mt-2 text-[11px] text-[#64748b] leading-relaxed">' + item.contractionNote + '</div>' : '';
+            return '<div class="bg-[#edf1f7] rounded-2xl p-3.5 border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] mb-2">省略形</div><div class="text-sm font-bold text-[#2b2927] leading-relaxed">' + list.join(' / ') + '</div>' + note + '</div>';
         }
 
         function findExampleForSense(item, sense) {
@@ -839,12 +858,14 @@
                             <svg class="w-4 h-4 text-[#78829c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
                         </button>
                     </div>
-                    <div class="mb-4">${renderSensesHtml(item)}</div>
+                    <div class="mb-4">${renderSensesHtml(item)}${renderUsageTagsHtml(item)}</div>
             `;
 
             if (item.beginnerTip) {
                 backHtml += `<div class="text-left mb-3"><div class="text-xs text-[#5c534c] bg-[#f4efe8] p-3 rounded-xl border border-[#e5dfd7] leading-relaxed flex items-start space-x-2"><svg class="w-4 h-4 text-[#78829c] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg><span>${item.beginnerTip}</span></div></div>`;
             }
+
+            backHtml += renderComparisonNote(item);
 
             if (item.forms && item.forms.length) {
                 const primaryPos = getItemSenses(item)[0]?.pos;
@@ -864,6 +885,7 @@
                 }
 
                 backHtml += renderOtherMeaningsSection(item, true);
+                backHtml += renderContractionsSection(item);
 
                 if (spokenForms.length) {
                     backHtml += `<div class="space-y-2.5 bg-[#edf1f7] p-3.5 rounded-2xl border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] uppercase tracking-wider">口語</div><div class="text-xs space-y-2.5">`;
@@ -1156,13 +1178,15 @@
                             <svg class="w-4 h-4 text-[#78829c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
                         </button>
                     </div>
-                    ${renderSensesHtml(item)}
+                    ${renderSensesHtml(item)}${renderUsageTagsHtml(item)}
                 </div>
             `;
 
             if (item.beginnerTip) {
                 html += `<div class="bg-[#f4efe8] rounded-xl p-3 border border-[#e5dfd7] text-left mb-4"><p class="text-xs text-[#5c534c] leading-relaxed flex items-start space-x-2"><svg class="w-4 h-4 text-[#78829c] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg><span>${item.beginnerTip}</span></p></div>`;
             }
+
+            html += renderComparisonNote(item);
 
             if (item.forms && item.forms.length) {
                 const primaryPos = getItemSenses(item)[0]?.pos;
@@ -1172,7 +1196,7 @@
                 if (regularForms.length) {
                     html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-3 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase tracking-wider">活用・変化</div>`;
                     regularForms.forEach(f => {
-                        const formSpoken = String(f.formName).replace(/'/g, "\'");
+                        const formSpoken = String(f.speechText || f.formName).replace(/'/g, "\'");
                         html += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2 min-w-0 flex-1"><span class="text-sm font-bold text-[#2b2927] min-w-0 break-words">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">${f.label}</span></div><button onclick="playSpeech(event, '${formSpoken}')" class="w-7 h-7 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-3.5 h-3.5 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div><div class="text-[#2b2927]">"${f.example}" <span class="text-[#64748b]">(${f.exampleJa})</span></div></div>`;
                     });
                     if (item.changeType) {
@@ -1182,6 +1206,7 @@
                 }
 
                 html += renderOtherMeaningsSection(item, false);
+                html += renderContractionsSection(item);
 
                 if (spokenForms.length) {
                     html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-3 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase tracking-wider">口語</div>`;
@@ -1243,7 +1268,7 @@
 
         function startQuiz() {
             const mode = document.getElementById('quiz-mode-select').value;
-            quizQuestions = generateQuizQuestions(mode, 5);
+            quizQuestions = generateQuizQuestions(mode, 10);
             currentQuizIdx = 0;
             quizScore = 0;
             if (quizQuestions.length === 0) return;
@@ -1254,42 +1279,106 @@
             renderQuizQuestion();
         }
 
+        function uniqueValues(values) {
+            return [...new Set(values.filter(v => v != null && String(v).trim() !== '').map(v => String(v).trim()))];
+        }
+
+        function shuffled(values) {
+            return [...values].sort(() => Math.random() - 0.5);
+        }
+
+        function makeFourOptions(correct, preferred = [], fallback = []) {
+            const pool = uniqueValues([...preferred, ...fallback]).filter(v => v !== correct);
+            const wrongs = shuffled(pool).slice(0, 3);
+            if (wrongs.length < 3) return null;
+            return shuffled([correct, ...wrongs]);
+        }
+
+        function normalizeQuizText(value) {
+            return String(value || '').trim().toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, ' ');
+        }
+
+        function buildFillBlankCandidate(item) {
+            const candidates = (item.forms || []).filter(f => {
+                if (!f.example || !f.formName) return false;
+                if (/\+|\/|（|\(|\?/.test(f.formName)) return false;
+                const escaped = f.formName.replace(/[.*+?^$\{\}()|[\]\\]/g, '\\$&');
+                return new RegExp('\\b' + escaped + '\\b', 'i').test(f.example);
+            });
+            if (!candidates.length) return null;
+            const f = candidates[Math.floor(Math.random() * candidates.length)];
+            const escaped = f.formName.replace(/[.*+?^$\{\}()|[\]\\]/g, '\\$&');
+            const blank = f.example.replace(new RegExp('\\b' + escaped + '\\b', 'i'), '_____');
+            if (blank === f.example) return null;
+            return {itemId:item.id, subKey:f.label, type:'typing', typeBadge:'文の穴埋め', questionText:blank, correctAnswer:f.formName, answerJa:f.exampleJa || ''};
+        }
+
+        function buildContractionQuestion() {
+            const items = rawDatabase.filter(i => Array.isArray(i.contractionPairs) && i.contractionPairs.length);
+            if (!items.length) return null;
+            const item = items[Math.floor(Math.random() * items.length)];
+            const pair = item.contractionPairs[Math.floor(Math.random() * item.contractionPairs.length)];
+            const allFull = items.flatMap(i => (i.contractionPairs || []).map(p => p.full));
+            const preferred = item.contractionPairs.filter(p => p.full !== pair.full).map(p => p.full);
+            const options = makeFourOptions(pair.full, preferred, allFull);
+            if (!options) return null;
+            const marked = pair.example.replace(pair.short, '<b>' + pair.short + '</b>');
+            return {itemId:item.id, subKey:'contraction', type:'choice', typeBadge:'省略形クイズ', questionText:'“' + marked + '” の <b>' + pair.short + '</b> は何の省略？', options, correctAnswer:pair.full};
+        }
+
         function generateQuizQuestions(mode, count) {
-            const wordItems = rawDatabase.filter(i => i.type === 'word');
+            const words = rawDatabase.filter(i => i.type === 'word');
+            const allItems = rawDatabase;
+            const allJapanese = uniqueValues(allItems.map(i => i.japanese));
+            const allEnglish = uniqueValues(allItems.map(i => i.english));
+            const allForms = uniqueValues(allItems.flatMap(i => (i.forms || []).map(f => f.formName)));
             const generated = [];
-            for (let i = 0; i < count; i++) {
-                const item = wordItems[Math.floor(Math.random() * wordItems.length)];
-                const forms = item.forms || [];
-                let qTypes = mode === 'mixed' ? ['meaning', 'form_ask'] : (mode === 'en-to-ja' ? ['meaning'] : ['form_ask']);
-                const subType = qTypes[Math.floor(Math.random() * qTypes.length)];
+            let attempts = 0;
+            while (generated.length < count && attempts < count * 80) {
+                attempts++;
+                let types;
+                if (mode === 'mixed') types = ['meaning','reverse','form','fill','contraction'];
+                else if (mode === 'en-to-ja') types = ['meaning'];
+                else if (mode === 'ja-to-en') types = ['reverse'];
+                else if (mode === 'conjugation') types = ['form'];
+                else if (mode === 'fill-blank') types = ['fill'];
+                else if (mode === 'contraction') types = ['contraction'];
+                else types = ['meaning'];
+                const subType = types[Math.floor(Math.random() * types.length)];
+                let q = null;
 
                 if (subType === 'meaning') {
-                    const wrongs = wordItems.filter(w => w.id !== item.id).sort(() => 0.5 - Math.random()).slice(0, 3).map(w => w.japanese);
-                    const options = [item.japanese, ...wrongs].sort(() => 0.5 - Math.random());
-                    generated.push({
-                        itemId: item.id, subKey: 'meaning', typeBadge: '英単語 → 日本語訳',
-                        questionText: item.english, options, correctAnswer: item.japanese
-                    });
-                } else if (forms.length >= 2) {
-                    const targetForm = forms[Math.floor(Math.random() * forms.length)];
-                    const wrongs = forms.filter(f => f.formName !== targetForm.formName).map(f => f.formName).slice(0, 3);
-                    const options = [targetForm.formName, ...wrongs].sort(() => 0.5 - Math.random());
-                    generated.push({
-                        itemId: item.id, subKey: targetForm.label, typeBadge: '活用形クイズ',
-                        questionText: `「${item.japanese.split(',')[0]}」の${targetForm.label}は？`, options, correctAnswer: targetForm.formName
-                    });
-                } else {
-                    i--;
+                    const item = allItems[Math.floor(Math.random() * allItems.length)];
+                    const options = makeFourOptions(item.japanese, [], allJapanese);
+                    if (options) q = {itemId:item.id, subKey:'meaning', type:'choice', typeBadge:'英語 → 日本語', questionText:item.english, options, correctAnswer:item.japanese};
+                } else if (subType === 'reverse') {
+                    const item = words[Math.floor(Math.random() * words.length)];
+                    const options = makeFourOptions(item.english, [], words.map(w => w.english));
+                    if (options) q = {itemId:item.id, subKey:'reverse', type:'choice', typeBadge:'日本語 → 英単語', questionText:item.japanese, options, correctAnswer:item.english};
+                } else if (subType === 'form') {
+                    const items = allItems.filter(i => (i.forms || []).length);
+                    const item = items[Math.floor(Math.random() * items.length)];
+                    const validForms = (item.forms || []).filter(f => f.label !== '会話形' && f.formName);
+                    if (validForms.length) {
+                        const target = validForms[Math.floor(Math.random() * validForms.length)];
+                        const sameLabel = allItems.flatMap(i => (i.forms || []).filter(f => f.label === target.label).map(f => f.formName));
+                        const options = makeFourOptions(target.formName, validForms.map(f=>f.formName), [...sameLabel,...allForms]);
+                        if (options) q = {itemId:item.id, subKey:target.label, type:'choice', typeBadge:'活用・変化クイズ', questionText:'「' + item.english + '」の ' + target.label + ' は？', options, correctAnswer:target.formName};
+                    }
+                } else if (subType === 'fill') {
+                    const fillItems = words.filter(i => (i.forms || []).some(f => f.example && f.formName));
+                    const item = fillItems[Math.floor(Math.random() * fillItems.length)];
+                    q = buildFillBlankCandidate(item);
+                } else if (subType === 'contraction') {
+                    q = buildContractionQuestion();
                 }
+                if (q) generated.push(q);
             }
             return generated;
         }
 
         function renderQuizQuestion() {
-            if (document.activeElement && typeof document.activeElement.blur === 'function') {
-                document.activeElement.blur();
-            }
-
+            if (document.activeElement && typeof document.activeElement.blur === 'function') document.activeElement.blur();
             if (currentQuizIdx >= quizQuestions.length) {
                 document.getElementById('quiz-play-view').classList.add('hidden');
                 document.getElementById('quiz-result-view').classList.remove('hidden');
@@ -1299,41 +1388,57 @@
                 return;
             }
             const q = quizQuestions[currentQuizIdx];
-            document.getElementById('quiz-progress-text').innerText = `問題 ${currentQuizIdx + 1} / ${quizQuestions.length}`;
+            document.getElementById('quiz-progress-text').innerText = '問題 ' + (currentQuizIdx + 1) + ' / ' + quizQuestions.length;
             document.getElementById('quiz-type-badge').innerText = q.typeBadge;
             document.getElementById('quiz-question-text').innerHTML = q.questionText;
+            const container = document.getElementById('quiz-options-container');
+            if (q.type === 'typing') {
+                container.innerHTML = '<input id="quiz-typing-input" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="英語を入力" class="w-full bg-[#faf8f5] border border-[#e5dfd7] text-[#2b2927] rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#78829c]">' +
+                    '<button type="button" onclick="handleTypingQuizAnswer()" class="w-full bg-[#78829c] text-white font-bold py-3 rounded-xl shadow hover:bg-[#68728c] transition">回答する</button>';
+                setTimeout(() => { const input=document.getElementById('quiz-typing-input'); if(input){ input.focus(); input.addEventListener('keydown',e=>{if(e.key==='Enter')handleTypingQuizAnswer();},{once:true}); } }, 30);
+            } else {
+                container.innerHTML = q.options.map(opt => '<button type="button" data-option="' + opt.replace(/"/g,'&quot;') + '" onclick="handleQuizAnswer(' + JSON.stringify(opt) + ')" class="quiz-option-btn w-full bg-[#faf8f5] border border-[#e5dfd7] text-[#2b2927] font-bold py-3 px-4 rounded-xl shadow-sm hover:border-[#78829c] hover:bg-[#f4efe8] transition text-sm text-left">' + opt + '</button>').join('');
+            }
+        }
 
-            const optionsContainer = document.getElementById('quiz-options-container');
-            optionsContainer.innerHTML = q.options.map(opt => `
-                <button type="button" data-option="${opt}" onclick="handleQuizAnswer('${opt.replace(/'/g, "\\'")}')" class="quiz-option-btn w-full bg-[#faf8f5] border border-[#e5dfd7] text-[#2b2927] font-bold py-3 px-4 rounded-xl shadow-sm hover:border-[#78829c] hover:bg-[#f4efe8] transition text-sm text-left">${opt}</button>
-            `).join('');
+        function recordQuizResult(q, isCorrect) {
+            const itemSt = appData.itemsState[q.itemId];
+            if (isCorrect) { quizScore++; itemSt.correctCount++; }
+            else { itemSt.errorCount++; itemSt.actualErrorCount = (itemSt.actualErrorCount || 0) + 1; itemSt.weakRemaining = 3; }
+            statsDirty = true;
+            saveUserData();
+            renderProgressTab();
+        }
+
+        function handleTypingQuizAnswer() {
+            const q = quizQuestions[currentQuizIdx];
+            const input = document.getElementById('quiz-typing-input');
+            if (!input) return;
+            const entered = input.value;
+            if (!entered.trim()) return;
+            const isCorrect = normalizeQuizText(entered) === normalizeQuizText(q.correctAnswer);
+            recordQuizResult(q, isCorrect);
+            input.disabled = true;
+            input.className = 'w-full rounded-xl px-4 py-3 text-base border ' + (isCorrect ? 'bg-[#e8f8f1] border-[#34d399] text-[#065f46]' : 'bg-[#fdf0f2] border-[#fb7185] text-[#9f1239]');
+            const container = document.getElementById('quiz-options-container');
+            container.querySelector('button')?.remove();
+            container.innerHTML += '<div class="rounded-xl border border-[#e5dfd7] bg-[#faf8f5] p-3 text-sm"><div class="font-bold text-[#2b2927]">正解：' + q.correctAnswer + '</div>' + (q.answerJa ? '<div class="text-xs text-[#64748b] mt-1">' + q.answerJa + '</div>' : '') + '</div><button type="button" onclick="nextQuizQuestion()" class="w-full mt-3 bg-[#78829c] text-white font-bold py-3 rounded-xl shadow hover:bg-[#68728c] transition">次の問題へ →</button>';
         }
 
         function handleQuizAnswer(selectedOption) {
             const q = quizQuestions[currentQuizIdx];
             const isCorrect = selectedOption === q.correctAnswer;
-            const itemSt = appData.itemsState[q.itemId];
-            if (isCorrect) { quizScore++; itemSt.correctCount++; } else { itemSt.errorCount++; itemSt.actualErrorCount = (itemSt.actualErrorCount || 0) + 1; itemSt.weakRemaining = 3; }
-            statsDirty = true;
-            saveUserData();
-            renderProgressTab();
-
+            recordQuizResult(q, isCorrect);
             const optionsContainer = document.getElementById('quiz-options-container');
             const buttons = optionsContainer.querySelectorAll('button');
-
             buttons.forEach(b => {
                 b.disabled = true;
                 const optVal = b.getAttribute('data-option');
-                if (optVal === q.correctAnswer) {
-                    b.className = "quiz-option-btn w-full bg-[#e8f8f1] border border-[#34d399] text-[#065f46] font-bold py-3 px-4 rounded-xl shadow-sm transition text-sm text-left";
-                } else if (optVal === selectedOption && !isCorrect) {
-                    b.className = "quiz-option-btn w-full bg-[#fdf0f2] border border-[#fb7185] text-[#9f1239] font-bold py-3 px-4 rounded-xl shadow-sm transition text-sm text-left";
-                } else {
-                    b.className = "quiz-option-btn w-full bg-[#faf8f5] opacity-60 border border-[#e5dfd7] text-[#2b2927] font-bold py-3 px-4 rounded-xl shadow-sm transition text-sm text-left";
-                }
+                if (optVal === q.correctAnswer) b.className = 'quiz-option-btn w-full bg-[#e8f8f1] border border-[#34d399] text-[#065f46] font-bold py-3 px-4 rounded-xl shadow-sm transition text-sm text-left';
+                else if (optVal === selectedOption && !isCorrect) b.className = 'quiz-option-btn w-full bg-[#fdf0f2] border border-[#fb7185] text-[#9f1239] font-bold py-3 px-4 rounded-xl shadow-sm transition text-sm text-left';
+                else b.className = 'quiz-option-btn w-full bg-[#faf8f5] opacity-60 border border-[#e5dfd7] text-[#2b2927] font-bold py-3 px-4 rounded-xl shadow-sm transition text-sm text-left';
             });
-
-            optionsContainer.innerHTML += `<button type="button" onclick="nextQuizQuestion()" class="w-full mt-3 bg-[#78829c] text-white font-bold py-3 rounded-xl shadow hover:bg-[#68728c] transition">次の問題へ →</button>`;
+            optionsContainer.innerHTML += '<button type="button" onclick="nextQuizQuestion()" class="w-full mt-3 bg-[#78829c] text-white font-bold py-3 rounded-xl shadow hover:bg-[#68728c] transition">次の問題へ →</button>';
         }
 
         function nextQuizQuestion() { 
