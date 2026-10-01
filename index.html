@@ -1322,7 +1322,7 @@
             const preferred = item.contractionPairs.filter(p => p.full !== pair.full).map(p => p.full);
             const options = makeFourOptions(pair.full, preferred, allFull);
             if (!options) return null;
-            const marked = pair.example.replace(pair.short, '<b>' + pair.short + '</b>');
+            const marked = pair.example.replace(new RegExp(pair.short.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'), m => '<b>' + m + '</b>');
             return {itemId:item.id, subKey:'contraction', type:'choice', typeBadge:'省略形クイズ', questionText:'“' + marked + '” の <b>' + pair.short + '</b> は何の省略？', options, correctAnswer:pair.full};
         }
 
@@ -1397,7 +1397,7 @@
                     '<button type="button" onclick="handleTypingQuizAnswer()" class="w-full bg-[#78829c] text-white font-bold py-3 rounded-xl shadow hover:bg-[#68728c] transition">回答する</button>';
                 setTimeout(() => { const input=document.getElementById('quiz-typing-input'); if(input){ input.focus(); input.addEventListener('keydown',e=>{if(e.key==='Enter')handleTypingQuizAnswer();},{once:true}); } }, 30);
             } else {
-                container.innerHTML = q.options.map(opt => '<button type="button" data-option="' + opt.replace(/"/g,'&quot;') + '" onclick="handleQuizAnswer(' + JSON.stringify(opt) + ')" class="quiz-option-btn w-full bg-[#faf8f5] border border-[#e5dfd7] text-[#2b2927] font-bold py-3 px-4 rounded-xl shadow-sm hover:border-[#78829c] hover:bg-[#f4efe8] transition text-sm text-left">' + opt + '</button>').join('');
+                container.innerHTML = q.options.map(opt => '<button type="button" data-option="' + opt.replace(/&/g,'&amp;').replace(/"/g,'&quot;') + '" onclick="handleQuizAnswer(this.getAttribute(\'data-option\'))" class="quiz-option-btn w-full bg-[#faf8f5] border border-[#e5dfd7] text-[#2b2927] font-bold py-3 px-4 rounded-xl shadow-sm hover:border-[#78829c] hover:bg-[#f4efe8] transition text-sm text-left">' + opt + '</button>').join('');
             }
         }
 
