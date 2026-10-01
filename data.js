@@ -671,13 +671,6 @@ const rawDatabase = [
         "formName": "needing",
         "example": "Needing help is okay.",
         "exampleJa": "助けが必要になることはあります。"
-      },
-      {
-        "label": "名詞",
-        "formName": "need",
-        "example": "There is no need to worry.",
-        "exampleJa": "心配する必要はありません。",
-        "pos": "名詞"
       }
     ],
     "changeType": "規則変化 (-ed)",
@@ -736,13 +729,6 @@ const rawDatabase = [
         "formName": "liking",
         "example": "I am liking this new routine.",
         "exampleJa": "この新しい習慣が気に入ってきました。"
-      },
-      {
-        "label": "前置詞",
-        "formName": "like",
-        "example": "She looks like her mother.",
-        "exampleJa": "彼女は母親に似ています。",
-        "pos": "前置詞"
       }
     ],
     "changeType": "規則変化 (-ed)",
@@ -801,13 +787,6 @@ const rawDatabase = [
         "formName": "loving",
         "example": "I am loving this trip.",
         "exampleJa": "この旅行をとても楽しんでいます。"
-      },
-      {
-        "label": "名詞",
-        "formName": "love",
-        "example": "Love is important.",
-        "exampleJa": "愛は大切です。",
-        "pos": "名詞"
       }
     ],
     "changeType": "規則変化 (-ed)",
@@ -917,13 +896,6 @@ const rawDatabase = [
         "formName": "looking",
         "example": "What are you looking at?",
         "exampleJa": "何を見ているの？"
-      },
-      {
-        "label": "名詞",
-        "formName": "look",
-        "example": "I like your new look.",
-        "exampleJa": "あなたの新しい見た目が好きです。",
-        "pos": "名詞"
       }
     ],
     "changeType": "規則変化 (-ed)",
@@ -981,13 +953,6 @@ const rawDatabase = [
         "formName": "watching",
         "example": "She is watching the kids.",
         "exampleJa": "彼女は子どもたちを見ています。"
-      },
-      {
-        "label": "名詞",
-        "formName": "watch",
-        "example": "My watch is broken.",
-        "exampleJa": "私の腕時計は壊れています。",
-        "pos": "名詞"
       }
     ],
     "changeType": "規則変化 (-ed)",
@@ -1304,13 +1269,6 @@ const rawDatabase = [
         "formName": "talking",
         "example": "They are talking outside.",
         "exampleJa": "彼らは外で話しています。"
-      },
-      {
-        "label": "名詞",
-        "formName": "talk",
-        "example": "We had a long talk.",
-        "exampleJa": "私たちは長く話をしました。",
-        "pos": "名詞"
       }
     ],
     "changeType": "規則変化 (-ed)",
@@ -1521,13 +1479,6 @@ const rawDatabase = [
         "formName": "working",
         "example": "I am working now.",
         "exampleJa": "今仕事中です。"
-      },
-      {
-        "label": "名詞",
-        "formName": "work",
-        "example": "I have a lot of work today.",
-        "exampleJa": "今日は仕事がたくさんあります。",
-        "pos": "名詞"
       }
     ],
     "changeType": "規則変化 (-ed)",
@@ -1687,13 +1638,6 @@ const rawDatabase = [
         "formName": "drinking",
         "example": "He is drinking juice.",
         "exampleJa": "彼はジュースを飲んでいます。"
-      },
-      {
-        "label": "名詞",
-        "formName": "drink",
-        "example": "Can I get a drink?",
-        "exampleJa": "飲み物をもらえますか？",
-        "pos": "名詞"
       }
     ],
     "changeType": "不規則 A-B-C",
@@ -1905,13 +1849,6 @@ const rawDatabase = [
         "formName": "helping",
         "example": "Thanks for helping me.",
         "exampleJa": "手伝ってくれてありがとう。"
-      },
-      {
-        "label": "名詞",
-        "formName": "help",
-        "example": "I need your help.",
-        "exampleJa": "あなたの助けが必要です。",
-        "pos": "名詞"
       }
     ],
     "changeType": "規則変化 (-ed)",
@@ -1969,13 +1906,6 @@ const rawDatabase = [
         "formName": "trying",
         "example": "I am trying to understand.",
         "exampleJa": "理解しようとしています。"
-      },
-      {
-        "label": "名詞",
-        "formName": "try",
-        "example": "Give it a try.",
-        "exampleJa": "試してみて。",
-        "pos": "名詞"
       }
     ],
     "changeType": "規則変化 (y→ied)",
@@ -2166,12 +2096,14 @@ const rawDatabase = [
       {
         "label": "過去形",
         "formName": "read",
+        "speechText": "red",
         "example": "I read it yesterday.",
         "exampleJa": "昨日それを読みました。"
       },
       {
         "label": "過去分詞",
         "formName": "read",
+        "speechText": "red",
         "example": "I have read that book.",
         "exampleJa": "その本を読んだことがあります。"
       },
@@ -3068,12 +3000,16 @@ const rawDatabase = [
       {
         "pos": "形容詞",
         "meaning": "無料の",
-        "category": "買い物"
+        "category": "買い物",
+        "example": "This ticket is free.",
+        "exampleJa": "このチケットは無料です。"
       },
       {
         "pos": "形容詞",
         "meaning": "自由な",
-        "category": "状態"
+        "category": "状態",
+        "example": "I feel freer now.",
+        "exampleJa": "今はより自由に感じます。"
       }
     ],
     "forms": [
@@ -3084,16 +3020,10 @@ const rawDatabase = [
         "exampleJa": "明日暇ですか？"
       },
       {
-        "label": "別の意味",
-        "formName": "free",
-        "example": "This ticket is free.",
-        "exampleJa": "このチケットは無料です。"
-      },
-      {
         "label": "比較級",
         "formName": "freer",
-        "example": "I feel freer now.",
-        "exampleJa": "今はより自由に感じます。"
+        "example": "Are you freer this afternoon?",
+        "exampleJa": "今日の午後のほうが暇ですか？"
       }
     ],
     "changeType": "意味によって訳が大きく変わる",
