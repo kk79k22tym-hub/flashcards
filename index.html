@@ -245,7 +245,10 @@
             <button onclick="closeFlashcards()" class="w-9 h-9 rounded-full bg-[#faf8f5] hover:bg-[#f0ece5] text-[#2b2927] flex items-center justify-center font-bold text-lg border border-[#e5dfd7] shadow-sm">✕</button>
         </div>
         <div class="max-w-md mx-auto w-full flex-1 flex items-center justify-center py-4">
-            <div id="flashcard-card-body" onclick="handleCardBodyClick(event)" class="w-full bg-[#faf8f5] text-[#2b2927] rounded-3xl p-6 sm:p-8 shadow-xl border border-[#e5dfd7] min-h-[420px] flex flex-col justify-between cursor-pointer transform transition-all duration-300 relative overflow-y-auto max-h-[75vh]"></div>
+            <div class="w-full flex flex-col gap-3">
+                <div id="flashcard-card-body" onclick="handleCardBodyClick(event)" class="w-full bg-[#faf8f5] text-[#2b2927] rounded-3xl p-6 sm:p-8 shadow-xl border border-[#e5dfd7] min-h-[420px] flex flex-col justify-between cursor-pointer transform transition-all duration-300 relative overflow-y-auto max-h-[75vh]"></div>
+                <div class="w-full grid grid-cols-2 gap-3" id="flashcard-inline-action-bar"></div>
+            </div>
         </div>
         <div class="max-w-md mx-auto w-full grid grid-cols-2 gap-3" id="flashcard-action-bar"></div>
     </div>
@@ -387,9 +390,10 @@
             return '<div class="flex flex-wrap gap-1.5 mt-2">' + item.usageTags.map(tag => '<span class="text-[10px] bg-[#eef2f7] text-[#5f6f8d] border border-[#d8e0eb] px-2 py-0.5 rounded-full">' + tag + '</span>').join('') + '</div>';
         }
 
-        function renderComparisonNote(item) {
-            if (!item.comparisonNote) return '';
-            return '<div class="text-left mb-3"><div class="text-xs text-[#5c534c] bg-[#f4efe8] p-3 rounded-xl border border-[#e5dfd7] leading-relaxed"><span class="font-bold text-[#78829c]">使い分け：</span>' + item.comparisonNote + '</div></div>';
+        function renderTipHtml(item, marginClass = 'mb-3') {
+            const tip = item.comparisonNote || item.beginnerTip;
+            if (!tip) return '';
+            return `<div class="text-left ${marginClass}"><div class="text-xs text-[#5c534c] bg-[#f4efe8] p-3 rounded-xl border border-[#e5dfd7] leading-relaxed flex items-start space-x-2"><svg class="w-4 h-4 text-[#78829c] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg><span>${tip}</span></div></div>`;
         }
 
         function renderContractionsSection(item) {
@@ -839,9 +843,8 @@
                     <span class="text-xs font-bold text-[#78829c] bg-[#f4efe8] px-4 py-2 rounded-xl inline-block shadow-sm border border-[#e5dfd7]">答えを見る</span>
                 </div>
             `;
-            document.getElementById('flashcard-action-bar').innerHTML = `
-                <button onclick="closeFlashcards()" class="bg-[#f4efe8] hover:bg-[#eae4dc] text-[#5c534c] font-bold py-3 rounded-2xl text-sm transition border border-[#e5dfd7] col-span-2 shadow-sm">終了する</button>
-            `;
+            document.getElementById('flashcard-inline-action-bar').innerHTML = '';
+            document.getElementById('flashcard-action-bar').innerHTML = '';
         }
 
         function flipFlashcard(e) {
@@ -861,11 +864,7 @@
                     <div class="mb-4">${renderSensesHtml(item)}${renderUsageTagsHtml(item)}</div>
             `;
 
-            if (item.beginnerTip) {
-                backHtml += `<div class="text-left mb-3"><div class="text-xs text-[#5c534c] bg-[#f4efe8] p-3 rounded-xl border border-[#e5dfd7] leading-relaxed flex items-start space-x-2"><svg class="w-4 h-4 text-[#78829c] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg><span>${item.beginnerTip}</span></div></div>`;
-            }
-
-            backHtml += renderComparisonNote(item);
+            backHtml += renderTipHtml(item);
 
             if (item.forms && item.forms.length) {
                 const primaryPos = getItemSenses(item)[0]?.pos;
@@ -876,9 +875,7 @@
                     backHtml += `<div class="space-y-2.5 bg-[#edf1f7] p-3.5 rounded-2xl border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] uppercase tracking-wider">活用・変化</div><div class="text-xs space-y-2.5">`;
                     regularForms.forEach(f => {
                         const spoken = String(f.speechText || f.formName).replace(/'/g, "\'");
-                        const lowFreq = f.lowFrequency ? `<span class="text-[10px] bg-[#fff7ed] text-[#9a5b13] border border-[#fed7aa] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">低頻度</span>` : '';
-                        const exampleHtml = f.example ? `<div class="text-[#2b2927] text-xs font-normal">"${f.example}" ${f.exampleJa ? `<span class="text-[#64748b] font-normal">(${f.exampleJa})</span>` : ''}</div>` : '';
-                        backHtml += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0 relative"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2 min-w-0 flex-1 flex-wrap"><span class="text-sm font-bold text-[#2b2927] min-w-0 break-words">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">${f.label}</span>${lowFreq}</div><button onclick="playSpeech(event, '${spoken}')" class="w-8 h-8 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-4 h-4 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></button></div>${exampleHtml}</div>`;
+                        backHtml += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0 relative"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2 min-w-0 flex-1"><span class="text-sm font-bold text-[#2b2927] min-w-0 break-words">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">${f.label}</span></div><button onclick="playSpeech(event, '${spoken}')" class="w-8 h-8 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-4 h-4 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></button></div><div class="text-[#2b2927] text-xs font-normal">"${f.example}" <span class="text-[#64748b] font-normal">(${f.exampleJa})</span></div></div>`;
                     });
                     if (item.changeType) {
                         backHtml += `<div class="pt-1 text-[#64748b]">変化タイプ: <b class="text-[#2b2927]">${item.changeType}</b></div>`;
@@ -903,10 +900,12 @@
             document.getElementById('flashcard-card-body').innerHTML = backHtml;
 
             if (isDedicatedWeakPractice) {
-                document.getElementById('flashcard-action-bar').innerHTML = `
+                document.getElementById('flashcard-inline-action-bar').innerHTML = `
                     <button onclick="handleWeakPracticeResult()" class="bg-[#78829c] hover:bg-[#68728c] text-white font-bold py-3 rounded-2xl text-sm shadow-md transition col-span-2 border border-[#68728c]">次へ</button>
                 `;
+                document.getElementById('flashcard-action-bar').innerHTML = '';
             } else {
+                document.getElementById('flashcard-inline-action-bar').innerHTML = '';
                 document.getElementById('flashcard-action-bar').innerHTML = `
                     <button onclick="handleFlashcardResult('again')" class="bg-rose-100 hover:bg-rose-200 text-rose-800 font-bold py-3 rounded-2xl text-sm border border-rose-300 transition">Again</button>
                     <button onclick="handleFlashcardResult('unsure')" class="bg-amber-100 hover:bg-amber-200 text-amber-800 font-bold py-3 rounded-2xl text-sm border border-amber-300 transition">Unsure</button>
@@ -1184,11 +1183,7 @@
                 </div>
             `;
 
-            if (item.beginnerTip) {
-                html += `<div class="bg-[#f4efe8] rounded-xl p-3 border border-[#e5dfd7] text-left mb-4"><p class="text-xs text-[#5c534c] leading-relaxed flex items-start space-x-2"><svg class="w-4 h-4 text-[#78829c] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg><span>${item.beginnerTip}</span></p></div>`;
-            }
-
-            html += renderComparisonNote(item);
+            html += renderTipHtml(item, 'mb-4');
 
             if (item.forms && item.forms.length) {
                 const primaryPos = getItemSenses(item)[0]?.pos;
@@ -1199,9 +1194,7 @@
                     html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-3 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase tracking-wider">活用・変化</div>`;
                     regularForms.forEach(f => {
                         const formSpoken = String(f.speechText || f.formName).replace(/'/g, "\'");
-                        const lowFreq = f.lowFrequency ? `<span class="text-[10px] bg-[#fff7ed] text-[#9a5b13] border border-[#fed7aa] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">低頻度</span>` : '';
-                        const exampleHtml = f.example ? `<div class="text-[#2b2927]">"${f.example}" ${f.exampleJa ? `<span class="text-[#64748b]">(${f.exampleJa})</span>` : ''}</div>` : '';
-                        html += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2 min-w-0 flex-1 flex-wrap"><span class="text-sm font-bold text-[#2b2927] min-w-0 break-words">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">${f.label}</span>${lowFreq}</div><button onclick="playSpeech(event, '${formSpoken}')" class="w-7 h-7 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-3.5 h-3.5 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div>${exampleHtml}</div>`;
+                        html += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2 min-w-0 flex-1"><span class="text-sm font-bold text-[#2b2927] min-w-0 break-words">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">${f.label}</span></div><button onclick="playSpeech(event, '${formSpoken}')" class="w-7 h-7 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-3.5 h-3.5 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div><div class="text-[#2b2927]">"${f.example}" <span class="text-[#64748b]">(${f.exampleJa})</span></div></div>`;
                     });
                     if (item.changeType) {
                         html += `<div class="pt-2 border-t border-[#e2e8f0] text-[#64748b]">変化タイプ: <b class="text-[#2b2927]">${item.changeType}</b></div>`;
@@ -1292,10 +1285,40 @@
         }
 
         function makeFourOptions(correct, preferred = [], fallback = []) {
-            const pool = uniqueValues([...preferred, ...fallback]).filter(v => v !== correct);
-            const wrongs = shuffled(pool).slice(0, 3);
+            const preferredPool = uniqueValues(preferred).filter(v => v !== correct);
+            const wrongs = shuffled(preferredPool).slice(0, 3);
+            if (wrongs.length < 3) {
+                const used = new Set([correct, ...wrongs]);
+                const fallbackPool = shuffled(uniqueValues(fallback).filter(v => !used.has(v)));
+                while (wrongs.length < 3 && fallbackPool.length) wrongs.push(fallbackPool.shift());
+            }
             if (wrongs.length < 3) return null;
             return shuffled([correct, ...wrongs]);
+        }
+
+        function getFormDistractors(item, target, allItems) {
+            const ownOtherForms = (item.forms || [])
+                .filter(f => f.label !== '会話形' && f.formName && f.formName !== target.formName)
+                .map(f => f.formName);
+            const targetLooksNegative = /(?:\bnot\b|n't)/i.test(target.formName);
+            const targetWordCount = String(target.formName).trim().split(/\s+/).length;
+            const sameCategory = allItems
+                .filter(i => i.id !== item.id && i.category === item.category)
+                .flatMap(i => (i.forms || []).filter(f => f.label === target.label && f.formName).map(f => f.formName));
+            const sameLabel = allItems
+                .filter(i => i.id !== item.id)
+                .flatMap(i => (i.forms || []).filter(f => f.label === target.label && f.formName).map(f => f.formName));
+            const negativeForms = allItems.flatMap(i => (i.forms || [])
+                .filter(f => f.label !== '会話形' && f.formName && /^(?:do|does|did|is|are|was|were|have|has|had|can|could|will|would|should|must) not$/i.test(String(f.formName).trim()))
+                .map(f => f.formName));
+            const similarShape = allItems.flatMap(i => (i.forms || [])
+                .filter(f => f.label !== '会話形' && f.formName && String(f.formName).trim().split(/\s+/).length === targetWordCount)
+                .map(f => f.formName));
+            const preferred = targetLooksNegative
+                ? [...ownOtherForms, ...negativeForms]
+                : [...ownOtherForms, ...sameCategory, ...sameLabel, ...similarShape];
+            const fallback = allItems.flatMap(i => (i.forms || []).filter(f => f.label !== '会話形' && f.formName).map(f => f.formName));
+            return { preferred, fallback };
         }
 
         function normalizeQuizText(value) {
@@ -1335,7 +1358,7 @@
             const allItems = rawDatabase;
             const allJapanese = uniqueValues(allItems.map(i => i.japanese));
             const allEnglish = uniqueValues(allItems.map(i => i.english));
-            const allForms = uniqueValues(allItems.flatMap(i => (i.forms || []).filter(f => !f.lowFrequency).map(f => f.formName)));
+            const allForms = uniqueValues(allItems.flatMap(i => (i.forms || []).map(f => f.formName)));
             const generated = [];
             let attempts = 0;
             while (generated.length < count && attempts < count * 80) {
@@ -1353,20 +1376,23 @@
 
                 if (subType === 'meaning') {
                     const item = allItems[Math.floor(Math.random() * allItems.length)];
-                    const options = makeFourOptions(item.japanese, [], allJapanese);
+                    const sameCategoryMeanings = allItems.filter(i => i.id !== item.id && i.type === item.type && i.category === item.category).map(i => i.japanese);
+                    const sameTypeMeanings = allItems.filter(i => i.id !== item.id && i.type === item.type).map(i => i.japanese);
+                    const options = makeFourOptions(item.japanese, sameCategoryMeanings, [...sameTypeMeanings, ...allJapanese]);
                     if (options) q = {itemId:item.id, subKey:'meaning', type:'choice', typeBadge:'英語 → 日本語', questionText:item.english, options, correctAnswer:item.japanese};
                 } else if (subType === 'reverse') {
                     const item = words[Math.floor(Math.random() * words.length)];
-                    const options = makeFourOptions(item.english, [], words.map(w => w.english));
+                    const sameCategoryWords = words.filter(w => w.id !== item.id && w.category === item.category).map(w => w.english);
+                    const options = makeFourOptions(item.english, sameCategoryWords, words.map(w => w.english));
                     if (options) q = {itemId:item.id, subKey:'reverse', type:'choice', typeBadge:'日本語 → 英単語', questionText:item.japanese, options, correctAnswer:item.english};
                 } else if (subType === 'form') {
-                    const items = allItems.filter(i => (i.forms || []).length);
+                    const items = allItems.filter(i => (i.forms || []).some(f => f.label !== '会話形' && f.formName));
                     const item = items[Math.floor(Math.random() * items.length)];
-                    const validForms = (item.forms || []).filter(f => f.label !== '会話形' && !f.lowFrequency && f.formName);
+                    const validForms = (item.forms || []).filter(f => f.label !== '会話形' && f.formName);
                     if (validForms.length) {
                         const target = validForms[Math.floor(Math.random() * validForms.length)];
-                        const sameLabel = allItems.flatMap(i => (i.forms || []).filter(f => f.label === target.label).map(f => f.formName));
-                        const options = makeFourOptions(target.formName, validForms.map(f=>f.formName), [...sameLabel,...allForms]);
+                        const pools = getFormDistractors(item, target, allItems);
+                        const options = makeFourOptions(target.formName, pools.preferred, pools.fallback);
                         if (options) q = {itemId:item.id, subKey:target.label, type:'choice', typeBadge:'活用・変化クイズ', questionText:'「' + item.english + '」の ' + target.label + ' は？', options, correctAnswer:target.formName};
                     }
                 } else if (subType === 'fill') {
@@ -1394,14 +1420,23 @@
             const q = quizQuestions[currentQuizIdx];
             document.getElementById('quiz-progress-text').innerText = '問題 ' + (currentQuizIdx + 1) + ' / ' + quizQuestions.length;
             document.getElementById('quiz-type-badge').innerText = q.typeBadge;
-            document.getElementById('quiz-question-text').innerHTML = q.questionText + (q.type === 'typing' && q.answerJa ? `<div class="text-sm font-medium text-[#64748b] mt-2">${q.answerJa}</div>` : '');
+            document.getElementById('quiz-question-text').innerHTML = q.questionText;
             const container = document.getElementById('quiz-options-container');
             if (q.type === 'typing') {
                 container.innerHTML = '<input id="quiz-typing-input" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="英語を入力" class="w-full bg-[#faf8f5] border border-[#e5dfd7] text-[#2b2927] rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#78829c]">' +
                     '<button type="button" onclick="handleTypingQuizAnswer()" class="w-full bg-[#78829c] text-white font-bold py-3 rounded-xl shadow hover:bg-[#68728c] transition">回答する</button>';
                 setTimeout(() => { const input=document.getElementById('quiz-typing-input'); if(input){ input.focus(); input.addEventListener('keydown',e=>{if(e.key==='Enter')handleTypingQuizAnswer();},{once:true}); } }, 30);
             } else {
-                container.innerHTML = q.options.map(opt => '<button type="button" data-option="' + opt.replace(/"/g,'&quot;') + '" onclick="handleQuizAnswer(' + JSON.stringify(opt) + ')" class="quiz-option-btn w-full bg-[#faf8f5] border border-[#e5dfd7] text-[#2b2927] font-bold py-3 px-4 rounded-xl shadow-sm hover:border-[#78829c] hover:bg-[#f4efe8] transition text-sm text-left">' + opt + '</button>').join('');
+                container.innerHTML = '';
+                q.options.forEach(opt => {
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.dataset.option = opt;
+                    button.className = 'quiz-option-btn w-full bg-[#faf8f5] border border-[#e5dfd7] text-[#2b2927] font-bold py-3 px-4 rounded-xl shadow-sm hover:border-[#78829c] hover:bg-[#f4efe8] transition text-sm text-left';
+                    button.textContent = opt;
+                    button.addEventListener('click', () => handleQuizAnswer(opt));
+                    container.appendChild(button);
+                });
             }
         }
 
@@ -1442,7 +1477,16 @@
                 else if (optVal === selectedOption && !isCorrect) b.className = 'quiz-option-btn w-full bg-[#fdf0f2] border border-[#fb7185] text-[#9f1239] font-bold py-3 px-4 rounded-xl shadow-sm transition text-sm text-left';
                 else b.className = 'quiz-option-btn w-full bg-[#faf8f5] opacity-60 border border-[#e5dfd7] text-[#2b2927] font-bold py-3 px-4 rounded-xl shadow-sm transition text-sm text-left';
             });
-            optionsContainer.innerHTML += '<button type="button" onclick="nextQuizQuestion()" class="w-full mt-3 bg-[#78829c] text-white font-bold py-3 rounded-xl shadow hover:bg-[#68728c] transition">次の問題へ →</button>';
+            const feedback = document.createElement('div');
+            feedback.className = 'rounded-xl border border-[#e5dfd7] bg-[#faf8f5] p-3 text-sm mt-3';
+            feedback.innerHTML = '<div class="font-bold ' + (isCorrect ? 'text-[#065f46]' : 'text-[#9f1239]') + '">' + (isCorrect ? '正解です' : '不正解です') + '</div><div class="text-[#2b2927] mt-1">正解：<b>' + q.correctAnswer + '</b></div>';
+            optionsContainer.appendChild(feedback);
+            const nextButton = document.createElement('button');
+            nextButton.type = 'button';
+            nextButton.className = 'w-full mt-3 bg-[#78829c] text-white font-bold py-3 rounded-xl shadow hover:bg-[#68728c] transition';
+            nextButton.textContent = '次の問題へ →';
+            nextButton.addEventListener('click', nextQuizQuestion);
+            optionsContainer.appendChild(nextButton);
         }
 
         function nextQuizQuestion() { 
