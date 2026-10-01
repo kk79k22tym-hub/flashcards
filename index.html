@@ -1401,7 +1401,7 @@
                     '<button type="button" onclick="handleTypingQuizAnswer()" class="w-full bg-[#78829c] text-white font-bold py-3 rounded-xl shadow hover:bg-[#68728c] transition">回答する</button>';
                 setTimeout(() => { const input=document.getElementById('quiz-typing-input'); if(input){ input.focus(); input.addEventListener('keydown',e=>{if(e.key==='Enter')handleTypingQuizAnswer();},{once:true}); } }, 30);
             } else {
-                container.innerHTML = q.options.map(opt => '<button type="button" data-option="' + opt.replace(/"/g,'&quot;') + '" onclick="handleQuizAnswer(' + JSON.stringify(opt) + ')" class="quiz-option-btn w-full bg-[#faf8f5] border border-[#e5dfd7] text-[#2b2927] font-bold py-3 px-4 rounded-xl shadow-sm hover:border-[#78829c] hover:bg-[#f4efe8] transition text-sm text-left">' + opt + '</button>').join('');
+                container.innerHTML = q.options.map((opt, idx) => '<button type="button" data-option-index="' + idx + '" onclick="handleQuizAnswerByIndex(' + idx + ')" class="quiz-option-btn w-full bg-[#faf8f5] border border-[#e5dfd7] text-[#2b2927] font-bold py-3 px-4 rounded-xl shadow-sm hover:border-[#78829c] hover:bg-[#f4efe8] transition text-sm text-left">' + opt + '</button>').join('');
             }
         }
 
@@ -1422,11 +1422,26 @@
             if (!entered.trim()) return;
             const isCorrect = normalizeQuizText(entered) === normalizeQuizText(q.correctAnswer);
             recordQuizResult(q, isCorrect);
+
+            // Keep exactly what the learner typed visible, and only change the field styling.
+            input.value = entered;
             input.disabled = true;
-            input.className = 'w-full rounded-xl px-4 py-3 text-base border ' + (isCorrect ? 'bg-[#e8f8f1] border-[#34d399] text-[#065f46]' : 'bg-[#fdf0f2] border-[#fb7185] text-[#9f1239]');
+            input.className = 'w-full rounded-xl px-4 py-3 text-base border font-semibold ' + (isCorrect ? 'bg-[#e8f8f1] border-[#34d399] text-[#065f46]' : 'bg-[#fdf0f2] border-[#fb7185] text-[#9f1239]');
+
+            // Reveal the correct word in the blank above without adding a separate answer message.
+            const answeredSentence = String(q.questionText || '').replace('_____', '<span class="text-[#2b2927] font-extrabold">' + q.correctAnswer + '</span>');
+            document.getElementById('quiz-question-text').innerHTML = '<div class="text-sm font-bold text-[#64748b] mb-3 leading-relaxed">' + (q.questionJa || '') + '</div><div>' + answeredSentence + '</div>';
+
             const container = document.getElementById('quiz-options-container');
-            container.querySelector('button')?.remove();
-            container.innerHTML += '<button type="button" onclick="nextQuizQuestion()" class="w-full mt-3 bg-[#78829c] text-white font-bold py-3 rounded-xl shadow hover:bg-[#68728c] transition">次の問題へ →</button>';
+            const answerButton = container.querySelector('button');
+            if (answerButton) answerButton.remove();
+            container.insertAdjacentHTML('beforeend', '<button type="button" onclick="nextQuizQuestion()" class="w-full mt-3 bg-[#78829c] text-white font-bold py-3 rounded-xl shadow hover:bg-[#68728c] transition">次の問題へ →</button>');
+        }
+
+        function handleQuizAnswerByIndex(optionIndex) {
+            const q = quizQuestions[currentQuizIdx];
+            if (!q || !Array.isArray(q.options) || optionIndex < 0 || optionIndex >= q.options.length) return;
+            handleQuizAnswer(q.options[optionIndex]);
         }
 
         function handleQuizAnswer(selectedOption) {
@@ -1437,7 +1452,8 @@
             const buttons = optionsContainer.querySelectorAll('button');
             buttons.forEach(b => {
                 b.disabled = true;
-                const optVal = b.getAttribute('data-option');
+                const idx = Number(b.getAttribute('data-option-index'));
+                const optVal = Number.isInteger(idx) && q.options[idx] !== undefined ? q.options[idx] : '';
                 if (optVal === q.correctAnswer) b.className = 'quiz-option-btn w-full bg-[#e8f8f1] border border-[#34d399] text-[#065f46] font-bold py-3 px-4 rounded-xl shadow-sm transition text-sm text-left';
                 else if (optVal === selectedOption && !isCorrect) b.className = 'quiz-option-btn w-full bg-[#fdf0f2] border border-[#fb7185] text-[#9f1239] font-bold py-3 px-4 rounded-xl shadow-sm transition text-sm text-left';
                 else b.className = 'quiz-option-btn w-full bg-[#faf8f5] opacity-60 border border-[#e5dfd7] text-[#2b2927] font-bold py-3 px-4 rounded-xl shadow-sm transition text-sm text-left';
