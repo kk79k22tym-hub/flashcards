@@ -121,8 +121,8 @@
                     </svg>
                     <span>SRS（間隔反復システム）について</span>
                 </div>
-                <p>・復習期限を迎えたカードや学習中の項目が最適なタイミングで自動提示されます。</p>
-                <p>・Got itを重ねて復習間隔を延ばし、完全習得を目指しましょう！</p>
+                <p>・FSRSがカードごとの難しさと記憶の安定度を計算し、目標定着率90%を基準に復習日を調整します。</p>
+                <p>・Again＝思い出せない、Unsure＝思い出せたが難しい、Got it＝普通に思い出せた、の基準で選びます。</p>
             </div>
         </section>
 
@@ -138,8 +138,17 @@
                     <input type="text" id="word-search-input" placeholder="英語、日本語、変化形で検索..." oninput="handleWordSearch()" class="w-full bg-[#faf8f5] border border-[#e5dfd7] text-[#2b2927] rounded-xl px-4 py-2.5 text-sm pl-10 focus:outline-none focus:ring-2 focus:ring-[#78829c] shadow-sm placeholder-[#9c938c]">
                     <svg class="w-4 h-4 text-[#7c736c] absolute left-3.5 top-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 </div>
-                <div class="flex gap-2 overflow-x-auto pb-1 text-xs" id="word-category-filter-container">
-                    <button onclick="filterWordCategory('all')" class="cat-pill px-3 py-1.5 rounded-lg font-medium bg-[#78829c] text-white whitespace-nowrap shadow-sm">すべて</button>
+                <div class="flex gap-2 overflow-x-auto pb-1 text-xs" id="word-category-filter-container"></div>
+                <div id="word-filter-panel" class="hidden bg-[#faf8f5] border border-[#e5dfd7] rounded-2xl p-3 shadow-sm space-y-3">
+                    <div>
+                        <div class="text-[11px] font-bold text-[#6b625b] mb-2">場面・テーマ</div>
+                        <div id="word-theme-filter-container" class="flex flex-wrap gap-2"></div>
+                    </div>
+                    <div class="pt-2 border-t border-[#e5dfd7]">
+                        <div class="text-[11px] font-bold text-[#6b625b] mb-2">学習状態</div>
+                        <div id="word-status-filter-container" class="flex flex-wrap gap-2"></div>
+                    </div>
+                    <button type="button" onclick="clearWordFilters()" class="w-full text-xs font-semibold text-[#78829c] bg-[#f4efe8] border border-[#e5dfd7] rounded-xl py-2">絞り込みをリセット</button>
                 </div>
             </div>
 
@@ -310,7 +319,9 @@
         const STORAGE_KEY = 'english_app_user_data_v9';
         let appData = { itemsState: {} };
         let currentTab = 'today';
-        let selectedWordCategory = 'all';
+        let selectedWordPos = 'all';
+        let selectedWordTheme = 'all';
+        let selectedWordStatus = 'all';
         let flashcardQueue = [];
         let currentCardIndex = 0;
         let isCardFlipped = false;
@@ -321,6 +332,18 @@
         let isHardTabRendered = false;
         let lastWordSearchQuery = "";
         let lastExprSearchQuery = "";
+        let wordRenderLimit = 50;
+        let wordListObserver = null;
+
+        // FSRS-6 default parameters. This app uses 3 ratings:
+        // Again=1, Unsure(Hard)=2, Got it(Good)=3. Easy is intentionally omitted.
+        const FSRS_W = [0.212, 1.2931, 2.3065, 8.2956, 6.4133, 0.8334, 3.0194, 0.001, 1.8722, 0.1666, 0.796, 1.4835, 0.0614, 0.2629, 1.6483, 0.6014, 1.8729, 0.5425, 0.0912, 0.0658, 0.1542];
+        const FSRS_DESIRED_RETENTION = 0.90;
+        const FSRS_MAX_INTERVAL_DAYS = 36500;
+        const NEW_CARDS_PER_DAY = 50;
+        const NEW_AGAIN_DELAY_MINUTES = 5;
+        const FSRS_DECAY = -FSRS_W[20];
+        const FSRS_FACTOR = Math.pow(0.9, 1 / FSRS_DECAY) - 1;
 
         // タグ生成ヘルパー関数
         function renderTagsHtml(item) {
@@ -335,19 +358,131 @@
             return html;
         }
 
-        function renderSensesHtml(item, compact = false) {
-            const senses = (item.senses && item.senses.length)
+        function getItemSenses(item) {
+            return (item.senses && item.senses.length)
                 ? item.senses
                 : [{ pos: (item.partOfSpeech || [item.type === 'word' ? '単語' : '表現'])[0], meaning: item.japanese, category: item.category || '' }];
+        }
+
+        function renderSenseRow(sense, compact = false, showNumber = false, index = 0) {
             const circled = ['①','②','③','④','⑤','⑥','⑦','⑧','⑨','⑩'];
-            const showNumber = senses.length > 1;
-            return `<div class="${compact ? 'space-y-1' : 'space-y-2'} text-left">${senses.map((sense, index) => `
-                <div class="${compact ? 'text-xs' : 'text-sm'} text-[#4a4540] leading-relaxed flex flex-wrap items-center gap-x-1.5 gap-y-1">
-                    ${showNumber ? `<span class="font-bold text-[#334155]">${circled[index] || (index + 1)}</span>` : ''}
-                    <span class="text-[11px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold">${sense.pos}</span><span class="font-bold text-[#334155]">：</span>
-                    <span>${sense.meaning}</span>
-                    ${sense.category ? `<span class="text-[10px] bg-[#f4efe8] text-[#5c534c] border border-[#e2dad1] px-1.5 py-0.5 rounded">${sense.category}</span>` : ''}
-                </div>`).join('')}</div>`;
+            return `<div class="${compact ? 'text-xs' : 'text-sm'} text-[#4a4540] leading-relaxed flex flex-wrap items-center gap-x-1.5 gap-y-1">
+                ${showNumber ? `<span class="font-bold text-[#334155]">${circled[index] || (index + 1)}</span>` : ''}
+                <span class="text-[11px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold">${sense.pos || '単語'}</span><span class="font-bold text-[#334155]">：</span>
+                <span>${sense.meaning || ''}</span>
+                ${sense.category ? `<span class="text-[10px] bg-[#f4efe8] text-[#5c534c] border border-[#e2dad1] px-1.5 py-0.5 rounded">${sense.category}</span>` : ''}
+            </div>`;
+        }
+
+        // Main area shows only the representative (first) meaning.
+        function renderSensesHtml(item, compact = false) {
+            const senses = getItemSenses(item);
+            return `<div class="text-left">${renderSenseRow(senses[0], compact, false, 0)}</div>`;
+        }
+
+        function findExampleForSense(item, sense) {
+            if (sense.example) return { example: sense.example, exampleJa: sense.exampleJa || '' };
+            const forms = item.forms || [];
+            const byPos = forms.find(f => f.pos && sense.pos && f.pos === sense.pos && f.example);
+            if (byPos) return { example: byPos.example, exampleJa: byPos.exampleJa || '' };
+            return null;
+        }
+
+        function getOtherMeanings(item) {
+            if (Array.isArray(item.otherMeanings) && item.otherMeanings.length) return item.otherMeanings;
+            return getItemSenses(item).slice(1);
+        }
+
+        function renderOtherMeaningsRows(item) {
+            const others = getOtherMeanings(item);
+            if (!others.length) return '';
+            return others.map((sense, i) => {
+                const ex = findExampleForSense(item, sense);
+                const spokenExample = ex ? String(ex.example).replace(/'/g, "\\'") : '';
+                return `<div class="pb-3 border-b border-[#e2e8f0] last:border-b-0 last:pb-0">
+                    ${renderSenseRow(sense, false, true, i)}
+                    ${ex ? `<div class="mt-2 flex items-start justify-between gap-2"><div class="text-xs text-[#2b2927] leading-relaxed">"${ex.example}" ${ex.exampleJa ? `<span class="text-[#64748b]">(${ex.exampleJa})</span>` : ''}</div><button onclick="playSpeech(event, '${spokenExample}')" class="w-8 h-8 shrink-0 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-4 h-4 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div>` : ''}
+                </div>`;
+            }).join('');
+        }
+
+        function renderOtherMeaningsSection(item, collapsed = false) {
+            const rows = renderOtherMeaningsRows(item);
+            if (!rows) return '';
+            if (collapsed) {
+                return `<details class="bg-[#edf1f7] rounded-2xl border border-[#e2e8f0] mb-3 text-left overflow-hidden">
+                    <summary class="cursor-pointer list-none px-3.5 py-3 text-xs font-bold text-[#64748b] flex items-center justify-between"><span>別の意味・使い方</span><span class="text-[#78829c]">⌄</span></summary>
+                    <div class="px-3.5 pb-3.5 space-y-3">${rows}</div>
+                </details>`;
+            }
+            return `<div class="bg-[#edf1f7] rounded-2xl p-3.5 border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] mb-3">別の意味・使い方</div><div class="space-y-3">${rows}</div></div>`;
+        }
+
+        function clamp(value, min, max) { return Math.min(max, Math.max(min, value)); }
+
+        function fsrsInitialStability(rating) {
+            return clamp(FSRS_W[rating - 1], 0.1, FSRS_MAX_INTERVAL_DAYS);
+        }
+
+        function fsrsInitialDifficulty(rating) {
+            return clamp(FSRS_W[4] - Math.exp(FSRS_W[5] * (rating - 1)) + 1, 1, 10);
+        }
+
+        function fsrsRetrievability(elapsedDays, stability) {
+            if (!stability || stability <= 0) return 1;
+            return clamp(Math.pow(1 + FSRS_FACTOR * Math.max(0, elapsedDays) / stability, FSRS_DECAY), 0, 1);
+        }
+
+        function fsrsNextDifficulty(difficulty, rating) {
+            const delta = -FSRS_W[6] * (rating - 3);
+            const damped = delta * (10 - difficulty) / 9;
+            const temp = difficulty + damped;
+            const target = fsrsInitialDifficulty(4);
+            return clamp(FSRS_W[7] * target + (1 - FSRS_W[7]) * temp, 1, 10);
+        }
+
+        function fsrsNextRecallStability(stability, difficulty, retrievability, rating) {
+            const hardPenalty = rating === 2 ? FSRS_W[15] : 1;
+            const easyBonus = rating === 4 ? FSRS_W[16] : 1;
+            const growth = Math.exp(FSRS_W[8]) * (11 - difficulty) * Math.pow(stability, -FSRS_W[9]) * (Math.exp((1 - retrievability) * FSRS_W[10]) - 1) * hardPenalty * easyBonus + 1;
+            return clamp(stability * growth, 0.001, FSRS_MAX_INTERVAL_DAYS);
+        }
+
+        function fsrsNextForgetStability(stability, difficulty, retrievability) {
+            const candidate = FSRS_W[11] * Math.pow(difficulty, -FSRS_W[12]) * (Math.pow(stability + 1, FSRS_W[13]) - 1) * Math.exp((1 - retrievability) * FSRS_W[14]);
+            return clamp(Math.min(candidate, stability), 0.001, FSRS_MAX_INTERVAL_DAYS);
+        }
+
+        function fsrsNextShortTermStability(stability, rating) {
+            const inc = Math.exp(FSRS_W[17] * (rating - 3 + FSRS_W[18])) * Math.pow(stability, -FSRS_W[19]);
+            const candidate = stability * inc;
+            return clamp(rating >= 3 ? Math.max(candidate, stability) : candidate, 0.001, FSRS_MAX_INTERVAL_DAYS);
+        }
+
+        function fsrsIntervalDays(stability) {
+            const raw = stability / FSRS_FACTOR * (Math.pow(FSRS_DESIRED_RETENTION, 1 / FSRS_DECAY) - 1);
+            return clamp(Math.round(raw), 1, FSRS_MAX_INTERVAL_DAYS);
+        }
+
+        function elapsedDaysBetween(a, b) {
+            if (!a || !b) return 0;
+            return Math.max(0, (new Date(b).getTime() - new Date(a).getTime()) / 86400000);
+        }
+
+        function localDateKey(date = new Date()) {
+            const y = date.getFullYear();
+            const m = String(date.getMonth() + 1).padStart(2, '0');
+            const d = String(date.getDate()).padStart(2, '0');
+            return `${y}-${m}-${d}`;
+        }
+
+        function introducedTodayCount() {
+            const today = localDateKey();
+            return rawDatabase.reduce((count, item) => {
+                const st = appData.itemsState[item.id];
+                if (!st || !st.introducedAt) return count;
+                return count + (localDateKey(new Date(st.introducedAt)) === today ? 1 : 0);
+            }, 0);
         }
 
         function randomIndex(maxExclusive) {
@@ -413,24 +548,35 @@
             rawDatabase.forEach(item => {
                 if (!appData.itemsState[item.id]) {
                     appData.itemsState[item.id] = {
-                        status: 'new',
-                        correctCount: 0,
-                        errorCount: 0,
-                        actualErrorCount: 0,
-                        subScores: {},
-                        lastStudied: null,
-                        nextReview: null,
-                        interval: 0,
-                        srsStage: 0,
-                        weakRemaining: 0
+                        status: 'new', correctCount: 0, errorCount: 0, actualErrorCount: 0,
+                        subScores: {}, lastStudied: null, nextReview: null, interval: 0,
+                        srsStage: 0, weakRemaining: 0,
+                        fsrsDifficulty: null, fsrsStability: null, fsrsReps: 0,
+                        fsrsLapses: 0, fsrsState: 'new', fsrsRetrievability: 1,
+                        introducedAt: null
                     };
                 }
                 const st = appData.itemsState[item.id];
-                if (st.actualErrorCount === undefined) {
-                    st.actualErrorCount = st.errorCount || 0;
+                if (st.actualErrorCount === undefined) st.actualErrorCount = st.errorCount || 0;
+                if (st.weakRemaining === undefined) st.weakRemaining = (st.errorCount > 0) ? 3 : 0;
+                if (st.fsrsReps === undefined) st.fsrsReps = (st.correctCount || 0) + (st.errorCount || 0);
+                if (st.fsrsLapses === undefined) st.fsrsLapses = st.actualErrorCount || 0;
+                if (st.fsrsState === undefined) st.fsrsState = st.lastStudied ? 'review' : 'new';
+                if (st.fsrsRetrievability === undefined) st.fsrsRetrievability = 1;
+                if (st.introducedAt === undefined) st.introducedAt = st.lastStudied || null;
+
+                // Migrate existing learning history without deleting it.
+                if (st.lastStudied && (st.fsrsStability == null || st.fsrsDifficulty == null)) {
+                    const legacyIntervals = [1, 1, 3, 7, 14, 30];
+                    const stage = clamp(Number(st.srsStage || 1), 1, 5);
+                    st.fsrsStability = legacyIntervals[stage] || 1;
+                    st.fsrsDifficulty = 5;
+                    st.fsrsState = 'review';
                 }
-                if (st.weakRemaining === undefined) {
-                    st.weakRemaining = (st.errorCount > 0) ? 3 : 0;
+                if (!st.lastStudied) {
+                    if (st.fsrsDifficulty === undefined) st.fsrsDifficulty = null;
+                    if (st.fsrsStability === undefined) st.fsrsStability = null;
+                    if (!st.fsrsState) st.fsrsState = 'new';
                 }
             });
             saveUserData();
@@ -571,35 +717,36 @@
         function startFlashcards(isWeakOnly = false) {
             isDedicatedWeakPractice = isWeakOnly;
             const now = new Date();
-            
+
             if (isWeakOnly) {
-                flashcardQueue = rawDatabase.filter(item => {
+                flashcardQueue = shuffleItems(rawDatabase.filter(item => {
                     const st = appData.itemsState[item.id];
                     return st && st.weakRemaining > 0;
-                });
+                }));
                 if (flashcardQueue.length === 0) return;
-                flashcardQueue = shuffleItems(flashcardQueue);
             } else {
-                let dueItems = [], priorityItems = [], newItems = [], futureItems = [];
+                const dueItems = [];
+                const newItems = [];
+
                 rawDatabase.forEach(item => {
                     const st = appData.itemsState[item.id];
-                    if (!st || st.status === 'new' || !st.lastStudied) {
+                    if (!st || !st.lastStudied || st.status === 'new' || st.fsrsState === 'new') {
                         newItems.push(item);
-                    } else if (st.nextReview && new Date(st.nextReview) <= now) {
-                        dueItems.push(item);
-                    } else if (st.actualErrorCount > 0 || st.srsStage === 0) {
-                        priorityItems.push(item);
-                    } else {
-                        futureItems.push(item);
+                        return;
                     }
+                    if (!st.nextReview || new Date(st.nextReview) <= now) dueItems.push(item);
                 });
-                flashcardQueue = [
-                    ...shuffleItems(dueItems),
-                    ...shuffleItems(priorityItems),
-                    ...shuffleItems(newItems),
-                    ...shuffleItems(futureItems)
-                ];
-                if (flashcardQueue.length === 0) flashcardQueue = shuffleItems(rawDatabase);
+
+                const remainingNew = Math.max(0, NEW_CARDS_PER_DAY - introducedTodayCount());
+                const selectedNew = shuffleItems(newItems).slice(0, remainingNew);
+                flashcardQueue = [...shuffleItems(dueItems), ...selectedNew];
+
+                if (flashcardQueue.length === 0) {
+                    alert(remainingNew <= 0 && newItems.length > 0
+                        ? '今日の新規カード上限（50枚）に達しました。次の復習期限を待つか、明日また学習してください。'
+                        : '現在、復習期限を迎えているカードはありません。');
+                    return;
+                }
             }
 
             flashcardQueue = avoidPreviousStartOrder(flashcardQueue);
@@ -689,11 +836,12 @@
             }
 
             if (item.forms && item.forms.length) {
-                const regularForms = item.forms.filter(f => f.label !== '会話形');
+                const primaryPos = getItemSenses(item)[0]?.pos;
+                const regularForms = item.forms.filter(f => f.label !== '会話形' && (!f.pos || !primaryPos || f.pos === primaryPos));
                 const spokenForms = item.forms.filter(f => f.label === '会話形');
 
                 if (regularForms.length) {
-                    backHtml += `<div class="space-y-2.5 bg-[#edf1f7] p-3.5 rounded-2xl border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] uppercase tracking-wider">活用・変化と例文</div><div class="text-xs space-y-2.5">`;
+                    backHtml += `<div class="space-y-2.5 bg-[#edf1f7] p-3.5 rounded-2xl border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] uppercase tracking-wider">活用・変化</div><div class="text-xs space-y-2.5">`;
                     regularForms.forEach(f => {
                         const spoken = String(f.formName).replace(/'/g, "\'");
                         backHtml += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0 relative"><div class="flex items-center justify-between mb-1"><div class="flex items-center space-x-2"><span class="text-sm font-bold text-[#2b2927]">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold">${f.label}</span></div><button onclick="playSpeech(event, '${spoken}')" class="w-8 h-8 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-4 h-4 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></button></div><div class="text-[#2b2927] text-xs font-normal">"${f.example}" <span class="text-[#64748b] font-normal">(${f.exampleJa})</span></div></div>`;
@@ -703,6 +851,8 @@
                     }
                     backHtml += `</div></div>`;
                 }
+
+                backHtml += renderOtherMeaningsSection(item, true);
 
                 if (spokenForms.length) {
                     backHtml += `<div class="space-y-2.5 bg-[#edf1f7] p-3.5 rounded-2xl border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] uppercase tracking-wider">口語</div><div class="text-xs space-y-2.5">`;
@@ -739,89 +889,209 @@
             const item = flashcardQueue[currentCardIndex];
             const st = appData.itemsState[item.id];
             const now = new Date();
-            let nextReviewDate = new Date();
+            const wasNew = !st.lastStudied || st.fsrsState === 'new' || st.status === 'new';
+            const rating = result === 'again' ? 1 : (result === 'unsure' ? 2 : 3);
+            const previousReview = st.lastStudied;
+            const previousStability = st.fsrsStability;
+            let nextReviewDate = new Date(now);
+
+            if (!st.introducedAt) st.introducedAt = now.toISOString();
+
+            if (wasNew || previousStability == null || st.fsrsDifficulty == null) {
+                st.fsrsStability = fsrsInitialStability(rating);
+                st.fsrsDifficulty = fsrsInitialDifficulty(rating);
+                st.fsrsRetrievability = 1;
+                st.fsrsReps = (st.fsrsReps || 0) + 1;
+
+                if (result === 'again') {
+                    st.fsrsState = 'learning';
+                    nextReviewDate.setMinutes(nextReviewDate.getMinutes() + NEW_AGAIN_DELAY_MINUTES);
+                } else {
+                    st.fsrsState = 'review';
+                    nextReviewDate.setDate(nextReviewDate.getDate() + fsrsIntervalDays(st.fsrsStability));
+                }
+            } else {
+                const elapsedDays = elapsedDaysBetween(previousReview, now.toISOString());
+                const retrievability = fsrsRetrievability(elapsedDays, previousStability);
+                const newDifficulty = fsrsNextDifficulty(st.fsrsDifficulty, rating);
+                let newStability;
+
+                if (elapsedDays < 1) {
+                    newStability = fsrsNextShortTermStability(previousStability, rating);
+                } else if (rating === 1) {
+                    newStability = fsrsNextForgetStability(previousStability, newDifficulty, retrievability);
+                } else {
+                    newStability = fsrsNextRecallStability(previousStability, newDifficulty, retrievability, rating);
+                }
+
+                st.fsrsDifficulty = newDifficulty;
+                st.fsrsStability = newStability;
+                st.fsrsRetrievability = retrievability;
+                st.fsrsReps = (st.fsrsReps || 0) + 1;
+
+                if (result === 'again' && st.fsrsState === 'learning') {
+                    nextReviewDate.setMinutes(nextReviewDate.getMinutes() + NEW_AGAIN_DELAY_MINUTES);
+                } else {
+                    st.fsrsState = 'review';
+                    nextReviewDate.setDate(nextReviewDate.getDate() + fsrsIntervalDays(newStability));
+                }
+            }
 
             if (result === 'got_it') {
                 st.correctCount++;
-                if (st.status === 'new') st.status = 'learning';
-                if (!st.srsStage || st.srsStage < 1) { st.srsStage = 1; nextReviewDate.setDate(now.getDate() + 1); }
-                else if (st.srsStage === 1) { st.srsStage = 2; nextReviewDate.setDate(now.getDate() + 3); }
-                else if (st.srsStage === 2) { st.srsStage = 3; nextReviewDate.setDate(now.getDate() + 7); }
-                else if (st.srsStage === 3) { st.srsStage = 4; nextReviewDate.setDate(now.getDate() + 14); }
-                else { st.srsStage = 5; st.status = 'mastered'; nextReviewDate.setDate(now.getDate() + 30); }
+                st.srsStage = Math.min(5, (st.srsStage || 0) + 1);
+                if (st.srsStage >= 5) st.status = 'mastered';
+                else if (st.status === 'new') st.status = 'learning';
             } else if (result === 'unsure') {
                 if (st.status === 'new') st.status = 'learning';
                 st.weakRemaining = Math.max(0, (st.weakRemaining || 0) - 1);
-                nextReviewDate.setDate(now.getDate() + 1);
             } else {
                 st.errorCount++;
                 st.actualErrorCount = (st.actualErrorCount || 0) + 1;
+                st.fsrsLapses = (st.fsrsLapses || 0) + 1;
                 st.weakRemaining = 3;
-                if (st.status === 'mastered') { st.status = 'learning'; st.srsStage = 1; }
-                nextReviewDate.setMinutes(now.getMinutes() + 5);
+                if (st.status === 'mastered') {
+                    st.status = 'learning';
+                    st.srsStage = Math.min(st.srsStage || 1, 1);
+                } else if (st.status === 'new') {
+                    st.status = 'learning';
+                }
             }
+
             st.lastStudied = now.toISOString();
             st.nextReview = nextReviewDate.toISOString();
-            if (checkItemMastery(item.id)) st.status = 'mastered';
+            st.interval = (nextReviewDate.getTime() - now.getTime()) / 86400000;
             statsDirty = true;
             saveUserData();
             currentCardIndex++;
             renderCurrentFlashcard();
         }
 
+        function wordStatusKey(item) {
+            const st = appData.itemsState[item.id];
+            if (checkItemMastery(item.id)) return 'mastered';
+            if (st && st.status === 'learning') return 'learning';
+            return 'new';
+        }
+
+        function setWordPosFilter(pos) {
+            selectedWordPos = pos;
+            wordRenderLimit = 50;
+            renderWordsTab();
+        }
+
+        function setWordThemeFilter(theme) {
+            selectedWordTheme = theme;
+            wordRenderLimit = 50;
+            renderWordsTab();
+        }
+
+        function setWordStatusFilter(status) {
+            selectedWordStatus = status;
+            wordRenderLimit = 50;
+            renderWordsTab();
+        }
+
+        function toggleWordFilterPanel() {
+            document.getElementById('word-filter-panel').classList.toggle('hidden');
+        }
+
+        function clearWordFilters() {
+            selectedWordPos = 'all';
+            selectedWordTheme = 'all';
+            selectedWordStatus = 'all';
+            wordRenderLimit = 50;
+            renderWordsTab();
+        }
+
+        function renderWordFilterControls(words) {
+            const topFilters = [
+                ['all', 'すべて'], ['動詞', '動詞'], ['名詞', '名詞'], ['形容詞', '形容詞'], ['副詞', '副詞']
+            ];
+            const filterActive = selectedWordTheme !== 'all' || selectedWordStatus !== 'all';
+            document.getElementById('word-category-filter-container').innerHTML = topFilters.map(([value, label]) => {
+                const active = selectedWordPos === value ? 'bg-[#78829c] text-white' : 'bg-[#faf8f5] text-[#5c534c] border border-[#e5dfd7]';
+                return `<button onclick="setWordPosFilter('${value}')" class="px-3 py-1.5 rounded-lg font-medium whitespace-nowrap shadow-sm transition ${active}">${label}</button>`;
+            }).join('') + `<button onclick="toggleWordFilterPanel()" class="px-3 py-1.5 rounded-lg font-medium whitespace-nowrap shadow-sm transition ${filterActive ? 'bg-[#78829c] text-white' : 'bg-[#faf8f5] text-[#5c534c] border border-[#e5dfd7]'}">絞り込み${filterActive ? ' ●' : ''}</button>`;
+
+            const categories = [...new Set(words.flatMap(w => getItemSenses(w).map(s => s.category).filter(Boolean)))];
+            document.getElementById('word-theme-filter-container').innerHTML = [['all', 'すべて'], ...categories.map(c => [c, c])].map(([value, label]) => {
+                const active = selectedWordTheme === value ? 'bg-[#78829c] text-white' : 'bg-[#f4efe8] text-[#5c534c] border border-[#e5dfd7]';
+                return `<button onclick="setWordThemeFilter('${String(value).replace(/'/g, "\\'")}')" class="text-xs px-2.5 py-1.5 rounded-lg ${active}">${label}</button>`;
+            }).join('');
+
+            const statuses = [['all','すべて'],['new','未学習'],['learning','学習中'],['mastered','完全習得']];
+            document.getElementById('word-status-filter-container').innerHTML = statuses.map(([value, label]) => {
+                const active = selectedWordStatus === value ? 'bg-[#78829c] text-white' : 'bg-[#f4efe8] text-[#5c534c] border border-[#e5dfd7]';
+                return `<button onclick="setWordStatusFilter('${value}')" class="text-xs px-2.5 py-1.5 rounded-lg ${active}">${label}</button>`;
+            }).join('');
+        }
+
         function renderWordsTab() {
             const words = rawDatabase.filter(i => i.type === 'word');
             document.getElementById('word-count-label').innerText = `全${words.length}語`;
-            const allCategories = words.flatMap(w => (w.senses && w.senses.length) ? w.senses.map(s => s.category).filter(Boolean) : [w.category].filter(Boolean));
-            const categories = ['all', ...new Set(allCategories)];
-            document.getElementById('word-category-filter-container').innerHTML = categories.map(cat => {
-                const active = selectedWordCategory === cat ? 'bg-[#78829c] text-white' : 'bg-[#faf8f5] text-[#5c534c] border border-[#e5dfd7]';
-                return `<button onclick="filterWordCategory('${cat}')" class="cat-pill px-3 py-1.5 rounded-lg font-medium whitespace-nowrap shadow-sm transition ${active}">${cat === 'all' ? 'すべて' : cat}</button>`;
-            }).join('');
+            renderWordFilterControls(words);
 
             const query = document.getElementById('word-search-input').value.toLowerCase();
             const filtered = words.filter(w => {
-                const itemCats = (w.senses && w.senses.length) ? w.senses.map(s => s.category) : [w.category];
-                const matchCat = selectedWordCategory === 'all' || itemCats.includes(selectedWordCategory);
+                const senses = getItemSenses(w);
+                const poses = new Set([...(w.partOfSpeech || []), ...senses.map(s => s.pos).filter(Boolean)]);
+                const categories = senses.map(s => s.category).filter(Boolean);
+                const matchPos = selectedWordPos === 'all' || poses.has(selectedWordPos);
+                const matchTheme = selectedWordTheme === 'all' || categories.includes(selectedWordTheme);
+                const matchStatus = selectedWordStatus === 'all' || wordStatusKey(w) === selectedWordStatus;
                 const formText = (w.forms || []).map(f => `${f.formName} ${f.label} ${f.example} ${f.exampleJa}`).join(' ');
-                const senseText = (w.senses || []).map(s => `${s.pos} ${s.meaning} ${s.category || ''}`).join(' ');
+                const senseText = senses.map(s => `${s.pos} ${s.meaning} ${s.category || ''}`).join(' ');
                 const haystack = `${w.english} ${w.japanese} ${w.searchKeywords || ''} ${formText} ${senseText}`.toLowerCase();
-                return matchCat && (!query || haystack.includes(query));
+                return matchPos && matchTheme && matchStatus && (!query || haystack.includes(query));
             });
 
             const container = document.getElementById('words-list-container');
+            if (wordListObserver) { wordListObserver.disconnect(); wordListObserver = null; }
             if (filtered.length === 0) {
                 container.innerHTML = `<div class="text-center py-8 text-[#7c736c] text-sm">該当する単語が見つかりませんでした</div>`;
                 return;
             }
 
-            container.innerHTML = filtered.map(w => {
+            const visible = filtered.slice(0, wordRenderLimit);
+            container.innerHTML = visible.map(w => {
                 const isMastered = checkItemMastery(w.id);
                 const st = appData.itemsState[w.id];
                 let tagClass = 'tag-status-new';
                 let tagText = '未学習';
-                if (isMastered) {
-                    tagClass = 'tag-status-mastered';
-                    tagText = '完全習得';
-                } else if (st.status === 'learning') {
-                    tagClass = 'tag-status-learning';
-                    tagText = '学習中';
-                }
-                const spoken = String(w.english).replace(/'/g, "\'");
-                return `<div onclick="openDetailModal('${w.id}')" class="bg-[#faf8f5] p-4 rounded-2xl border border-[#e5dfd7] shadow-sm cursor-pointer hover:border-[#78829c] transition"><div class="flex items-center justify-between gap-3 mb-2"><div class="flex items-center gap-2 min-w-0"><div class="font-bold text-[#2b2927] text-base truncate">${w.english}</div><span class="text-[10px] px-2 py-0.5 rounded-full font-medium shrink-0 ${tagClass}">${tagText}</span></div><button onclick="playSpeech(event, '${spoken}')" class="w-8 h-8 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm shrink-0" aria-label="発音"><svg class="w-4 h-4 text-[#78829c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div>${renderSensesHtml(w, true)}</div>`;
+                if (isMastered) { tagClass = 'tag-status-mastered'; tagText = '完全習得'; }
+                else if (st.status === 'learning') { tagClass = 'tag-status-learning'; tagText = '学習中'; }
+                const spoken = String(w.english).replace(/'/g, "\\'");
+                return `<div onclick="openDetailModal('${w.id}')" class="bg-[#faf8f5] p-4 rounded-2xl border border-[#e5dfd7] shadow-sm cursor-pointer hover:border-[#78829c] transition">
+                    <div class="flex items-center justify-between gap-3 mb-2"><div class="flex items-center gap-2 min-w-0"><div class="font-bold text-[#2b2927] text-base truncate">${w.english}</div><span class="text-[10px] px-2 py-0.5 rounded-full font-medium shrink-0 ${tagClass}">${tagText}</span></div><button onclick="playSpeech(event, '${spoken}')" class="w-8 h-8 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm shrink-0" aria-label="発音"><svg class="w-4 h-4 text-[#78829c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div>
+                    ${renderSensesHtml(w, true)}
+                    ${renderOtherMeaningsSection(w, false)}
+                </div>`;
             }).join('');
+
+            if (visible.length < filtered.length) {
+                container.insertAdjacentHTML('beforeend', `<div id="word-list-sentinel" class="py-4 text-center text-xs text-[#9c938c]">続きを読み込み中…</div>`);
+                const sentinel = document.getElementById('word-list-sentinel');
+                wordListObserver = new IntersectionObserver(entries => {
+                    if (entries[0] && entries[0].isIntersecting) {
+                        wordListObserver.disconnect();
+                        wordRenderLimit += 50;
+                        renderWordsTab();
+                    }
+                }, { rootMargin: '250px' });
+                wordListObserver.observe(sentinel);
+            }
         }
 
-        function filterWordCategory(cat) { 
-            selectedWordCategory = cat; 
-            renderWordsTab(); 
-        }
+        // Backward-compatible alias for older inline calls.
+        function filterWordCategory(cat) { setWordThemeFilter(cat); }
 
-        function handleWordSearch() { 
+        function handleWordSearch() {
             const query = document.getElementById('word-search-input').value.toLowerCase();
             if (query !== lastWordSearchQuery) {
                 lastWordSearchQuery = query;
-                renderWordsTab(); 
+                wordRenderLimit = 50;
+                renderWordsTab();
             }
         }
 
@@ -884,11 +1154,12 @@
             }
 
             if (item.forms && item.forms.length) {
-                const regularForms = item.forms.filter(f => f.label !== '会話形');
+                const primaryPos = getItemSenses(item)[0]?.pos;
+                const regularForms = item.forms.filter(f => f.label !== '会話形' && (!f.pos || !primaryPos || f.pos === primaryPos));
                 const spokenForms = item.forms.filter(f => f.label === '会話形');
 
                 if (regularForms.length) {
-                    html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-3 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase tracking-wider">活用・変化と例文一覧</div>`;
+                    html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-3 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase tracking-wider">活用・変化</div>`;
                     regularForms.forEach(f => {
                         const formSpoken = String(f.formName).replace(/'/g, "\'");
                         html += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0"><div class="flex items-center justify-between mb-1"><div class="flex items-center space-x-2"><span class="text-sm font-bold text-[#2b2927]">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold">${f.label}</span></div><button onclick="playSpeech(event, '${formSpoken}')" class="w-7 h-7 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-3.5 h-3.5 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div><div class="text-[#2b2927]">"${f.example}" <span class="text-[#64748b]">(${f.exampleJa})</span></div></div>`;
@@ -898,6 +1169,8 @@
                     }
                     html += `</div>`;
                 }
+
+                html += renderOtherMeaningsSection(item, false);
 
                 if (spokenForms.length) {
                     html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-3 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase tracking-wider">口語</div>`;
@@ -911,7 +1184,8 @@
 
             const isMastered = checkItemMastery(id);
             const reviewTimeStr = st.nextReview ? new Date(st.nextReview).toLocaleString('ja-JP', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '未定';
-            html += `<div class="pt-2 border-t border-[#e5dfd7] text-left"><div class="text-xs font-bold text-[#7c736c] uppercase mb-1">学習ステータス (次回復習: ${reviewTimeStr})</div><div class="grid grid-cols-3 gap-2 mb-3"><button onclick="updateItemStatus('${id}', 'new')" class="py-2 text-xs font-bold rounded-xl border ${st.status === 'new' ? 'bg-[#eae4dc] text-[#2b2927] border-[#dcd6ce]' : 'bg-[#f4efe8] text-[#7c736c] border-[#e5dfd7]'}">未学習</button><button onclick="updateItemStatus('${id}', 'learning')" class="py-2 text-xs font-bold rounded-xl border ${st.status === 'learning' ? 'bg-[#fef3c7] text-[#92400e] border-[#f59e0b]' : 'bg-[#f4efe8] text-[#7c736c] border-[#e5dfd7]'}">学習中</button><button onclick="updateItemStatus('${id}', 'mastered')" class="py-2 text-xs font-bold rounded-xl border ${isMastered ? 'bg-[#78829c] text-white border-[#68728c]' : 'bg-[#f4efe8] text-[#7c736c] border-[#e5dfd7]'}">完全習得</button></div></div>`;
+            const fsrsInfo = (st.fsrsDifficulty != null && st.fsrsStability != null) ? ` / D:${Number(st.fsrsDifficulty).toFixed(1)} S:${Number(st.fsrsStability).toFixed(1)}日` : '';
+            html += `<div class="pt-2 border-t border-[#e5dfd7] text-left"><div class="text-xs font-bold text-[#7c736c] uppercase mb-1">学習ステータス (次回復習: ${reviewTimeStr}${fsrsInfo})</div><div class="grid grid-cols-3 gap-2 mb-3"><button onclick="updateItemStatus('${id}', 'new')" class="py-2 text-xs font-bold rounded-xl border ${st.status === 'new' ? 'bg-[#eae4dc] text-[#2b2927] border-[#dcd6ce]' : 'bg-[#f4efe8] text-[#7c736c] border-[#e5dfd7]'}">未学習</button><button onclick="updateItemStatus('${id}', 'learning')" class="py-2 text-xs font-bold rounded-xl border ${st.status === 'learning' ? 'bg-[#fef3c7] text-[#92400e] border-[#f59e0b]' : 'bg-[#f4efe8] text-[#7c736c] border-[#e5dfd7]'}">学習中</button><button onclick="updateItemStatus('${id}', 'mastered')" class="py-2 text-xs font-bold rounded-xl border ${isMastered ? 'bg-[#78829c] text-white border-[#68728c]' : 'bg-[#f4efe8] text-[#7c736c] border-[#e5dfd7]'}">完全習得</button></div></div>`;
 
             document.getElementById('modal-body-content').innerHTML = html;
             document.getElementById('detail-modal').classList.remove('hidden');
@@ -920,9 +1194,29 @@
         function closeModal() { document.getElementById('detail-modal').classList.add('hidden'); }
 
         function updateItemStatus(id, status) {
-            appData.itemsState[id].status = status;
-            if (status === 'mastered') appData.itemsState[id].srsStage = 5;
-            else if (status === 'new') appData.itemsState[id].srsStage = 0;
+            const st = appData.itemsState[id];
+            st.status = status;
+            if (status === 'mastered') {
+                st.srsStage = 5;
+                if (st.fsrsStability == null) st.fsrsStability = 30;
+                if (st.fsrsDifficulty == null) st.fsrsDifficulty = 5;
+                st.fsrsState = 'review';
+            } else if (status === 'new') {
+                st.srsStage = 0;
+                st.lastStudied = null;
+                st.nextReview = null;
+                st.interval = 0;
+                st.fsrsDifficulty = null;
+                st.fsrsStability = null;
+                st.fsrsReps = 0;
+                st.fsrsLapses = 0;
+                st.fsrsState = 'new';
+                st.fsrsRetrievability = 1;
+                st.introducedAt = null;
+            } else if (status === 'learning') {
+                if (!st.nextReview) st.nextReview = new Date().toISOString();
+                if (st.fsrsState === 'new') st.fsrsState = 'review';
+            }
             statsDirty = true;
             saveUserData();
             openDetailModal(id);
