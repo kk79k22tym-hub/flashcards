@@ -315,7 +315,7 @@
         </div>
     </nav>
 
-    <script src="./data.js?v=20261001-quizfix2"></script>
+    <script src="./data.js?v=20261002-hint1"></script>
     <script>
         // Stable storage key: keep this unchanged across UI/data updates so learning history survives.
         const STORAGE_KEY = 'english_app_user_data_v9';
@@ -1312,9 +1312,10 @@
             if (!candidates.length) return null;
             const f = candidates[Math.floor(Math.random() * candidates.length)];
             const escaped = f.formName.replace(/[.*+?^$\{\}()|[\]\\]/g, '\\$&');
-            const blank = f.example.replace(new RegExp('\\b' + escaped + '\\b', 'i'), '_____');
+            const blankText = f.needsHint ? f.formName.charAt(0) + ' _'.repeat(f.formName.length - 1) : '_____';
+            const blank = f.example.replace(new RegExp('\\b' + escaped + '\\b', 'i'), () => blankText);
             if (blank === f.example) return null;
-            return {itemId:item.id, subKey:f.label, type:'typing', typeBadge:'文の穴埋め', questionText:blank, questionJa:f.exampleJa, correctAnswer:f.formName};
+            return {itemId:item.id, subKey:f.label, type:'typing', typeBadge:'文の穴埋め', questionText:blank, questionJa:f.exampleJa, correctAnswer:f.formName, blankText:blankText};
         }
 
         function buildContractionQuestion() {
@@ -1326,7 +1327,7 @@
             const preferred = item.contractionPairs.filter(p => p.full !== pair.full).map(p => p.full);
             const options = makeFourOptions(pair.full, preferred, allFull);
             if (!options) return null;
-            const marked = pair.example.replace(pair.short, '<b>' + pair.short + '</b>');
+            const marked = pair.example.replace(new RegExp(pair.short.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'), m => '<b>' + m + '</b>');
             return {itemId:item.id, subKey:'contraction', type:'choice', typeBadge:'省略形クイズ', questionText:'“' + marked + '” の <b>' + pair.short + '</b> は何の省略？', options, correctAnswer:pair.full};
         }
 
@@ -1335,7 +1336,7 @@
             const allItems = rawDatabase;
             const allJapanese = uniqueValues(allItems.map(i => i.japanese));
             const allEnglish = uniqueValues(allItems.map(i => i.english));
-            const allForms = uniqueValues(allItems.flatMap(i => (i.forms || []).filter(f => !f.lowFrequency).map(f => f.formName)));
+            const allForms = uniqueValues(allItems.flatMap(i => (i.forms || []).filter(f => !f.lowFrequency && !f.quizExclude).map(f => f.formName)));
             const generated = [];
             let attempts = 0;
             while (generated.length < count && attempts < count * 80) {
@@ -1362,10 +1363,10 @@
                 } else if (subType === 'form') {
                     const items = allItems.filter(i => (i.forms || []).length);
                     const item = items[Math.floor(Math.random() * items.length)];
-                    const validForms = (item.forms || []).filter(f => f.label !== '会話形' && !f.lowFrequency && f.formName);
+                    const validForms = (item.forms || []).filter(f => f.label !== '会話形' && !f.lowFrequency && !f.quizExclude && f.formName);
                     if (validForms.length) {
                         const target = validForms[Math.floor(Math.random() * validForms.length)];
-                        const sameLabel = allItems.flatMap(i => (i.forms || []).filter(f => f.label === target.label).map(f => f.formName));
+                        const sameLabel = allItems.flatMap(i => (i.forms || []).filter(f => f.label === target.label && !f.lowFrequency && !f.quizExclude).map(f => f.formName));
                         const options = makeFourOptions(target.formName, validForms.map(f=>f.formName), [...sameLabel,...allForms]);
                         if (options) q = {itemId:item.id, subKey:target.label, type:'choice', typeBadge:'活用・変化クイズ', questionText:'「' + item.english + '」の ' + target.label + ' は？', options, correctAnswer:target.formName};
                     }
@@ -1429,7 +1430,7 @@
             input.className = 'w-full rounded-xl px-4 py-3 text-base border font-semibold ' + (isCorrect ? 'bg-[#e8f8f1] border-[#34d399] text-[#065f46]' : 'bg-[#fdf0f2] border-[#fb7185] text-[#9f1239]');
 
             // Reveal the correct word in the blank above without adding a separate answer message.
-            const answeredSentence = String(q.questionText || '').replace('_____', '<span class="text-[#2b2927] font-extrabold">' + q.correctAnswer + '</span>');
+            const answeredSentence = String(q.questionText || '').replace(q.blankText || '_____', '<span class="text-[#2b2927] font-extrabold">' + q.correctAnswer + '</span>');
             document.getElementById('quiz-question-text').innerHTML = '<div class="text-sm font-bold text-[#64748b] mb-3 leading-relaxed">' + (q.questionJa || '') + '</div><div>' + answeredSentence + '</div>';
 
             const container = document.getElementById('quiz-options-container');
