@@ -571,6 +571,13 @@ const rawDatabase = [
         "pos": "動詞",
         "meaning": "思う／考える",
         "category": "思考"
+      },
+      {
+        "pos": "動詞",
+        "meaning": "〜だと思う／たぶん（文末・挿入的な I think）",
+        "category": "会話",
+        "example": "It's around five, I think.",
+        "exampleJa": "5時くらいだと思います。"
       }
     ],
     "forms": [
@@ -608,7 +615,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則 A-B-B",
-    "searchKeywords": "think 思う／考える 思う／考える 思考",
+    "searchKeywords": "think 思う／考える 思う／考える 思考 〜だと思う／たぶん（文末・挿入的な I think） It's around five, I think.",
     "beginnerTip": "think は普通の意見（〜と思う）、believe は信じている・確信に近い気持ち、hope は「そうなってほしい」という願いです。"
   },
   {
@@ -3431,6 +3438,13 @@ const rawDatabase = [
         "pos": "副詞",
         "meaning": "正確に／まさに／その通り",
         "category": "会話"
+      },
+      {
+        "pos": "副詞",
+        "meaning": "その通り／まさにそれ（相づち）",
+        "category": "会話",
+        "example": "Exactly! That's what I meant.",
+        "exampleJa": "その通り！それが言いたかったの。"
       }
     ],
     "forms": [
@@ -3444,7 +3458,7 @@ const rawDatabase = [
       }
     ],
     "beginnerTip": "単独の Exactly. は「その通り」と強く同意するときにも使います。",
-    "searchKeywords": "exactly 正確に／まさに／その通り 正確に／まさに／その通り 会話"
+    "searchKeywords": "exactly 正確に／まさに／その通り 正確に／まさに／その通り 会話 その通り／まさにそれ（相づち） Exactly! That's what I meant."
   },
   {
     "id": "adv_maybe",
@@ -7782,6 +7796,13 @@ const rawDatabase = [
         "pos": "形容詞",
         "meaning": "同じ",
         "category": "比較"
+      },
+      {
+        "pos": "形容詞",
+        "meaning": "私も同じ／私も！（口語の相づち）",
+        "category": "会話",
+        "example": "Same! I feel that way too.",
+        "exampleJa": "私も！同じように感じる。"
       }
     ],
     "forms": [
@@ -7793,7 +7814,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "searchKeywords": "same 同じ 同じ 比較"
+    "searchKeywords": "same 同じ 同じ 比較 私も同じ／私も！（口語の相づち） Same! I feel that way too."
   },
   {
     "id": "det_another",
@@ -8810,5 +8831,2770 @@ const rawDatabase = [
     "example": "I am too tired to go out.",
     "exampleJa": "疲れすぎて外出できません。",
     "searchKeywords": "too ... to + 動詞（原形） 〜すぎて…できない 〜すぎて…できない 程度"
+  },
+  {
+    "id": "w_nervous",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "nervous",
+    "japanese": "緊張している",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "緊張している",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "nervous",
+        "example": "I am nervous about the call.",
+        "exampleJa": "通話のことで緊張しています。"
+      }
+    ],
+    "searchKeywords": "nervous 緊張している 感情・状態"
+  },
+  {
+    "id": "w_embarrassed",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "embarrassed",
+    "japanese": "恥ずかしい",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "恥ずかしい",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "embarrassed",
+        "example": "I was so embarrassed.",
+        "exampleJa": "すごく恥ずかしかった。"
+      }
+    ],
+    "searchKeywords": "embarrassed 恥ずかしい 感情・状態"
+  },
+  {
+    "id": "w_disappointed",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "disappointed",
+    "japanese": "がっかりした",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "がっかりした",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "disappointed",
+        "example": "I was disappointed with the result.",
+        "exampleJa": "結果にがっかりしました。"
+      }
+    ],
+    "searchKeywords": "disappointed がっかりした 感情・状態"
+  },
+  {
+    "id": "w_relieved",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "relieved",
+    "japanese": "ほっとした",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "ほっとした",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "relieved",
+        "example": "I was relieved to hear that.",
+        "exampleJa": "それを聞いてほっとしました。"
+      }
+    ],
+    "searchKeywords": "relieved ほっとした 感情・状態"
+  },
+  {
+    "id": "w_confused",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "confused",
+    "japanese": "混乱している／よく分からない",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "混乱している／よく分からない",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "confused",
+        "example": "I am a little confused.",
+        "exampleJa": "ちょっと混乱しています。"
+      }
+    ],
+    "searchKeywords": "confused 混乱している／よく分からない 感情・状態"
+  },
+  {
+    "id": "w_upset",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "upset",
+    "japanese": "動揺した／嫌な気持ちになった",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "動揺した／嫌な気持ちになった",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "upset",
+        "example": "I was really upset.",
+        "exampleJa": "本当に嫌な気持ちになりました。"
+      }
+    ],
+    "searchKeywords": "upset 動揺した／嫌な気持ちになった 感情・状態"
+  },
+  {
+    "id": "w_annoyed",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "annoyed",
+    "japanese": "イライラした",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "イライラした",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "annoyed",
+        "example": "I was annoyed at first.",
+        "exampleJa": "最初はイライラしていました。"
+      }
+    ],
+    "searchKeywords": "annoyed イライラした 感情・状態"
+  },
+  {
+    "id": "w_lonely",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "lonely",
+    "japanese": "寂しい",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "寂しい",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "lonely",
+        "example": "I feel lonely sometimes.",
+        "exampleJa": "ときどき寂しく感じます。"
+      }
+    ],
+    "searchKeywords": "lonely 寂しい 感情・状態"
+  },
+  {
+    "id": "w_comfortable",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "comfortable",
+    "japanese": "心地よい／気楽な",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "心地よい／気楽な",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "comfortable",
+        "example": "I feel comfortable talking to you.",
+        "exampleJa": "あなたとは気楽に話せます。"
+      }
+    ],
+    "searchKeywords": "comfortable 心地よい／気楽な 感情・状態"
+  },
+  {
+    "id": "w_uncomfortable",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "uncomfortable",
+    "japanese": "居心地が悪い／不快な",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "居心地が悪い／不快な",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "uncomfortable",
+        "example": "That made me uncomfortable.",
+        "exampleJa": "それで居心地が悪くなりました。"
+      }
+    ],
+    "searchKeywords": "uncomfortable 居心地が悪い／不快な 感情・状態"
+  },
+  {
+    "id": "w_proud",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "proud",
+    "japanese": "誇らしい",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "誇らしい",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "proud",
+        "example": "I am proud of you.",
+        "exampleJa": "あなたを誇りに思います。"
+      }
+    ],
+    "searchKeywords": "proud 誇らしい 感情・状態"
+  },
+  {
+    "id": "w_jealous",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "jealous",
+    "japanese": "嫉妬している／羨ましい",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "嫉妬している／羨ましい",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "jealous",
+        "example": "I am a little jealous.",
+        "exampleJa": "ちょっと羨ましい。"
+      }
+    ],
+    "searchKeywords": "jealous 嫉妬している／羨ましい 感情・状態"
+  },
+  {
+    "id": "w_scared",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "scared",
+    "japanese": "怖い",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "怖い",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "scared",
+        "example": "I was scared at first.",
+        "exampleJa": "最初は怖かったです。"
+      }
+    ],
+    "searchKeywords": "scared 怖い 感情・状態"
+  },
+  {
+    "id": "w_bored",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "bored",
+    "japanese": "退屈している",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "退屈している",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "bored",
+        "example": "I was bored at home.",
+        "exampleJa": "家で退屈していました。"
+      }
+    ],
+    "searchKeywords": "bored 退屈している 感情・状態"
+  },
+  {
+    "id": "w_interested",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "interested",
+    "japanese": "興味がある",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "興味がある",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "interested",
+        "example": "I am interested in other cultures.",
+        "exampleJa": "他の文化に興味があります。"
+      }
+    ],
+    "searchKeywords": "interested 興味がある 感情・状態"
+  },
+  {
+    "id": "w_curious",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "curious",
+    "japanese": "知りたい／興味津々な",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "知りたい／興味津々な",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "curious",
+        "example": "I am curious about that.",
+        "exampleJa": "それが気になります。"
+      }
+    ],
+    "searchKeywords": "curious 知りたい／興味津々な 感情・状態"
+  },
+  {
+    "id": "w_grateful",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "grateful",
+    "japanese": "感謝している",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "感謝している",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "grateful",
+        "example": "I am grateful for your help.",
+        "exampleJa": "助けてくれて感謝しています。"
+      }
+    ],
+    "searchKeywords": "grateful 感謝している 感情・状態"
+  },
+  {
+    "id": "w_awkward",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "awkward",
+    "japanese": "気まずい／ぎこちない",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "気まずい／ぎこちない",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "awkward",
+        "example": "It was a little awkward.",
+        "exampleJa": "ちょっと気まずかったです。"
+      }
+    ],
+    "searchKeywords": "awkward 気まずい／ぎこちない 感情・状態"
+  },
+  {
+    "id": "w_exhausted",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "exhausted",
+    "japanese": "へとへとに疲れた",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "へとへとに疲れた",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "exhausted",
+        "example": "I was exhausted after work.",
+        "exampleJa": "仕事の後はへとへとでした。"
+      }
+    ],
+    "searchKeywords": "exhausted へとへとに疲れた 感情・状態"
+  },
+  {
+    "id": "w_overwhelmed",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "感情・状態",
+    "english": "overwhelmed",
+    "japanese": "いっぱいいっぱいな／圧倒された",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "いっぱいいっぱいな／圧倒された",
+        "category": "感情・状態"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "overwhelmed",
+        "example": "I feel overwhelmed right now.",
+        "exampleJa": "今ちょっといっぱいいっぱいです。"
+      }
+    ],
+    "searchKeywords": "overwhelmed いっぱいいっぱいな／圧倒された 感情・状態"
+  },
+  {
+    "id": "exp_no_way",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "リアクション",
+    "english": "No way!",
+    "japanese": "まさか！／嘘でしょ！",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "まさか！／嘘でしょ！",
+        "category": "リアクション"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "No way!",
+        "example": "No way! Really?",
+        "exampleJa": "嘘でしょ！本当に？"
+      }
+    ],
+    "example": "No way! Really?",
+    "exampleJa": "嘘でしょ！本当に？",
+    "searchKeywords": "No way! まさか！／嘘でしょ！ リアクション"
+  },
+  {
+    "id": "exp_that_s_awesome",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "リアクション",
+    "english": "That's awesome!",
+    "japanese": "それ最高！",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "それ最高！",
+        "category": "リアクション"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "That's awesome!",
+        "example": "That's awesome! I'm so happy for you.",
+        "exampleJa": "それ最高！本当によかったね。"
+      }
+    ],
+    "example": "That's awesome! I'm so happy for you.",
+    "exampleJa": "それ最高！本当によかったね。",
+    "searchKeywords": "That's awesome! それ最高！ リアクション"
+  },
+  {
+    "id": "exp_that_s_too_bad",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "リアクション",
+    "english": "That's too bad.",
+    "japanese": "それは残念だね",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "それは残念だね",
+        "category": "リアクション"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "That's too bad.",
+        "example": "That's too bad. I hope things get better.",
+        "exampleJa": "それは残念だね。よくなるといいね。"
+      }
+    ],
+    "example": "That's too bad. I hope things get better.",
+    "exampleJa": "それは残念だね。よくなるといいね。",
+    "searchKeywords": "That's too bad. それは残念だね リアクション"
+  },
+  {
+    "id": "exp_that_s_crazy",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "リアクション",
+    "english": "That's crazy!",
+    "japanese": "それすごい！／やばい！",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "それすごい！／やばい！",
+        "category": "リアクション"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "That's crazy!",
+        "example": "That's crazy! I can't believe it.",
+        "exampleJa": "それすごい！信じられない。"
+      }
+    ],
+    "example": "That's crazy! I can't believe it.",
+    "exampleJa": "それすごい！信じられない。",
+    "searchKeywords": "That's crazy! それすごい！／やばい！ リアクション"
+  },
+  {
+    "id": "exp_i_know_what_you_mean",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "リアクション",
+    "english": "I know what you mean.",
+    "japanese": "言いたいこと分かる",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "言いたいこと分かる",
+        "category": "リアクション"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I know what you mean.",
+        "example": "I know what you mean. I feel the same way.",
+        "exampleJa": "言いたいこと分かる。私も同じように感じる。"
+      }
+    ],
+    "example": "I know what you mean. I feel the same way.",
+    "exampleJa": "言いたいこと分かる。私も同じように感じる。",
+    "searchKeywords": "I know what you mean. 言いたいこと分かる リアクション"
+  },
+  {
+    "id": "exp_that_makes_sense",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "リアクション",
+    "english": "That makes sense.",
+    "japanese": "なるほど／それなら納得",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "なるほど／それなら納得",
+        "category": "リアクション"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "That makes sense.",
+        "example": "Oh, that makes sense.",
+        "exampleJa": "ああ、なるほど。"
+      }
+    ],
+    "example": "Oh, that makes sense.",
+    "exampleJa": "ああ、なるほど。",
+    "searchKeywords": "That makes sense. なるほど／それなら納得 リアクション"
+  },
+  {
+    "id": "exp_me_too",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "リアクション",
+    "english": "Me too.",
+    "japanese": "私も",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "私も",
+        "category": "リアクション"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Me too.",
+        "example": "I love traveling. — Me too!",
+        "exampleJa": "旅行が大好き。— 私も！"
+      }
+    ],
+    "example": "I love traveling. — Me too!",
+    "exampleJa": "旅行が大好き。— 私も！",
+    "searchKeywords": "Me too. 私も リアクション"
+  },
+  {
+    "id": "exp_me_neither",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "リアクション",
+    "english": "Me neither.",
+    "japanese": "私も〜ない",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "私も〜ない",
+        "category": "リアクション"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Me neither.",
+        "example": "I don't like crowds. — Me neither.",
+        "exampleJa": "人混みが好きじゃない。— 私も。"
+      }
+    ],
+    "example": "I don't like crowds. — Me neither.",
+    "exampleJa": "人混みが好きじゃない。— 私も。",
+    "searchKeywords": "Me neither. 私も〜ない リアクション"
+  },
+  {
+    "id": "exp_i_can_t_believe_it",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "リアクション",
+    "english": "I can't believe it.",
+    "japanese": "信じられない",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "信じられない",
+        "category": "リアクション"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I can't believe it.",
+        "example": "I can't believe it happened.",
+        "exampleJa": "そんなことが起きたなんて信じられない。"
+      }
+    ],
+    "example": "I can't believe it happened.",
+    "exampleJa": "そんなことが起きたなんて信じられない。",
+    "searchKeywords": "I can't believe it. 信じられない リアクション"
+  },
+  {
+    "id": "exp_are_you_serious",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "リアクション",
+    "english": "Are you serious?",
+    "japanese": "本当に？／マジで？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "本当に？／マジで？",
+        "category": "リアクション"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Are you serious?",
+        "example": "Are you serious? That is amazing.",
+        "exampleJa": "本当に？すごいね。"
+      }
+    ],
+    "example": "Are you serious? That is amazing.",
+    "exampleJa": "本当に？すごいね。",
+    "searchKeywords": "Are you serious? 本当に？／マジで？ リアクション"
+  },
+  {
+    "id": "exp_good_for_you",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "リアクション",
+    "english": "Good for you!",
+    "japanese": "よかったね！",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "よかったね！",
+        "category": "リアクション"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Good for you!",
+        "example": "You finally did it? Good for you!",
+        "exampleJa": "ついにできたの？よかったね！"
+      }
+    ],
+    "example": "You finally did it? Good for you!",
+    "exampleJa": "ついにできたの？よかったね！",
+    "searchKeywords": "Good for you! よかったね！ リアクション"
+  },
+  {
+    "id": "exp_i_m_glad_to_hear_that",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "リアクション",
+    "english": "I'm glad to hear that.",
+    "japanese": "それを聞けて嬉しい",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "それを聞けて嬉しい",
+        "category": "リアクション"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I'm glad to hear that.",
+        "example": "I'm glad to hear that you're doing well.",
+        "exampleJa": "元気にしていると聞けて嬉しい。"
+      }
+    ],
+    "example": "I'm glad to hear that you're doing well.",
+    "exampleJa": "元気にしていると聞けて嬉しい。",
+    "searchKeywords": "I'm glad to hear that. それを聞けて嬉しい リアクション"
+  },
+  {
+    "id": "exp_i_m_sorry_to_hear_that",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "リアクション",
+    "english": "I'm sorry to hear that.",
+    "japanese": "それは大変だったね／残念だね",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "それは大変だったね／残念だね",
+        "category": "リアクション"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I'm sorry to hear that.",
+        "example": "I'm sorry to hear that. Are you okay?",
+        "exampleJa": "それは大変だったね。大丈夫？"
+      }
+    ],
+    "example": "I'm sorry to hear that. Are you okay?",
+    "exampleJa": "それは大変だったね。大丈夫？",
+    "searchKeywords": "I'm sorry to hear that. それは大変だったね／残念だね リアクション"
+  },
+  {
+    "id": "exp_fair_enough",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "リアクション",
+    "english": "Fair enough.",
+    "japanese": "まあ、それなら分かる／それももっとも",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "まあ、それなら分かる／それももっとも",
+        "category": "リアクション"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Fair enough.",
+        "example": "Fair enough. I understand.",
+        "exampleJa": "それなら分かるよ。"
+      }
+    ],
+    "example": "Fair enough. I understand.",
+    "exampleJa": "それなら分かるよ。",
+    "searchKeywords": "Fair enough. まあ、それなら分かる／それももっとも リアクション"
+  },
+  {
+    "id": "exp_you_re_kidding",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "リアクション",
+    "english": "You're kidding!",
+    "japanese": "冗談でしょ！／まさか！",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "冗談でしょ！／まさか！",
+        "category": "リアクション"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "You're kidding!",
+        "example": "You're kidding! That really happened?",
+        "exampleJa": "冗談でしょ！本当にそんなことあったの？"
+      }
+    ],
+    "example": "You're kidding! That really happened?",
+    "exampleJa": "冗談でしょ！本当にそんなことあったの？",
+    "searchKeywords": "You're kidding! 冗談でしょ！／まさか！ リアクション"
+  },
+  {
+    "id": "w_may",
+    "type": "word",
+    "partOfSpeech": [
+      "助動詞"
+    ],
+    "category": "推量",
+    "english": "may",
+    "japanese": "〜かもしれない",
+    "senses": [
+      {
+        "pos": "助動詞",
+        "meaning": "〜かもしれない",
+        "category": "推量"
+      }
+    ],
+    "forms": [
+      {
+        "label": "可能性",
+        "formName": "may + 動詞（原形）",
+        "example": "I may go next year.",
+        "exampleJa": "来年行くかもしれません。"
+      }
+    ],
+    "searchKeywords": "may 〜かもしれない 推量",
+    "beginnerTip": "今回は「〜かもしれない」という可能性の用法だけを学びます。"
+  },
+  {
+    "id": "exp_like_this",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "会話",
+    "english": "like this",
+    "japanese": "こんなふうに／こんな感じで／こんな〜",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "こんなふうに／こんな感じで／こんな〜",
+        "category": "会話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本用法",
+        "formName": "like this",
+        "example": "Do it like this.",
+        "exampleJa": "こんなふうにやって。"
+      },
+      {
+        "label": "時間と一緒に",
+        "formName": "at a time like this",
+        "example": "It figures they would be away at a time like this.",
+        "exampleJa": "こんな時に限って、両親がいないなんて。"
+      }
+    ],
+    "example": "Do it like this.",
+    "exampleJa": "こんなふうにやって。",
+    "searchKeywords": "like this こんなふうに／こんな感じで／こんな〜 会話"
+  },
+  {
+    "id": "exp_how_was_it",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "質問",
+    "english": "How was it?",
+    "japanese": "どうだった？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "どうだった？",
+        "category": "質問"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "How was it?",
+        "example": "How was the trip?",
+        "exampleJa": "旅行どうだった？"
+      }
+    ],
+    "example": "How was the trip?",
+    "exampleJa": "旅行どうだった？",
+    "searchKeywords": "How was it? どうだった？ 質問"
+  },
+  {
+    "id": "exp_what_was_it_like",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "質問",
+    "english": "What was it like?",
+    "japanese": "どんな感じだった？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "どんな感じだった？",
+        "category": "質問"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "What was it like?",
+        "example": "What was it like living there?",
+        "exampleJa": "そこに住むのってどんな感じだった？"
+      }
+    ],
+    "example": "What was it like living there?",
+    "exampleJa": "そこに住むのってどんな感じだった？",
+    "searchKeywords": "What was it like? どんな感じだった？ 質問"
+  },
+  {
+    "id": "exp_what_happened",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "質問",
+    "english": "What happened?",
+    "japanese": "何があったの？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "何があったの？",
+        "category": "質問"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "What happened?",
+        "example": "What happened? Are you okay?",
+        "exampleJa": "何があったの？大丈夫？"
+      }
+    ],
+    "example": "What happened? Are you okay?",
+    "exampleJa": "何があったの？大丈夫？",
+    "searchKeywords": "What happened? 何があったの？ 質問"
+  },
+  {
+    "id": "exp_what_about_you",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "質問",
+    "english": "What about you?",
+    "japanese": "あなたは？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "あなたは？",
+        "category": "質問"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "What about you?",
+        "example": "I am doing okay. What about you?",
+        "exampleJa": "私は元気だよ。あなたは？"
+      }
+    ],
+    "example": "I am doing okay. What about you?",
+    "exampleJa": "私は元気だよ。あなたは？",
+    "searchKeywords": "What about you? あなたは？ 質問"
+  },
+  {
+    "id": "exp_how_did_you_feel",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "質問",
+    "english": "How did you feel?",
+    "japanese": "どう感じた？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "どう感じた？",
+        "category": "質問"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "How did you feel?",
+        "example": "How did you feel when you heard that?",
+        "exampleJa": "それを聞いたときどう感じた？"
+      }
+    ],
+    "example": "How did you feel when you heard that?",
+    "exampleJa": "それを聞いたときどう感じた？",
+    "searchKeywords": "How did you feel? どう感じた？ 質問"
+  },
+  {
+    "id": "exp_what_do_you_think_about_ing",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "質問",
+    "english": "What do you think about + 名詞／動詞（ing形）?",
+    "japanese": "〜についてどう思う？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜についてどう思う？",
+        "category": "質問"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "What do you think about + 名詞／動詞（ing形）?",
+        "example": "What do you think about living abroad?",
+        "exampleJa": "海外で暮らすことについてどう思う？"
+      }
+    ],
+    "example": "What do you think about living abroad?",
+    "exampleJa": "海外で暮らすことについてどう思う？",
+    "searchKeywords": "What do you think about + 名詞／動詞（ing形）? 〜についてどう思う？ 質問"
+  },
+  {
+    "id": "exp_why_do_you_think",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "質問",
+    "english": "Why do you think + 文?",
+    "japanese": "どうして〜だと思う？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "どうして〜だと思う？",
+        "category": "質問"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Why do you think + 文?",
+        "example": "Why do you think that happened?",
+        "exampleJa": "どうしてそれが起きたと思う？"
+      }
+    ],
+    "example": "Why do you think that happened?",
+    "exampleJa": "どうしてそれが起きたと思う？",
+    "searchKeywords": "Why do you think + 文? どうして〜だと思う？ 質問"
+  },
+  {
+    "id": "exp_how_long_have_you",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "質問",
+    "english": "How long have you + 動詞（過去分詞）?",
+    "japanese": "どのくらい〜している？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "どのくらい〜している？",
+        "category": "質問"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "How long have you + 動詞（過去分詞）?",
+        "example": "How long have you lived there?",
+        "exampleJa": "そこにどのくらい住んでる？"
+      }
+    ],
+    "example": "How long have you lived there?",
+    "exampleJa": "そこにどのくらい住んでる？",
+    "searchKeywords": "How long have you + 動詞（過去分詞）? どのくらい〜している？ 質問"
+  },
+  {
+    "id": "exp_what_kind_of",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "質問",
+    "english": "What kind of + 名詞 ...?",
+    "japanese": "どんな〜？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "どんな〜？",
+        "category": "質問"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "What kind of + 名詞 ...?",
+        "example": "What kind of music do you like?",
+        "exampleJa": "どんな音楽が好き？"
+      }
+    ],
+    "example": "What kind of music do you like?",
+    "exampleJa": "どんな音楽が好き？",
+    "searchKeywords": "What kind of + 名詞 ...? どんな〜？ 質問"
+  },
+  {
+    "id": "exp_which_one_do_you_like_better",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "質問",
+    "english": "Which one do you like better?",
+    "japanese": "どっちの方が好き？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "どっちの方が好き？",
+        "category": "質問"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Which one do you like better?",
+        "example": "Which one do you like better?",
+        "exampleJa": "どっちの方が好き？"
+      }
+    ],
+    "example": "Which one do you like better?",
+    "exampleJa": "どっちの方が好き？",
+    "searchKeywords": "Which one do you like better? どっちの方が好き？ 質問"
+  },
+  {
+    "id": "exp_tell_me_more",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "質問",
+    "english": "Tell me more.",
+    "japanese": "もっと聞かせて",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "もっと聞かせて",
+        "category": "質問"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Tell me more.",
+        "example": "That sounds interesting. Tell me more.",
+        "exampleJa": "面白そう。もっと聞かせて。"
+      }
+    ],
+    "example": "That sounds interesting. Tell me more.",
+    "exampleJa": "面白そう。もっと聞かせて。",
+    "searchKeywords": "Tell me more. もっと聞かせて 質問"
+  },
+  {
+    "id": "exp_how_did_it_go",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "質問",
+    "english": "How did it go?",
+    "japanese": "どうだった？／うまくいった？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "どうだった？／うまくいった？",
+        "category": "質問"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "How did it go?",
+        "example": "How did the interview go?",
+        "exampleJa": "面接どうだった？"
+      }
+    ],
+    "example": "How did the interview go?",
+    "exampleJa": "面接どうだった？",
+    "searchKeywords": "How did it go? どうだった？／うまくいった？ 質問"
+  },
+  {
+    "id": "exp_then_what_happened",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "質問",
+    "english": "Then what happened?",
+    "japanese": "それでどうなったの？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "それでどうなったの？",
+        "category": "質問"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Then what happened?",
+        "example": "Then what happened after that?",
+        "exampleJa": "それで、そのあとどうなったの？"
+      }
+    ],
+    "example": "Then what happened after that?",
+    "exampleJa": "それで、そのあとどうなったの？",
+    "searchKeywords": "Then what happened? それでどうなったの？ 質問"
+  },
+  {
+    "id": "exp_how_come",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "質問",
+    "english": "How come?",
+    "japanese": "どうして？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "どうして？",
+        "category": "質問"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "How come?",
+        "example": "How come you changed your mind?",
+        "exampleJa": "どうして気が変わったの？"
+      }
+    ],
+    "example": "How come you changed your mind?",
+    "exampleJa": "どうして気が変わったの？",
+    "searchKeywords": "How come? どうして？ 質問"
+  },
+  {
+    "id": "exp_what_do_you_mean_by",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "質問",
+    "english": "What do you mean by + 名詞?",
+    "japanese": "〜ってどういう意味？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜ってどういう意味？",
+        "category": "質問"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "What do you mean by + 名詞?",
+        "example": "What do you mean by that?",
+        "exampleJa": "それってどういう意味？"
+      }
+    ],
+    "example": "What do you mean by that?",
+    "exampleJa": "それってどういう意味？",
+    "searchKeywords": "What do you mean by + 名詞? 〜ってどういう意味？ 質問"
+  },
+  {
+    "id": "exp_how_do_you_know",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "質問",
+    "english": "How do you know?",
+    "japanese": "どうして分かるの？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "どうして分かるの？",
+        "category": "質問"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "How do you know?",
+        "example": "How do you know that?",
+        "exampleJa": "どうしてそれが分かるの？"
+      }
+    ],
+    "example": "How do you know that?",
+    "exampleJa": "どうしてそれが分かるの？",
+    "searchKeywords": "How do you know? どうして分かるの？ 質問"
+  },
+  {
+    "id": "exp_i_ve_been_ing",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "近況",
+    "english": "I've been + 動詞（ing形）",
+    "japanese": "最近ずっと〜している",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "最近ずっと〜している",
+        "category": "近況"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I've been + 動詞（ing形）",
+        "example": "I've been studying English every day.",
+        "exampleJa": "最近毎日英語を勉強しています。"
+      }
+    ],
+    "example": "I've been studying English every day.",
+    "exampleJa": "最近毎日英語を勉強しています。",
+    "searchKeywords": "I've been + 動詞（ing形） 最近ずっと〜している 近況"
+  },
+  {
+    "id": "exp_i_ve_just",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "近況",
+    "english": "I've just + 動詞（過去分詞）",
+    "japanese": "ちょうど〜したところ",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "ちょうど〜したところ",
+        "category": "近況"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I've just + 動詞（過去分詞）",
+        "example": "I've just finished work.",
+        "exampleJa": "ちょうど仕事が終わったところ。"
+      }
+    ],
+    "example": "I've just finished work.",
+    "exampleJa": "ちょうど仕事が終わったところ。",
+    "searchKeywords": "I've just + 動詞（過去分詞） ちょうど〜したところ 近況"
+  },
+  {
+    "id": "exp_i_haven_t_yet",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "近況",
+    "english": "I haven't + 動詞（過去分詞） + yet",
+    "japanese": "まだ〜していない",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "まだ〜していない",
+        "category": "近況"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I haven't + 動詞（過去分詞） + yet",
+        "example": "I haven't eaten yet.",
+        "exampleJa": "まだ食べてない。"
+      }
+    ],
+    "example": "I haven't eaten yet.",
+    "exampleJa": "まだ食べてない。",
+    "searchKeywords": "I haven't + 動詞（過去分詞） + yet まだ〜していない 近況"
+  },
+  {
+    "id": "exp_i_used_to",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "経験",
+    "english": "I used to + 動詞（原形）",
+    "japanese": "昔は〜していた",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "昔は〜していた",
+        "category": "経験"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I used to + 動詞（原形）",
+        "example": "I used to live there.",
+        "exampleJa": "昔そこに住んでいました。"
+      }
+    ],
+    "example": "I used to live there.",
+    "exampleJa": "昔そこに住んでいました。",
+    "searchKeywords": "I used to + 動詞（原形） 昔は〜していた 経験"
+  },
+  {
+    "id": "exp_i_m_used_to_ing",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "経験",
+    "english": "I'm used to + 名詞／動詞（ing形）",
+    "japanese": "〜に慣れている",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜に慣れている",
+        "category": "経験"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I'm used to + 名詞／動詞（ing形）",
+        "example": "I'm used to working from home.",
+        "exampleJa": "在宅勤務に慣れています。"
+      }
+    ],
+    "example": "I'm used to working from home.",
+    "exampleJa": "在宅勤務に慣れています。",
+    "searchKeywords": "I'm used to + 名詞／動詞（ing形） 〜に慣れている 経験"
+  },
+  {
+    "id": "exp_get_used_to_ing",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "経験",
+    "english": "get used to + 名詞／動詞（ing形）",
+    "japanese": "〜に慣れる",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜に慣れる",
+        "category": "経験"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "get used to + 名詞／動詞（ing形）",
+        "example": "It took time to get used to it.",
+        "exampleJa": "それに慣れるまで時間がかかりました。"
+      }
+    ],
+    "example": "It took time to get used to it.",
+    "exampleJa": "それに慣れるまで時間がかかりました。",
+    "searchKeywords": "get used to + 名詞／動詞（ing形） 〜に慣れる 経験"
+  },
+  {
+    "id": "exp_i_ended_up_ing",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "経験",
+    "english": "I ended up + 動詞（ing形）",
+    "japanese": "結局〜した",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "結局〜した",
+        "category": "経験"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I ended up + 動詞（ing形）",
+        "example": "I ended up staying home.",
+        "exampleJa": "結局家にいました。"
+      }
+    ],
+    "example": "I ended up staying home.",
+    "exampleJa": "結局家にいました。",
+    "searchKeywords": "I ended up + 動詞（ing形） 結局〜した 経験"
+  },
+  {
+    "id": "exp_it_s_been_since",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "時間",
+    "english": "It's been + 期間 + since ...",
+    "japanese": "〜してから…経った",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜してから…経った",
+        "category": "時間"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "It's been + 期間 + since ...",
+        "example": "It's been two years since we met.",
+        "exampleJa": "出会ってから2年経ったね。"
+      }
+    ],
+    "example": "It's been two years since we met.",
+    "exampleJa": "出会ってから2年経ったね。",
+    "searchKeywords": "It's been + 期間 + since ... 〜してから…経った 時間"
+  },
+  {
+    "id": "exp_i_haven_t_in_a_while",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "近況",
+    "english": "I haven't ... in a while.",
+    "japanese": "しばらく〜していない",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "しばらく〜していない",
+        "category": "近況"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I haven't ... in a while.",
+        "example": "I haven't traveled in a while.",
+        "exampleJa": "しばらく旅行していません。"
+      }
+    ],
+    "example": "I haven't traveled in a while.",
+    "exampleJa": "しばらく旅行していません。",
+    "searchKeywords": "I haven't ... in a while. しばらく〜していない 近況"
+  },
+  {
+    "id": "exp_i_ve_always_wanted_to",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "経験",
+    "english": "I've always wanted to + 動詞（原形）",
+    "japanese": "ずっと〜したかった",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "ずっと〜したかった",
+        "category": "経験"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I've always wanted to + 動詞（原形）",
+        "example": "I've always wanted to visit Colorado.",
+        "exampleJa": "ずっとコロラドに行ってみたかった。"
+      }
+    ],
+    "example": "I've always wanted to visit Colorado.",
+    "exampleJa": "ずっとコロラドに行ってみたかった。",
+    "searchKeywords": "I've always wanted to + 動詞（原形） ずっと〜したかった 経験"
+  },
+  {
+    "id": "exp_i_forgot_to",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "記憶",
+    "english": "I forgot to + 動詞（原形）",
+    "japanese": "〜するのを忘れた",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜するのを忘れた",
+        "category": "記憶"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I forgot to + 動詞（原形）",
+        "example": "I forgot to reply.",
+        "exampleJa": "返信するのを忘れた。"
+      }
+    ],
+    "example": "I forgot to reply.",
+    "exampleJa": "返信するのを忘れた。",
+    "searchKeywords": "I forgot to + 動詞（原形） 〜するのを忘れた 記憶"
+  },
+  {
+    "id": "exp_i_forgot_ing",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "記憶",
+    "english": "I forgot + 動詞（ing形）",
+    "japanese": "〜したことを忘れた",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜したことを忘れた",
+        "category": "記憶"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I forgot + 動詞（ing形）",
+        "example": "I forgot meeting him before.",
+        "exampleJa": "以前彼に会ったことを忘れていました。"
+      }
+    ],
+    "example": "I forgot meeting him before.",
+    "exampleJa": "以前彼に会ったことを忘れていました。",
+    "searchKeywords": "I forgot + 動詞（ing形） 〜したことを忘れた 記憶"
+  },
+  {
+    "id": "exp_i_remember_ing",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "記憶",
+    "english": "I remember + 動詞（ing形）",
+    "japanese": "〜したことを覚えている",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜したことを覚えている",
+        "category": "記憶"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I remember + 動詞（ing形）",
+        "example": "I remember talking about that.",
+        "exampleJa": "それについて話したのを覚えています。"
+      }
+    ],
+    "example": "I remember talking about that.",
+    "exampleJa": "それについて話したのを覚えています。",
+    "searchKeywords": "I remember + 動詞（ing形） 〜したことを覚えている 記憶"
+  },
+  {
+    "id": "exp_i_m_looking_forward_to_ing",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "感情",
+    "english": "I'm looking forward to + 名詞／動詞（ing形）",
+    "japanese": "〜を楽しみにしている",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜を楽しみにしている",
+        "category": "感情"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I'm looking forward to + 名詞／動詞（ing形）",
+        "example": "I'm looking forward to seeing you.",
+        "exampleJa": "あなたに会うのを楽しみにしています。"
+      }
+    ],
+    "example": "I'm looking forward to seeing you.",
+    "exampleJa": "あなたに会うのを楽しみにしています。",
+    "searchKeywords": "I'm looking forward to + 名詞／動詞（ing形） 〜を楽しみにしている 感情"
+  },
+  {
+    "id": "exp_i_can_t_wait_to",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "感情",
+    "english": "I can't wait to + 動詞（原形）",
+    "japanese": "〜するのが待ちきれない",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜するのが待ちきれない",
+        "category": "感情"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I can't wait to + 動詞（原形）",
+        "example": "I can't wait to see you.",
+        "exampleJa": "会うのが待ちきれない。"
+      }
+    ],
+    "example": "I can't wait to see you.",
+    "exampleJa": "会うのが待ちきれない。",
+    "searchKeywords": "I can't wait to + 動詞（原形） 〜するのが待ちきれない 感情"
+  },
+  {
+    "id": "exp_i_ve_never_thought_about_that",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "会話",
+    "english": "I've never thought about that.",
+    "japanese": "それは考えたことなかった",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "それは考えたことなかった",
+        "category": "会話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I've never thought about that.",
+        "example": "I've never thought about that before.",
+        "exampleJa": "それは今まで考えたことなかった。"
+      }
+    ],
+    "example": "I've never thought about that before.",
+    "exampleJa": "それは今まで考えたことなかった。",
+    "searchKeywords": "I've never thought about that. それは考えたことなかった 会話"
+  },
+  {
+    "id": "exp_i_didn_t_expect_that",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "会話",
+    "english": "I didn't expect that.",
+    "japanese": "それは予想してなかった",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "それは予想してなかった",
+        "category": "会話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I didn't expect that.",
+        "example": "I didn't expect that at all.",
+        "exampleJa": "それは全然予想してなかった。"
+      }
+    ],
+    "example": "I didn't expect that at all.",
+    "exampleJa": "それは全然予想してなかった。",
+    "searchKeywords": "I didn't expect that. それは予想してなかった 会話"
+  },
+  {
+    "id": "exp_i_was_about_to",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "時間",
+    "english": "I was about to + 動詞（原形）",
+    "japanese": "ちょうど〜するところだった",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "ちょうど〜するところだった",
+        "category": "時間"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I was about to + 動詞（原形）",
+        "example": "I was about to call you.",
+        "exampleJa": "ちょうど電話しようとしてた。"
+      }
+    ],
+    "example": "I was about to call you.",
+    "exampleJa": "ちょうど電話しようとしてた。",
+    "searchKeywords": "I was about to + 動詞（原形） ちょうど〜するところだった 時間"
+  },
+  {
+    "id": "exp_i_was_thinking_about_ing",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "会話",
+    "english": "I was thinking about + 名詞／動詞（ing形）",
+    "japanese": "〜について考えていた／〜しようか考えていた",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜について考えていた／〜しようか考えていた",
+        "category": "会話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I was thinking about + 名詞／動詞（ing形）",
+        "example": "I was thinking about visiting next year.",
+        "exampleJa": "来年行こうか考えてた。"
+      }
+    ],
+    "example": "I was thinking about visiting next year.",
+    "exampleJa": "来年行こうか考えてた。",
+    "searchKeywords": "I was thinking about + 名詞／動詞（ing形） 〜について考えていた／〜しようか考えていた 会話"
+  },
+  {
+    "id": "exp_i_ve_been_meaning_to",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "会話",
+    "english": "I've been meaning to + 動詞（原形）",
+    "japanese": "ずっと〜しようと思っていた",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "ずっと〜しようと思っていた",
+        "category": "会話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I've been meaning to + 動詞（原形）",
+        "example": "I've been meaning to ask you that.",
+        "exampleJa": "ずっとそれを聞こうと思ってた。"
+      }
+    ],
+    "example": "I've been meaning to ask you that.",
+    "exampleJa": "ずっとそれを聞こうと思ってた。",
+    "searchKeywords": "I've been meaning to + 動詞（原形） ずっと〜しようと思っていた 会話"
+  },
+  {
+    "id": "exp_i_feel_like",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "感情",
+    "english": "I feel like + 文",
+    "japanese": "〜な気がする",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜な気がする",
+        "category": "感情"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I feel like + 文",
+        "example": "I feel like something is wrong.",
+        "exampleJa": "何かおかしい気がする。"
+      }
+    ],
+    "example": "I feel like something is wrong.",
+    "exampleJa": "何かおかしい気がする。",
+    "searchKeywords": "I feel like + 文 〜な気がする 感情"
+  },
+  {
+    "id": "exp_i_feel_like_ing",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "感情",
+    "english": "I feel like + 動詞（ing形）",
+    "japanese": "〜したい気分",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜したい気分",
+        "category": "感情"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I feel like + 動詞（ing形）",
+        "example": "I feel like staying home today.",
+        "exampleJa": "今日は家にいたい気分。"
+      }
+    ],
+    "example": "I feel like staying home today.",
+    "exampleJa": "今日は家にいたい気分。",
+    "searchKeywords": "I feel like + 動詞（ing形） 〜したい気分 感情"
+  },
+  {
+    "id": "exp_i_don_t_feel_like_ing",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "感情",
+    "english": "I don't feel like + 動詞（ing形）",
+    "japanese": "〜する気分じゃない",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜する気分じゃない",
+        "category": "感情"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I don't feel like + 動詞（ing形）",
+        "example": "I don't feel like going out.",
+        "exampleJa": "外出する気分じゃない。"
+      }
+    ],
+    "example": "I don't feel like going out.",
+    "exampleJa": "外出する気分じゃない。",
+    "searchKeywords": "I don't feel like + 動詞（ing形） 〜する気分じゃない 感情"
+  },
+  {
+    "id": "exp_i_don_t_think",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "意見",
+    "english": "I don't think + 文",
+    "japanese": "〜ではないと思う",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜ではないと思う",
+        "category": "意見"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I don't think + 文",
+        "example": "I don't think that's a bad idea.",
+        "exampleJa": "それは悪い考えじゃないと思う。"
+      }
+    ],
+    "example": "I don't think that's a bad idea.",
+    "exampleJa": "それは悪い考えじゃないと思う。",
+    "searchKeywords": "I don't think + 文 〜ではないと思う 意見"
+  },
+  {
+    "id": "exp_it_depends_on",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "意見",
+    "english": "It depends on + 名詞",
+    "japanese": "〜による／場合による",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜による／場合による",
+        "category": "意見"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "It depends on + 名詞",
+        "example": "It depends on the weather.",
+        "exampleJa": "天気によるね。"
+      }
+    ],
+    "example": "It depends on the weather.",
+    "exampleJa": "天気によるね。",
+    "searchKeywords": "It depends on + 名詞 〜による／場合による 意見"
+  },
+  {
+    "id": "exp_that_s_why",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "理由",
+    "english": "That's why + 文",
+    "japanese": "だから〜なんだ",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "だから〜なんだ",
+        "category": "理由"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "That's why + 文",
+        "example": "That's why I was late.",
+        "exampleJa": "だから遅れたんだ。"
+      }
+    ],
+    "example": "That's why I was late.",
+    "exampleJa": "だから遅れたんだ。",
+    "searchKeywords": "That's why + 文 だから〜なんだ 理由"
+  },
+  {
+    "id": "exp_the_reason_is",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "理由",
+    "english": "The reason is ...",
+    "japanese": "理由は〜",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "理由は〜",
+        "category": "理由"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "The reason is ...",
+        "example": "The reason is simple.",
+        "exampleJa": "理由は単純です。"
+      }
+    ],
+    "example": "The reason is simple.",
+    "exampleJa": "理由は単純です。",
+    "searchKeywords": "The reason is ... 理由は〜 理由"
+  },
+  {
+    "id": "exp_to_be_honest",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "会話",
+    "english": "To be honest, ...",
+    "japanese": "正直に言うと",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "正直に言うと",
+        "category": "会話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "To be honest, ...",
+        "example": "To be honest, I was nervous.",
+        "exampleJa": "正直に言うと、緊張してた。"
+      }
+    ],
+    "example": "To be honest, I was nervous.",
+    "exampleJa": "正直に言うと、緊張してた。",
+    "searchKeywords": "To be honest, ... 正直に言うと 会話"
+  },
+  {
+    "id": "exp_i_wonder_if",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "推量",
+    "english": "I wonder if + 文",
+    "japanese": "〜かな／〜だろうか",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜かな／〜だろうか",
+        "category": "推量"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I wonder if + 文",
+        "example": "I wonder if she is okay.",
+        "exampleJa": "彼女、大丈夫かな。"
+      }
+    ],
+    "example": "I wonder if she is okay.",
+    "exampleJa": "彼女、大丈夫かな。",
+    "searchKeywords": "I wonder if + 文 〜かな／〜だろうか 推量"
+  },
+  {
+    "id": "exp_maybe_it_s_because",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "理由",
+    "english": "Maybe it's because + 文",
+    "japanese": "もしかしたら〜だからかも",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "もしかしたら〜だからかも",
+        "category": "理由"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Maybe it's because + 文",
+        "example": "Maybe it's because I'm tired.",
+        "exampleJa": "もしかしたら疲れてるからかも。"
+      }
+    ],
+    "example": "Maybe it's because I'm tired.",
+    "exampleJa": "もしかしたら疲れてるからかも。",
+    "searchKeywords": "Maybe it's because + 文 もしかしたら〜だからかも 理由"
+  },
+  {
+    "id": "exp_i_don_t_really",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "ニュアンス",
+    "english": "I don't really + 動詞（原形）",
+    "japanese": "あまり〜しない／そこまで〜ではない",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "あまり〜しない／そこまで〜ではない",
+        "category": "ニュアンス"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I don't really + 動詞（原形）",
+        "example": "I don't really watch TV.",
+        "exampleJa": "テレビはあまり見ない。"
+      }
+    ],
+    "example": "I don't really watch TV.",
+    "exampleJa": "テレビはあまり見ない。",
+    "searchKeywords": "I don't really + 動詞（原形） あまり〜しない／そこまで〜ではない ニュアンス"
+  },
+  {
+    "id": "exp_i_kind_of",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "ニュアンス",
+    "english": "I kind of + 動詞／形容詞",
+    "japanese": "ちょっと〜／なんとなく〜",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "ちょっと〜／なんとなく〜",
+        "category": "ニュアンス"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I kind of + 動詞／形容詞",
+        "example": "I kind of miss it.",
+        "exampleJa": "ちょっと恋しいかも。"
+      }
+    ],
+    "example": "I kind of miss it.",
+    "exampleJa": "ちょっと恋しいかも。",
+    "searchKeywords": "I kind of + 動詞／形容詞 ちょっと〜／なんとなく〜 ニュアンス"
+  },
+  {
+    "id": "exp_it_feels_like",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "感情",
+    "english": "It feels like + 文",
+    "japanese": "〜のように感じる",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜のように感じる",
+        "category": "感情"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "It feels like + 文",
+        "example": "It feels like time is going so fast.",
+        "exampleJa": "時間がすごく早く過ぎてる気がする。"
+      }
+    ],
+    "example": "It feels like time is going so fast.",
+    "exampleJa": "時間がすごく早く過ぎてる気がする。",
+    "searchKeywords": "It feels like + 文 〜のように感じる 感情"
+  },
+  {
+    "id": "exp_it_seems_like",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "推量",
+    "english": "It seems like + 文",
+    "japanese": "〜みたい／〜のように思える",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜みたい／〜のように思える",
+        "category": "推量"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "It seems like + 文",
+        "example": "It seems like everyone is busy.",
+        "exampleJa": "みんな忙しいみたい。"
+      }
+    ],
+    "example": "It seems like everyone is busy.",
+    "exampleJa": "みんな忙しいみたい。",
+    "searchKeywords": "It seems like + 文 〜みたい／〜のように思える 推量"
+  },
+  {
+    "id": "exp_as_far_as_i_know",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "意見",
+    "english": "As far as I know, ...",
+    "japanese": "私の知る限りでは",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "私の知る限りでは",
+        "category": "意見"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "As far as I know, ...",
+        "example": "As far as I know, she is doing well.",
+        "exampleJa": "私の知る限り、彼女は元気だよ。"
+      }
+    ],
+    "example": "As far as I know, she is doing well.",
+    "exampleJa": "私の知る限り、彼女は元気だよ。",
+    "searchKeywords": "As far as I know, ... 私の知る限りでは 意見"
+  },
+  {
+    "id": "exp_if_you_ask_me",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "意見",
+    "english": "If you ask me, ...",
+    "japanese": "私に言わせれば／私としては",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "私に言わせれば／私としては",
+        "category": "意見"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "If you ask me, ...",
+        "example": "If you ask me, it was worth it.",
+        "exampleJa": "私としては、やる価値があったと思う。"
+      }
+    ],
+    "example": "If you ask me, it was worth it.",
+    "exampleJa": "私としては、やる価値があったと思う。",
+    "searchKeywords": "If you ask me, ... 私に言わせれば／私としては 意見"
+  },
+  {
+    "id": "exp_the_thing_is",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "会話",
+    "english": "The thing is, ...",
+    "japanese": "実は／問題は〜なんだ",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "実は／問題は〜なんだ",
+        "category": "会話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "The thing is, ...",
+        "example": "The thing is, I do not have much time.",
+        "exampleJa": "実は、あまり時間がないんだ。"
+      }
+    ],
+    "example": "The thing is, I do not have much time.",
+    "exampleJa": "実は、あまり時間がないんだ。",
+    "searchKeywords": "The thing is, ... 実は／問題は〜なんだ 会話"
+  },
+  {
+    "id": "exp_make_sure",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "句動詞",
+    "english": "make sure",
+    "japanese": "確認する／必ず〜する",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "確認する／必ず〜する",
+        "category": "句動詞"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "make sure",
+        "example": "Make sure you bring your passport.",
+        "exampleJa": "パスポートを忘れずに持ってきて。"
+      }
+    ],
+    "example": "Make sure you bring your passport.",
+    "exampleJa": "パスポートを忘れずに持ってきて。",
+    "searchKeywords": "make sure 確認する／必ず〜する 句動詞"
+  },
+  {
+    "id": "exp_figure_out",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "句動詞",
+    "english": "figure out",
+    "japanese": "理解する／解決方法を見つける",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "理解する／解決方法を見つける",
+        "category": "句動詞"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "figure out",
+        "example": "I finally figured it out.",
+        "exampleJa": "やっと分かった。"
+      }
+    ],
+    "example": "I finally figured it out.",
+    "exampleJa": "やっと分かった。",
+    "searchKeywords": "figure out 理解する／解決方法を見つける 句動詞"
+  },
+  {
+    "id": "exp_work_out",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "句動詞",
+    "english": "work out",
+    "japanese": "うまくいく／解決する",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "うまくいく／解決する",
+        "category": "句動詞"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "work out",
+        "example": "I hope everything works out.",
+        "exampleJa": "全部うまくいくといいね。"
+      }
+    ],
+    "example": "I hope everything works out.",
+    "exampleJa": "全部うまくいくといいね。",
+    "searchKeywords": "work out うまくいく／解決する 句動詞"
+  },
+  {
+    "id": "exp_deal_with",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "句動詞",
+    "english": "deal with",
+    "japanese": "〜に対処する",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜に対処する",
+        "category": "句動詞"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "deal with",
+        "example": "I do not know how to deal with this.",
+        "exampleJa": "これにどう対処すればいいか分からない。"
+      }
+    ],
+    "example": "I do not know how to deal with this.",
+    "exampleJa": "これにどう対処すればいいか分からない。",
+    "searchKeywords": "deal with 〜に対処する 句動詞"
+  },
+  {
+    "id": "exp_get_along_with",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "句動詞",
+    "english": "get along with",
+    "japanese": "〜と仲良くやる",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜と仲良くやる",
+        "category": "句動詞"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "get along with",
+        "example": "I get along well with her.",
+        "exampleJa": "彼女とは仲がいいです。"
+      }
+    ],
+    "example": "I get along well with her.",
+    "exampleJa": "彼女とは仲がいいです。",
+    "searchKeywords": "get along with 〜と仲良くやる 句動詞"
+  },
+  {
+    "id": "exp_come_up_with",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "句動詞",
+    "english": "come up with",
+    "japanese": "〜を思いつく",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜を思いつく",
+        "category": "句動詞"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "come up with",
+        "example": "I came up with an idea.",
+        "exampleJa": "アイデアを思いつきました。"
+      }
+    ],
+    "example": "I came up with an idea.",
+    "exampleJa": "アイデアを思いつきました。",
+    "searchKeywords": "come up with 〜を思いつく 句動詞"
+  },
+  {
+    "id": "exp_run_out_of",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "句動詞",
+    "english": "run out of",
+    "japanese": "〜を使い切る／〜がなくなる",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜を使い切る／〜がなくなる",
+        "category": "句動詞"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "run out of",
+        "example": "We ran out of time.",
+        "exampleJa": "時間がなくなりました。"
+      }
+    ],
+    "example": "We ran out of time.",
+    "exampleJa": "時間がなくなりました。",
+    "searchKeywords": "run out of 〜を使い切る／〜がなくなる 句動詞"
+  },
+  {
+    "id": "exp_by_the_way",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "会話",
+    "english": "by the way",
+    "japanese": "ところで",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "ところで",
+        "category": "会話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "by the way",
+        "example": "By the way, how is Pumpkin?",
+        "exampleJa": "ところで、Pumpkinは元気？"
+      }
+    ],
+    "example": "By the way, how is Pumpkin?",
+    "exampleJa": "ところで、Pumpkinは元気？",
+    "searchKeywords": "by the way ところで 会話"
+  },
+  {
+    "id": "exp_at_least",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "ニュアンス",
+    "english": "at least",
+    "japanese": "少なくとも／せめて",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "少なくとも／せめて",
+        "category": "ニュアンス"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "at least",
+        "example": "At least we tried.",
+        "exampleJa": "少なくともやってみたよ。"
+      }
+    ],
+    "example": "At least we tried.",
+    "exampleJa": "少なくともやってみたよ。",
+    "searchKeywords": "at least 少なくとも／せめて ニュアンス"
+  },
+  {
+    "id": "exp_out_of_the_blue",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "会話",
+    "english": "out of the blue",
+    "japanese": "突然／予想外に",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "突然／予想外に",
+        "category": "会話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "out of the blue",
+        "example": "She called me out of the blue.",
+        "exampleJa": "彼女から突然電話がきました。"
+      }
+    ],
+    "example": "She called me out of the blue.",
+    "exampleJa": "彼女から突然電話がきました。",
+    "searchKeywords": "out of the blue 突然／予想外に 会話"
   }
 ];
