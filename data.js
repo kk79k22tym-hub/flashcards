@@ -59,12 +59,12 @@ const rawDatabase = [
       "動詞"
     ],
     "category": "基本動詞",
-    "english": "have",
-    "japanese": "持っている／ある",
+    "english": "have + 名詞",
+    "japanese": "持っている",
     "senses": [
       {
         "pos": "動詞",
-        "meaning": "持っている／ある",
+        "meaning": "持っている",
         "category": "基本動詞"
       },
       {
@@ -77,41 +77,27 @@ const rawDatabase = [
     ],
     "forms": [
       {
-        "label": "原形",
-        "formName": "have",
-        "example": "I have a question.",
-        "exampleJa": "質問があります。"
+        "label": "基本形",
+        "formName": "have + 名詞",
+        "example": "I have a car.",
+        "exampleJa": "車を持っています。"
       },
       {
         "label": "三人称単数現在",
-        "formName": "has",
+        "formName": "has + 名詞",
         "example": "She has a dog.",
         "exampleJa": "彼女は犬を飼っています。"
       },
       {
         "label": "過去形",
-        "formName": "had",
-        "example": "I had enough time.",
-        "exampleJa": "十分な時間がありました。"
-      },
-      {
-        "label": "過去分詞",
-        "formName": "had",
-        "example": "I have had this bag for years.",
-        "exampleJa": "このバッグを何年も使っています。",
-        "needsHint": true
-      },
-      {
-        "label": "ing形",
-        "formName": "having",
-        "example": "We are having lunch.",
-        "exampleJa": "私たちは昼食を食べています。",
-        "needsHint": true
+        "formName": "had + 名詞",
+        "example": "I had a car.",
+        "exampleJa": "車を持っていました。"
       }
     ],
     "changeType": "不規則 A-B-B",
-    "beginnerTip": "have to は別の表現カードで学びます。have got との違いは、have got のカードで確認します。",
-    "searchKeywords": "have 持っている／ある 持っている／ある 基本動詞"
+    "beginnerTip": "have は「持っている」。had はその過去形で「持っていた」。現在完了・過去完了の have/had + 動詞（過去分詞）は別カードで学びます。",
+    "searchKeywords": "have 持っている／ある 持っている／ある 基本動詞 have + 名詞 had + 名詞"
   },
   {
     "id": "v_do",
@@ -1517,11 +1503,11 @@ const rawDatabase = [
     ],
     "category": "日常生活",
     "english": "use",
-    "japanese": "使う",
+    "japanese": "使う（利用する）",
     "senses": [
       {
         "pos": "動詞",
-        "meaning": "使う",
+        "meaning": "使う（利用する）",
         "category": "日常生活"
       }
     ],
@@ -1558,7 +1544,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則変化 (-ed)",
-    "searchKeywords": "use 使う 使う 日常生活"
+    "searchKeywords": "use 使う 使う 日常生活 使う（利用する）"
   },
   {
     "id": "v_work",
@@ -4048,6 +4034,12 @@ const rawDatabase = [
         "pos": "表現",
         "meaning": "ちょっと／なんとなく／ある意味",
         "category": "会話"
+      },
+      {
+        "pos": "表現",
+        "meaning": "まあそんな感じ！／だいたいそんな感じ！",
+        "example": "Kind of!",
+        "exampleJa": "まあそんな感じ！"
       }
     ],
     "forms": [
@@ -5867,11 +5859,11 @@ const rawDatabase = [
     ],
     "category": "時間・お金",
     "english": "spend",
-    "japanese": "使う／過ごす",
+    "japanese": "使う（費やす／過ごす）",
     "senses": [
       {
         "pos": "動詞",
-        "meaning": "使う／過ごす",
+        "meaning": "使う（費やす／過ごす）",
         "category": "時間・お金"
       }
     ],
@@ -5910,7 +5902,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則変化",
-    "searchKeywords": "spend 使う／過ごす 使う／過ごす 時間・お金"
+    "searchKeywords": "spend 使う／過ごす 使う／過ごす 時間・お金 使う（費やす／過ごす）"
   },
   {
     "id": "v_choose",
@@ -6932,6 +6924,18 @@ const rawDatabase = [
         "pos": "副詞",
         "meaning": "〜さえ／〜すら",
         "category": "強調"
+      },
+      {
+        "pos": "表現",
+        "meaning": "さらに〜（比較級を強める）",
+        "example": "This is even better.",
+        "exampleJa": "これはさらにいいです。"
+      },
+      {
+        "pos": "表現",
+        "meaning": "〜さえしない（not even）",
+        "example": "I didn't even know that.",
+        "exampleJa": "そのことさえ知りませんでした。"
       }
     ],
     "forms": [
@@ -6943,7 +6947,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "searchKeywords": "even 〜さえ／〜すら 〜さえ／〜すら 強調"
+    "searchKeywords": "even 〜さえ／〜すら 〜さえ／〜すら 強調 even + 比較級 not even"
   },
   {
     "id": "adv_ever",
@@ -9742,7 +9746,8 @@ const rawDatabase = [
     ],
     "example": "Fair enough. I understand.",
     "exampleJa": "それなら分かるよ。",
-    "searchKeywords": "Fair enough. まあ、それなら分かる／それももっとも リアクション"
+    "searchKeywords": "Fair enough. まあ、それなら分かる／それももっとも リアクション",
+    "beginnerTip": "完全に同意するとは限らないけど、言ってることには納得できる。"
   },
   {
     "id": "exp_you_re_kidding",
@@ -11409,12 +11414,24 @@ const rawDatabase = [
     ],
     "category": "句動詞",
     "english": "deal with",
-    "japanese": "〜に対処する",
+    "japanese": "対処する／相手をする／扱う",
     "senses": [
       {
         "pos": "表現",
-        "meaning": "〜に対処する",
+        "meaning": "対処する／相手をする／扱う",
         "category": "句動詞"
+      },
+      {
+        "pos": "表現",
+        "meaning": "相手をする",
+        "example": "I deal with customers every day.",
+        "exampleJa": "毎日お客さんの相手をしています。"
+      },
+      {
+        "pos": "表現",
+        "meaning": "扱う",
+        "example": "This book deals with friendship.",
+        "exampleJa": "この本は友情を扱っています。"
       }
     ],
     "forms": [
@@ -11427,7 +11444,7 @@ const rawDatabase = [
     ],
     "example": "I do not know how to deal with this.",
     "exampleJa": "これにどう対処すればいいか分からない。",
-    "searchKeywords": "deal with 〜に対処する 句動詞"
+    "searchKeywords": "deal with 〜に対処する 句動詞 対処する／相手をする／扱う"
   },
   {
     "id": "exp_get_along_with",
@@ -11596,5 +11613,121 @@ const rawDatabase = [
     "example": "She called me out of the blue.",
     "exampleJa": "彼女から突然電話がきました。",
     "searchKeywords": "out of the blue 突然／予想外に 会話"
+  },
+  {
+    "id": "grammar_have_past_participle",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "have + 動詞（過去分詞）",
+    "japanese": "〜した／〜したことがある／ずっと〜している",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜した／〜したことがある／ずっと〜している",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "have + 動詞（過去分詞）",
+        "example": "I have visited Kyoto twice.",
+        "exampleJa": "京都を2回訪れたことがあります。"
+      }
+    ],
+    "example": "I have visited Kyoto twice.",
+    "exampleJa": "京都を2回訪れたことがあります。",
+    "beginnerTip": "現在完了。経験・完了・継続などを表します。「まだ〜していない」は haven’t ... yet、「〜したことがない」は have never ... など、否定表現を使います。",
+    "searchKeywords": "have + 動詞（過去分詞） 〜した／〜したことがある／ずっと〜している 文法"
+  },
+  {
+    "id": "grammar_had_past_participle",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "had + 動詞（過去分詞）",
+    "japanese": "〜していた／〜し終わっていた（過去のある時点より前）",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜していた／〜し終わっていた（過去のある時点より前）",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "had + 動詞（過去分詞）",
+        "example": "I had already eaten when she called.",
+        "exampleJa": "彼女から電話が来たとき、私はすでに食べ終わっていました。"
+      }
+    ],
+    "example": "I had already eaten when she called.",
+    "exampleJa": "彼女から電話が来たとき、私はすでに食べ終わっていました。",
+    "beginnerTip": "過去完了。過去のある時点より前に起きたことを表します。",
+    "searchKeywords": "had + 動詞（過去分詞） 〜していた／〜し終わっていた（過去のある時点より前） 文法"
+  },
+  {
+    "id": "exp_even_though",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "even though + 文",
+    "japanese": "〜なのに／〜だけど",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜なのに／〜だけど",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "even though + 文",
+        "example": "Even though I was tired, I went out.",
+        "exampleJa": "疲れていたけど、出かけました。"
+      }
+    ],
+    "example": "Even though I was tired, I went out.",
+    "exampleJa": "疲れていたけど、出かけました。",
+    "beginnerTip": "実際にそうである事実と対照的なことを述べます。",
+    "searchKeywords": "even though + 文 〜なのに／〜だけど 文法"
+  },
+  {
+    "id": "exp_even_if",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "even if + 文",
+    "japanese": "たとえ〜でも",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "たとえ〜でも",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "even if + 文",
+        "example": "Even if it rains, I will go.",
+        "exampleJa": "たとえ雨が降っても行きます。"
+      }
+    ],
+    "example": "Even if it rains, I will go.",
+    "exampleJa": "たとえ雨が降っても行きます。",
+    "beginnerTip": "仮定した条件でも結果は変わらないときに使います。",
+    "searchKeywords": "even if + 文 たとえ〜でも 文法"
   }
 ];
