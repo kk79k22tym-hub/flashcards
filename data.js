@@ -1,3 +1,4 @@
+// Flashcards vocabulary: existing 1-200 + 301-400 + later 100 items.
 const rawDatabase = [
   {
     "id": "v_be",
@@ -4101,26 +4102,42 @@ const rawDatabase = [
     ],
     "category": "会話",
     "english": "of course",
-    "japanese": "もちろん",
+    "japanese": "もちろん！",
     "senses": [
       {
         "pos": "表現",
-        "meaning": "もちろん",
-        "category": "会話"
+        "meaning": "もちろん！（快く承諾する）",
+        "category": "会話",
+        "example": "A: Can you help me?\nB: Of course!",
+        "exampleJa": "A: 手伝ってくれる？\nB: もちろん！"
+      },
+      {
+        "pos": "表現",
+        "meaning": "そっか、そりゃそうだよね（納得・気づき）",
+        "category": "会話",
+        "example": "A: She's tired. She worked all night.\nB: Oh, of course.",
+        "exampleJa": "A: 彼女、徹夜で働いて疲れてるんだ。\nB: ああ、そっか。そりゃそうだよね。"
+      },
+      {
+        "pos": "表現",
+        "meaning": "当然でしょ！（強い確信）",
+        "category": "会話",
+        "example": "A: Do you love your family?\nB: Of course!",
+        "exampleJa": "A: 家族のこと好き？\nB: もちろん！"
       }
     ],
     "forms": [
       {
         "label": "基本形",
         "formName": "of course",
-        "example": "Of course I remember you.",
-        "exampleJa": "もちろんあなたのことを覚えています。"
+        "example": "Can you help me? Of course!",
+        "exampleJa": "手伝ってくれる？ もちろん！"
       }
     ],
-    "example": "Of course I remember you.",
-    "exampleJa": "もちろんあなたのことを覚えています。",
-    "searchKeywords": "of course もちろん もちろん 会話",
-    "beginnerTip": "Of course. は「言うまでもなく／もちろん」という、やや強めの返事です。気軽な「いいよ」は Sure. が自然です。"
+    "example": "Of course!",
+    "exampleJa": "もちろん！",
+    "searchKeywords": "of course もちろん 快く承諾 納得 気づき そっか そりゃそうだよね 当然でしょ 会話",
+    "beginnerTip": "「もちろん！」という快い承諾だけでなく、理由を聞いて「考えてみれば当然だ」と納得したときにも使います。言い方や状況によっては「当然でしょ！」と強く響くこともあります。"
   },
   {
     "id": "exp_i_think",
@@ -11729,5 +11746,4256 @@ const rawDatabase = [
     "exampleJa": "たとえ雨が降っても行きます。",
     "beginnerTip": "仮定した条件でも結果は変わらないときに使います。",
     "searchKeywords": "even if + 文 たとえ〜でも 文法"
+  },
+  {
+    "id": "q_what",
+    "type": "word",
+    "partOfSpeech": [
+      "疑問詞"
+    ],
+    "category": "質問",
+    "english": "what",
+    "japanese": "何／どんな",
+    "senses": [
+      {
+        "pos": "疑問詞",
+        "meaning": "何",
+        "category": "質問"
+      },
+      {
+        "pos": "疑問詞",
+        "meaning": "どんな〜／何の〜（what + 名詞）",
+        "category": "質問",
+        "example": "What kind of music do you like?",
+        "exampleJa": "どんな音楽が好きですか？"
+      },
+      {
+        "pos": "疑問詞",
+        "meaning": "なんて〜だ（感嘆）",
+        "category": "感嘆",
+        "example": "What a nice day!",
+        "exampleJa": "なんて素敵な日でしょう！"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "what",
+        "example": "What do you want to eat?",
+        "exampleJa": "何が食べたいですか？"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "what は「何」です。what time（何時）、what kind of（どんな種類の）のように、名詞とセットでもよく使います。",
+    "searchKeywords": "what 何／どんな 何 どんな〜／何の〜（what + 名詞） なんて〜だ（感嘆） 質問"
+  },
+  {
+    "id": "q_when",
+    "type": "word",
+    "partOfSpeech": [
+      "疑問詞",
+      "接続詞"
+    ],
+    "category": "質問",
+    "english": "when",
+    "japanese": "いつ／〜するとき",
+    "senses": [
+      {
+        "pos": "疑問詞",
+        "meaning": "いつ",
+        "category": "質問"
+      },
+      {
+        "pos": "接続詞",
+        "meaning": "〜するとき",
+        "category": "つなぎ",
+        "example": "Call me when you get home.",
+        "exampleJa": "家に着いたら電話してね。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "when",
+        "example": "When does the movie start?",
+        "exampleJa": "映画はいつ始まりますか？"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "疑問文の when は「いつ」、文をつなぐ when は「〜するとき」です。when のあとは、未来のことでも現在形で言います（Call me when you get home.）。",
+    "searchKeywords": "when いつ／〜するとき いつ 〜するとき 質問"
+  },
+  {
+    "id": "q_where",
+    "type": "word",
+    "partOfSpeech": [
+      "疑問詞"
+    ],
+    "category": "質問",
+    "english": "where",
+    "japanese": "どこ／〜する場所",
+    "senses": [
+      {
+        "pos": "疑問詞",
+        "meaning": "どこ（に・で）",
+        "category": "質問"
+      },
+      {
+        "pos": "疑問詞",
+        "meaning": "〜する場所",
+        "category": "つなぎ",
+        "example": "This is where I work.",
+        "exampleJa": "ここが私の働いている場所です。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "where",
+        "example": "Where do you live?",
+        "exampleJa": "どこに住んでいますか？"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "Where are you from?（出身はどこ？）のように、前置詞が文末に残る形をよく使います。",
+    "searchKeywords": "where どこ／〜する場所 どこ（に・で） 〜する場所 質問"
+  },
+  {
+    "id": "q_who",
+    "type": "word",
+    "partOfSpeech": [
+      "疑問詞"
+    ],
+    "category": "質問",
+    "english": "who",
+    "japanese": "誰／〜する人",
+    "senses": [
+      {
+        "pos": "疑問詞",
+        "meaning": "誰",
+        "category": "質問"
+      },
+      {
+        "pos": "疑問詞",
+        "meaning": "〜する人",
+        "category": "つなぎ",
+        "example": "I know the girl who lives there.",
+        "exampleJa": "そこに住んでいる女の子を知っています。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "who",
+        "example": "Who is this?",
+        "exampleJa": "どちら様ですか？"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "電話では Who is this?（どちら様ですか？）と相手をたずねられます。",
+    "searchKeywords": "who 誰／〜する人 誰 〜する人 質問"
+  },
+  {
+    "id": "q_why",
+    "type": "word",
+    "partOfSpeech": [
+      "疑問詞"
+    ],
+    "category": "質問",
+    "english": "why",
+    "japanese": "なぜ／どうして",
+    "senses": [
+      {
+        "pos": "疑問詞",
+        "meaning": "なぜ",
+        "category": "質問"
+      },
+      {
+        "pos": "疑問詞",
+        "meaning": "だから〜（that's why）",
+        "category": "つなぎ",
+        "example": "That's why I called you.",
+        "exampleJa": "だからあなたに電話したんです。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "why",
+        "example": "Why are you so tired?",
+        "exampleJa": "なぜそんなに疲れているのですか？"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "答えは Because ... で言います。「〜しない？」と誘う Why don't we ...? は別のカードで学びます。",
+    "searchKeywords": "why なぜ／どうして なぜ だから〜（that's why） 質問"
+  },
+  {
+    "id": "q_how",
+    "type": "word",
+    "partOfSpeech": [
+      "疑問詞"
+    ],
+    "category": "質問",
+    "english": "how",
+    "japanese": "どうやって／どう",
+    "senses": [
+      {
+        "pos": "疑問詞",
+        "meaning": "どうやって／どのように",
+        "category": "質問"
+      },
+      {
+        "pos": "疑問詞",
+        "meaning": "調子・様子はどう",
+        "category": "質問",
+        "example": "How was your day?",
+        "exampleJa": "今日はどうでしたか？"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "how",
+        "example": "How do I get there?",
+        "exampleJa": "そこへはどうやって行けばいいですか？"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "How are you?（調子はどう？）のように、状態をたずねるときにも使います。長さ・数・頻度をたずねる形は、How + 形容詞／副詞 のカードで学びます。",
+    "searchKeywords": "how どうやって／どう どうやって／どのように 調子・様子はどう 質問"
+  },
+  {
+    "id": "exp_how_about",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "提案",
+    "english": "How about…?",
+    "japanese": "〜はどう？／〜はいかが？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜はどう？（提案）",
+        "category": "提案"
+      },
+      {
+        "pos": "表現",
+        "meaning": "〜は？（話を相手に返す）",
+        "category": "会話",
+        "example": "I'm fine. How about you?",
+        "exampleJa": "元気だよ。あなたは？"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "How about…?",
+        "example": "How about tomorrow?",
+        "exampleJa": "明日はどう？"
+      }
+    ],
+    "example": "How about tomorrow?",
+    "exampleJa": "明日はどう？",
+    "beginnerTip": "What about…? とほぼ同じ意味で、どちらも使えます。How about は提案が中心で、What about は「〜はどうなの？」と話題を出すときにも使います。",
+    "searchKeywords": "How about…? 〜はどう？／〜はいかが？ 〜はどう？（提案） 〜は？（話を相手に返す） 提案"
+  },
+  {
+    "id": "exp_how_adj",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "質問",
+    "english": "How + 形容詞／副詞…?",
+    "japanese": "どのくらい〜？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "どのくらい〜？（How long / How often など）",
+        "category": "質問"
+      },
+      {
+        "pos": "表現",
+        "meaning": "いくつ／いくら（How many / How much）",
+        "category": "質問",
+        "example": "How many people are coming?",
+        "exampleJa": "何人来ますか？"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "How + 形容詞／副詞…?",
+        "example": "How long does it take?",
+        "exampleJa": "どのくらいかかりますか？"
+      }
+    ],
+    "example": "How long does it take?",
+    "exampleJa": "どのくらいかかりますか？",
+    "beginnerTip": "How long（期間）、How often（頻度）、How far（距離）、How many（数）、How much（量・値段）の形があります。数えられるものは many、数えられないものは much です。",
+    "searchKeywords": "How + 形容詞／副詞…? どのくらい〜？ どのくらい〜？（How long / How often など） いくつ／いくら（How many / How much） 質問"
+  },
+  {
+    "id": "conj_and",
+    "type": "word",
+    "partOfSpeech": [
+      "接続詞"
+    ],
+    "category": "つなぎ",
+    "english": "and",
+    "japanese": "そして／〜と",
+    "senses": [
+      {
+        "pos": "接続詞",
+        "meaning": "そして／〜と",
+        "category": "つなぎ"
+      },
+      {
+        "pos": "接続詞",
+        "meaning": "〜しなさい、そうすれば（命令文 + and）",
+        "category": "つなぎ",
+        "example": "Study hard and you will pass.",
+        "exampleJa": "一生懸命勉強すれば、合格します。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "and",
+        "example": "I like coffee and tea.",
+        "exampleJa": "コーヒーと紅茶が好きです。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "A and B のように並べます。3つ以上のときは、A, B, and C の形（A、B、そして C）にします。",
+    "searchKeywords": "and そして／〜と そして／〜と 〜しなさい、そうすれば（命令文 + and） つなぎ"
+  },
+  {
+    "id": "conj_but",
+    "type": "word",
+    "partOfSpeech": [
+      "接続詞"
+    ],
+    "category": "つなぎ",
+    "english": "but",
+    "japanese": "しかし／でも",
+    "senses": [
+      {
+        "pos": "接続詞",
+        "meaning": "しかし／でも",
+        "category": "つなぎ"
+      },
+      {
+        "pos": "接続詞",
+        "meaning": "あのね（やんわり切り出す）",
+        "category": "会話",
+        "example": "Sorry, but I can't hear you.",
+        "exampleJa": "ごめん、でも聞こえないんだ。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "but",
+        "example": "I like it, but it is expensive.",
+        "exampleJa": "好きだけど、高いです。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "文のはじめの But も、会話ではよく使います。文末の though（でもね）との違いは、though のカードで学びます。",
+    "searchKeywords": "but しかし／でも しかし／でも あのね（やんわり切り出す） つなぎ"
+  },
+  {
+    "id": "conj_because",
+    "type": "word",
+    "partOfSpeech": [
+      "接続詞"
+    ],
+    "category": "つなぎ",
+    "english": "because",
+    "japanese": "〜だから／なぜなら",
+    "senses": [
+      {
+        "pos": "接続詞",
+        "meaning": "〜だから／なぜなら",
+        "category": "つなぎ"
+      },
+      {
+        "pos": "接続詞",
+        "meaning": "〜のせいで／〜のため（because of + 名詞）",
+        "category": "つなぎ",
+        "example": "We stayed home because of the rain.",
+        "exampleJa": "雨のせいで家にいました。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "because",
+        "example": "I was late because I missed the bus.",
+        "exampleJa": "バスに乗り遅れたので遅れました。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "because は理由を、so は結果を、あとにつなげます（I missed the bus, so I was late.）。Why? の答えとして、Because だけでも言えます。後ろが名詞のときは because of を使います。",
+    "searchKeywords": "because 〜だから／なぜなら 〜だから／なぜなら 〜のせいで／〜のため（because of + 名詞） つなぎ"
+  },
+  {
+    "id": "conj_so",
+    "type": "word",
+    "partOfSpeech": [
+      "接続詞",
+      "副詞"
+    ],
+    "category": "つなぎ",
+    "english": "so",
+    "japanese": "だから／とても",
+    "senses": [
+      {
+        "pos": "接続詞",
+        "meaning": "だから／それで",
+        "category": "つなぎ"
+      },
+      {
+        "pos": "副詞",
+        "meaning": "とても／そんなに",
+        "category": "程度",
+        "example": "I'm so tired.",
+        "exampleJa": "とても疲れた。"
+      },
+      {
+        "pos": "副詞",
+        "meaning": "それで（話題を切り替える）",
+        "category": "会話",
+        "example": "So, how was your day?",
+        "exampleJa": "それで、今日はどうだった？"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "so",
+        "example": "I was tired, so I went to bed early.",
+        "exampleJa": "疲れていたので、早く寝ました。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "so は結果をつなげます（理由を先に言うなら because）。会話のはじめの So, ... は「それで」と話を切り出す合図になります。",
+    "searchKeywords": "so だから／とても だから／それで とても／そんなに それで（話題を切り替える） つなぎ"
+  },
+  {
+    "id": "conj_if",
+    "type": "word",
+    "partOfSpeech": [
+      "接続詞"
+    ],
+    "category": "つなぎ",
+    "english": "if",
+    "japanese": "もし〜なら／〜かどうか",
+    "senses": [
+      {
+        "pos": "接続詞",
+        "meaning": "もし〜なら",
+        "category": "つなぎ"
+      },
+      {
+        "pos": "接続詞",
+        "meaning": "〜かどうか",
+        "category": "つなぎ",
+        "example": "I don't know if he's coming.",
+        "exampleJa": "彼が来るかどうか分かりません。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "if",
+        "example": "If it rains, we will stay home.",
+        "exampleJa": "雨が降ったら、家にいます。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "if のあとは、未来のことでも現在形で言います（If it rains, ...）。",
+    "searchKeywords": "if もし〜なら／〜かどうか もし〜なら 〜かどうか つなぎ"
+  },
+  {
+    "id": "conj_or",
+    "type": "word",
+    "partOfSpeech": [
+      "接続詞"
+    ],
+    "category": "つなぎ",
+    "english": "or",
+    "japanese": "または／それとも",
+    "senses": [
+      {
+        "pos": "接続詞",
+        "meaning": "または／それとも",
+        "category": "つなぎ"
+      },
+      {
+        "pos": "接続詞",
+        "meaning": "さもないと（命令文 + or）",
+        "category": "つなぎ",
+        "example": "Hurry, or we'll be late.",
+        "exampleJa": "急いで、さもないと遅れるよ。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "or",
+        "example": "Do you want tea or coffee?",
+        "exampleJa": "紅茶とコーヒー、どちらがいいですか？"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "選択肢を並べるときに使います。Do you want A or B? の B は、文末を下げて言います。",
+    "searchKeywords": "or または／それとも または／それとも さもないと（命令文 + or） つなぎ"
+  },
+  {
+    "id": "adv_then",
+    "type": "word",
+    "partOfSpeech": [
+      "副詞"
+    ],
+    "category": "つなぎ",
+    "english": "then",
+    "japanese": "それから／それなら",
+    "senses": [
+      {
+        "pos": "副詞",
+        "meaning": "それから／その後",
+        "category": "時間"
+      },
+      {
+        "pos": "副詞",
+        "meaning": "それなら",
+        "category": "つなぎ",
+        "example": "Then let's go together.",
+        "exampleJa": "それなら、一緒に行こう。"
+      },
+      {
+        "pos": "副詞",
+        "meaning": "その頃",
+        "category": "時間",
+        "example": "I was young then.",
+        "exampleJa": "その頃、私は若かったです。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "then",
+        "example": "Finish your work, then call me.",
+        "exampleJa": "仕事を終えて、それから電話して。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "than（〜より）と綴りが似ているので注意します。会話では Then...?（それで？）と続きを聞くときにも使います。",
+    "searchKeywords": "then それから／それなら それから／その後 それなら その頃 つなぎ"
+  },
+  {
+    "id": "conj_while",
+    "type": "word",
+    "partOfSpeech": [
+      "接続詞"
+    ],
+    "category": "つなぎ",
+    "english": "while",
+    "japanese": "〜している間／〜だけど",
+    "senses": [
+      {
+        "pos": "接続詞",
+        "meaning": "〜している間",
+        "category": "つなぎ"
+      },
+      {
+        "pos": "接続詞",
+        "meaning": "〜な一方で",
+        "category": "つなぎ",
+        "example": "I like tea, while my friend likes coffee.",
+        "exampleJa": "私は紅茶が好きで、友達はコーヒーが好きです。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "while",
+        "example": "Don't talk on the phone while you are driving.",
+        "exampleJa": "運転中に電話で話さないで。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "while のあとには文が続きます。名詞が続くときは during を使います（during the meeting）。",
+    "searchKeywords": "while 〜している間／〜だけど 〜している間 〜な一方で つなぎ"
+  },
+  {
+    "id": "conj_until",
+    "type": "word",
+    "partOfSpeech": [
+      "接続詞",
+      "前置詞"
+    ],
+    "category": "時間",
+    "english": "until",
+    "japanese": "〜まで",
+    "senses": [
+      {
+        "pos": "前置詞",
+        "meaning": "〜まで（ずっと）",
+        "category": "時間"
+      },
+      {
+        "pos": "接続詞",
+        "meaning": "〜するまで",
+        "category": "時間",
+        "example": "Wait here until I come back.",
+        "exampleJa": "戻るまでここで待っていて。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "until",
+        "example": "I worked until midnight.",
+        "exampleJa": "夜中の12時まで働きました。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "until は「その時までずっと続く」ことに使います。「その時までに済ませる」ときは by を使います。",
+    "searchKeywords": "until 〜まで 〜まで（ずっと） 〜するまで 時間"
+  },
+  {
+    "id": "conj_than",
+    "type": "word",
+    "partOfSpeech": [
+      "接続詞",
+      "前置詞"
+    ],
+    "category": "比較",
+    "english": "than",
+    "japanese": "〜より",
+    "senses": [
+      {
+        "pos": "接続詞",
+        "meaning": "〜より（比較）",
+        "category": "比較"
+      },
+      {
+        "pos": "前置詞",
+        "meaning": "〜以上（more than）",
+        "category": "数量",
+        "example": "It costs more than ten dollars.",
+        "exampleJa": "10ドル以上します。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "than",
+        "example": "My phone is newer than yours.",
+        "exampleJa": "私のスマホはあなたのより新しいです。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "比較級（newer, more important など）のあとに than をつけます。then（それから）と綴りが似ているので注意します。",
+    "searchKeywords": "than 〜より 〜より（比較） 〜以上（more than） 比較"
+  },
+  {
+    "id": "prep_in",
+    "type": "word",
+    "partOfSpeech": [
+      "前置詞"
+    ],
+    "category": "場所",
+    "english": "in",
+    "japanese": "〜の中に／〜で",
+    "senses": [
+      {
+        "pos": "前置詞",
+        "meaning": "〜の中に／〜で（場所・月・年）",
+        "category": "場所"
+      },
+      {
+        "pos": "前置詞",
+        "meaning": "〜後に（これから先の期間）",
+        "category": "時間",
+        "example": "I'll be back in ten minutes.",
+        "exampleJa": "10分後に戻ります。"
+      },
+      {
+        "pos": "前置詞",
+        "meaning": "〜語で",
+        "category": "手段",
+        "example": "Say it in English.",
+        "exampleJa": "英語で言って。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "in",
+        "example": "The keys are in my bag.",
+        "exampleJa": "鍵は私のバッグの中にあります。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "in は広がりのある「中」、on は表面に接している「上」、at は「一点」のイメージです。in・on・at の違いは、3つのカードで見比べます。",
+    "searchKeywords": "in 〜の中に／〜で 〜の中に／〜で（場所・月・年） 〜後に（これから先の期間） 〜語で 場所"
+  },
+  {
+    "id": "prep_on",
+    "type": "word",
+    "partOfSpeech": [
+      "前置詞"
+    ],
+    "category": "場所",
+    "english": "on",
+    "japanese": "〜の上に／〜に",
+    "senses": [
+      {
+        "pos": "前置詞",
+        "meaning": "〜の上に／〜に（接している・曜日・日付）",
+        "category": "場所"
+      },
+      {
+        "pos": "前置詞",
+        "meaning": "〜中（電話・乗り物）",
+        "category": "電話",
+        "example": "I'm on the phone.",
+        "exampleJa": "電話中です。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "on",
+        "example": "The keys are on the table.",
+        "exampleJa": "鍵はテーブルの上にあります。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "曜日や日付の前は on です（on Monday）。電話・バス・電車にも on を使います（on the phone, on the bus）。",
+    "searchKeywords": "on 〜の上に／〜に 〜の上に／〜に（接している・曜日・日付） 〜中（電話・乗り物） 場所"
+  },
+  {
+    "id": "prep_at",
+    "type": "word",
+    "partOfSpeech": [
+      "前置詞"
+    ],
+    "category": "場所",
+    "english": "at",
+    "japanese": "〜に／〜で",
+    "senses": [
+      {
+        "pos": "前置詞",
+        "meaning": "〜に／〜で（時刻・一点の場所）",
+        "category": "場所"
+      },
+      {
+        "pos": "前置詞",
+        "meaning": "〜に向かって",
+        "category": "方向",
+        "example": "Look at the screen.",
+        "exampleJa": "画面を見て。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "at",
+        "example": "I'll meet you at five.",
+        "exampleJa": "5時に会いましょう。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "at は時刻（at five）や、一点としての場所（at home, at work）に使います。",
+    "searchKeywords": "at 〜に／〜で 〜に／〜で（時刻・一点の場所） 〜に向かって 場所"
+  },
+  {
+    "id": "prep_with",
+    "type": "word",
+    "partOfSpeech": [
+      "前置詞"
+    ],
+    "category": "関係",
+    "english": "with",
+    "japanese": "〜と一緒に／〜を使って",
+    "senses": [
+      {
+        "pos": "前置詞",
+        "meaning": "〜と一緒に",
+        "category": "関係"
+      },
+      {
+        "pos": "前置詞",
+        "meaning": "〜を使って",
+        "category": "手段",
+        "example": "I wrote it with a pen.",
+        "exampleJa": "ペンで書きました。"
+      },
+      {
+        "pos": "前置詞",
+        "meaning": "〜つきの／〜を持った",
+        "category": "状態",
+        "example": "I want a room with a view.",
+        "exampleJa": "景色のいい部屋がいいです。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "with",
+        "example": "Do you want to come with me?",
+        "exampleJa": "一緒に来ませんか？"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "道具には with を使います。「〜と話す」は talk with でも talk to でも言えます。",
+    "searchKeywords": "with 〜と一緒に／〜を使って 〜と一緒に 〜を使って 〜つきの／〜を持った 関係"
+  },
+  {
+    "id": "prep_for",
+    "type": "word",
+    "partOfSpeech": [
+      "前置詞"
+    ],
+    "category": "関係",
+    "english": "for",
+    "japanese": "〜のために／〜の間",
+    "senses": [
+      {
+        "pos": "前置詞",
+        "meaning": "〜のために／〜用に",
+        "category": "関係"
+      },
+      {
+        "pos": "前置詞",
+        "meaning": "〜の間（期間）",
+        "category": "時間",
+        "example": "I have lived here for three years.",
+        "exampleJa": "ここに3年間住んでいます。"
+      },
+      {
+        "pos": "前置詞",
+        "meaning": "〜にとって",
+        "category": "関係",
+        "example": "This is easy for me.",
+        "exampleJa": "これは私には簡単です。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "for",
+        "example": "This gift is for you.",
+        "exampleJa": "このプレゼントはあなたへのものです。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "for は期間の長さ（for three years）、since は始まりの時点（since 2020）、during は出来事の間（during the meeting）です。",
+    "searchKeywords": "for 〜のために／〜の間 〜のために／〜用に 〜の間（期間） 〜にとって 関係"
+  },
+  {
+    "id": "prep_to",
+    "type": "word",
+    "partOfSpeech": [
+      "前置詞"
+    ],
+    "category": "方向",
+    "english": "to",
+    "japanese": "〜へ／〜まで／〜に",
+    "senses": [
+      {
+        "pos": "前置詞",
+        "meaning": "〜へ（方向・目的地）",
+        "category": "方向"
+      },
+      {
+        "pos": "前置詞",
+        "meaning": "〜まで",
+        "category": "時間",
+        "example": "I work from nine to five.",
+        "exampleJa": "9時から5時まで働いています。"
+      },
+      {
+        "pos": "前置詞",
+        "meaning": "〜に（相手）",
+        "category": "関係",
+        "example": "Can you give it to me?",
+        "exampleJa": "それを私にくれますか？"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "to",
+        "example": "I'm going to the station.",
+        "exampleJa": "駅へ行くところです。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "to のあとに動詞が来る形（want to go など）は、want to のカードで学びます。into（〜の中へ）とは別のカードです。",
+    "searchKeywords": "to 〜へ／〜まで／〜に 〜へ（方向・目的地） 〜まで 〜に（相手） 方向"
+  },
+  {
+    "id": "prep_from",
+    "type": "word",
+    "partOfSpeech": [
+      "前置詞"
+    ],
+    "category": "方向",
+    "english": "from",
+    "japanese": "〜から／〜出身の",
+    "senses": [
+      {
+        "pos": "前置詞",
+        "meaning": "〜から（場所・時間の始まり）",
+        "category": "方向"
+      },
+      {
+        "pos": "前置詞",
+        "meaning": "〜出身の",
+        "category": "関係",
+        "example": "I'm from Japan.",
+        "exampleJa": "日本出身です。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "from",
+        "example": "This gift is from my friend.",
+        "exampleJa": "このプレゼントは友達からです。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "Where are you from?（出身はどこ？）は、自己紹介でいちばんよく使う形のひとつです。",
+    "searchKeywords": "from 〜から／〜出身の 〜から（場所・時間の始まり） 〜出身の 方向"
+  },
+  {
+    "id": "prep_about",
+    "type": "word",
+    "partOfSpeech": [
+      "前置詞",
+      "副詞"
+    ],
+    "category": "関係",
+    "english": "about",
+    "japanese": "〜について／約〜",
+    "senses": [
+      {
+        "pos": "前置詞",
+        "meaning": "〜について",
+        "category": "関係"
+      },
+      {
+        "pos": "副詞",
+        "meaning": "約〜／およそ",
+        "category": "数量",
+        "example": "It takes about ten minutes.",
+        "exampleJa": "約10分かかります。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "about",
+        "example": "What are you talking about?",
+        "exampleJa": "何の話をしているの？"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "talk about（〜について話す）、think about（〜について考える）のように、動詞とセットでよく使います。",
+    "searchKeywords": "about 〜について／約〜 〜について 約〜／およそ 関係"
+  },
+  {
+    "id": "prep_of",
+    "type": "word",
+    "partOfSpeech": [
+      "前置詞"
+    ],
+    "category": "関係",
+    "english": "of",
+    "japanese": "〜の／〜のうちの",
+    "senses": [
+      {
+        "pos": "前置詞",
+        "meaning": "〜の（一部・所属）",
+        "category": "関係"
+      },
+      {
+        "pos": "前置詞",
+        "meaning": "〜のうちの",
+        "category": "数量",
+        "example": "He is one of my friends.",
+        "exampleJa": "彼は私の友達の1人です。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "of",
+        "example": "Can I have a cup of coffee?",
+        "exampleJa": "コーヒーを1杯もらえますか？"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "a lot of、a cup of、one of のように、数や量を表す言葉のあとによく出ます。",
+    "searchKeywords": "of 〜の／〜のうちの 〜の（一部・所属） 〜のうちの 関係"
+  },
+  {
+    "id": "prep_by",
+    "type": "word",
+    "partOfSpeech": [
+      "前置詞"
+    ],
+    "category": "時間",
+    "english": "by",
+    "japanese": "〜までに／〜で／〜のそばに",
+    "senses": [
+      {
+        "pos": "前置詞",
+        "meaning": "〜までに（期限）",
+        "category": "時間"
+      },
+      {
+        "pos": "前置詞",
+        "meaning": "〜で（手段）",
+        "category": "手段",
+        "example": "I go to work by train.",
+        "exampleJa": "電車で通勤しています。"
+      },
+      {
+        "pos": "前置詞",
+        "meaning": "〜のそばに",
+        "category": "場所",
+        "example": "Sit by me.",
+        "exampleJa": "私のそばに座って。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "by",
+        "example": "Please call me by five.",
+        "exampleJa": "5時までに電話してください。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "by は「その時までに」（期限）、until は「その時までずっと」です。",
+    "searchKeywords": "by 〜までに／〜で／〜のそばに 〜までに（期限） 〜で（手段） 〜のそばに 時間"
+  },
+  {
+    "id": "exp_can_you",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "依頼",
+    "english": "Can you / Could you + 動詞（原形）?",
+    "japanese": "〜してくれますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜してくれますか？（依頼）",
+        "category": "依頼"
+      },
+      {
+        "pos": "表現",
+        "meaning": "〜できますか？",
+        "category": "可能",
+        "example": "Can you swim?",
+        "exampleJa": "泳げますか？"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Can you + 動詞（原形）?",
+        "example": "Can you open the door?",
+        "exampleJa": "ドアを開けてくれますか？"
+      },
+      {
+        "label": "丁寧",
+        "formName": "Could you + 動詞（原形）?",
+        "example": "Could you say that again?",
+        "exampleJa": "もう一度言っていただけますか？"
+      }
+    ],
+    "example": "Can you open the door?",
+    "exampleJa": "ドアを開けてくれますか？",
+    "beginnerTip": "Could you は Can you より丁寧です。親しい友達には Can you、初めての相手や頼みにくいときは Could you を使います。",
+    "searchKeywords": "Can you / Could you + 動詞（原形）? 〜してくれますか？ 〜してくれますか？（依頼） 〜できますか？ 依頼"
+  },
+  {
+    "id": "exp_would_you_like",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "依頼",
+    "english": "Would you like + 名詞／to + 動詞（原形）?",
+    "japanese": "〜はいかがですか？／〜しませんか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜はいかがですか？（名詞）",
+        "category": "提案"
+      },
+      {
+        "pos": "表現",
+        "meaning": "〜しませんか？（to + 動詞（原形））",
+        "category": "提案",
+        "example": "Would you like to join us?",
+        "exampleJa": "ご一緒にいかがですか？"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Would you like + 名詞?",
+        "example": "Would you like some coffee?",
+        "exampleJa": "コーヒーはいかがですか？"
+      }
+    ],
+    "example": "Would you like some coffee?",
+    "exampleJa": "コーヒーはいかがですか？",
+    "beginnerTip": "Do you want ...? より丁寧な言い方です。「I'd like ...（〜がほしいです）」に対応する、たずねる形です。",
+    "searchKeywords": "Would you like + 名詞／to + 動詞（原形）? 〜はいかがですか？／〜しませんか？ 〜はいかがですか？（名詞） 〜しませんか？（to + 動詞（原形）） 依頼"
+  },
+  {
+    "id": "exp_lets",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "提案",
+    "english": "Let's + 動詞（原形）",
+    "japanese": "〜しよう",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜しよう（誘い）",
+        "category": "提案"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Let's + 動詞（原形）",
+        "example": "Let's go.",
+        "exampleJa": "行こう。"
+      },
+      {
+        "label": "否定",
+        "formName": "Let's not + 動詞（原形）",
+        "example": "Let's not argue.",
+        "exampleJa": "言い争うのはやめよう。"
+      }
+    ],
+    "example": "Let's go.",
+    "exampleJa": "行こう。",
+    "beginnerTip": "Let's は Let us の省略形です。相手を直接誘う言い方で、Why don't we ...? より、はっきりした提案になります。",
+    "searchKeywords": "Let's + 動詞（原形） 〜しよう 〜しよう（誘い） 提案"
+  },
+  {
+    "id": "exp_why_dont_we",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "提案",
+    "english": "Why don't we + 動詞（原形）?",
+    "japanese": "〜しない？／〜しようよ",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜しない？（一緒に）",
+        "category": "提案"
+      },
+      {
+        "pos": "表現",
+        "meaning": "〜したらどう？（Why don't you）",
+        "category": "助言",
+        "example": "Why don't you ask him?",
+        "exampleJa": "彼に聞いてみたら？"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Why don't we + 動詞（原形）?",
+        "example": "Why don't we eat out tonight?",
+        "exampleJa": "今夜は外食しない？"
+      }
+    ],
+    "example": "Why don't we eat out tonight?",
+    "exampleJa": "今夜は外食しない？",
+    "beginnerTip": "Let's より柔らかく、相手の気持ちを聞く感じの提案です。主語を you にすると（Why don't you ...?）、「〜したらどう？」という助言になります。",
+    "searchKeywords": "Why don't we + 動詞（原形）? 〜しない？／〜しようよ 〜しない？（一緒に） 〜したらどう？（Why don't you） 提案"
+  },
+  {
+    "id": "exp_do_you_want_me_to",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "依頼",
+    "english": "Do you want me to + 動詞（原形）?",
+    "japanese": "〜しましょうか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜しましょうか？（申し出）",
+        "category": "提案"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Do you want me to + 動詞（原形）?",
+        "example": "Do you want me to call you back?",
+        "exampleJa": "折り返し電話しましょうか？"
+      }
+    ],
+    "example": "Do you want me to call you back?",
+    "exampleJa": "折り返し電話しましょうか？",
+    "beginnerTip": "「私が〜しましょうか？」と申し出るときに使います。もっと丁寧に言うなら Would you like me to ...? です。",
+    "searchKeywords": "Do you want me to + 動詞（原形）? 〜しましょうか？ 〜しましょうか？（申し出） 依頼"
+  },
+  {
+    "id": "exp_would_you_mind",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "依頼",
+    "english": "Would you mind + 動詞（ing形）?",
+    "japanese": "〜していただけませんか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜していただけませんか？（丁寧な依頼）",
+        "category": "依頼"
+      },
+      {
+        "pos": "表現",
+        "meaning": "〜してもよろしいですか？（Would you mind if I ...?）",
+        "category": "許可",
+        "example": "Would you mind if I sat here?",
+        "exampleJa": "ここに座ってもよろしいですか？"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Would you mind + 動詞（ing形）?",
+        "example": "Would you mind opening the window?",
+        "exampleJa": "窓を開けていただけませんか？"
+      }
+    ],
+    "example": "Would you mind opening the window?",
+    "exampleJa": "窓を開けていただけませんか？",
+    "beginnerTip": "mind は「嫌だと思う」なので、「いいですよ」と答えるときは No, not at all. と No を使います。",
+    "searchKeywords": "Would you mind + 動詞（ing形）? 〜していただけませんか？ 〜していただけませんか？（丁寧な依頼） 〜してもよろしいですか？（Would you mind if I ...?） 依頼"
+  },
+  {
+    "id": "aux_should",
+    "type": "word",
+    "partOfSpeech": [
+      "助動詞"
+    ],
+    "category": "助言",
+    "english": "should",
+    "japanese": "〜したほうがいい／〜はずだ",
+    "senses": [
+      {
+        "pos": "助動詞",
+        "meaning": "〜したほうがいい／〜すべき",
+        "category": "助言"
+      },
+      {
+        "pos": "助動詞",
+        "meaning": "〜はずだ（当然そうなるはず）",
+        "category": "推量",
+        "example": "It should be fine.",
+        "exampleJa": "大丈夫なはずです。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "should",
+        "example": "You should get some rest.",
+        "exampleJa": "少し休んだほうがいいよ。",
+        "needsHint": true
+      },
+      {
+        "label": "否定",
+        "formName": "shouldn't",
+        "example": "You shouldn't worry.",
+        "exampleJa": "心配しなくていいよ。",
+        "quizExclude": true
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "助言・義務の強さの目安は、must ＞ had better ＞ should です。should は「〜したほうがいい」という、ふつうの助言です。",
+    "searchKeywords": "should 〜したほうがいい／〜はずだ 〜したほうがいい／〜すべき 〜はずだ（当然そうなるはず） 助言"
+  },
+  {
+    "id": "aux_must",
+    "type": "word",
+    "partOfSpeech": [
+      "助動詞"
+    ],
+    "category": "義務",
+    "english": "must",
+    "japanese": "〜しなければならない／〜に違いない",
+    "senses": [
+      {
+        "pos": "助動詞",
+        "meaning": "〜しなければならない（強い義務）",
+        "category": "義務"
+      },
+      {
+        "pos": "助動詞",
+        "meaning": "〜に違いない（強い推量）",
+        "category": "推量",
+        "example": "You must be tired.",
+        "exampleJa": "疲れているに違いないね。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "must",
+        "example": "I must go now.",
+        "exampleJa": "もう行かなければ。",
+        "needsHint": true
+      },
+      {
+        "label": "否定",
+        "formName": "must not",
+        "example": "You must not tell anyone.",
+        "exampleJa": "誰にも言ってはいけません。",
+        "quizExclude": true
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "must not は「〜してはいけない（禁止）」です。have to の否定の don't have to（〜しなくていい）とは意味が違います。会話の「〜しなければ」は、have to のほうがよく使われます。",
+    "searchKeywords": "must 〜しなければならない／〜に違いない 〜しなければならない（強い義務） 〜に違いない（強い推量） 義務"
+  },
+  {
+    "id": "aux_might",
+    "type": "word",
+    "partOfSpeech": [
+      "助動詞"
+    ],
+    "category": "可能性",
+    "english": "might",
+    "japanese": "〜かもしれない",
+    "senses": [
+      {
+        "pos": "助動詞",
+        "meaning": "〜かもしれない",
+        "category": "可能性"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "might",
+        "example": "I might go tonight.",
+        "exampleJa": "今夜行くかもしれない。"
+      },
+      {
+        "label": "否定",
+        "formName": "might not",
+        "example": "It might not work.",
+        "exampleJa": "うまくいかないかもしれない。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "あまり高くない可能性を言います。maybe（もしかすると）は文のはじめに置き、might は動詞の前に置きます（Maybe I will go. / I might go.）。",
+    "searchKeywords": "might 〜かもしれない 〜かもしれない 可能性"
+  },
+  {
+    "id": "exp_had_better",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "助言",
+    "english": "had better + 動詞（原形）",
+    "japanese": "〜したほうがいい（しないと困る）",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜したほうがいい（しないと困る）",
+        "category": "助言"
+      },
+      {
+        "pos": "表現",
+        "meaning": "そろそろ〜しなきゃ（I'd better）",
+        "category": "会話",
+        "example": "I'd better get going.",
+        "exampleJa": "そろそろ行かなきゃ。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "had better + 動詞（原形）",
+        "example": "You'd better go now.",
+        "exampleJa": "もう行ったほうがいいよ。"
+      },
+      {
+        "label": "会話形",
+        "formName": "better + 動詞（原形）",
+        "example": "You better hurry.",
+        "exampleJa": "急いだほうがいいよ。"
+      }
+    ],
+    "example": "You'd better go now.",
+    "exampleJa": "もう行ったほうがいいよ。",
+    "beginnerTip": "should より強く、「しないと困ったことになる」という忠告・警告になります。目上の人には使わないほうが無難です。",
+    "searchKeywords": "had better + 動詞（原形） 〜したほうがいい（しないと困る） 〜したほうがいい（しないと困る） そろそろ〜しなきゃ（I'd better） 助言",
+    "spokenForm": [
+      "better"
+    ]
+  },
+  {
+    "id": "exp_be_supposed_to",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "予定",
+    "english": "be supposed to + 動詞（原形）",
+    "japanese": "〜することになっている",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜することになっている／〜するはず",
+        "category": "予定"
+      },
+      {
+        "pos": "表現",
+        "meaning": "〜してはいけない（否定）",
+        "category": "ルール",
+        "example": "You're not supposed to park here.",
+        "exampleJa": "ここに駐車してはいけません。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "be supposed to + 動詞（原形）",
+        "example": "I'm supposed to call him at five.",
+        "exampleJa": "5時に彼に電話することになっています。"
+      },
+      {
+        "label": "過去形",
+        "formName": "was / were supposed to + 動詞（原形）",
+        "example": "I was supposed to meet her today.",
+        "exampleJa": "今日彼女に会うはずでした。"
+      }
+    ],
+    "example": "I'm supposed to call him at five.",
+    "exampleJa": "5時に彼に電話することになっています。",
+    "beginnerTip": "予定・決まり・期待に使います。実際にはしなかったことを「〜するはずだったのに」と言うときは was supposed to です。",
+    "searchKeywords": "be supposed to + 動詞（原形） 〜することになっている 〜することになっている／〜するはず 〜してはいけない（否定） 予定"
+  },
+  {
+    "id": "exp_do_you_think",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "質問",
+    "english": "Do you think + 文?",
+    "japanese": "〜だと思いますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜だと思いますか？",
+        "category": "質問"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Do you think + 文?",
+        "example": "Do you think it will rain?",
+        "exampleJa": "雨が降ると思いますか？"
+      }
+    ],
+    "example": "Do you think it will rain?",
+    "exampleJa": "雨が降ると思いますか？",
+    "beginnerTip": "I think + 文 の疑問形です。Do you think のあとは、ふつうの文の語順のままです（it will rain）。",
+    "searchKeywords": "Do you think + 文? 〜だと思いますか？ 〜だと思いますか？ 質問"
+  },
+  {
+    "id": "exp_hold_on",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "電話",
+    "english": "hold on",
+    "japanese": "ちょっと待って／つかまっていて",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "ちょっと待って",
+        "category": "電話"
+      },
+      {
+        "pos": "表現",
+        "meaning": "しっかりつかまる",
+        "category": "動作",
+        "example": "Hold on to the railing.",
+        "exampleJa": "手すりにつかまって。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "hold on",
+        "example": "Hold on a second.",
+        "exampleJa": "ちょっと待って。"
+      }
+    ],
+    "example": "Hold on a second.",
+    "exampleJa": "ちょっと待って。",
+    "beginnerTip": "電話や会話で「ちょっと待って」と言う定番です。wait より口語的で、Hold on a second. / Hold on a minute. の形でもよく使います。",
+    "searchKeywords": "hold on ちょっと待って／つかまっていて ちょっと待って しっかりつかまる 電話"
+  },
+  {
+    "id": "exp_call_back",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "電話",
+    "english": "call back",
+    "japanese": "折り返し電話する",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "折り返し電話する",
+        "category": "電話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "call back",
+        "example": "I'll call you back later.",
+        "exampleJa": "あとで折り返します。"
+      }
+    ],
+    "example": "I'll call you back later.",
+    "exampleJa": "あとで折り返します。",
+    "beginnerTip": "「折り返す」は call + 人 + back の語順です。「あとで電話する」は call you later と言います。",
+    "searchKeywords": "call back 折り返し電話する 折り返し電話する 電話"
+  },
+  {
+    "id": "exp_hang_up",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "電話",
+    "english": "hang up",
+    "japanese": "電話を切る",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "電話を切る",
+        "category": "電話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "hang up",
+        "example": "Please don't hang up.",
+        "exampleJa": "切らないでください。"
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "hangs up",
+        "example": "She hangs up when she is angry.",
+        "exampleJa": "彼女は怒ると電話を切ります。"
+      },
+      {
+        "label": "過去形",
+        "formName": "hung up",
+        "example": "I hung up by mistake.",
+        "exampleJa": "間違えて切ってしまいました。"
+      },
+      {
+        "label": "過去分詞",
+        "formName": "hung up",
+        "example": "He has hung up already.",
+        "exampleJa": "彼はもう電話を切りました。"
+      },
+      {
+        "label": "ing形",
+        "formName": "hanging up",
+        "example": "I'm hanging up now.",
+        "exampleJa": "もう切るね。"
+      }
+    ],
+    "example": "Please don't hang up.",
+    "exampleJa": "切らないでください。",
+    "beginnerTip": "hang の過去形・過去分詞は hung です。「電話を切る」は hang up、「電話に出る」は answer や pick up です。",
+    "searchKeywords": "hang up 電話を切る 電話を切る 電話"
+  },
+  {
+    "id": "exp_speak_up",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "電話",
+    "english": "speak up",
+    "japanese": "もっと大きな声で話す／はっきり意見を言う",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "もっと大きな声で話す",
+        "category": "電話"
+      },
+      {
+        "pos": "表現",
+        "meaning": "遠慮せず意見を言う",
+        "category": "会話",
+        "example": "If you disagree, speak up.",
+        "exampleJa": "反対なら、遠慮せず言って。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "speak up",
+        "example": "Can you speak up, please?",
+        "exampleJa": "もう少し大きな声で話してもらえますか？"
+      }
+    ],
+    "example": "Can you speak up, please?",
+    "exampleJa": "もう少し大きな声で話してもらえますか？",
+    "beginnerTip": "speak up は「声を大きく」です。ゆっくり話してほしいときは speak more slowly、はっきり話してほしいときは speak clearly を使います。",
+    "searchKeywords": "speak up もっと大きな声で話す／はっきり意見を言う もっと大きな声で話す 遠慮せず意見を言う 電話"
+  },
+  {
+    "id": "exp_break_up",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "電話",
+    "english": "break up",
+    "japanese": "電波が途切れる／別れる",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "電波が途切れる（You're breaking up.）",
+        "category": "電話"
+      },
+      {
+        "pos": "表現",
+        "meaning": "別れる",
+        "category": "人間関係",
+        "example": "They broke up last year.",
+        "exampleJa": "彼らは去年別れました。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "break up",
+        "example": "The call might break up in the tunnel.",
+        "exampleJa": "トンネルの中では電話が途切れるかもしれません。"
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "breaks up",
+        "example": "The signal breaks up here.",
+        "exampleJa": "ここは電波が途切れます。"
+      },
+      {
+        "label": "過去形",
+        "formName": "broke up",
+        "example": "The call broke up twice.",
+        "exampleJa": "電話が2回途切れました。"
+      },
+      {
+        "label": "過去分詞",
+        "formName": "broken up",
+        "example": "Your voice has broken up again.",
+        "exampleJa": "また声が途切れました。"
+      },
+      {
+        "label": "ing形",
+        "formName": "breaking up",
+        "example": "You're breaking up.",
+        "exampleJa": "声が途切れています。"
+      }
+    ],
+    "example": "The call might break up in the tunnel.",
+    "exampleJa": "トンネルの中では電話が途切れるかもしれません。",
+    "beginnerTip": "電話で You're breaking up.（声が途切れてるよ）と言えます。break の変化は break → broke → broken です。",
+    "searchKeywords": "break up 電波が途切れる／別れる 電波が途切れる（You're breaking up.） 別れる 電話"
+  },
+  {
+    "id": "v_answer",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞",
+      "名詞"
+    ],
+    "category": "電話",
+    "english": "answer",
+    "japanese": "答える／電話に出る",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "答える／応答する",
+        "category": "会話"
+      },
+      {
+        "pos": "動詞",
+        "meaning": "電話に出る",
+        "category": "電話",
+        "example": "Please answer the phone.",
+        "exampleJa": "電話に出てください。"
+      },
+      {
+        "pos": "名詞",
+        "meaning": "答え",
+        "category": "会話",
+        "example": "Your answer is correct.",
+        "exampleJa": "あなたの答えは正しいです。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "answer",
+        "example": "Can you answer this question?",
+        "exampleJa": "この質問に答えられますか？"
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "answers",
+        "example": "She answers every email.",
+        "exampleJa": "彼女はすべてのメールに返信します。"
+      },
+      {
+        "label": "過去形",
+        "formName": "answered",
+        "example": "He answered right away.",
+        "exampleJa": "彼はすぐに応答しました。"
+      },
+      {
+        "label": "過去分詞",
+        "formName": "answered",
+        "example": "I have answered all of them.",
+        "exampleJa": "全部に答えました。"
+      },
+      {
+        "label": "ing形",
+        "formName": "answering",
+        "example": "I'm answering a call.",
+        "exampleJa": "電話に出ています。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "規則変化 (-ed)",
+    "beginnerTip": "answer のあとには、そのまま名詞が来ます（answer the phone, answer a question）。answer the phone は、pick up the phone とほぼ同じ場面で、電話に出ることです。",
+    "searchKeywords": "answer 答える／電話に出る 答える／応答する 電話に出る 答え 電話"
+  },
+  {
+    "id": "v_catch",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞"
+    ],
+    "category": "電話",
+    "english": "catch",
+    "japanese": "つかまえる／聞き取る／（病気に）かかる",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "つかまえる／受け止める",
+        "category": "基本動詞"
+      },
+      {
+        "pos": "動詞",
+        "meaning": "聞き取る",
+        "category": "電話",
+        "example": "Sorry, I didn't catch that.",
+        "exampleJa": "ごめん、聞き取れなかった。"
+      },
+      {
+        "pos": "動詞",
+        "meaning": "（風邪などに）かかる",
+        "category": "体調",
+        "example": "I caught a cold last week.",
+        "exampleJa": "先週風邪をひきました。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "catch",
+        "example": "Catch the ball!",
+        "exampleJa": "ボールをつかまえて！"
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "catches",
+        "example": "She catches the bus every morning.",
+        "exampleJa": "彼女は毎朝そのバスに乗ります。",
+        "needsHint": true
+      },
+      {
+        "label": "過去形",
+        "formName": "caught",
+        "example": "I caught the last train.",
+        "exampleJa": "最終電車に間に合いました。",
+        "needsHint": true
+      },
+      {
+        "label": "過去分詞",
+        "formName": "caught",
+        "example": "I have never caught a fish.",
+        "exampleJa": "魚を釣ったことがありません。"
+      },
+      {
+        "label": "ing形",
+        "formName": "catching",
+        "example": "I'm catching the 8:30 bus tomorrow.",
+        "exampleJa": "明日は8時30分のバスに乗ります。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "不規則 A-B-B",
+    "beginnerTip": "I didn't catch that.（聞き取れなかった）は、電話で聞き返すときの定番です。hear は音が聞こえること、catch は聞こえた言葉を聞き取ることです。聞こえているのに分からないときは catch を使います。",
+    "searchKeywords": "catch つかまえる／聞き取る／（病気に）かかる つかまえる／受け止める 聞き取る （風邪などに）かかる 電話"
+  },
+  {
+    "id": "v_repeat",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞"
+    ],
+    "category": "電話",
+    "english": "repeat",
+    "japanese": "繰り返す／もう一度言う",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "繰り返す／もう一度言う",
+        "category": "会話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "repeat",
+        "example": "Can you repeat that, please?",
+        "exampleJa": "もう一度言ってもらえますか？"
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "repeats",
+        "example": "She repeats the same story.",
+        "exampleJa": "彼女は同じ話を繰り返します。",
+        "needsHint": true
+      },
+      {
+        "label": "過去形",
+        "formName": "repeated",
+        "example": "I repeated my question.",
+        "exampleJa": "質問を繰り返しました。"
+      },
+      {
+        "label": "過去分詞",
+        "formName": "repeated",
+        "example": "He has repeated himself three times.",
+        "exampleJa": "彼は3回も同じことを言いました。"
+      },
+      {
+        "label": "ing形",
+        "formName": "repeating",
+        "example": "I'm repeating the words after her.",
+        "exampleJa": "彼女のあとについて言葉を繰り返しています。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "規則変化 (-ed)",
+    "beginnerTip": "Can you repeat that? は聞き返しの定番です。Say that again? や Come again? も同じ場面で使えます。",
+    "searchKeywords": "repeat 繰り返す／もう一度言う 繰り返す／もう一度言う 電話"
+  },
+  {
+    "id": "adv_slowly",
+    "type": "word",
+    "partOfSpeech": [
+      "副詞"
+    ],
+    "category": "電話",
+    "english": "slowly",
+    "japanese": "ゆっくり",
+    "senses": [
+      {
+        "pos": "副詞",
+        "meaning": "ゆっくり",
+        "category": "電話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "slowly",
+        "example": "Please speak slowly.",
+        "exampleJa": "ゆっくり話してください。"
+      },
+      {
+        "label": "比較級",
+        "formName": "more slowly",
+        "example": "Could you speak more slowly?",
+        "exampleJa": "もう少しゆっくり話してもらえますか？",
+        "quizExclude": true
+      }
+    ],
+    "changeType": "slow + ly",
+    "beginnerTip": "slow（遅い）に -ly がついた副詞です。-ly は「〜に／〜く」という副詞の目印になることが多いです。",
+    "searchKeywords": "slowly ゆっくり ゆっくり 電話"
+  },
+  {
+    "id": "adv_clearly",
+    "type": "word",
+    "partOfSpeech": [
+      "副詞"
+    ],
+    "category": "電話",
+    "english": "clearly",
+    "japanese": "はっきり／明らかに",
+    "senses": [
+      {
+        "pos": "副詞",
+        "meaning": "はっきりと",
+        "category": "電話"
+      },
+      {
+        "pos": "副詞",
+        "meaning": "明らかに",
+        "category": "確信度",
+        "example": "Clearly, he was wrong.",
+        "exampleJa": "明らかに、彼が間違っていました。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "clearly",
+        "example": "Please speak clearly.",
+        "exampleJa": "はっきり話してください。"
+      },
+      {
+        "label": "比較級",
+        "formName": "more clearly",
+        "example": "I can hear you more clearly now.",
+        "exampleJa": "今のほうがはっきり聞こえます。",
+        "quizExclude": true
+      }
+    ],
+    "changeType": "clear + ly",
+    "beginnerTip": "clear（はっきりした）に -ly がついた副詞です。電話では Can you speak more clearly? のように頼めます。",
+    "searchKeywords": "clearly はっきり／明らかに はっきりと 明らかに 電話"
+  },
+  {
+    "id": "exp_let_me_know",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "会話",
+    "english": "Let me know",
+    "japanese": "知らせて／教えて",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜を知らせて",
+        "category": "会話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Let me know",
+        "example": "Let me know if you can come.",
+        "exampleJa": "来られるか教えてね。"
+      }
+    ],
+    "example": "Let me know if you can come.",
+    "exampleJa": "来られるか教えてね。",
+    "beginnerTip": "Let me know + if / when / what ... の形で使います。tell me より気軽な、「分かったら教えてね」という頼み方です。",
+    "searchKeywords": "Let me know 知らせて／教えて 〜を知らせて 会話"
+  },
+  {
+    "id": "exp_talk_to_you_later",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "電話",
+    "english": "Talk to you later",
+    "japanese": "また後で（電話・会話の終わり）",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "また後で話そう（別れのあいさつ）",
+        "category": "電話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Talk to you later",
+        "example": "Talk to you later!",
+        "exampleJa": "じゃあ、また後で話そう！"
+      }
+    ],
+    "example": "Talk to you later!",
+    "exampleJa": "じゃあ、また後で話そう！",
+    "beginnerTip": "電話やチャットの終わりのあいさつです。See you later.（また後で）や Catch you later. も近い使い方です。",
+    "searchKeywords": "Talk to you later また後で（電話・会話の終わり） また後で話そう（別れのあいさつ） 電話"
+  },
+  {
+    "id": "exp_whats_up",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "会話",
+    "english": "What's up? / How's it going?",
+    "japanese": "やあ、元気？／調子はどう？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "やあ、元気？（What's up?）",
+        "category": "会話"
+      },
+      {
+        "pos": "表現",
+        "meaning": "調子はどう？（How's it going?）",
+        "category": "会話",
+        "example": "How's it going with your new job?",
+        "exampleJa": "新しい仕事の調子はどう？"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "What's up?",
+        "example": "Hey, what's up?",
+        "exampleJa": "やあ、元気？"
+      },
+      {
+        "label": "同じ意味",
+        "formName": "How's it going?",
+        "example": "Hi, how's it going?",
+        "exampleJa": "やあ、調子はどう？"
+      }
+    ],
+    "example": "Hey, what's up?",
+    "exampleJa": "やあ、元気？",
+    "beginnerTip": "友達へのあいさつです。返事は Not much.（特に何も）や Pretty good.（かなりいいよ）などです。What's up? は「何かあった？」と聞こえることもあります。",
+    "searchKeywords": "What's up? / How's it going? やあ、元気？／調子はどう？ やあ、元気？（What's up?） 調子はどう？（How's it going?） 会話"
+  },
+  {
+    "id": "exp_is_this_a_good_time",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "電話",
+    "english": "Is this a good time to talk?",
+    "japanese": "今、話しても大丈夫？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "今、話しても大丈夫？",
+        "category": "電話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "Is this a good time to talk?",
+        "example": "Hi, is this a good time to talk?",
+        "exampleJa": "もしもし、今話しても大丈夫？"
+      }
+    ],
+    "example": "Hi, is this a good time to talk?",
+    "exampleJa": "もしもし、今話しても大丈夫？",
+    "beginnerTip": "電話をかけたときの最初のひとことです。返事は Sure.（いいよ）や Can I call you back?（あとでかけ直してもいい？）などです。",
+    "searchKeywords": "Is this a good time to talk? 今、話しても大丈夫？ 今、話しても大丈夫？ 電話"
+  },
+  {
+    "id": "exp_this_is",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "電話",
+    "english": "This is + 名前",
+    "japanese": "（電話で）こちらは〜です",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "（電話で）こちらは〜です",
+        "category": "電話"
+      },
+      {
+        "pos": "表現",
+        "meaning": "〜さんですか？（Is this + 名前?）",
+        "category": "電話",
+        "example": "Is this Emma?",
+        "exampleJa": "エマさんですか？"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "This is + 名前",
+        "example": "Hi, this is Emma.",
+        "exampleJa": "もしもし、エマです。"
+      }
+    ],
+    "example": "Hi, this is Emma.",
+    "exampleJa": "もしもし、エマです。",
+    "beginnerTip": "電話では I am ではなく This is を使います。相手を確かめるときは Is this ...? や Who is this?（どちら様ですか？）と言います。",
+    "searchKeywords": "This is + 名前 （電話で）こちらは〜です （電話で）こちらは〜です 〜さんですか？（Is this + 名前?） 電話"
+  },
+  {
+    "id": "adv_later",
+    "type": "word",
+    "partOfSpeech": [
+      "副詞"
+    ],
+    "category": "時間",
+    "english": "later",
+    "japanese": "あとで／〜後に",
+    "senses": [
+      {
+        "pos": "副詞",
+        "meaning": "あとで／もっとあとに",
+        "category": "時間"
+      },
+      {
+        "pos": "副詞",
+        "meaning": "〜後に（two days later など）",
+        "category": "時間",
+        "example": "He called me two days later.",
+        "exampleJa": "彼は2日後に電話してきました。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "later",
+        "example": "See you later.",
+        "exampleJa": "またあとで。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "late（遅い）の比較級 later と同じ形ですが、会話では「あとで」の意味でとてもよく使います。after（〜のあとに）は、基準になる言葉が必要です。",
+    "searchKeywords": "later あとで／〜後に あとで／もっとあとに 〜後に（two days later など） 時間"
+  },
+  {
+    "id": "prep_before",
+    "type": "word",
+    "partOfSpeech": [
+      "前置詞",
+      "接続詞",
+      "副詞"
+    ],
+    "category": "時間",
+    "english": "before",
+    "japanese": "〜の前に／〜する前に／以前に",
+    "senses": [
+      {
+        "pos": "前置詞",
+        "meaning": "〜の前に（名詞）",
+        "category": "時間"
+      },
+      {
+        "pos": "接続詞",
+        "meaning": "〜する前に（文）",
+        "category": "時間",
+        "example": "Call me before you leave.",
+        "exampleJa": "出る前に電話して。"
+      },
+      {
+        "pos": "副詞",
+        "meaning": "以前に",
+        "category": "時間",
+        "example": "Have we met before?",
+        "exampleJa": "以前にお会いしましたか？"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "before",
+        "example": "Let's talk before lunch.",
+        "exampleJa": "昼食の前に話そう。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "名詞の前（before lunch）にも、文の前（before you leave）にも使えます。after の反対です。",
+    "searchKeywords": "before 〜の前に／〜する前に／以前に 〜の前に（名詞） 〜する前に（文） 以前に 時間"
+  },
+  {
+    "id": "prep_after",
+    "type": "word",
+    "partOfSpeech": [
+      "前置詞",
+      "接続詞"
+    ],
+    "category": "時間",
+    "english": "after",
+    "japanese": "〜のあとに／〜したあとに",
+    "senses": [
+      {
+        "pos": "前置詞",
+        "meaning": "〜のあとに（名詞）",
+        "category": "時間"
+      },
+      {
+        "pos": "接続詞",
+        "meaning": "〜したあとに（文）",
+        "category": "時間",
+        "example": "Call me after you finish work.",
+        "exampleJa": "仕事が終わったら電話して。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "after",
+        "example": "Let's eat after the movie.",
+        "exampleJa": "映画のあとに食べよう。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "名詞の前（after work）にも、文の前（after you finish）にも使えます。later は単独で「あとで」、after は「何かのあと」と基準を言います。",
+    "searchKeywords": "after 〜のあとに／〜したあとに 〜のあとに（名詞） 〜したあとに（文） 時間"
+  },
+  {
+    "id": "adv_ago",
+    "type": "word",
+    "partOfSpeech": [
+      "副詞"
+    ],
+    "category": "時間",
+    "english": "ago",
+    "japanese": "〜前に",
+    "senses": [
+      {
+        "pos": "副詞",
+        "meaning": "〜前に",
+        "category": "時間"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "ago",
+        "example": "I met her two years ago.",
+        "exampleJa": "2年前に彼女に会いました。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "ago は今を基準に「〜前に」と言うときに使い、過去形の文に置きます（three days ago）。",
+    "searchKeywords": "ago 〜前に 〜前に 時間"
+  },
+  {
+    "id": "prep_since",
+    "type": "word",
+    "partOfSpeech": [
+      "前置詞",
+      "接続詞"
+    ],
+    "category": "時間",
+    "english": "since",
+    "japanese": "〜から（ずっと）／〜なので",
+    "senses": [
+      {
+        "pos": "前置詞",
+        "meaning": "〜から（ずっと）",
+        "category": "時間"
+      },
+      {
+        "pos": "接続詞",
+        "meaning": "〜なので",
+        "category": "つなぎ",
+        "example": "Since you're here, let's start.",
+        "exampleJa": "来たことだし、始めましょう。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "since",
+        "example": "I have lived here since 2020.",
+        "exampleJa": "2020年からここに住んでいます。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "since は「始まりの時点」、for は「期間の長さ」です（since 2020 / for six years）。どちらも have + 過去分詞の形といっしょによく出ます。",
+    "searchKeywords": "since 〜から（ずっと）／〜なので 〜から（ずっと） 〜なので 時間"
+  },
+  {
+    "id": "prep_during",
+    "type": "word",
+    "partOfSpeech": [
+      "前置詞"
+    ],
+    "category": "時間",
+    "english": "during",
+    "japanese": "〜の間（に）",
+    "senses": [
+      {
+        "pos": "前置詞",
+        "meaning": "〜の間（に）",
+        "category": "時間"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "during",
+        "example": "Please don't talk during the movie.",
+        "exampleJa": "映画の間は話さないでください。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "during は「出来事の間」（during the meeting）です。期間の長さは for（for two hours）、文が続くときは while を使います。",
+    "searchKeywords": "during 〜の間（に） 〜の間（に） 時間"
+  },
+  {
+    "id": "adv_tomorrow",
+    "type": "word",
+    "partOfSpeech": [
+      "副詞",
+      "名詞"
+    ],
+    "category": "時間",
+    "english": "tomorrow",
+    "japanese": "明日",
+    "senses": [
+      {
+        "pos": "副詞",
+        "meaning": "明日（に）",
+        "category": "時間"
+      },
+      {
+        "pos": "名詞",
+        "meaning": "明日",
+        "category": "時間",
+        "example": "Tomorrow is Friday.",
+        "exampleJa": "明日は金曜日です。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "tomorrow",
+        "example": "See you tomorrow.",
+        "exampleJa": "また明日。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "tomorrow の前に on や in はつけません（× on tomorrow）。",
+    "searchKeywords": "tomorrow 明日 明日（に） 明日 時間"
+  },
+  {
+    "id": "adv_yesterday",
+    "type": "word",
+    "partOfSpeech": [
+      "副詞",
+      "名詞"
+    ],
+    "category": "時間",
+    "english": "yesterday",
+    "japanese": "昨日",
+    "senses": [
+      {
+        "pos": "副詞",
+        "meaning": "昨日（に）",
+        "category": "時間"
+      },
+      {
+        "pos": "名詞",
+        "meaning": "昨日",
+        "category": "時間",
+        "example": "Yesterday was a long day.",
+        "exampleJa": "昨日は長い1日でした。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "yesterday",
+        "example": "I called you yesterday.",
+        "exampleJa": "昨日あなたに電話しました。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "yesterday の前にも前置詞はつけません。過去形の文といっしょに使います。",
+    "searchKeywords": "yesterday 昨日 昨日（に） 昨日 時間"
+  },
+  {
+    "id": "adv_quickly",
+    "type": "word",
+    "partOfSpeech": [
+      "副詞"
+    ],
+    "category": "速さ",
+    "english": "quickly",
+    "japanese": "すばやく／すぐに",
+    "senses": [
+      {
+        "pos": "副詞",
+        "meaning": "すばやく／すぐに",
+        "category": "速さ"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "quickly",
+        "example": "Please reply quickly.",
+        "exampleJa": "すぐに返信してください。"
+      },
+      {
+        "label": "比較級",
+        "formName": "more quickly",
+        "example": "I can finish more quickly this way.",
+        "exampleJa": "このほうが早く終わらせられます。",
+        "quizExclude": true
+      }
+    ],
+    "changeType": "quick + ly",
+    "beginnerTip": "quick（すばやい）に -ly をつけた副詞です。fast とほぼ同じ意味で使えます。",
+    "searchKeywords": "quickly すばやく／すぐに すばやく／すぐに 速さ"
+  },
+  {
+    "id": "exp_last_night",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "時間",
+    "english": "last night / next week / this morning",
+    "japanese": "昨夜／来週／今朝（前置詞なし）",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜に（last + 時を表す言葉）",
+        "category": "時間"
+      },
+      {
+        "pos": "表現",
+        "meaning": "来〜に（next + 時を表す言葉）",
+        "category": "時間",
+        "example": "I'll see her next week.",
+        "exampleJa": "来週彼女に会います。"
+      },
+      {
+        "pos": "表現",
+        "meaning": "今〜に（this + 時を表す言葉）",
+        "category": "時間",
+        "example": "I'm busy this morning.",
+        "exampleJa": "今朝は忙しいです。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "last night / next week / this morning",
+        "example": "I called you last night.",
+        "exampleJa": "昨夜あなたに電話しました。"
+      }
+    ],
+    "example": "I called you last night.",
+    "exampleJa": "昨夜あなたに電話しました。",
+    "beginnerTip": "last / next / this + 時を表す言葉 の前には、in や on をつけません。",
+    "searchKeywords": "last night / next week / this morning 昨夜／来週／今朝（前置詞なし） 〜に（last + 時を表す言葉） 来〜に（next + 時を表す言葉） 今〜に（this + 時を表す言葉） 時間"
+  },
+  {
+    "id": "v_enjoy",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞"
+    ],
+    "category": "感情",
+    "english": "enjoy",
+    "japanese": "楽しむ",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "楽しむ",
+        "category": "感情"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "enjoy",
+        "example": "I enjoy cooking.",
+        "exampleJa": "料理を楽しんでいます。",
+        "needsHint": true
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "enjoys",
+        "example": "She enjoys long walks.",
+        "exampleJa": "彼女は長い散歩を楽しみます。",
+        "needsHint": true
+      },
+      {
+        "label": "過去形",
+        "formName": "enjoyed",
+        "example": "We enjoyed the trip.",
+        "exampleJa": "私たちは旅行を楽しみました。",
+        "needsHint": true
+      },
+      {
+        "label": "過去分詞",
+        "formName": "enjoyed",
+        "example": "I have enjoyed talking with you.",
+        "exampleJa": "あなたと話せて楽しかったです。",
+        "needsHint": true
+      },
+      {
+        "label": "ing形",
+        "formName": "enjoying",
+        "example": "I'm enjoying my coffee.",
+        "exampleJa": "コーヒーを楽しんでいます。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "規則変化 (-ed)",
+    "beginnerTip": "enjoy のあとに動詞が来るときは、〜ing の形です（enjoy talking。× enjoy to talk）。like（好き）より、実際にやって楽しむ感じです。Enjoy! だけで「楽しんでね」にもなります。",
+    "searchKeywords": "enjoy 楽しむ 楽しむ 感情"
+  },
+  {
+    "id": "v_finish",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞"
+    ],
+    "category": "行動",
+    "english": "finish",
+    "japanese": "終える／終わる",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "終える",
+        "category": "行動"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "finish",
+        "example": "Let me finish this first.",
+        "exampleJa": "まずこれを終わらせて。"
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "finishes",
+        "example": "The movie finishes at nine.",
+        "exampleJa": "映画は9時に終わります。"
+      },
+      {
+        "label": "過去形",
+        "formName": "finished",
+        "example": "I finished my work early.",
+        "exampleJa": "仕事を早く終えました。"
+      },
+      {
+        "label": "過去分詞",
+        "formName": "finished",
+        "example": "Have you finished yet?",
+        "exampleJa": "もう終わりましたか？"
+      },
+      {
+        "label": "ing形",
+        "formName": "finishing",
+        "example": "I'm finishing my homework.",
+        "exampleJa": "宿題を終わらせるところです。"
+      }
+    ],
+    "changeType": "規則変化 (-ed)",
+    "beginnerTip": "finish のあとに動詞が来るときは〜ing の形です（finish eating）。「終わらせる」も「終わる」も finish で言えます。",
+    "searchKeywords": "finish 終える／終わる 終える 行動"
+  },
+  {
+    "id": "v_agree",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞"
+    ],
+    "category": "意見",
+    "english": "agree",
+    "japanese": "賛成する／同意する",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "賛成する",
+        "category": "意見"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "agree",
+        "example": "I agree with you.",
+        "exampleJa": "あなたに賛成です。"
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "agrees",
+        "example": "She agrees with me.",
+        "exampleJa": "彼女は私に賛成です。"
+      },
+      {
+        "label": "過去形",
+        "formName": "agreed",
+        "example": "We agreed on a price.",
+        "exampleJa": "私たちは値段に合意しました。",
+        "needsHint": true
+      },
+      {
+        "label": "過去分詞",
+        "formName": "agreed",
+        "example": "I have agreed to help him.",
+        "exampleJa": "彼を手伝うことに同意しました。",
+        "needsHint": true
+      },
+      {
+        "label": "ing形",
+        "formName": "agreeing",
+        "example": "I'm not agreeing to that.",
+        "exampleJa": "私はそれには同意しません。"
+      }
+    ],
+    "changeType": "規則変化 (-d)",
+    "beginnerTip": "agree with + 人・意見（〜に賛成）、agree to + 提案（〜に同意する）、agree on + 内容（〜で合意する）を使い分けます。I agree. だけでも言えます。",
+    "searchKeywords": "agree 賛成する／同意する 賛成する 意見"
+  },
+  {
+    "id": "v_plan",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞",
+      "名詞"
+    ],
+    "category": "予定",
+    "english": "plan",
+    "japanese": "計画する／予定する",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "計画する／予定する",
+        "category": "予定"
+      },
+      {
+        "pos": "名詞",
+        "meaning": "計画／予定",
+        "category": "予定",
+        "example": "Do you have any plans this weekend?",
+        "exampleJa": "今週末は何か予定がありますか？"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "plan",
+        "example": "We plan to leave at six.",
+        "exampleJa": "6時に出発する予定です。",
+        "needsHint": true
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "plans",
+        "example": "She plans every trip carefully.",
+        "exampleJa": "彼女は旅行を丁寧に計画します。"
+      },
+      {
+        "label": "過去形",
+        "formName": "planned",
+        "example": "I planned a surprise party.",
+        "exampleJa": "サプライズパーティーを計画しました。"
+      },
+      {
+        "label": "過去分詞",
+        "formName": "planned",
+        "example": "We have planned everything.",
+        "exampleJa": "すべて計画しました。",
+        "needsHint": true
+      },
+      {
+        "label": "ing形",
+        "formName": "planning",
+        "example": "We're planning a trip next month.",
+        "exampleJa": "来月の旅行を計画しています。"
+      }
+    ],
+    "changeType": "n重ね + -ed / -ing",
+    "beginnerTip": "plan to + 動詞（原形）は「〜するつもり」で、be going to とほぼ同じ意味ですが、考えて準備していることを強調します。名詞の plan（予定）もよく使います。",
+    "searchKeywords": "plan 計画する／予定する 計画する／予定する 計画／予定 予定"
+  },
+  {
+    "id": "v_invite",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞"
+    ],
+    "category": "人間関係",
+    "english": "invite",
+    "japanese": "招待する／誘う",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "招待する",
+        "category": "人間関係"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "invite",
+        "example": "Let's invite him too.",
+        "exampleJa": "彼も誘おう。",
+        "needsHint": true
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "invites",
+        "example": "She invites us every year.",
+        "exampleJa": "彼女は毎年私たちを招待してくれます。"
+      },
+      {
+        "label": "過去形",
+        "formName": "invited",
+        "example": "They invited me to dinner.",
+        "exampleJa": "彼らは私を夕食に招待してくれました。",
+        "needsHint": true
+      },
+      {
+        "label": "過去分詞",
+        "formName": "invited",
+        "example": "I have invited ten people.",
+        "exampleJa": "10人を招待しました。",
+        "needsHint": true
+      },
+      {
+        "label": "ing形",
+        "formName": "inviting",
+        "example": "We're inviting everyone.",
+        "exampleJa": "みんなを招待するところです。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "規則変化 (-d)",
+    "beginnerTip": "invite + 人 + to + 場所・行事（〜に誘う）の形で使います。",
+    "searchKeywords": "invite 招待する／誘う 招待する 人間関係"
+  },
+  {
+    "id": "v_explain",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞"
+    ],
+    "category": "会話",
+    "english": "explain",
+    "japanese": "説明する",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "説明する",
+        "category": "会話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "explain",
+        "example": "Let me explain.",
+        "exampleJa": "説明させて。"
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "explains",
+        "example": "He explains things clearly.",
+        "exampleJa": "彼は分かりやすく説明します。",
+        "needsHint": true
+      },
+      {
+        "label": "過去形",
+        "formName": "explained",
+        "example": "I explained the problem.",
+        "exampleJa": "問題を説明しました。"
+      },
+      {
+        "label": "過去分詞",
+        "formName": "explained",
+        "example": "She has explained it twice.",
+        "exampleJa": "彼女は2回説明してくれました。",
+        "needsHint": true
+      },
+      {
+        "label": "ing形",
+        "formName": "explaining",
+        "example": "I'm explaining the rules.",
+        "exampleJa": "ルールを説明しているところです。"
+      }
+    ],
+    "changeType": "規則変化 (-ed)",
+    "beginnerTip": "explain + 内容 + to + 人 の語順です（× explain me）。Can you explain it to me? のように言います。",
+    "searchKeywords": "explain 説明する 説明する 会話"
+  },
+  {
+    "id": "v_expect",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞"
+    ],
+    "category": "考え",
+    "english": "expect",
+    "japanese": "予想する／期待する",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "予想する／期待する",
+        "category": "考え"
+      },
+      {
+        "pos": "動詞",
+        "meaning": "来ると思う／待っている",
+        "category": "考え",
+        "example": "I wasn't expecting you!",
+        "exampleJa": "来るとは思っていなかった！"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "expect",
+        "example": "I expect you to be on time.",
+        "exampleJa": "時間どおりに来てほしいです。",
+        "needsHint": true
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "expects",
+        "example": "She expects a lot from me.",
+        "exampleJa": "彼女は私に多くを期待します。",
+        "needsHint": true
+      },
+      {
+        "label": "過去形",
+        "formName": "expected",
+        "example": "I expected it to be easy.",
+        "exampleJa": "簡単だと思っていました。",
+        "needsHint": true
+      },
+      {
+        "label": "過去分詞",
+        "formName": "expected",
+        "example": "We have expected this for months.",
+        "exampleJa": "数か月前からこれを予想していました。",
+        "needsHint": true
+      },
+      {
+        "label": "ing形",
+        "formName": "expecting",
+        "example": "I'm expecting a package today.",
+        "exampleJa": "今日は荷物が届く予定です。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "規則変化 (-ed)",
+    "beginnerTip": "expect は「そうなると思う」という予想です。hope（そうなってほしい）より、実際に起こる可能性が高いと考えているときに使います。wait（待つ）とは違います。",
+    "searchKeywords": "expect 予想する／期待する 予想する／期待する 来ると思う／待っている 考え"
+  },
+  {
+    "id": "v_worry",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞"
+    ],
+    "category": "感情",
+    "english": "worry",
+    "japanese": "心配する",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "心配する",
+        "category": "感情"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "worry",
+        "example": "Don't worry.",
+        "exampleJa": "心配しないで。"
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "worries",
+        "example": "She worries about everything.",
+        "exampleJa": "彼女は何でも心配します。",
+        "needsHint": true
+      },
+      {
+        "label": "過去形",
+        "formName": "worried",
+        "example": "I worried all night.",
+        "exampleJa": "一晩中心配しました。"
+      },
+      {
+        "label": "過去分詞",
+        "formName": "worried",
+        "example": "I have worried about this for days.",
+        "exampleJa": "何日もこのことを心配しています。",
+        "needsHint": true
+      },
+      {
+        "label": "ing形",
+        "formName": "worrying",
+        "example": "I'm worrying too much.",
+        "exampleJa": "心配しすぎています。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "規則変化 (y→ied)",
+    "beginnerTip": "worry about + 名詞（〜を心配する）の形です。worried（心配している）は形容詞のカードで、worry は「心配する」という動作です。Don't worry about it.（気にしないで）はよく使います。",
+    "searchKeywords": "worry 心配する 心配する 感情"
+  },
+  {
+    "id": "v_care",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞"
+    ],
+    "category": "感情",
+    "english": "care",
+    "japanese": "気にかける／世話をする",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "気にかける／大切に思う",
+        "category": "感情"
+      },
+      {
+        "pos": "動詞",
+        "meaning": "世話をする（care for）",
+        "category": "行動",
+        "example": "She cares for her grandmother.",
+        "exampleJa": "彼女は祖母の世話をしています。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "care",
+        "example": "I really care about you.",
+        "exampleJa": "あなたのことを本当に大切に思っています。",
+        "needsHint": true
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "cares",
+        "example": "He cares about his health.",
+        "exampleJa": "彼は健康を気にしています。",
+        "needsHint": true
+      },
+      {
+        "label": "過去形",
+        "formName": "cared",
+        "example": "We cared about the result.",
+        "exampleJa": "私たちは結果を気にかけました。",
+        "needsHint": true
+      },
+      {
+        "label": "過去分詞",
+        "formName": "cared",
+        "example": "I have always cared about this.",
+        "exampleJa": "私はずっとこのことを大切にしてきました。",
+        "needsHint": true
+      },
+      {
+        "label": "ing形",
+        "formName": "caring",
+        "example": "She is caring for her mother.",
+        "exampleJa": "彼女は母親の世話をしています。"
+      }
+    ],
+    "changeType": "規則変化 (-d)",
+    "beginnerTip": "I don't care.（どうでもいい）は、言い方によってはきつく聞こえます。Take care!（またね・気をつけて）は別れのあいさつです。",
+    "searchKeywords": "care 気にかける／世話をする 気にかける／大切に思う 世話をする（care for） 感情"
+  },
+  {
+    "id": "v_share",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞"
+    ],
+    "category": "行動",
+    "english": "share",
+    "japanese": "共有する／分け合う",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "共有する",
+        "category": "行動"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "share",
+        "example": "Can I share this with you?",
+        "exampleJa": "これをあなたと分けてもいい？"
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "shares",
+        "example": "She shares her notes with everyone.",
+        "exampleJa": "彼女はみんなにノートを共有します。"
+      },
+      {
+        "label": "過去形",
+        "formName": "shared",
+        "example": "We shared a pizza.",
+        "exampleJa": "私たちはピザを分け合いました。"
+      },
+      {
+        "label": "過去分詞",
+        "formName": "shared",
+        "example": "I have shared the photos.",
+        "exampleJa": "写真を共有しました。"
+      },
+      {
+        "label": "ing形",
+        "formName": "sharing",
+        "example": "I'm sharing a room with my friend.",
+        "exampleJa": "友達と部屋を共有しています。"
+      }
+    ],
+    "changeType": "規則変化 (-d)",
+    "beginnerTip": "share A with B（AをBと分け合う）の形でよく使います。SNSで「シェアする」と言うときも、同じ share です。",
+    "searchKeywords": "share 共有する／分け合う 共有する 行動"
+  },
+  {
+    "id": "v_join",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞"
+    ],
+    "category": "行動",
+    "english": "join",
+    "japanese": "参加する／加わる",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "参加する",
+        "category": "行動"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "join",
+        "example": "Do you want to join us?",
+        "exampleJa": "一緒にどうですか？"
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "joins",
+        "example": "He joins the call at ten.",
+        "exampleJa": "彼は10時に通話に加わります。",
+        "needsHint": true
+      },
+      {
+        "label": "過去形",
+        "formName": "joined",
+        "example": "I joined a gym last month.",
+        "exampleJa": "先月ジムに入会しました。"
+      },
+      {
+        "label": "過去分詞",
+        "formName": "joined",
+        "example": "She has joined our team.",
+        "exampleJa": "彼女はチームに加わりました。"
+      },
+      {
+        "label": "ing形",
+        "formName": "joining",
+        "example": "I'm joining the meeting now.",
+        "exampleJa": "今、会議に参加します。"
+      }
+    ],
+    "changeType": "規則変化 (-ed)",
+    "beginnerTip": "join のあとには、前置詞なしで名詞が来ます（× join to us）。",
+    "searchKeywords": "join 参加する／加わる 参加する 行動"
+  },
+  {
+    "id": "v_borrow",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞"
+    ],
+    "category": "行動",
+    "english": "borrow",
+    "japanese": "借りる",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "借りる",
+        "category": "行動"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "borrow",
+        "example": "Can I borrow your pen?",
+        "exampleJa": "ペンを借りてもいい？",
+        "needsHint": true
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "borrows",
+        "example": "He always borrows my charger.",
+        "exampleJa": "彼はいつも私の充電器を借ります。",
+        "needsHint": true
+      },
+      {
+        "label": "過去形",
+        "formName": "borrowed",
+        "example": "I borrowed a book from her.",
+        "exampleJa": "彼女から本を借りました。",
+        "needsHint": true
+      },
+      {
+        "label": "過去分詞",
+        "formName": "borrowed",
+        "example": "She has borrowed my car twice.",
+        "exampleJa": "彼女は私の車を2回借りました。",
+        "needsHint": true
+      },
+      {
+        "label": "ing形",
+        "formName": "borrowing",
+        "example": "I'm borrowing his bike today.",
+        "exampleJa": "今日は彼の自転車を借りています。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "規則変化 (-ed)",
+    "beginnerTip": "borrow は「借りる」、lend は「貸す」です。Can I borrow ...?（借りてもいい？）と Can you lend me ...?（貸してくれる？）で、動詞が逆になります。",
+    "searchKeywords": "borrow 借りる 借りる 行動"
+  },
+  {
+    "id": "v_learn",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞"
+    ],
+    "category": "学習",
+    "english": "learn",
+    "japanese": "学ぶ／覚える",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "学ぶ",
+        "category": "学習"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "learn",
+        "example": "I want to learn Spanish.",
+        "exampleJa": "スペイン語を学びたいです。",
+        "needsHint": true
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "learns",
+        "example": "She learns fast.",
+        "exampleJa": "彼女は覚えが早いです。"
+      },
+      {
+        "label": "過去形",
+        "formName": "learned",
+        "example": "I learned a lot today.",
+        "exampleJa": "今日はたくさん学びました。",
+        "needsHint": true
+      },
+      {
+        "label": "過去分詞",
+        "formName": "learned",
+        "example": "I have learned a few new words.",
+        "exampleJa": "新しい単語をいくつか覚えました。",
+        "needsHint": true
+      },
+      {
+        "label": "ing形",
+        "formName": "learning",
+        "example": "I'm learning to cook.",
+        "exampleJa": "料理を習っているところです。"
+      }
+    ],
+    "changeType": "規則変化 (-ed)",
+    "beginnerTip": "learn は「身につける」、study は「勉強する」という行為、practice は「練習して慣らす」ことです。アメリカ英語の過去形は learned です。",
+    "searchKeywords": "learn 学ぶ／覚える 学ぶ 学習"
+  },
+  {
+    "id": "v_study",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞"
+    ],
+    "category": "学習",
+    "english": "study",
+    "japanese": "勉強する",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "勉強する",
+        "category": "学習"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "study",
+        "example": "I study English every day.",
+        "exampleJa": "毎日英語を勉強しています。",
+        "needsHint": true
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "studies",
+        "example": "She studies at night.",
+        "exampleJa": "彼女は夜に勉強します。",
+        "needsHint": true
+      },
+      {
+        "label": "過去形",
+        "formName": "studied",
+        "example": "I studied for two hours.",
+        "exampleJa": "2時間勉強しました。",
+        "needsHint": true
+      },
+      {
+        "label": "過去分詞",
+        "formName": "studied",
+        "example": "I have studied this before.",
+        "exampleJa": "前にこれを勉強したことがあります。",
+        "needsHint": true
+      },
+      {
+        "label": "ing形",
+        "formName": "studying",
+        "example": "I'm studying for a test.",
+        "exampleJa": "テストの勉強をしています。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "規則変化 (y→ied)",
+    "beginnerTip": "study は「勉強する」という行為そのものです。learn は「身につく」という結果に重点があります。",
+    "searchKeywords": "study 勉強する 勉強する 学習"
+  },
+  {
+    "id": "v_practice",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞",
+      "名詞"
+    ],
+    "category": "学習",
+    "english": "practice",
+    "japanese": "練習する",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "練習する",
+        "category": "学習"
+      },
+      {
+        "pos": "名詞",
+        "meaning": "練習",
+        "category": "学習",
+        "example": "Practice makes perfect.",
+        "exampleJa": "習うより慣れよ。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "practice",
+        "example": "I practice every morning.",
+        "exampleJa": "毎朝練習しています。",
+        "needsHint": true
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "practices",
+        "example": "She practices the piano.",
+        "exampleJa": "彼女はピアノを練習します。",
+        "needsHint": true
+      },
+      {
+        "label": "過去形",
+        "formName": "practiced",
+        "example": "We practiced for hours.",
+        "exampleJa": "私たちは何時間も練習しました。",
+        "needsHint": true
+      },
+      {
+        "label": "過去分詞",
+        "formName": "practiced",
+        "example": "I have practiced this a lot.",
+        "exampleJa": "これをたくさん練習しました。",
+        "needsHint": true
+      },
+      {
+        "label": "ing形",
+        "formName": "practicing",
+        "example": "I'm practicing my English.",
+        "exampleJa": "英語を練習しています。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "規則変化 (-d)",
+    "beginnerTip": "アメリカ英語では、名詞も動詞も practice と書きます。練習して慣らすときに使い、learn（身につける）、study（勉強する）とは少し違います。",
+    "searchKeywords": "practice 練習する 練習する 練習 学習"
+  },
+  {
+    "id": "v_check",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞"
+    ],
+    "category": "行動",
+    "english": "check",
+    "japanese": "確認する／調べる",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "確認する",
+        "category": "行動"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "check",
+        "example": "Let me check my schedule.",
+        "exampleJa": "予定を確認させて。",
+        "needsHint": true
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "checks",
+        "example": "He checks his phone often.",
+        "exampleJa": "彼はよくスマホを見ます。",
+        "needsHint": true
+      },
+      {
+        "label": "過去形",
+        "formName": "checked",
+        "example": "I checked the time.",
+        "exampleJa": "時間を確認しました。",
+        "needsHint": true
+      },
+      {
+        "label": "過去分詞",
+        "formName": "checked",
+        "example": "Have you checked your email?",
+        "exampleJa": "メールを確認しましたか？",
+        "needsHint": true
+      },
+      {
+        "label": "ing形",
+        "formName": "checking",
+        "example": "I'm checking the weather.",
+        "exampleJa": "天気を調べています。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "規則変化 (-ed)",
+    "beginnerTip": "check は「合っているか確かめる」、look for は「探す」、find out は「調べて分かる」です。Let me check. は、電話で「確認するね」と言うときの定番です。",
+    "searchKeywords": "check 確認する／調べる 確認する 行動"
+  },
+  {
+    "id": "v_wish",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞"
+    ],
+    "category": "希望",
+    "english": "wish",
+    "japanese": "願う／〜だったらいいのに",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "願う",
+        "category": "希望"
+      },
+      {
+        "pos": "動詞",
+        "meaning": "〜だったらいいのに（I wish + 過去形）",
+        "category": "希望",
+        "example": "I wish I had more time.",
+        "exampleJa": "もっと時間があったらいいのに。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "wish",
+        "example": "I wish you luck.",
+        "exampleJa": "幸運を祈っています。"
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "wishes",
+        "example": "She wishes him well.",
+        "exampleJa": "彼女は彼の幸せを願っています。"
+      },
+      {
+        "label": "過去形",
+        "formName": "wished",
+        "example": "I wished for rain.",
+        "exampleJa": "雨が降るよう願いました。",
+        "needsHint": true
+      },
+      {
+        "label": "過去分詞",
+        "formName": "wished",
+        "example": "We have wished for this for years.",
+        "exampleJa": "何年もこれを願ってきました。",
+        "needsHint": true
+      },
+      {
+        "label": "ing形",
+        "formName": "wishing",
+        "example": "I'm wishing you the best.",
+        "exampleJa": "あなたの幸せを祈っています。"
+      }
+    ],
+    "changeType": "規則変化 (-ed)",
+    "beginnerTip": "hope は「そうなるかもしれないこと」、wish は「実際にはそうではないこと」への願いです（I hope you're okay. / I wish I were there.）。",
+    "searchKeywords": "wish 願う／〜だったらいいのに 願う 〜だったらいいのに（I wish + 過去形） 希望"
+  },
+  {
+    "id": "v_play",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞"
+    ],
+    "category": "行動",
+    "english": "play",
+    "japanese": "遊ぶ／（スポーツ・ゲームを）する／演奏する",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "遊ぶ／（スポーツ・ゲームを）する",
+        "category": "行動"
+      },
+      {
+        "pos": "動詞",
+        "meaning": "演奏する",
+        "category": "音楽",
+        "example": "I play the piano.",
+        "exampleJa": "ピアノを弾きます。"
+      },
+      {
+        "pos": "動詞",
+        "meaning": "（音楽・動画を）再生する",
+        "category": "機器",
+        "example": "Play this song.",
+        "exampleJa": "この曲をかけて。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "play",
+        "example": "Do you want to play a game?",
+        "exampleJa": "ゲームをしませんか？"
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "plays",
+        "example": "She plays tennis on Sundays.",
+        "exampleJa": "彼女は日曜日にテニスをします。",
+        "needsHint": true
+      },
+      {
+        "label": "過去形",
+        "formName": "played",
+        "example": "We played outside all day.",
+        "exampleJa": "私たちは一日中外で遊びました。"
+      },
+      {
+        "label": "過去分詞",
+        "formName": "played",
+        "example": "I have played this game before.",
+        "exampleJa": "このゲームは前にやったことがあります。",
+        "needsHint": true
+      },
+      {
+        "label": "ing形",
+        "formName": "playing",
+        "example": "The kids are playing outside.",
+        "exampleJa": "子どもたちは外で遊んでいます。"
+      }
+    ],
+    "changeType": "規則変化 (-ed)",
+    "beginnerTip": "スポーツやゲームにはつけず（play tennis）、楽器には the をつけます（play the piano）。",
+    "searchKeywords": "play 遊ぶ／（スポーツ・ゲームを）する／演奏する 遊ぶ／（スポーツ・ゲームを）する 演奏する （音楽・動画を）再生する 行動"
+  },
+  {
+    "id": "v_write",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞"
+    ],
+    "category": "行動",
+    "english": "write",
+    "japanese": "書く",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "書く",
+        "category": "行動"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "write",
+        "example": "Please write your name here.",
+        "exampleJa": "ここに名前を書いてください。",
+        "needsHint": true
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "writes",
+        "example": "He writes every day.",
+        "exampleJa": "彼は毎日書きます。"
+      },
+      {
+        "label": "過去形",
+        "formName": "wrote",
+        "example": "I wrote her a letter.",
+        "exampleJa": "彼女に手紙を書きました。",
+        "needsHint": true
+      },
+      {
+        "label": "過去分詞",
+        "formName": "written",
+        "example": "I have written the report.",
+        "exampleJa": "報告書を書き終えました。",
+        "needsHint": true
+      },
+      {
+        "label": "ing形",
+        "formName": "writing",
+        "example": "I'm writing an email.",
+        "exampleJa": "メールを書いているところです。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "不規則 A-B-C",
+    "beginnerTip": "write → wrote → written と変化します。right（正しい）と発音が同じなので、聞いて覚えるときに注意します。",
+    "searchKeywords": "write 書く 書く 行動"
+  },
+  {
+    "id": "v_visit",
+    "type": "word",
+    "partOfSpeech": [
+      "動詞",
+      "名詞"
+    ],
+    "category": "移動",
+    "english": "visit",
+    "japanese": "訪問する／訪れる",
+    "senses": [
+      {
+        "pos": "動詞",
+        "meaning": "訪れる／訪問する",
+        "category": "移動"
+      },
+      {
+        "pos": "名詞",
+        "meaning": "訪問",
+        "category": "移動",
+        "example": "Thank you for your visit.",
+        "exampleJa": "お越しいただきありがとうございます。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原形",
+        "formName": "visit",
+        "example": "I want to visit you soon.",
+        "exampleJa": "近いうちにあなたに会いに行きたいです。",
+        "needsHint": true
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "visits",
+        "example": "She visits her parents every month.",
+        "exampleJa": "彼女は毎月両親を訪ねます。",
+        "needsHint": true
+      },
+      {
+        "label": "過去形",
+        "formName": "visited",
+        "example": "We visited a museum.",
+        "exampleJa": "私たちは美術館を訪れました。",
+        "needsHint": true
+      },
+      {
+        "label": "過去分詞",
+        "formName": "visited",
+        "example": "I have never visited New York.",
+        "exampleJa": "ニューヨークを訪れたことがありません。",
+        "needsHint": true
+      },
+      {
+        "label": "ing形",
+        "formName": "visiting",
+        "example": "I'm visiting my friend tomorrow.",
+        "exampleJa": "明日友達を訪ねます。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "規則変化 (-ed)",
+    "beginnerTip": "visit のあとには、前置詞なしで場所や人が来ます（× visit to）。come over（遊びに来る）との違いは、visit は訪ねる側から見た言い方です。",
+    "searchKeywords": "visit 訪問する／訪れる 訪れる／訪問する 訪問 移動"
+  },
+  {
+    "id": "pron_this",
+    "type": "word",
+    "partOfSpeech": [
+      "代名詞"
+    ],
+    "category": "指示",
+    "english": "this / that",
+    "japanese": "これ／あれ",
+    "senses": [
+      {
+        "pos": "代名詞",
+        "meaning": "これ／あれ（this は近く、that は離れたもの）",
+        "category": "指示"
+      },
+      {
+        "pos": "代名詞",
+        "meaning": "相づちの that（それは〜だ）",
+        "category": "会話",
+        "example": "That sounds great.",
+        "exampleJa": "それはいいね。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "this / that",
+        "example": "This is my phone, and that is yours.",
+        "exampleJa": "これは私のスマホで、あれはあなたのです。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "this は近いもの、that は少し離れたものを指します。相手の言ったことを受けるときは、That's great.（それはいいね）のように that を使います。",
+    "searchKeywords": "this / that これ／あれ これ／あれ（this は近く、that は離れたもの） 相づちの that（それは〜だ） 指示"
+  },
+  {
+    "id": "pron_these",
+    "type": "word",
+    "partOfSpeech": [
+      "代名詞"
+    ],
+    "category": "指示",
+    "english": "these / those",
+    "japanese": "これら／あれら",
+    "senses": [
+      {
+        "pos": "代名詞",
+        "meaning": "これら／あれら（these は近く、those は離れたもの）",
+        "category": "指示"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "these / those",
+        "example": "These shoes are mine, and those are yours.",
+        "exampleJa": "この靴は私ので、あの靴はあなたのです。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "this / that の複数形です。these は近いもの、those は離れたものを指します。",
+    "searchKeywords": "these / those これら／あれら これら／あれら（these は近く、those は離れたもの） 指示"
+  },
+  {
+    "id": "pron_something",
+    "type": "word",
+    "partOfSpeech": [
+      "代名詞"
+    ],
+    "category": "数量",
+    "english": "something / anything / nothing",
+    "japanese": "何か／何も",
+    "senses": [
+      {
+        "pos": "代名詞",
+        "meaning": "何か（something）",
+        "category": "数量",
+        "example": "I need something to drink.",
+        "exampleJa": "何か飲み物が必要です。"
+      },
+      {
+        "pos": "代名詞",
+        "meaning": "何か（anything・疑問文と否定文）",
+        "category": "数量",
+        "example": "Do you need anything?",
+        "exampleJa": "何か必要ですか？"
+      },
+      {
+        "pos": "代名詞",
+        "meaning": "何も〜ない（nothing）",
+        "category": "数量",
+        "example": "Nothing happened.",
+        "exampleJa": "何も起こりませんでした。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "something / anything / nothing",
+        "example": "I want to tell you something.",
+        "exampleJa": "あなたに伝えたいことがあります。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "ふつうの文は something、疑問文や否定文は anything、「何もない」は nothing です。Would you like something to drink? のように、すすめるときは疑問文でも something を使います。",
+    "searchKeywords": "something / anything / nothing 何か／何も 何か（something） 何か（anything・疑問文と否定文） 何も〜ない（nothing） 数量"
+  },
+  {
+    "id": "pron_someone",
+    "type": "word",
+    "partOfSpeech": [
+      "代名詞"
+    ],
+    "category": "数量",
+    "english": "someone / anyone / no one",
+    "japanese": "誰か／誰も〜ない",
+    "senses": [
+      {
+        "pos": "代名詞",
+        "meaning": "誰か（someone）",
+        "category": "数量",
+        "example": "Someone is at the door.",
+        "exampleJa": "誰かが玄関にいます。"
+      },
+      {
+        "pos": "代名詞",
+        "meaning": "誰か（anyone・疑問文と否定文）",
+        "category": "数量",
+        "example": "Is anyone home?",
+        "exampleJa": "誰か家にいますか？"
+      },
+      {
+        "pos": "代名詞",
+        "meaning": "誰も〜ない（no one）",
+        "category": "数量",
+        "example": "No one answered the phone.",
+        "exampleJa": "誰も電話に出ませんでした。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "someone / anyone / no one",
+        "example": "I need someone to help me.",
+        "exampleJa": "手伝ってくれる人が必要です。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "someone と somebody、anyone と anybody は同じ意味です。会話では -body の形もよく使います。",
+    "searchKeywords": "someone / anyone / no one 誰か／誰も〜ない 誰か（someone） 誰か（anyone・疑問文と否定文） 誰も〜ない（no one） 数量"
+  },
+  {
+    "id": "det_many",
+    "type": "word",
+    "partOfSpeech": [
+      "限定詞"
+    ],
+    "category": "数量",
+    "english": "many / much",
+    "japanese": "たくさんの",
+    "senses": [
+      {
+        "pos": "限定詞",
+        "meaning": "たくさんの（数えられるもの：many）",
+        "category": "数量"
+      },
+      {
+        "pos": "限定詞",
+        "meaning": "たくさんの（数えられないもの：much）",
+        "category": "数量",
+        "example": "I don't eat much meat.",
+        "exampleJa": "あまり肉は食べません。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "many / much",
+        "example": "I don't have many friends here.",
+        "exampleJa": "ここには友達があまりいません。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "数えられるもの（friends, books）は many、数えられないもの（time, water）は much です。ふつうの文では a lot of のほうが自然です（I have a lot of time.）。",
+    "searchKeywords": "many / much たくさんの たくさんの（数えられるもの：many） たくさんの（数えられないもの：much） 数量"
+  },
+  {
+    "id": "det_some",
+    "type": "word",
+    "partOfSpeech": [
+      "限定詞"
+    ],
+    "category": "数量",
+    "english": "some / any",
+    "japanese": "いくつかの／少しの／少しも",
+    "senses": [
+      {
+        "pos": "限定詞",
+        "meaning": "いくつかの／少しの（some）",
+        "category": "数量",
+        "example": "I have some questions.",
+        "exampleJa": "いくつか質問があります。"
+      },
+      {
+        "pos": "限定詞",
+        "meaning": "少しも〜ない／何か（any）",
+        "category": "数量",
+        "example": "I don't have any plans.",
+        "exampleJa": "予定は何もありません。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "some / any",
+        "example": "Do you have any questions?",
+        "exampleJa": "何か質問はありますか？"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "ふつうの文は some、疑問文や否定文は any が基本です。Would you like some tea? のように、すすめるときは some を使います。",
+    "searchKeywords": "some / any いくつかの／少しの／少しも いくつかの／少しの（some） 少しも〜ない／何か（any） 数量"
+  },
+  {
+    "id": "det_every",
+    "type": "word",
+    "partOfSpeech": [
+      "限定詞"
+    ],
+    "category": "数量",
+    "english": "every / each",
+    "japanese": "すべての／毎〜／それぞれ",
+    "senses": [
+      {
+        "pos": "限定詞",
+        "meaning": "すべての／毎〜（every）",
+        "category": "数量",
+        "example": "I call my mom every day.",
+        "exampleJa": "毎日母に電話します。"
+      },
+      {
+        "pos": "限定詞",
+        "meaning": "それぞれの（each）",
+        "category": "数量",
+        "example": "Each student has a book.",
+        "exampleJa": "生徒はそれぞれ本を1冊持っています。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "every / each",
+        "example": "I check my phone every morning.",
+        "exampleJa": "毎朝スマホを確認します。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "every は全体をひとまとめにして、each は1つ1つを見るイメージです。どちらも、あとには単数の名詞が来ます。",
+    "searchKeywords": "every / each すべての／毎〜／それぞれ すべての／毎〜（every） それぞれの（each） 数量"
+  },
+  {
+    "id": "det_both",
+    "type": "word",
+    "partOfSpeech": [
+      "限定詞"
+    ],
+    "category": "数量",
+    "english": "both / all",
+    "japanese": "両方／すべて",
+    "senses": [
+      {
+        "pos": "限定詞",
+        "meaning": "両方（both）",
+        "category": "数量",
+        "example": "Both of us were late.",
+        "exampleJa": "私たち2人とも遅れました。"
+      },
+      {
+        "pos": "限定詞",
+        "meaning": "すべて（all）",
+        "category": "数量",
+        "example": "All of us were ready.",
+        "exampleJa": "私たちはみんな準備できていました。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "both / all",
+        "example": "I like both of them.",
+        "exampleJa": "どちらも好きです。"
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "both は2つ（2人）、all は3つ（3人）以上に使います。",
+    "searchKeywords": "both / all 両方／すべて 両方（both） すべて（all） 数量"
+  },
+  {
+    "id": "det_few",
+    "type": "word",
+    "partOfSpeech": [
+      "限定詞"
+    ],
+    "category": "数量",
+    "english": "a few",
+    "japanese": "少しの（数個の）／いくつかの",
+    "senses": [
+      {
+        "pos": "限定詞",
+        "meaning": "少しの（数個の）／いくつかの",
+        "category": "数量"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "a few",
+        "example": "I have a few friends here.",
+        "exampleJa": "ここに友達が数人います。",
+        "needsHint": true
+      }
+    ],
+    "changeType": "変化なし",
+    "beginnerTip": "a few は数えられるもの、a little は数えられないものに使います。a をとって few だけだと、「ほとんどない」という否定的な意味になります。",
+    "searchKeywords": "a few 少しの（数個の）／いくつかの 少しの（数個の）／いくつかの 数量"
+  },
+  {
+    "id": "exp_turn_on_off",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "日常動作",
+    "english": "turn on / turn off",
+    "japanese": "つける／消す",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "（電気・機器を）つける",
+        "category": "日常動作"
+      },
+      {
+        "pos": "表現",
+        "meaning": "（電気・機器を）消す",
+        "category": "日常動作",
+        "example": "Turn off the TV.",
+        "exampleJa": "テレビを消して。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "turn on / turn off",
+        "example": "Turn on the light, please.",
+        "exampleJa": "電気をつけてください。"
+      }
+    ],
+    "example": "Turn on the light, please.",
+    "exampleJa": "電気をつけてください。",
+    "beginnerTip": "turn on は動かす・つける、turn off は止める・消すです。活用は turn のカードと同じです（turned on, turning off）。",
+    "searchKeywords": "turn on / turn off つける／消す （電気・機器を）つける （電気・機器を）消す 日常動作"
+  },
+  {
+    "id": "exp_wake_up",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "日常動作",
+    "english": "wake up",
+    "japanese": "目を覚ます／起こす",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "目を覚ます／起きる",
+        "category": "日常動作"
+      },
+      {
+        "pos": "表現",
+        "meaning": "起こす",
+        "category": "日常動作",
+        "example": "Please wake me up at six.",
+        "exampleJa": "6時に起こしてください。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "wake up",
+        "example": "I wake up at seven.",
+        "exampleJa": "7時に起きます。"
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "wakes up",
+        "example": "He wakes up early.",
+        "exampleJa": "彼は早起きです。"
+      },
+      {
+        "label": "過去形",
+        "formName": "woke up",
+        "example": "I woke up late today.",
+        "exampleJa": "今日は遅く起きました。"
+      },
+      {
+        "label": "過去分詞",
+        "formName": "woken up",
+        "example": "I have woken up early all week.",
+        "exampleJa": "今週ずっと早く起きています。"
+      },
+      {
+        "label": "ing形",
+        "formName": "waking up",
+        "example": "I'm waking up the kids.",
+        "exampleJa": "子どもたちを起こしているところです。"
+      }
+    ],
+    "example": "I wake up at seven.",
+    "exampleJa": "7時に起きます。",
+    "beginnerTip": "wake up は自分が起きること、wake + 人 + up は人を起こすことです。get up（布団やベッドから出る）とは少し違います。wake の変化は wake → woke → woken です。",
+    "searchKeywords": "wake up 目を覚ます／起こす 目を覚ます／起きる 起こす 日常動作"
+  },
+  {
+    "id": "exp_slow_down",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "電話",
+    "english": "slow down",
+    "japanese": "速度を落とす／ゆっくりにする",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "速度を落とす",
+        "category": "動作"
+      },
+      {
+        "pos": "表現",
+        "meaning": "ペースを落とす／落ち着く",
+        "category": "会話",
+        "example": "You need to slow down and rest.",
+        "exampleJa": "ペースを落として休まないと。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "slow down",
+        "example": "Can you slow down a little?",
+        "exampleJa": "もう少しゆっくり話してもらえますか？"
+      },
+      {
+        "label": "三人称単数現在",
+        "formName": "slows down",
+        "example": "The train slows down here.",
+        "exampleJa": "電車はここで速度を落とします。"
+      },
+      {
+        "label": "過去形",
+        "formName": "slowed down",
+        "example": "I slowed down at the corner.",
+        "exampleJa": "角で速度を落としました。"
+      },
+      {
+        "label": "過去分詞",
+        "formName": "slowed down",
+        "example": "Things have slowed down lately.",
+        "exampleJa": "最近は物事のペースが落ちています。"
+      },
+      {
+        "label": "ing形",
+        "formName": "slowing down",
+        "example": "The car is slowing down.",
+        "exampleJa": "車が速度を落としています。"
+      }
+    ],
+    "example": "Can you slow down a little?",
+    "exampleJa": "もう少しゆっくり話してもらえますか？",
+    "beginnerTip": "電話で話が速いときは Can you slow down? と言えます。speak more slowly とほぼ同じ意味です。",
+    "searchKeywords": "slow down 速度を落とす／ゆっくりにする 速度を落とす ペースを落とす／落ち着く 電話"
+  },
+  {
+    "id": "exp_come_over",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "日常動作",
+    "english": "come over",
+    "japanese": "遊びに来る／立ち寄る",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "遊びに来る／家に来る",
+        "category": "人間関係"
+      },
+      {
+        "pos": "表現",
+        "meaning": "こちらへ来る",
+        "category": "動作",
+        "example": "Come over here.",
+        "exampleJa": "こっちに来て。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "come over",
+        "example": "Do you want to come over tonight?",
+        "exampleJa": "今夜うちに来ない？"
+      }
+    ],
+    "example": "Do you want to come over tonight?",
+    "exampleJa": "今夜うちに来ない？",
+    "beginnerTip": "come over は、相手の家などに遊びに行くときの定番です。hang out（一緒に過ごす）とセットでよく使います。活用は come のカードと同じです（came over）。",
+    "searchKeywords": "come over 遊びに来る／立ち寄る 遊びに来る／家に来る こちらへ来る 日常動作"
+  },
+  {
+    "id": "exp_go_out",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "日常動作",
+    "english": "go out",
+    "japanese": "外出する／付き合う",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "外出する／出かける",
+        "category": "日常動作"
+      },
+      {
+        "pos": "表現",
+        "meaning": "付き合う（go out with）",
+        "category": "人間関係",
+        "example": "They have been going out for two years.",
+        "exampleJa": "彼らは2年間付き合っています。"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "go out",
+        "example": "Do you want to go out tonight?",
+        "exampleJa": "今夜出かけない？"
+      }
+    ],
+    "example": "Do you want to go out tonight?",
+    "exampleJa": "今夜出かけない？",
+    "beginnerTip": "活用は go のカードと同じです（went out, going out）。「付き合う」の意味では、go out with + 人 の形です。",
+    "searchKeywords": "go out 外出する／付き合う 外出する／出かける 付き合う（go out with） 日常動作"
+  },
+  {
+    "id": "exp_write_down",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "日常動作",
+    "english": "write down",
+    "japanese": "書き留める",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "書き留める",
+        "category": "日常動作"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "write down",
+        "example": "Let me write that down.",
+        "exampleJa": "それを書き留めさせて。"
+      }
+    ],
+    "example": "Let me write that down.",
+    "exampleJa": "それを書き留めさせて。",
+    "beginnerTip": "電話で番号や住所を聞くときに便利です。活用は write のカードと同じです（wrote down, written down）。",
+    "searchKeywords": "write down 書き留める 書き留める 日常動作"
   }
 ];
