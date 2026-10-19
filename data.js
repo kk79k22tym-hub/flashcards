@@ -1,4 +1,4 @@
-// Flashcards: 404 existing cards (noun articles reviewed) + 110 travel cards.
+// Flashcards 514 cards, reviewed October 20 2026
 const rawDatabase = [
   {
     "id": "v_be",
@@ -39,33 +39,33 @@ const rawDatabase = [
         "label": "過去分詞",
         "formName": "been",
         "example": "I have been busy all day.",
-        "exampleJa": "今日はずっと忙しかったです。"
+        "exampleJa": "今日はずっと忙しいです。"
       },
       {
         "label": "ing形",
         "formName": "being",
         "example": "He is being very quiet.",
-        "exampleJa": "彼はとても静かにしています。",
+        "exampleJa": "彼は（今）とても静かにしています。",
         "needsHint": true
       }
     ],
-    "changeType": "不規則変化",
-    "beginnerTip": "主語や時制によって形が大きく変わる最重要動詞です。",
+    "changeType": "不規則変化｜be[bi] → was[wʌz] / were[wɝ] → been[bɪn]",
+    "beginnerTip": "主語や時制によって形が大きく変わる基本動詞。being は一時的な振る舞いを表すことがある。He is being very quiet. は普段の性格ではなく、そのとき静かにしている様子を表す。",
     "searchKeywords": "be 〜である／いる 〜である／いる 基本動詞"
   },
   {
     "id": "v_have",
-    "type": "word",
+    "type": "expression",
     "partOfSpeech": [
       "動詞"
     ],
     "category": "基本動詞",
-    "english": "have + 名詞",
-    "japanese": "持っている",
+    "english": "have + 名詞（句）",
+    "japanese": "持っている／ある／食べる・飲む",
     "senses": [
       {
         "pos": "動詞",
-        "meaning": "持っている",
+        "meaning": "持っている／ある",
         "category": "基本動詞"
       },
       {
@@ -74,12 +74,19 @@ const rawDatabase = [
         "category": "基本動詞",
         "example": "Let's have lunch.",
         "exampleJa": "お昼を食べよう。"
+      },
+      {
+        "pos": "動詞",
+        "meaning": "ある（考え・質問・時間など）",
+        "category": "基本動詞",
+        "example": "I have an idea.",
+        "exampleJa": "考えがある。"
       }
     ],
     "forms": [
       {
         "label": "基本形",
-        "formName": "have + 名詞",
+        "formName": "have + 名詞（句）",
         "example": "I have a car.",
         "exampleJa": "車を持っています。"
       },
@@ -96,9 +103,9 @@ const rawDatabase = [
         "exampleJa": "車を持っていました。"
       }
     ],
-    "changeType": "不規則 A-B-B",
-    "beginnerTip": "have は「持っている」。had はその過去形で「持っていた」。現在完了・過去完了の have/had + 動詞（過去分詞）は別カードで学びます。",
-    "searchKeywords": "have 持っている／ある 持っている／ある 基本動詞 have + 名詞 had + 名詞"
+    "changeType": "不規則 A-B-B｜have[hæv] → had[hæd] → had[hæd]",
+    "beginnerTip": "have + 名詞句は、物を持つだけでなく、質問・考え・時間などが「ある」ことも表す。a car / an idea / some free time など、名詞の前の冠詞や数量表現も一緒に使う。",
+    "searchKeywords": "have 持っている／ある 持っている／ある 基本動詞 have + 名詞 had + 名詞 have an idea have a question have some free time"
   },
   {
     "id": "v_do",
@@ -114,13 +121,6 @@ const rawDatabase = [
         "pos": "動詞",
         "meaning": "する",
         "category": "基本動詞"
-      },
-      {
-        "pos": "動詞",
-        "meaning": "疑問文・否定文を作る助動詞",
-        "category": "基本動詞",
-        "example": "Do you like coffee?",
-        "exampleJa": "コーヒーは好き？"
       }
     ],
     "forms": [
@@ -155,8 +155,8 @@ const rawDatabase = [
         "exampleJa": "何をしているの？"
       }
     ],
-    "changeType": "不規則 A-B-C",
-    "beginnerTip": "疑問文・否定文を作る助動詞としても非常によく使われます。",
+    "changeType": "不規則 A-B-C｜do[du] → did[dɪd] → done[dʌn]",
+    "beginnerTip": "do は「する」という動詞。do my homework（宿題をする）、do my best（最善を尽くす）などの組み合わせで使う。",
     "searchKeywords": "do する する 基本動詞"
   },
   {
@@ -198,17 +198,18 @@ const rawDatabase = [
         "label": "過去分詞",
         "formName": "gone",
         "example": "He has gone outside.",
-        "exampleJa": "彼は外へ行ってしまいました。"
+        "exampleJa": "彼は外に出ました。（今はここにいません）"
       },
       {
         "label": "ing形",
         "formName": "going",
-        "example": "I am going home now.",
+        "example": "I'm going home now.",
         "exampleJa": "今家に帰るところです。"
       }
     ],
-    "changeType": "不規則 A-B-C",
-    "searchKeywords": "go 行く 行く 移動"
+    "changeType": "不規則 A-B-C｜go[ɡoʊ] → went[wɛnt] → gone[ɡɔn]",
+    "searchKeywords": "go 行く 行く 移動",
+    "beginnerTip": "has gone は、行った結果が現在の状況につながる表現。通常は、行った先からまだ戻っていないニュアンスがある。"
   },
   {
     "id": "v_come",
@@ -255,13 +256,13 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "coming",
-        "example": "I am coming now.",
+        "example": "I'm coming now.",
         "exampleJa": "今行きます。",
         "needsHint": true
       }
     ],
-    "changeType": "不規則 A-B-A",
-    "beginnerTip": "話し手か相手のいる場所へ向かう動きに使います。I'm coming. は「（相手のところへ）今行く」の意味です。",
+    "changeType": "不規則 A-B-A｜come[kʌm] → came[keɪm] → come[kʌm]",
+    "beginnerTip": "話し手か相手のいる場所へ向かう動きに使う。I'm coming. は「（相手のところへ）今行く」の意味。",
     "searchKeywords": "come 来る 来る 移動"
   },
   {
@@ -329,8 +330,8 @@ const rawDatabase = [
         "exampleJa": "遅い時間になってきました。"
       }
     ],
-    "changeType": "不規則 A-B-C（米語）",
-    "beginnerTip": "アメリカ英語では過去分詞は基本的に gotten を使います。have got は別の表現カードで扱います。",
+    "changeType": "不規則 A-B-C（米語）｜get[ɡɛt] → got[ɡɑt] → gotten[ˈɡɑtən]",
+    "beginnerTip": "get は「得る・手に入れる」だけでなく、「理解する」「〜になる」「到着する」など、後ろに続く言葉によって意味が変わる。アメリカ英語の過去分詞は基本的に gotten。",
     "searchKeywords": "get 得る／手に入れる／〜になる 得る／手に入れる／〜になる 基本動詞"
   },
   {
@@ -381,7 +382,7 @@ const rawDatabase = [
         "exampleJa": "彼は昼食を作っています。"
       }
     ],
-    "changeType": "不規則 A-B-B",
+    "changeType": "不規則 A-B-B｜make[meɪk] → made[meɪd] → made[meɪd]",
     "searchKeywords": "make 作る／〜にする 作る／〜にする 基本動詞"
   },
   {
@@ -433,8 +434,8 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "不規則 A-B-C",
-    "beginnerTip": "take は「取る」以外にも、時間・交通・写真など多くの組み合わせで使います。take は話し手から離れる方向へ「持っていく」、bring は話し手・目的地の方向へ「持ってくる」イメージです。",
+    "changeType": "不規則 A-B-C｜take[teɪk] → took[tʊk] → taken[ˈteɪkən]",
+    "beginnerTip": "take は移動の基準となる場所から離れる方向へ「持っていく」、bring はその場所へ向かって「持ってくる」というイメージ。例：I’ll bring some snacks.（お菓子を持っていくよ）相手のいる場所へ持参する場合は bring を使うことがある。",
     "searchKeywords": "take 取る／持っていく／連れていく 取る／持っていく／連れていく 基本動詞",
     "usageTags": [
       "持っていく",
@@ -462,7 +463,7 @@ const rawDatabase = [
         "label": "原形",
         "formName": "give",
         "example": "Give me a minute.",
-        "exampleJa": "1分ください。"
+        "exampleJa": "1分ください／少し待ってください。"
       },
       {
         "label": "三人称単数現在",
@@ -489,7 +490,7 @@ const rawDatabase = [
         "exampleJa": "無料サンプルを配っています。"
       }
     ],
-    "changeType": "不規則 A-B-C",
+    "changeType": "不規則 A-B-C｜give[ɡɪv] → gave[ɡeɪv] → given[ˈɡɪvən]",
     "searchKeywords": "give 与える／渡す 与える／渡す 基本動詞"
   },
   {
@@ -540,8 +541,8 @@ const rawDatabase = [
         "exampleJa": "真実を知ったことが助けになりました。"
       }
     ],
-    "changeType": "不規則 A-B-C",
-    "beginnerTip": "「知る」より「知っている」という状態を表すことが多い動詞です。know は知識として知っていること、understand は内容や気持ちが分かることです。",
+    "changeType": "不規則 A-B-C｜know[noʊ] → knew[nu] → known[noʊn]",
+    "beginnerTip": "「知る」より「知っている」という状態を表すことが多い動詞。know は知識として知っていること、understand は内容や気持ちが分かること。",
     "searchKeywords": "know 知っている／分かっている 知っている／分かっている 基本動詞"
   },
   {
@@ -597,13 +598,13 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "thinking",
-        "example": "I am thinking about lunch.",
+        "example": "I'm thinking about lunch.",
         "exampleJa": "昼食のことを考えています。"
       }
     ],
-    "changeType": "不規則 A-B-B",
+    "changeType": "不規則 A-B-B｜think[θɪŋk] → thought[θɔt] → thought[θɔt]",
     "searchKeywords": "think 思う／考える 思う／考える 思考 〜だと思う／たぶん（文末・挿入的な I think） It's around five, I think.",
-    "beginnerTip": "think は普通の意見（〜と思う）、believe は信じている・確信に近い気持ち、hope は「そうなってほしい」という願いです。"
+    "beginnerTip": "think は普通の意見（〜と思う）、believe は信じている・確信に近い気持ち、hope は「そうなってほしい」という願い。"
   },
   {
     "id": "v_want",
@@ -653,8 +654,8 @@ const rawDatabase = [
         "exampleJa": "もっと欲しいと思うのは自然です。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
-    "beginnerTip": "want to + 動詞（原形）は別の表現カードで学びます。",
+    "changeType": "規則変化 (-ed)｜want[wɑnt] → wanted[ˈwɔntɪd] → wanted[ˈwɔntɪd]",
+    "beginnerTip": "want to + 動詞（原形）は別の表現カードで学ぶ。",
     "searchKeywords": "want 欲しい／望む 欲しい／望む 希望"
   },
   {
@@ -713,8 +714,8 @@ const rawDatabase = [
         "exampleJa": "助けを必要とするのは普通のことです。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
-    "beginnerTip": "need to + 動詞（原形）は別の表現カードで学びます。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。",
+    "changeType": "規則変化 (-ed)｜need[nid] → needed[ˈnidəd] → needed[ˈnidəd]",
+    "beginnerTip": "need to + 動詞（原形）は別の表現カードで学ぶ。 名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。",
     "searchKeywords": "need 必要とする／必要／必要なもの 必要とする 必要／必要なもの 必要"
   },
   {
@@ -773,8 +774,8 @@ const rawDatabase = [
         "exampleJa": "それを好きでも何も悪くありません。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
-    "beginnerTip": "「好き」の動詞と「〜のような」の前置詞は意味が大きく違います。会話では I'm liking this. のように「〜している形」で言うこともあります。like は「好き」、love は「大好き」でより強い気持ちです。",
+    "changeType": "規則変化 (-ed)｜like[laɪk] → liked[laɪkt] → liked[laɪkt]",
+    "beginnerTip": "「好き」の動詞と「〜のような」の前置詞は意味が大きく違う。会話では I'm liking this. のように「〜している形」で言うこともある。like は「好き」、love は「大好き」でより強い気持ち。",
     "searchKeywords": "like 好きである／好む／〜のような 好きである／好む 〜のような 感情"
   },
   {
@@ -833,9 +834,9 @@ const rawDatabase = [
         "exampleJa": "誰かを愛することは難しいこともあります。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
+    "changeType": "規則変化 (-ed)｜love[lʌv] → loved[lʌvd] → loved[lʌvd]",
     "searchKeywords": "love 大好き／愛する／愛／愛情 大好き／愛する 愛／愛情 感情",
-    "beginnerTip": "love は like より強い「大好き」です。会話では物や食べ物にもよく使います（I love this song.）。 「愛」は通常不可算。some love など。"
+    "beginnerTip": "love は like より強い「大好き」。会話では物や食べ物にもよく使います（I love this song.）。 「愛」は通常不可算。some love など。"
   },
   {
     "id": "v_see",
@@ -890,13 +891,13 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "seeing",
-        "example": "I am seeing my friend tomorrow.",
+        "example": "I'm seeing my friend tomorrow.",
         "exampleJa": "明日友達に会う予定です。",
         "needsHint": true
       }
     ],
-    "changeType": "不規則 A-B-C",
-    "beginnerTip": "see は「自然に目に入る」、look は「意識して目を向ける」、watch は「動きのあるものをしばらく見る」が基本です。",
+    "changeType": "不規則 A-B-C｜see[si] → saw[sɔ] → seen[sin]",
+    "beginnerTip": "see は「自然に目に入る」、look は「意識して目を向ける」、watch は「動きのあるものをしばらく見る」が基本。",
     "searchKeywords": "see 見る／会う 見る／会う 知覚",
     "usageTags": [
       "自然に目に入る",
@@ -967,13 +968,13 @@ const rawDatabase = [
         "exampleJa": "何を見ているの？"
       }
     ],
-    "changeType": "規則変化 (-ed)",
+    "changeType": "規則変化 (-ed)｜look[lʊk] → looked[lʊkt] → looked[lʊkt]",
     "searchKeywords": "look 見る／目を向ける／見た目／表情 見る／目を向ける 見た目／表情 知覚 〜に見える",
     "usageTags": [
       "目を向ける",
       "見た目"
     ],
-    "beginnerTip": "look は意識して目を向ける動作です。see は自然に目に入る、watch は動きを追って見るときに使います。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。"
+    "beginnerTip": "look は意識して目を向ける動作。see は自然に目に入る、watch は動きを追って見るときに使う。 名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。"
   },
   {
     "id": "v_watch",
@@ -1033,13 +1034,13 @@ const rawDatabase = [
         "exampleJa": "彼女は子どもたちを見ています。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
+    "changeType": "規則変化 (-ed)｜watch[wɑtʃ] → watched[wɑtʃt] → watched[wɑtʃt]",
     "searchKeywords": "watch じっと見る／視聴する／腕時計 じっと見る／視聴する 腕時計 知覚",
     "usageTags": [
       "動きを見る",
       "視聴"
     ],
-    "beginnerTip": "watch はテレビ・動画・試合など、動くものをある程度続けて見るときに使います。see は自然に目に入る、look は目を向ける動作です。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。"
+    "beginnerTip": "watch はテレビ・動画・試合など、動くものをある程度続けて見るときに使う。see は自然に目に入る、look は目を向ける動作。 名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。"
   },
   {
     "id": "v_hear",
@@ -1089,8 +1090,8 @@ const rawDatabase = [
         "exampleJa": "あなたの声を聞いて嬉しくなりました。"
       }
     ],
-    "changeType": "不規則 A-B-B",
-    "beginnerTip": "hear は音が自然に耳に入ること、listen は意識して耳を傾けることです。",
+    "changeType": "不規則 A-B-B｜hear[hiɹ] → heard[hɝd] → heard[hɝd]",
+    "beginnerTip": "hear は音が自然に耳に入ること、listen は意識して耳を傾けること。",
     "searchKeywords": "hear 聞こえる／耳にする 聞こえる／耳にする 知覚",
     "usageTags": [
       "自然に聞こえる",
@@ -1141,12 +1142,12 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "listening",
-        "example": "I am listening to music.",
+        "example": "I'm listening to music.",
         "exampleJa": "音楽を聴いています。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
-    "beginnerTip": "listen は注意して聞く動作です。対象を置くときは通常 listen to を使います。hear は自然に聞こえることです。",
+    "changeType": "規則変化 (-ed)｜listen[ˈlɪsən] → listened[ˈlɪsənd] → listened[ˈlɪsənd]",
+    "beginnerTip": "listen は注意して聞く動作。対象を置くときは通常 listen to を使う。hear は自然に聞こえること。",
     "searchKeywords": "listen 聞く／耳を傾ける 聞く／耳を傾ける 知覚",
     "usageTags": [
       "意識して聞く",
@@ -1201,8 +1202,8 @@ const rawDatabase = [
         "exampleJa": "何を言ってるの？"
       }
     ],
-    "changeType": "不規則 A-B-B",
-    "beginnerTip": "say は「言った内容」に、tell は「誰かに伝える」ことに焦点があります。speak は言語ややや改まった発話、talk は会話に使います。",
+    "changeType": "不規則 A-B-B｜say[seɪ] → said[sɛd] → said[sɛd]",
+    "beginnerTip": "say は「言った内容」に、tell は「誰かに伝える」ことに焦点がある。speak は言語ややや改まった発話、talk は会話に使う。",
     "searchKeywords": "say 言う 言う 会話",
     "usageTags": [
       "言う内容",
@@ -1253,17 +1254,17 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "telling",
-        "example": "I am telling the truth.",
+        "example": "I'm telling the truth.",
         "exampleJa": "本当のことを言っています。"
       }
     ],
-    "changeType": "不規則 A-B-B",
+    "changeType": "不規則 A-B-B｜tell[tɛl] → told[toʊld] → told[toʊld]",
     "searchKeywords": "tell 伝える／教える 伝える／教える 会話",
     "usageTags": [
       "人に伝える",
       "情報"
     ],
-    "beginnerTip": "tell は通常「人＋内容」の形で、誰かに伝えるときに使います。say は発言内容そのものに重点があります。"
+    "beginnerTip": "tell は通常「人＋内容」の形で、誰かに伝えるときに使う。say は発言内容そのものに重点がある。"
   },
   {
     "id": "v_speak",
@@ -1316,8 +1317,8 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "不規則 A-B-C",
-    "beginnerTip": "言語を話すときや、やや改まった「話す」で使います。talk は相手との会話を表しやすい動詞です。",
+    "changeType": "不規則 A-B-C｜speak[spik] → spoke[spoʊk] → spoken[ˈspoʊkən]",
+    "beginnerTip": "言語を話すときや、やや改まった「話す」で使う。talk は相手との会話を表しやすい動詞。",
     "searchKeywords": "speak 話す 話す 会話",
     "usageTags": [
       "言語",
@@ -1385,13 +1386,13 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "規則変化 (-ed)",
+    "changeType": "規則変化 (-ed)｜talk[tɔk] → talked[tɔkt] → talked[tɔkt]",
     "searchKeywords": "talk 話す／会話する／話／会話 話す／会話する 話／会話 会話",
     "usageTags": [
       "会話",
       "やり取り"
     ],
-    "beginnerTip": "talk は相手と会話するイメージです。speak は言語を話すときや、やや改まった「話す」に使います。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。"
+    "beginnerTip": "talk は相手と会話するイメージ。speak は言語を話すときや、やや改まった「話す」に使う。 名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。"
   },
   {
     "id": "v_ask",
@@ -1437,11 +1438,11 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "asking",
-        "example": "I am asking for help.",
+        "example": "I'm asking for help.",
         "exampleJa": "助けを求めています。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
+    "changeType": "規則変化 (-ed)｜ask[æsk] → asked[æskt] → asked[æskt]",
     "searchKeywords": "ask 尋ねる／頼む 尋ねる／頼む 会話"
   },
   {
@@ -1492,9 +1493,9 @@ const rawDatabase = [
         "exampleJa": "それを見つけるのは難しかったです。"
       }
     ],
-    "changeType": "不規則 A-B-B",
+    "changeType": "不規則 A-B-B｜find[faɪnd] → found[faʊnd] → found[faʊnd]",
     "searchKeywords": "find 見つける／分かる 見つける／分かる 発見",
-    "beginnerTip": "find は探した結果「見つける」。探している最中の動作は look for です。"
+    "beginnerTip": "find は探した結果「見つける」。探している最中の動作は look for 。"
   },
   {
     "id": "v_use",
@@ -1544,7 +1545,7 @@ const rawDatabase = [
         "exampleJa": "彼は私のスマホを使っています。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
+    "changeType": "規則変化 (-ed)｜use[jus] → used[juzd] → used[juzd]",
     "searchKeywords": "use 使う 使う 日常生活 使う（利用する）"
   },
   {
@@ -1600,11 +1601,11 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "working",
-        "example": "I am working now.",
+        "example": "I'm working now.",
         "exampleJa": "今仕事中です。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
+    "changeType": "規則変化 (-ed)｜work[wɝk] → worked[wɝkt] → worked[wɝkt]",
     "searchKeywords": "work 働く／機能する／仕事／作業 働く／機能する 仕事／作業 仕事",
     "beginnerTip": "「仕事」は通常不可算。some work（仕事が少し）、a job（1つの仕事）。"
   },
@@ -1656,9 +1657,9 @@ const rawDatabase = [
         "exampleJa": "彼は今カナダに住んでいます。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
+    "changeType": "規則変化 (-ed)｜live[laɪv] → lived[lɪvd] → lived[lɪvd]",
     "searchKeywords": "live 住む／生きる 住む／生きる 生活",
-    "beginnerTip": "live は住んでいること。stay は一時的に泊まる・とどまることです。"
+    "beginnerTip": "live は住んでいること。stay は一時的に泊まる・とどまること。"
   },
   {
     "id": "v_eat",
@@ -1709,7 +1710,7 @@ const rawDatabase = [
         "exampleJa": "今食べています。"
       }
     ],
-    "changeType": "不規則 A-B-C",
+    "changeType": "不規則 A-B-C｜eat[it] → ate[eɪt] → eaten[ˈitən]",
     "searchKeywords": "eat 食べる 食べる 食事"
   },
   {
@@ -1773,9 +1774,9 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "不規則 A-B-C",
+    "changeType": "不規則 A-B-C｜drink[dɹɪŋk] → drank[dɹæŋk] → drunk[dɹʌŋk]",
     "searchKeywords": "drink 飲む／飲み物 飲む 飲み物 食事",
-    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。"
+    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。"
   },
   {
     "id": "v_buy",
@@ -1830,7 +1831,7 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "不規則 A-B-B",
+    "changeType": "不規則 A-B-B｜buy[baɪ] → bought[bɑt] → bought[bɑt]",
     "searchKeywords": "buy 買う 買う 買い物"
   },
   {
@@ -1881,7 +1882,7 @@ const rawDatabase = [
         "exampleJa": "彼女は今支払っています。"
       }
     ],
-    "changeType": "不規則 A-B-B",
+    "changeType": "不規則 A-B-B｜pay[peɪ] → paid[peɪd] → paid[peɪd]",
     "searchKeywords": "pay 支払う 支払う 買い物"
   },
   {
@@ -1928,12 +1929,12 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "waiting",
-        "example": "I am waiting outside.",
+        "example": "I'm waiting outside.",
         "exampleJa": "外で待っています。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
-    "beginnerTip": "人や物を待つときは wait for をよく使います。",
+    "changeType": "規則変化 (-ed)｜wait[weɪt] → waited[ˈweɪtɪd] → waited[ˈweɪtɪd]",
+    "beginnerTip": "人や物を待つときは wait for をよく使う。",
     "searchKeywords": "wait 待つ 待つ 日常生活"
   },
   {
@@ -1992,7 +1993,7 @@ const rawDatabase = [
         "exampleJa": "手伝ってくれてありがとう。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
+    "changeType": "規則変化 (-ed)｜help[hɛlp] → helped[hɛlpt] → helped[hɛlpt]",
     "searchKeywords": "help 助ける／手伝う／助け／手伝い 助ける／手伝う 助け／手伝い 人間関係",
     "beginnerTip": "「助け」は通常不可算。some help（手助け）。"
   },
@@ -2049,13 +2050,13 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "trying",
-        "example": "I am trying to understand.",
+        "example": "I'm trying to understand.",
         "exampleJa": "理解しようとしています。"
       }
     ],
-    "changeType": "規則変化 (y→ied)",
+    "changeType": "規則変化 (y→ied)｜try[tɹaɪ] → tried[tɹaɪd] → tried[tɹaɪd]",
     "searchKeywords": "try 試す／やってみる／試み／挑戦 試す／やってみる 試み／挑戦 行動",
-    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。"
+    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。"
   },
   {
     "id": "v_feel",
@@ -2107,7 +2108,7 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "不規則 A-B-B",
+    "changeType": "不規則 A-B-B｜feel[fil] → felt[fɛlt] → felt[fɛlt]",
     "searchKeywords": "feel 感じる／〜な気がする 感じる／〜な気がする 感情"
   },
   {
@@ -2154,11 +2155,11 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "remembering",
-        "example": "I am remembering more now.",
+        "example": "I'm remembering more now.",
         "exampleJa": "今少しずつ思い出しています。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
+    "changeType": "規則変化 (-ed)｜remember[ɹɪˈmɛmbɚ] → remembered[ɹɪˈmɛmbɚd] → remembered[ɹɪˈmɛmbɚd]",
     "searchKeywords": "remember 覚えている／思い出す 覚えている／思い出す 記憶"
   },
   {
@@ -2211,7 +2212,7 @@ const rawDatabase = [
         "exampleJa": "彼の名前を何度も忘れてしまいます。"
       }
     ],
-    "changeType": "不規則 A-B-C",
+    "changeType": "不規則 A-B-C｜forget[fɚˈɡɛt] → forgot[fɚˈɡɑt] → forgotten[fɚˈɡɑtən]",
     "searchKeywords": "forget 忘れる 忘れる 記憶"
   },
   {
@@ -2260,12 +2261,12 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "reading",
-        "example": "I am reading now.",
+        "example": "I'm reading now.",
         "exampleJa": "今読んでいます。"
       }
     ],
-    "changeType": "不規則（綴りは同じ・発音が変わる）",
-    "beginnerTip": "過去形・過去分詞の read は綴りは同じですが発音が変わります。",
+    "changeType": "不規則（綴りは同じ・発音が変わる）｜read[ɹid] → read[ɹɛd] → read[ɹɛd]",
+    "beginnerTip": "過去形・過去分詞の read は綴りは同じですが発音が変わる。",
     "searchKeywords": "read 読む 読む 学習"
   },
   {
@@ -2299,7 +2300,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則複数形",
-    "beginnerTip": "複数形は persons ではなく、通常 people を使います。 数えられる名詞の単数形では a person のように a / an を付けます。動詞などとして使う場合は不要です。",
+    "beginnerTip": "複数形は persons ではなく、通常 people を使う。 数えられる名詞の単数形では a person のように a / an を付ける。動詞などとして使う場合は不要。",
     "searchKeywords": "person 人 人 人 person a person"
   },
   {
@@ -2340,7 +2341,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "意味によって数え方が変わる",
-    "beginnerTip": "「時間」の time は数えないことが多く、「〜回」の意味では times と数えます。 時間（不可算用法）と「回」（可算用法）があるため、使い方で冠詞が変わります。a time（ある時／1回）、some time（少しの時間）。",
+    "beginnerTip": "「時間」の time は数えないことが多く、「〜回」の意味では times と数える。 時間（不可算用法）と「回」（可算用法）があるため、使い方で冠詞が変わる。a time（ある時／1回）、some time（少しの時間）。",
     "searchKeywords": "time 時間／回／機会 時間 回／機会 時間"
   },
   {
@@ -2375,7 +2376,7 @@ const rawDatabase = [
     ],
     "changeType": "規則複数形 (-s)",
     "searchKeywords": "day 日／1日 日／1日 時間 day a day",
-    "beginnerTip": "数えられる名詞の単数形では a day のように a / an を付けます。動詞などとして使う場合は不要です。"
+    "beginnerTip": "数えられる名詞の単数形では a day のように a / an を付ける。動詞などとして使う場合は不要。"
   },
   {
     "id": "n_year",
@@ -2416,7 +2417,7 @@ const rawDatabase = [
     ],
     "changeType": "規則複数形 (-s)",
     "searchKeywords": "year 年／1年間 年／1年間 時間 year a year",
-    "beginnerTip": "数えられる名詞の単数形では a year のように a / an を付けます。動詞などとして使う場合は不要です。"
+    "beginnerTip": "数えられる名詞の単数形では a year のように a / an を付ける。動詞などとして使う場合は不要。"
   },
   {
     "id": "n_place",
@@ -2450,7 +2451,7 @@ const rawDatabase = [
     ],
     "changeType": "規則複数形 (-s)",
     "searchKeywords": "place 場所 場所 場所 place a place",
-    "beginnerTip": "数えられる名詞の単数形では a place のように a / an を付けます。動詞などとして使う場合は不要です。"
+    "beginnerTip": "数えられる名詞の単数形では a place のように a / an を付ける。動詞などとして使う場合は不要。"
   },
   {
     "id": "n_home",
@@ -2472,7 +2473,7 @@ const rawDatabase = [
         "pos": "副詞",
         "meaning": "家へ／家に",
         "category": "移動",
-        "example": "I am going home.",
+        "example": "I'm going home.",
         "exampleJa": "家に帰ります。"
       }
     ],
@@ -2486,7 +2487,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "品詞で使い方が変わる",
-    "beginnerTip": "go home の home の前には通常 to を付けません。 「家に／家へ」は at home / go home のように冠詞なし。a home は「住まい1軒」を指す場合。",
+    "beginnerTip": "go home の home の前には通常 to を付けない。 「家に／家へ」は at home / go home のように冠詞なし。a home は「住まい1軒」を指す場合。",
     "searchKeywords": "home 家／家庭／家へ／家に 家／家庭 家へ／家に 場所"
   },
   {
@@ -2520,7 +2521,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "通常は不可算・種類を表すとき複数可",
-    "beginnerTip": "普段の「食べ物」は food のまま使うことが多いです。 通常は不可算名詞。some food（食べ物）、a kind of food（食べ物の一種）。",
+    "beginnerTip": "普段の「食べ物」は food のまま使うことが多い。 通常は不可算名詞。some food（食べ物）、a kind of food（食べ物の一種）。",
     "searchKeywords": "food 食べ物／食事 食べ物／食事 食事"
   },
   {
@@ -2555,7 +2556,7 @@ const rawDatabase = [
     ],
     "changeType": "規則複数形 (-s)",
     "searchKeywords": "job 仕事／職 仕事／職 仕事 job a job",
-    "beginnerTip": "数えられる名詞の単数形では a job のように a / an を付けます。動詞などとして使う場合は不要です。"
+    "beginnerTip": "数えられる名詞の単数形では a job のように a / an を付ける。動詞などとして使う場合は不要。"
   },
   {
     "id": "n_language",
@@ -2623,7 +2624,7 @@ const rawDatabase = [
     ],
     "changeType": "規則複数形 (-s)",
     "searchKeywords": "thing もの／こと もの／こと 基本名詞 thing a thing",
-    "beginnerTip": "数えられる名詞の単数形では a thing のように a / an を付けます。動詞などとして使う場合は不要です。"
+    "beginnerTip": "数えられる名詞の単数形では a thing のように a / an を付ける。動詞などとして使う場合は不要。"
   },
   {
     "id": "n_problem",
@@ -2657,7 +2658,7 @@ const rawDatabase = [
     ],
     "changeType": "規則複数形 (-s)",
     "searchKeywords": "problem 問題／困りごと 問題／困りごと 日常生活 problem a problem",
-    "beginnerTip": "数えられる名詞の単数形では a problem のように a / an を付けます。動詞などとして使う場合は不要です。"
+    "beginnerTip": "数えられる名詞の単数形では a problem のように a / an を付ける。動詞などとして使う場合は不要。"
   },
   {
     "id": "adj_good",
@@ -2913,7 +2914,7 @@ const rawDatabase = [
       {
         "label": "原級",
         "formName": "happy",
-        "example": "I am happy today.",
+        "example": "I'm happy today.",
         "exampleJa": "今日は嬉しいです。"
       },
       {
@@ -2931,7 +2932,7 @@ const rawDatabase = [
     ],
     "changeType": "y→ier / iest",
     "searchKeywords": "happy 幸せな／嬉しい 幸せな／嬉しい 感情",
-    "beginnerTip": "happy は幸せ・嬉しい気分の状態です。glad は出来事に対して「よかった」と思う嬉しさです。"
+    "beginnerTip": "happy は幸せ・嬉しい気分の状態。glad は出来事に対して「よかった」と思う嬉しさ。"
   },
   {
     "id": "adj_sad",
@@ -2992,13 +2993,13 @@ const rawDatabase = [
       {
         "label": "原級",
         "formName": "tired",
-        "example": "I am tired.",
+        "example": "I'm tired.",
         "exampleJa": "疲れています。"
       },
       {
         "label": "比較級",
         "formName": "more tired",
-        "example": "I am more tired today.",
+        "example": "I'm more tired today.",
         "exampleJa": "今日はもっと疲れています。"
       },
       {
@@ -3031,7 +3032,7 @@ const rawDatabase = [
       {
         "label": "原級",
         "formName": "busy",
-        "example": "I am busy today.",
+        "example": "I'm busy today.",
         "exampleJa": "今日は忙しいです。"
       },
       {
@@ -3094,7 +3095,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "意味によって訳が大きく変わる",
-    "beginnerTip": "「暇な」の比較は freer より、more free time など別の言い方をすることが多いです。freer は主に「より自由な」の意味で使われます。",
+    "beginnerTip": "「暇な」の比較は freer より、more free time など別の言い方をすることが多い。freer は主に「より自由な」の意味で使われる。",
     "searchKeywords": "free 暇な／無料の／自由な 暇な 無料の 自由な 時間"
   },
   {
@@ -3251,7 +3252,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "more / most を使う",
-    "beginnerTip": "interesting は「興味を持たせる側」、interested は「興味を持っている人」の状態です。",
+    "beginnerTip": "interesting は「興味を持たせる側」、interested は「興味を持っている人」の状態。",
     "searchKeywords": "interesting 興味深い／面白い 興味深い／面白い 感情"
   },
   {
@@ -3279,7 +3280,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "比較級は必要なとき more を使える",
-    "beginnerTip": "different は通常、語形を変えて比較する単語として覚える必要はありません。必要に応じて more different と言うことはあります。",
+    "beginnerTip": "different は通常、語形を変えて比較する単語として覚える必要はない。必要に応じて more different と言うことはある。",
     "searchKeywords": "different 違う／異なる 違う／異なる 比較"
   },
   {
@@ -3307,7 +3308,7 @@ const rawDatabase = [
         "pos": "副詞"
       }
     ],
-    "beginnerTip": "形容詞や動詞などを強めるほか、Really? だけで「本当に？」とも言えます。強さの目安：really（とても）＞ quite（かなり）＞ kind of（ちょっと）＞ a little（少し）。",
+    "beginnerTip": "形容詞や動詞などを強めるほか、Really? だけで「本当に？」とも言える。強さの目安：really（とても）＞ quite（かなり）＞ kind of（ちょっと）＞ a little（少し）。",
     "searchKeywords": "really 本当に／とても 本当に／とても 強調"
   },
   {
@@ -3335,7 +3336,7 @@ const rawDatabase = [
         "pos": "副詞"
       }
     ],
-    "beginnerTip": "相手の予想と違うことを言うときや、言い直しでよく使います。",
+    "beginnerTip": "相手の予想と違うことを言うときや、言い直しでよく使う。",
     "searchKeywords": "actually 実は／実際には 実は／実際には 会話"
   },
   {
@@ -3363,7 +3364,7 @@ const rawDatabase = [
         "pos": "副詞"
       }
     ],
-    "beginnerTip": "maybe より「そうなる可能性が高い」という感じで使われることが多いです。",
+    "beginnerTip": "maybe より「そうなる可能性が高い」という感じで使われることが多い。",
     "searchKeywords": "probably たぶん／おそらく たぶん／おそらく 確信度"
   },
   {
@@ -3391,7 +3392,7 @@ const rawDatabase = [
         "pos": "副詞"
       }
     ],
-    "beginnerTip": "probably より確信が強い表現です。",
+    "beginnerTip": "probably より確信が強い表現。",
     "searchKeywords": "definitely 絶対に／間違いなく 絶対に／間違いなく 確信度"
   },
   {
@@ -3419,7 +3420,7 @@ const rawDatabase = [
         "pos": "副詞"
       }
     ],
-    "beginnerTip": "always より頻度が低く、「たいてい」の感覚です。",
+    "beginnerTip": "always より頻度が低く、「たいてい」の感覚。",
     "searchKeywords": "usually 普段は／たいてい 普段は／たいてい 頻度"
   },
   {
@@ -3455,7 +3456,7 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "beginnerTip": "単独の Exactly. は「その通り」と強く同意するときにも使います。",
+    "beginnerTip": "単独の Exactly. は「その通り」と強く同意するときにも使う。",
     "searchKeywords": "exactly 正確に／まさに／その通り 正確に／まさに／その通り 会話 その通り／まさにそれ（相づち） Exactly! That's what I meant."
   },
   {
@@ -3484,7 +3485,7 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "beginnerTip": "probably より確信が弱い「もしかしたら」に近い使い方が多いです。",
+    "beginnerTip": "probably より確信が弱い「もしかしたら」に近い使い方が多い。",
     "searchKeywords": "maybe たぶん／もしかすると たぶん／もしかすると 確信度 たぶん"
   },
   {
@@ -3594,7 +3595,7 @@ const rawDatabase = [
         "pos": "副詞"
       }
     ],
-    "beginnerTip": "「予想より早く、もう」という感覚を含むことがあります。",
+    "beginnerTip": "「予想より早く、もう」という感覚を含むことがある。",
     "searchKeywords": "already すでに／もう すでに／もう 時間"
   },
   {
@@ -3625,13 +3626,13 @@ const rawDatabase = [
       {
         "label": "副詞",
         "formName": "still",
-        "example": "I am still tired.",
+        "example": "I'm still tired.",
         "exampleJa": "まだ疲れています。",
         "pos": "副詞"
       }
     ],
     "changeType": "品詞で意味が変わる",
-    "beginnerTip": "「まだ」の still と「じっとした」の still を文の形から見分けます。",
+    "beginnerTip": "「まだ」の still と「じっとした」の still を文の形から見分ける。",
     "searchKeywords": "still まだ／今でも／じっとした／動かない まだ／今でも じっとした／動かない 時間・状態"
   },
   {
@@ -3669,7 +3670,7 @@ const rawDatabase = [
     ],
     "changeType": "品詞で使い方が変わる",
     "searchKeywords": "now 今／今すぐ／今／現在 今／今すぐ 今／現在 時間",
-    "beginnerTip": "副詞「今」が基本で冠詞は付けません。"
+    "beginnerTip": "副詞「今」が基本で冠詞は付けない。"
   },
   {
     "id": "adv_here",
@@ -3730,7 +3731,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "特殊な用法あり",
-    "beginnerTip": "There is / There are の there は「そこ」という場所を指す通常の there とは働きが異なります。",
+    "beginnerTip": "There is / There are の there は「そこ」という場所を指す通常の there とは働きが異なる。",
     "searchKeywords": "there そこに／そこで そこに／そこで 場所"
   },
   {
@@ -3826,7 +3827,7 @@ const rawDatabase = [
       "wanna"
     ],
     "searchKeywords": "want to + 動詞（原形） 〜したい 〜したい 希望",
-    "beginnerTip": "「〜したい」の普通の言い方です。I'd like to + 動詞（原形）は、より丁寧な言い方です。"
+    "beginnerTip": "「〜したい」の普通の言い方。I'd like to + 動詞（原形）は、より丁寧な言い方。"
   },
   {
     "id": "exp_need_to",
@@ -3861,7 +3862,7 @@ const rawDatabase = [
     "example": "I need to study.",
     "exampleJa": "勉強する必要があります。",
     "searchKeywords": "need to + 動詞（原形） 〜する必要がある 〜する必要がある 必要",
-    "beginnerTip": "自分の判断や状況から見て「必要がある」ときに使います。決まりや事情でやらなければならないときは have to です。"
+    "beginnerTip": "自分の判断や状況から見て「必要がある」ときに使う。決まりや事情でやらなければならないときは have to 。"
   },
   {
     "id": "exp_have_to",
@@ -3909,7 +3910,7 @@ const rawDatabase = [
     "example": "I have to work tomorrow.",
     "exampleJa": "明日は働かなければなりません。",
     "searchKeywords": "have to + 動詞（原形） 〜しなければならない 〜しなければならない 義務",
-    "beginnerTip": "事情や決まりで「やらなければならない」ときに使います。don't have to は「禁止」ではなく「〜しなくてもいい」の意味です。自分に必要なときは need to、強い義務や強い推量（You must be tired.）は must を使います。"
+    "beginnerTip": "事情や決まりで「やらなければならない」ときに使う。don't have to は「禁止」ではなく「〜しなくてもいい」の意味。自分に必要なときは need to、強い義務や強い推量（You must be tired.）は must を使う。"
   },
   {
     "id": "exp_be_able_to",
@@ -3941,9 +3942,9 @@ const rawDatabase = [
         "exampleJa": "それを終えることができました。"
       }
     ],
-    "example": "I am able to work from home.",
+    "example": "I'm able to work from home.",
     "exampleJa": "在宅で働くことができます。",
-    "beginnerTip": "can と似ていますが、want to の後や未来・完了形など、can をそのまま置けない形でも使えます。",
+    "beginnerTip": "can と似ていますが、want to の後や未来・完了形など、can をそのまま置けない形でも使える。",
     "searchKeywords": "be able to + 動詞（原形） 〜することができる 〜することができる 可能"
   },
   {
@@ -3972,7 +3973,7 @@ const rawDatabase = [
     ],
     "example": "Have you ever been to Korea?",
     "exampleJa": "韓国に行ったことがありますか？",
-    "beginnerTip": "ever は「今までに」という経験の範囲を強調します。",
+    "beginnerTip": "ever は「今までに」という経験の範囲を強調する。",
     "searchKeywords": "Have you ever + 動詞（過去分詞）? 今までに〜したことがありますか？ 今までに〜したことがありますか？ 経験"
   },
   {
@@ -4001,7 +4002,7 @@ const rawDatabase = [
     ],
     "example": "I've never seen this before.",
     "exampleJa": "これを今まで一度も見たことがありません。",
-    "beginnerTip": "never 自体に否定の意味があるので、not は通常付けません。",
+    "beginnerTip": "never 自体に否定の意味があるので、not は通常付けない。",
     "searchKeywords": "I've never + 動詞（過去分詞） 一度も〜したことがない 一度も〜したことがない 経験"
   },
   {
@@ -4030,7 +4031,7 @@ const rawDatabase = [
     ],
     "example": "I have a lot of friends.",
     "exampleJa": "友達がたくさんいます。",
-    "beginnerTip": "数えられる名詞にも数えられない名詞にも使えます。",
+    "beginnerTip": "数えられる名詞にも数えられない名詞にも使える。",
     "searchKeywords": "a lot of + 名詞 たくさんの〜 たくさんの〜 量"
   },
   {
@@ -4075,7 +4076,7 @@ const rawDatabase = [
       "kinda"
     ],
     "searchKeywords": "kind of ちょっと／なんとなく／ある意味 ちょっと／なんとなく／ある意味 会話",
-    "beginnerTip": "言い切りを避けて「ちょっと／なんとなく」とぼかす言い方です。強さの目安：really（とても）＞ quite（かなり）＞ kind of（ちょっと）＞ a little（少し）。"
+    "beginnerTip": "言い切りを避けて「ちょっと／なんとなく」とぼかす言い方。強さの目安：really（とても）＞ quite（かなり）＞ kind of（ちょっと）＞ a little（少し）。"
   },
   {
     "id": "exp_a_little",
@@ -4103,7 +4104,7 @@ const rawDatabase = [
     ],
     "example": "I speak a little English.",
     "exampleJa": "英語を少し話します。",
-    "beginnerTip": "a little は数えられないものや程度が「少し」あることを表します。強さの目安：really（とても）＞ quite（かなり）＞ kind of（ちょっと）＞ a little（少し）。",
+    "beginnerTip": "a little は数えられないものや程度が「少し」あることを表す。強さの目安：really（とても）＞ quite（かなり）＞ kind of（ちょっと）＞ a little（少し）。",
     "searchKeywords": "a little 少し／少しだけ 少し／少しだけ 量"
   },
   {
@@ -4149,7 +4150,7 @@ const rawDatabase = [
     "example": "Of course!",
     "exampleJa": "もちろん！",
     "searchKeywords": "of course もちろん 快く承諾 納得 気づき そっか そりゃそうだよね 当然でしょ 会話",
-    "beginnerTip": "「もちろん！」という快い承諾だけでなく、理由を聞いて「考えてみれば当然だ」と納得したときにも使います。言い方や状況によっては「当然でしょ！」と強く響くこともあります。"
+    "beginnerTip": "「もちろん！」という快い承諾だけでなく、理由を聞いて「考えてみれば当然だ」と納得したときにも使う。言い方や状況によっては「当然でしょ！」と強く響くこともある。"
   },
   {
     "id": "exp_i_think",
@@ -4217,7 +4218,7 @@ const rawDatabase = [
     ],
     "example": "I don't know the answer.",
     "exampleJa": "答えが分かりません。",
-    "beginnerTip": "「知らない」と「分からない」の両方でよく使います。",
+    "beginnerTip": "「知らない」と「分からない」の両方でよく使う。",
     "searchKeywords": "I don't know 分からない／知らない 分からない／知らない 会話"
   },
   {
@@ -4274,7 +4275,7 @@ const rawDatabase = [
     ],
     "example": "Can I sit here?",
     "exampleJa": "ここに座ってもいいですか？",
-    "beginnerTip": "許可を求めるときによく使います。",
+    "beginnerTip": "許可を求めるときによく使う。",
     "searchKeywords": "Can I + 動詞（原形）? 〜してもいいですか？／〜できますか？ 〜してもいいですか？／〜できますか？ 許可"
   },
   {
@@ -4338,7 +4339,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "fast → faster → fastest",
-    "beginnerTip": "「速い／速く」が最も一般的です。fast には「断食する」「断食」という別の意味もあります。 形容詞・副詞として使う場合は冠詞なし。",
+    "beginnerTip": "「速い／速く」が最も一般的。fast には「断食する」「断食」という別の意味もある。 形容詞・副詞として使う場合は冠詞なし。",
     "searchKeywords": "fast 速い／速く 速い 速く 断食する 断食 速さ"
   },
   {
@@ -4360,7 +4361,7 @@ const rawDatabase = [
         "pos": "前置詞",
         "meaning": "〜に夢中で／〜にハマって",
         "category": "興味",
-        "example": "I am really into this game.",
+        "example": "I'm really into this game.",
         "exampleJa": "このゲームにすごくハマっています。"
       }
     ],
@@ -4373,7 +4374,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "into は「中へ」という方向だけでなく、be into ... で「〜にハマっている／興味がある」もよく使います。",
+    "beginnerTip": "into は「中へ」という方向だけでなく、be into ... で「〜にハマっている／興味がある」もよく使う。",
     "searchKeywords": "into 〜の中へ／〜にハマって 〜の中へ／〜の中に 〜に夢中で／〜にハマって 方向"
   },
   {
@@ -4401,7 +4402,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "会話では How are you? への返答にも使えますが、ややそっけなく聞こえることがあります。",
+    "beginnerTip": "会話では How are you? への返答にも使えますが、ややそっけなく聞こえることがある。",
     "searchKeywords": "so-so まあまあ／可もなく不可もなく まあまあ／可もなく不可もなく 評価"
   },
   {
@@ -4451,11 +4452,11 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "putting",
-        "example": "I am putting it in my bag.",
+        "example": "I'm putting it in my bag.",
         "exampleJa": "バッグに入れているところです。"
       }
     ],
-    "changeType": "不規則変化",
+    "changeType": "不規則変化｜put[pʊt] → put[pʊt] → put[pʊt]",
     "searchKeywords": "put 置く／入れる 置く／入れる 基本動詞"
   },
   {
@@ -4510,11 +4511,11 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "keeping",
-        "example": "I am keeping this ticket.",
+        "example": "I'm keeping this ticket.",
         "exampleJa": "このチケットは取っておきます。"
       }
     ],
-    "changeType": "不規則変化",
+    "changeType": "不規則変化｜keep[kip] → kept[kɛpt] → kept[kɛpt]",
     "searchKeywords": "keep 保つ／続ける／取っておく 保つ／続ける／取っておく 基本動詞"
   },
   {
@@ -4563,12 +4564,12 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "leaving",
-        "example": "I am leaving now.",
+        "example": "I'm leaving now.",
         "exampleJa": "今出るところです。",
         "needsHint": true
       }
     ],
-    "changeType": "不規則変化",
+    "changeType": "不規則変化｜leave[liv] → left[lɛft] → left[lɛft]",
     "searchKeywords": "leave 去る／置いていく／残す 去る／置いていく／残す 移動"
   },
   {
@@ -4619,7 +4620,7 @@ const rawDatabase = [
         "exampleJa": "あなたを傷つけるつもりはなく、その場を離れました。"
       }
     ],
-    "changeType": "不規則変化",
+    "changeType": "不規則変化｜mean[min] → meant[mɛnt] → meant[mɛnt]",
     "searchKeywords": "mean 意味する／意図する 意味する／意図する 会話"
   },
   {
@@ -4670,7 +4671,7 @@ const rawDatabase = [
         "exampleJa": "何が起きているの？"
       }
     ],
-    "changeType": "規則変化",
+    "changeType": "規則変化｜happen[ˈhæpən] → happened[ˈhæpənd] → happened[ˈhæpənd]",
     "searchKeywords": "happen 起こる 起こる 出来事"
   },
   {
@@ -4725,13 +4726,13 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "calling",
-        "example": "I am calling a taxi.",
+        "example": "I'm calling a taxi.",
         "exampleJa": "タクシーを呼んでいます。"
       }
     ],
-    "changeType": "規則変化",
+    "changeType": "規則変化｜call[kɔl] → called[kɔld] → called[kɔld]",
     "searchKeywords": "call 呼ぶ／電話する 呼ぶ／電話する 会話",
-    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。"
+    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。"
   },
   {
     "id": "v_bring",
@@ -4777,17 +4778,17 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "bringing",
-        "example": "I am bringing some water.",
+        "example": "I'm bringing some water.",
         "exampleJa": "水を持ってきます。"
       }
     ],
-    "changeType": "不規則変化",
+    "changeType": "不規則変化｜bring[bɹɪŋ] → brought[bɹɔt] → brought[bɹɔt]",
     "searchKeywords": "bring 持ってくる 持ってくる 移動",
     "usageTags": [
       "こちらへ持ってくる",
       "移動"
     ],
-    "beginnerTip": "bring は話し手・目的地の方向へ「持ってくる」。take はそこから離れる方向へ「持っていく」イメージです。"
+    "beginnerTip": "bring は話し手・目的地の方向へ「持ってくる」。take はそこから離れる方向へ「持っていく」イメージ。"
   },
   {
     "id": "v_become",
@@ -4842,7 +4843,7 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "不規則変化",
+    "changeType": "不規則変化｜become[bɪˈkʌm] → became[bɪˈkeɪm] → become[bɪˈkʌm]",
     "searchKeywords": "become 〜になる 〜になる 変化"
   },
   {
@@ -4893,7 +4894,7 @@ const rawDatabase = [
         "exampleJa": "雨が降り始めています。"
       }
     ],
-    "changeType": "規則変化",
+    "changeType": "規則変化｜start[stɑɹt] → started[ˈstɑɹtɪd] → started[ˈstɑɹtɪd]",
     "searchKeywords": "start 始める／始まる 始める／始まる 行動"
   },
   {
@@ -4944,7 +4945,7 @@ const rawDatabase = [
         "exampleJa": "昼食のために止まるところです。"
       }
     ],
-    "changeType": "p重ね + -ed / -ing",
+    "changeType": "p重ね + -ed / -ing｜stop[stɑp] → stopped[stɑpt] → stopped[stɑpt]",
     "searchKeywords": "stop 止める／止まる 止める／止まる 行動"
   },
   {
@@ -4996,9 +4997,9 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "不規則変化",
+    "changeType": "不規則変化｜let[lɛt] → let[lɛt] → let[lɛt]",
     "searchKeywords": "let 〜させる／〜してもらう 〜させる／〜してもらう 基本動詞 〜させる",
-    "beginnerTip": "let + 人 + 動詞（原形）で「人が〜するのを許す」。Let me try.（私にやらせて）が定番です。"
+    "beginnerTip": "let + 人 + 動詞（原形）で「人が〜するのを許す」。Let me try.（私にやらせて）が定番。"
   },
   {
     "id": "v_show",
@@ -5051,7 +5052,7 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "不規則変化",
+    "changeType": "不規則変化｜show[ʃoʊ] → showed[ʃoʊd] → shown[ʃoʊn]",
     "searchKeywords": "show 見せる／示す 見せる／示す 会話"
   },
   {
@@ -5099,11 +5100,11 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "moving",
-        "example": "I am moving next month.",
+        "example": "I'm moving next month.",
         "exampleJa": "来月引っ越します。"
       }
     ],
-    "changeType": "規則変化",
+    "changeType": "規則変化｜move[muv] → moved[muvd] → moved[muvd]",
     "searchKeywords": "move 動く／動かす／引っ越す 動く／動かす／引っ越す 移動"
   },
   {
@@ -5158,7 +5159,7 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "規則変化",
+    "changeType": "規則変化｜turn[tɝn] → turned[tɝnd] → turned[tɝnd]",
     "searchKeywords": "turn 回す／曲がる／〜になる 回す／曲がる／〜になる 移動"
   },
   {
@@ -5205,13 +5206,13 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "staying",
-        "example": "I am staying at a hotel.",
+        "example": "I'm staying at a hotel.",
         "exampleJa": "ホテルに泊まっています。"
       }
     ],
-    "changeType": "規則変化",
+    "changeType": "規則変化｜stay[steɪ] → stayed[steɪd] → stayed[steɪd]",
     "searchKeywords": "stay 滞在する／〜のままでいる 滞在する／〜のままでいる 旅行",
-    "beginnerTip": "stay は一時的に泊まる・とどまること。live は住んでいることです。"
+    "beginnerTip": "stay は一時的に泊まる・とどまること。live は住んでいること。"
   },
   {
     "id": "v_meet",
@@ -5259,12 +5260,12 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "meeting",
-        "example": "I am meeting a friend later.",
+        "example": "I'm meeting a friend later.",
         "exampleJa": "あとで友人に会います。",
         "needsHint": true
       }
     ],
-    "changeType": "不規則変化",
+    "changeType": "不規則変化｜meet[mit] → met[mɛt] → met[mɛt]",
     "searchKeywords": "meet 会う／初めて会う 会う／初めて会う 人"
   },
   {
@@ -5315,7 +5316,7 @@ const rawDatabase = [
         "exampleJa": "試合で負けています。"
       }
     ],
-    "changeType": "不規則変化",
+    "changeType": "不規則変化｜lose[luz] → lost[lɔst] → lost[lɔst]",
     "searchKeywords": "lose 失う／なくす／負ける 失う／なくす／負ける 行動"
   },
   {
@@ -5366,7 +5367,7 @@ const rawDatabase = [
         "exampleJa": "彼らが勝っています。"
       }
     ],
-    "changeType": "不規則変化",
+    "changeType": "不規則変化｜win[wɪn] → won[wʌn] → won[wʌn]",
     "searchKeywords": "win 勝つ／勝ち取る 勝つ／勝ち取る 行動"
   },
   {
@@ -5419,9 +5420,9 @@ const rawDatabase = [
         "exampleJa": "これを理解するには時間がかかります。"
       }
     ],
-    "changeType": "不規則変化",
+    "changeType": "不規則変化｜understand[ˌʌndɚˈstænd] → understood[ˌʌndɚˈstʊd] → understood[ˌʌndɚˈstʊd]",
     "searchKeywords": "understand 理解する／分かる 理解する／分かる 理解",
-    "beginnerTip": "understand は内容や相手の気持ちが分かること。know は知識として知っていることです。"
+    "beginnerTip": "understand は内容や相手の気持ちが分かること。know は知識として知っていること。"
   },
   {
     "id": "v_believe",
@@ -5473,9 +5474,9 @@ const rawDatabase = [
         "exampleJa": "自分を信じることは大切です。"
       }
     ],
-    "changeType": "規則変化",
+    "changeType": "規則変化｜believe[bɪˈliv] → believed[bɪˈlivd] → believed[bɪˈlivd]",
     "searchKeywords": "believe 信じる／〜と思う 信じる／〜と思う 考え",
-    "beginnerTip": "believe は「信じている」という強めの気持ちです。普通の意見は think、そうなってほしい願いは hope を使います。"
+    "beginnerTip": "believe は「信じている」という強めの気持ち。普通の意見は think、そうなってほしい願いは hope を使う。"
   },
   {
     "id": "v_hope",
@@ -5524,13 +5525,13 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "hoping",
-        "example": "I am hoping to go next year.",
+        "example": "I'm hoping to go next year.",
         "exampleJa": "来年行けたらと思っています。"
       }
     ],
-    "changeType": "規則変化",
+    "changeType": "規則変化｜hope[hoʊp] → hoped[hoʊpt] → hoped[hoʊpt]",
     "searchKeywords": "hope 望む／〜だといいと思う 望む／〜だといいと思う 感情",
-    "beginnerTip": "hope は「そうなってほしい」という願いです。普通の意見は think、確信に近いときは believe を使います。"
+    "beginnerTip": "hope は「そうなってほしい」という願い。普通の意見は think、確信に近いときは believe を使う。"
   },
   {
     "id": "v_guess",
@@ -5578,17 +5579,17 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "guessing",
-        "example": "I am just guessing.",
+        "example": "I'm just guessing.",
         "exampleJa": "ただの推測です。"
       }
     ],
-    "changeType": "規則変化",
+    "changeType": "規則変化｜guess[ɡɛs] → guessed[ɡɛst] → guessed[ɡɛst]",
     "searchKeywords": "guess 推測する／〜かなと思う 推測する／〜かなと思う 会話",
     "usageTags": [
       "控えめな意見",
       "推測"
     ],
-    "beginnerTip": "I guess ... は「たぶん〜かな／〜だと思う」のように、断定を弱める会話表現として非常によく使います。think より確信が弱いときに使います。"
+    "beginnerTip": "I guess ... は「たぶん〜かな／〜だと思う」のように、断定を弱める会話表現として非常によく使う。think より確信が弱いときに使う。"
   },
   {
     "id": "v_seem",
@@ -5641,13 +5642,13 @@ const rawDatabase = [
         "lowFrequency": true
       }
     ],
-    "changeType": "規則変化",
+    "changeType": "規則変化｜seem[sim] → seemed[simd] → seemed[simd]",
     "searchKeywords": "seem 〜のように思える／見える 〜のように思える／見える 印象",
     "usageTags": [
       "印象・推測",
       "状況から判断"
     ],
-    "beginnerTip": "seem は見た目だけでなく、状況・話・雰囲気から「〜のようだ」と判断できます。look like は見た目の印象や外見の類似により重点があります。"
+    "beginnerTip": "seem は見た目だけでなく、状況・話・雰囲気から「〜のようだ」と判断できる。look like は見た目の印象や外見の類似により重点がある。"
   },
   {
     "id": "v_sound",
@@ -5708,7 +5709,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "",
-    "beginnerTip": "sound + 形容詞 で「〜に聞こえる／〜そうだ」を表せます。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。",
+    "beginnerTip": "sound + 形容詞 で「〜に聞こえる／〜そうだ」を表せる。 名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。",
     "searchKeywords": "sound 〜に聞こえる／音 〜に聞こえる 音 印象"
   },
   {
@@ -5763,12 +5764,12 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "minding",
-        "example": "I am minding my own business.",
+        "example": "I'm minding my own business.",
         "exampleJa": "自分のことに集中しています。"
       }
     ],
     "changeType": "",
-    "beginnerTip": "Do you mind ...? は直訳よりも「〜しても構いませんか？」として覚えると使いやすいです。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。",
+    "beginnerTip": "Do you mind ...? は直訳よりも「〜しても構いませんか？」として覚えると使いやすい。 名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。",
     "searchKeywords": "mind 気にする／嫌がる／心 気にする／嫌がる 心／考え 会話"
   },
   {
@@ -5827,7 +5828,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "",
-    "beginnerTip": "It doesn’t matter. は「問題ないよ／気にしないで」の意味で頻出します。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。",
+    "beginnerTip": "It doesn’t matter. は「問題ないよ／気にしないで」の意味で頻出する。 名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。",
     "searchKeywords": "matter 重要である／問題 重要である／問題になる 問題／事柄 評価"
   },
   {
@@ -5874,11 +5875,11 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "missing",
-        "example": "I am missing home.",
+        "example": "I'm missing home.",
         "exampleJa": "家が恋しいです。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
+    "changeType": "規則変化 (-ed)｜miss[mɪs] → missed[mɪst] → missed[mɪst]",
     "searchKeywords": "miss 逃す／乗り遅れる／恋しく思う 逃す／乗り遅れる／恋しく思う 感情"
   },
   {
@@ -5927,11 +5928,11 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "spending",
-        "example": "I am spending the weekend here.",
+        "example": "I'm spending the weekend here.",
         "exampleJa": "週末をここで過ごしています。"
       }
     ],
-    "changeType": "不規則変化",
+    "changeType": "不規則変化｜spend[spɛnd] → spent[spɛnt] → spent[spɛnt]",
     "searchKeywords": "spend 使う／過ごす 使う／過ごす 時間・お金 使う（費やす／過ごす）"
   },
   {
@@ -5979,14 +5980,14 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "choosing",
-        "example": "I am choosing now.",
+        "example": "I'm choosing now.",
         "exampleJa": "今選んでいるところです。",
         "needsHint": true
       }
     ],
-    "changeType": "不規則変化",
+    "changeType": "不規則変化｜choose[tʃuz] → chose[tʃoʊz] → chosen[ˈtʃoʊzən]",
     "searchKeywords": "choose 選ぶ 選ぶ 選択",
-    "beginnerTip": "choose は選択肢の中から「選ぶ」。decide は考えて「決める」です。"
+    "beginnerTip": "choose は選択肢の中から「選ぶ」。decide は考えて「決める」。"
   },
   {
     "id": "v_decide",
@@ -6036,14 +6037,14 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "deciding",
-        "example": "I am still deciding.",
+        "example": "I'm still deciding.",
         "exampleJa": "まだ決めかねています。",
         "needsHint": true
       }
     ],
-    "changeType": "規則変化",
+    "changeType": "規則変化｜decide[dɪˈsaɪd] → decided[dɪˈsaɪdɪd] → decided[dɪˈsaɪdɪd]",
     "searchKeywords": "decide 決める／決断する 決める／決断する 選択",
-    "beginnerTip": "decide は迷ったあとに「決める」。選択肢から選ぶ動作そのものは choose です。"
+    "beginnerTip": "decide は迷ったあとに「決める」。選択肢から選ぶ動作そのものは choose 。"
   },
   {
     "id": "v_change",
@@ -6103,7 +6104,7 @@ const rawDatabase = [
     ],
     "changeType": "",
     "searchKeywords": "change 変える／変わる／変化 変える／変わる 変化／変更 変化",
-    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。"
+    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。"
   },
   {
     "id": "v_follow",
@@ -6150,11 +6151,11 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "following",
-        "example": "I am following your instructions.",
+        "example": "I'm following your instructions.",
         "exampleJa": "あなたの指示どおりに進めています。"
       }
     ],
-    "changeType": "規則変化",
+    "changeType": "規則変化｜follow[ˈfɑloʊ] → followed[ˈfɑloʊd] → followed[ˈfɑloʊd]",
     "searchKeywords": "follow ついていく／従う ついていく／従う 行動"
   },
   {
@@ -6204,11 +6205,11 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "holding",
-        "example": "I am holding your bag.",
+        "example": "I'm holding your bag.",
         "exampleJa": "あなたのバッグを持っています。"
       }
     ],
-    "changeType": "不規則変化",
+    "changeType": "不規則変化｜hold[hoʊld] → held[hɛld] → held[hɛld]",
     "searchKeywords": "hold 持つ／開催する／保つ 持つ／開催する／保つ 行動"
   },
   {
@@ -6255,11 +6256,11 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "sending",
-        "example": "I am sending it now.",
+        "example": "I'm sending it now.",
         "exampleJa": "今送っています。"
       }
     ],
-    "changeType": "不規則変化",
+    "changeType": "不規則変化｜send[sɛnd] → sent[sɛnt] → sent[sɛnt]",
     "searchKeywords": "send 送る 送る 連絡"
   },
   {
@@ -6315,7 +6316,7 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "規則変化",
+    "changeType": "規則変化｜receive[ɹɪˈsiv] → received[ɹɪˈsivd] → received[ɹɪˈsivd]",
     "searchKeywords": "receive 受け取る／受信する 受け取る／受信する 連絡"
   },
   {
@@ -6367,7 +6368,7 @@ const rawDatabase = [
         "exampleJa": "もうすぐ終わりです。"
       }
     ],
-    "changeType": "規則変化",
+    "changeType": "規則変化｜reach[ɹitʃ] → reached[ɹitʃt] → reached[ɹitʃt]",
     "searchKeywords": "reach 着く／届く／到達する 着く／届く／到達する 移動"
   },
   {
@@ -6396,7 +6397,7 @@ const rawDatabase = [
     ],
     "example": "I happened to see her.",
     "exampleJa": "たまたま彼女を見かけました。",
-    "beginnerTip": "予定ではなく偶然そうなったことを表します。",
+    "beginnerTip": "予定ではなく偶然そうなったことを表す。",
     "searchKeywords": "happen to + 動詞（原形） たまたま〜する たまたま〜する 偶然"
   },
   {
@@ -6443,13 +6444,13 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "picking up",
-        "example": "I am picking up my friend now.",
+        "example": "I'm picking up my friend now.",
         "exampleJa": "今、友達を迎えに行くところです。"
       }
     ],
     "example": "I will pick you up at the station.",
     "exampleJa": "駅まで迎えに行きます。",
-    "beginnerTip": "意味が多い句動詞です。人なら「迎えに行く」、物なら「拾う／受け取る」など文脈で判断します。",
+    "beginnerTip": "意味が多い句動詞。人なら「迎えに行く」、物なら「拾う／受け取る」など文脈で判断する。",
     "searchKeywords": "pick up 拾う／迎えに行く／受け取る 拾う／迎えに行く／受け取る 日常",
     "changeType": "規則変化 (-ed)"
   },
@@ -6479,7 +6480,7 @@ const rawDatabase = [
     ],
     "example": "I found out the truth.",
     "exampleJa": "真実を知りました。",
-    "beginnerTip": "find は「見つける」、find out は調べたりして「知る／分かる」です。",
+    "beginnerTip": "find は「見つける」、find out は調べたりして「知る／分かる」。",
     "searchKeywords": "find out 知る／突き止める 知る／突き止める 理解"
   },
   {
@@ -6502,13 +6503,13 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "look for",
-        "example": "I am looking for my key.",
+        "example": "I'm looking for my key.",
         "exampleJa": "鍵を探しています。"
       }
     ],
-    "example": "I am looking for my key.",
+    "example": "I'm looking for my key.",
     "exampleJa": "鍵を探しています。",
-    "beginnerTip": "look at は「見る」、look for は「探す」です。find は見つけた結果、look for は探している動作です。",
+    "beginnerTip": "look at は「見る」、look for は「探す」。find は見つけた結果、look for は探している動作。",
     "searchKeywords": "look for 探す 探す 行動"
   },
   {
@@ -6537,7 +6538,7 @@ const rawDatabase = [
     ],
     "example": "You look like your mother.",
     "exampleJa": "お母さんに似ていますね。",
-    "beginnerTip": "look like は主に見た目・外見からの判断です。seem は見た目以外の状況・話・雰囲気からの推測にも使えます。",
+    "beginnerTip": "look like は主に見た目・外見からの判断。seem は見た目以外の状況・話・雰囲気からの推測にも使える。",
     "searchKeywords": "look like 〜のように見える／〜に似ている 〜のように見える／〜に似ている 見た目",
     "usageTags": [
       "見た目・外見",
@@ -6598,7 +6599,7 @@ const rawDatabase = [
     ],
     "example": "Come back soon.",
     "exampleJa": "早く戻ってきて。",
-    "beginnerTip": "come は話し手か相手のいる場所へ向かうイメージなので、come back は「（そちらへ／こちらへ）戻ってくる」です。",
+    "beginnerTip": "come は話し手か相手のいる場所へ向かうイメージなので、come back は「（そちらへ／こちらへ）戻ってくる」。",
     "searchKeywords": "come back 戻ってくる 戻ってくる 移動"
   },
   {
@@ -6627,7 +6628,7 @@ const rawDatabase = [
     ],
     "example": "I want to go back there.",
     "exampleJa": "そこへ戻りたいです。",
-    "beginnerTip": "go は話し手から離れる方向の移動なので go back は「戻っていく」イメージです。",
+    "beginnerTip": "go は話し手から離れる方向の移動なので go back は「戻っていく」イメージ。",
     "searchKeywords": "go back 戻る／戻っていく 戻る／戻っていく 移動"
   },
   {
@@ -6656,7 +6657,7 @@ const rawDatabase = [
     ],
     "example": "What time did you get back?",
     "exampleJa": "何時に戻ったの？",
-    "beginnerTip": "get back は「戻る」以外に get it back で「取り戻す」もあります。",
+    "beginnerTip": "get back は「戻る」以外に get it back で「取り戻す」もある。",
     "searchKeywords": "get back 戻る／取り戻す 戻る／取り戻す 移動"
   },
   {
@@ -6757,13 +6758,13 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "hanging out",
-        "example": "I am hanging out with friends tonight.",
+        "example": "I'm hanging out with friends tonight.",
         "exampleJa": "今夜は友達と過ごします。"
       }
     ],
     "example": "Do you want to hang out this weekend?",
     "exampleJa": "今週末遊ばない？",
-    "beginnerTip": "友人と気軽に一緒に過ごすときによく使います。hang の過去形・過去分詞は hung です。",
+    "beginnerTip": "友人と気軽に一緒に過ごすときによく使う。hang の過去形・過去分詞は hung 。",
     "searchKeywords": "hang out 遊ぶ／一緒に過ごす 遊ぶ／一緒に過ごす 友人",
     "changeType": "不規則変化（hang - hung - hung）"
   },
@@ -6821,7 +6822,7 @@ const rawDatabase = [
     ],
     "example": "I will take care of it.",
     "exampleJa": "私が対応します。",
-    "beginnerTip": "人・動物の世話だけでなく、問題や仕事を「対処する」意味でも使います。",
+    "beginnerTip": "人・動物の世話だけでなく、問題や仕事を「対処する」意味でも使う。",
     "searchKeywords": "take care of 世話をする／対処する 世話をする／対処する 日常"
   },
   {
@@ -6857,7 +6858,7 @@ const rawDatabase = [
     ],
     "example": "I have got a problem.",
     "exampleJa": "問題があります。",
-    "beginnerTip": "意味は have と同じ「持っている／ある」です。違いは雰囲気で、have got は会話向きのくだけた言い方です（I've got / She's got と短くするのが普通）。今の状態を言うときに使い、過去は had を使います（had got とは言いません）。疑問文は、アメリカ英語では Do you have ...? が普通です。get の過去分詞 gotten（手に入れた）とは別ものです。",
+    "beginnerTip": "意味は have と同じ「持っている／ある」。違いは雰囲気で、have got は会話向きのくだけた言い方です（I've got / She's got と短くするのが普通）。今の状態を言うときに使い、過去は had を使います（had got とは言いません）。疑問文は、アメリカ英語では Do you have ...? が普通。get の過去分詞 gotten（手に入れた）とは別もの。",
     "searchKeywords": "have got 持っている／〜がある 持っている／〜がある 所有"
   },
   {
@@ -6901,7 +6902,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "just は文脈で「たった今」「ただ」「ちょうど」「〜だけ」などに変わります。",
+    "beginnerTip": "just は文脈で「たった今」「ただ」「ちょうど」「〜だけ」などに変わる。",
     "searchKeywords": "just たった今／ただ／ちょうど たった今 ただ／単に ちょうど 頻度・強調"
   },
   {
@@ -6938,7 +6939,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "否定文では「まだ」、疑問文では「もう」が基本です。",
+    "beginnerTip": "否定文では「まだ」、疑問文では「もう」が基本。",
     "searchKeywords": "yet まだ／もう まだ（否定文） もう（疑問文） 時間"
   },
   {
@@ -7027,7 +7028,7 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "almost",
-        "example": "I am almost done.",
+        "example": "I'm almost done.",
         "exampleJa": "もうほとんど終わりです。"
       }
     ],
@@ -7069,7 +7070,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "",
-    "beginnerTip": "形容詞の後では good enough のように後ろに置くのが基本です。",
+    "beginnerTip": "形容詞の後では good enough のように後ろに置くのが基本。",
     "searchKeywords": "enough 十分な／十分に 十分な 十分に 程度"
   },
   {
@@ -7107,7 +7108,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "too は「〜も」と「〜すぎる」の2つが非常によく出ます。「〜も」の too は文末に置きます：I like it, too. 動詞があっても文末で大丈夫で、会話ではこちらがよく使われます。Me too. は too だけです。also との違いは also のカードも見てください。",
+    "beginnerTip": "too は「〜も」と「〜すぎる」の2つが非常によく出る。「〜も」の too は文末に置く：I like it, too. 動詞があっても文末で大丈夫で、会話ではこちらがよく使われる。Me too. は too だけ。also との違いは also のカードも参照。",
     "searchKeywords": "too 〜も／〜すぎる 〜も 〜すぎる 程度"
   },
   {
@@ -7136,7 +7137,7 @@ const rawDatabase = [
     ],
     "changeType": "変化なし",
     "searchKeywords": "also 〜もまた 〜もまた 追加",
-    "beginnerTip": "意味は too と同じ「〜も」です。also は文の真ん中に置きます（be動詞の後ろ、一般動詞の前）：I also like it. / I am also tired. 文頭の Also, は「それと」と話を足すときに使います。会話では文末の too のほうがよく使われ、文末の also は不自然に聞こえることが多いです。"
+    "beginnerTip": "意味は too と同じ「〜も」。also は文の真ん中に置きます（be動詞の後ろ、一般動詞の前）：I also like it. / I'm also tired. 文頭の Also, は「それと」と話を足すときに使う。会話では文末の too のほうがよく使われ、文末の also は不自然に聞こえることが多い。"
   },
   {
     "id": "adv_only",
@@ -7373,7 +7374,7 @@ const rawDatabase = [
     ],
     "changeType": "変化なし",
     "searchKeywords": "back 戻って／後ろへ 戻って／後ろへ 方向",
-    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。"
+    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。"
   },
   {
     "id": "adv_again",
@@ -7437,7 +7438,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "",
-    "beginnerTip": "文末の though は会話で「でもね／とはいえ」のように使われます。",
+    "beginnerTip": "文末の though は会話で「でもね／とはいえ」のように使われる。",
     "searchKeywords": "though 〜だけど／でも 〜だけど／〜にもかかわらず でもね／とはいえ（文末） つなぎ"
   },
   {
@@ -7493,7 +7494,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "アメリカ英語では quite は「かなり」の意味で使われることが多いです。強さの目安：really（とても）＞ quite（かなり）＞ kind of（ちょっと）＞ a little（少し）。",
+    "beginnerTip": "アメリカ英語では quite は「かなり」の意味で使われることが多い。強さの目安：really（とても）＞ quite（かなり）＞ kind of（ちょっと）＞ a little（少し）。",
     "searchKeywords": "quite かなり／なかなか かなり／なかなか 程度"
   },
   {
@@ -7526,7 +7527,7 @@ const rawDatabase = [
         "pos": "副詞",
         "meaning": "ちょうど／すぐ",
         "category": "強調",
-        "example": "I am right here.",
+        "example": "I'm right here.",
         "exampleJa": "私はここにいます。"
       },
       {
@@ -7546,7 +7547,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "",
-    "beginnerTip": "right は「正しい」だけでなく「右」「ちょうど」など頻出の意味があります。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。",
+    "beginnerTip": "right は「正しい」だけでなく「右」「ちょうど」など頻出の意味がある。 名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。",
     "searchKeywords": "right 正しい／右の／ちょうど 正しい 右／右側 ちょうど／すぐ 評価"
   },
   {
@@ -7574,7 +7575,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "What is wrong? は「どうしたの？」の定番表現です。",
+    "beginnerTip": "What is wrong? は「どうしたの？」の定番表現。",
     "searchKeywords": "wrong 間違った／おかしい 間違った／おかしい 評価"
   },
   {
@@ -7609,7 +7610,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "Sure. だけで気軽な「いいよ／もちろん」の返事になります。Of course. は「言うまでもなく」という、やや強めの返事です。",
+    "beginnerTip": "Sure. だけで気軽な「いいよ／もちろん」の返事になる。Of course. は「言うまでもなく」という、やや強めの返事。",
     "searchKeywords": "sure 確かな／もちろん 確かな／もちろん 評価"
   },
   {
@@ -7632,7 +7633,7 @@ const rawDatabase = [
       {
         "label": "原級",
         "formName": "ready",
-        "example": "I am ready.",
+        "example": "I'm ready.",
         "exampleJa": "準備できました。"
       }
     ],
@@ -7659,12 +7660,12 @@ const rawDatabase = [
       {
         "label": "原級",
         "formName": "afraid",
-        "example": "I am afraid of heights.",
+        "example": "I'm afraid of heights.",
         "exampleJa": "高いところが怖いです。"
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "I’m afraid ... は「残念ながら〜です」と丁寧に悪い知らせを伝えるときにも使います。",
+    "beginnerTip": "I’m afraid ... は「残念ながら〜です」と丁寧に悪い知らせを伝えるときにも使う。",
     "searchKeywords": "afraid 怖い／残念ながら 怖い／残念ながら 感情"
   },
   {
@@ -7714,7 +7715,7 @@ const rawDatabase = [
       {
         "label": "原級",
         "formName": "excited",
-        "example": "I am excited about the trip.",
+        "example": "I'm excited about the trip.",
         "exampleJa": "旅行が楽しみです。"
       }
     ],
@@ -7741,7 +7742,7 @@ const rawDatabase = [
       {
         "label": "原級",
         "formName": "worried",
-        "example": "I am worried about her.",
+        "example": "I'm worried about her.",
         "exampleJa": "彼女が心配です。"
       }
     ],
@@ -7768,14 +7769,14 @@ const rawDatabase = [
       {
         "label": "原級",
         "formName": "glad",
-        "example": "I am glad you came.",
+        "example": "I'm glad you came.",
         "exampleJa": "来てくれて嬉しいです。",
         "needsHint": true
       }
     ],
     "changeType": "変化なし",
     "searchKeywords": "glad 嬉しい／よかった 嬉しい／よかった 感情",
-    "beginnerTip": "glad は出来事に対して「よかった」と思う嬉しさです。happy は「幸せ・嬉しい」という状態や気分です。"
+    "beginnerTip": "glad は出来事に対して「よかった」と思う嬉しさ。happy は「幸せ・嬉しい」という状態や気分。"
   },
   {
     "id": "adj_sorry",
@@ -7811,7 +7812,7 @@ const rawDatabase = [
       {
         "label": "原級",
         "formName": "sorry",
-        "example": "I am sorry I am late.",
+        "example": "I'm sorry I'm late.",
         "exampleJa": "遅れてごめんなさい。"
       }
     ],
@@ -7877,7 +7878,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "",
-    "beginnerTip": "another = an + other の感覚で「もう1つ／別の1つ」です。",
+    "beginnerTip": "another = an + other の感覚で「もう1つ／別の1つ」。",
     "searchKeywords": "another もう1つの／別の もう1つの／別の 数量"
   },
   {
@@ -7913,7 +7914,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "",
-    "beginnerTip": "my own ... のように所有を強調できます。",
+    "beginnerTip": "my own ... のように所有を強調できる。",
     "searchKeywords": "own 自分自身の／所有する 自分自身の 所有する 所有"
   },
   {
@@ -7948,7 +7949,7 @@ const rawDatabase = [
     ],
     "changeType": "不規則複数形",
     "searchKeywords": "child 子ども 子ども 人・物 child a child",
-    "beginnerTip": "数えられる名詞の単数形では a child のように a / an を付けます。動詞などとして使う場合は不要です。"
+    "beginnerTip": "数えられる名詞の単数形では a child のように a / an を付ける。動詞などとして使う場合は不要。"
   },
   {
     "id": "n_man",
@@ -7982,7 +7983,7 @@ const rawDatabase = [
     ],
     "changeType": "不規則複数形",
     "searchKeywords": "man 男性／男の人 男性／男の人 人・物 man a man",
-    "beginnerTip": "数えられる名詞の単数形では a man のように a / an を付けます。動詞などとして使う場合は不要です。"
+    "beginnerTip": "数えられる名詞の単数形では a man のように a / an を付ける。動詞などとして使う場合は不要。"
   },
   {
     "id": "n_woman",
@@ -8015,7 +8016,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則複数形",
-    "beginnerTip": "woman / women は綴りだけでなく発音も変わります。 数えられる名詞の単数形では a woman のように a / an を付けます。動詞などとして使う場合は不要です。",
+    "beginnerTip": "woman / women は綴りだけでなく発音も変わる。 数えられる名詞の単数形では a woman のように a / an を付ける。動詞などとして使う場合は不要。",
     "searchKeywords": "woman 女性／女の人 女性／女の人 人・物 woman a woman"
   },
   {
@@ -8050,7 +8051,7 @@ const rawDatabase = [
     ],
     "changeType": "不規則複数形",
     "searchKeywords": "tooth 歯 歯 人・物 tooth a tooth",
-    "beginnerTip": "数えられる名詞の単数形では a tooth のように a / an を付けます。動詞などとして使う場合は不要です。"
+    "beginnerTip": "数えられる名詞の単数形では a tooth のように a / an を付ける。動詞などとして使う場合は不要。"
   },
   {
     "id": "n_foot",
@@ -8059,7 +8060,7 @@ const rawDatabase = [
       "名詞"
     ],
     "category": "人・物",
-    "english": "a foot",
+    "english": "foot",
     "japanese": "足／足部",
     "senses": [
       {
@@ -8084,7 +8085,7 @@ const rawDatabase = [
     ],
     "changeType": "不規則複数形",
     "searchKeywords": "foot 足／足部 足／足部 人・物 foot a foot",
-    "beginnerTip": "数えられる名詞の単数形では a foot のように a / an を付けます。動詞などとして使う場合は不要です。"
+    "beginnerTip": "数えられる名詞。単数形は a foot と言えるが、体の部位は my foot（私の足）のように所有格を付けることが多い。my と a は同時に付けない。"
   },
   {
     "id": "n_life",
@@ -8117,7 +8118,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "f → ves",
-    "beginnerTip": "life の複数形は lives です。 数えられる名詞の単数形では a life のように a / an を付けます。動詞などとして使う場合は不要です。",
+    "beginnerTip": "life の複数形は lives 。 数えられる名詞の単数形では a life のように a / an を付ける。動詞などとして使う場合は不要。",
     "searchKeywords": "life 人生／生活／命 人生／生活／命 生活 life a life"
   },
   {
@@ -8140,7 +8141,7 @@ const rawDatabase = [
       {
         "label": "現在形",
         "formName": "am / is / are",
-        "example": "I am at home.",
+        "example": "I'm at home.",
         "exampleJa": "私は家にいます。"
       },
       {
@@ -8162,9 +8163,9 @@ const rawDatabase = [
         "exampleJa": "彼は静かにしています。"
       }
     ],
-    "example": "I am at home.",
+    "example": "I'm at home.",
     "exampleJa": "私は家にいます。",
-    "beginnerTip": "主語によって be 動詞が変わります。",
+    "beginnerTip": "主語によって be 動詞が変わる。",
     "searchKeywords": "I am（I'm） 私は〜です／〜にいる 私は〜です／〜にいる 省略形",
     "contractions": [
       "I'm",
@@ -8266,13 +8267,13 @@ const rawDatabase = [
       {
         "label": "ing形",
         "formName": "having",
-        "example": "I am having lunch.",
+        "example": "I'm having lunch.",
         "exampleJa": "昼食を食べています。"
       }
     ],
     "example": "I have a meeting today.",
     "exampleJa": "今日は会議があります。",
-    "beginnerTip": "アメリカ英語では所有の have は省略せず I have ... と言うことも多く、I’ve は現在完了で特によく使います。",
+    "beginnerTip": "アメリカ英語では所有の have は省略せず I have ... と言うことも多く、I’ve は現在完了で特によく使う。",
     "searchKeywords": "I have（I've） 私は持っている／〜したことがある・〜してきた 私は持っている／〜したことがある・〜してきた 省略形",
     "contractions": [
       "I've",
@@ -8362,7 +8363,7 @@ const rawDatabase = [
     ],
     "example": "I'll call you later.",
     "exampleJa": "あとで電話するね。",
-    "beginnerTip": "will の省略形です。その場で決めたことや約束に使います（I'll help you.）。前から決めていた予定は be going to が自然です。予測は、根拠が目の前にあるときは be going to、考えや見込みのときは will が自然です。",
+    "beginnerTip": "will の省略形。その場で決めたことや約束に使います（I'll help you.）。前から決めていた予定は be going to が自然。予測は、根拠が目の前にあるときは be going to、考えや見込みのときは will が自然。",
     "searchKeywords": "I will（I'll） 私は〜するつもり／〜するだろう 私は〜するつもり／〜するだろう 省略形",
     "contractions": [
       "I'll",
@@ -8444,7 +8445,7 @@ const rawDatabase = [
     ],
     "example": "I'd like some coffee.",
     "exampleJa": "コーヒーが欲しいです。",
-    "beginnerTip": "'d は would だけでなく had の省略にもなります。後ろが動詞（原形）なら would、過去分詞なら had と判断しやすいです。",
+    "beginnerTip": "'d は would だけでなく had の省略にもなる。後ろが動詞（原形）なら would、過去分詞なら had と判断しやすい。",
     "searchKeywords": "I would（I'd） 私は〜するだろう／〜したい 私は〜するだろう／〜したい 省略形",
     "contractions": [
       "I'd",
@@ -8520,7 +8521,7 @@ const rawDatabase = [
     ],
     "example": "I'd already eaten.",
     "exampleJa": "私はすでに食べ終わっていました。",
-    "beginnerTip": "'d は had だけでなく would の省略にもなります。後ろが過去分詞なら had と判断しやすいです。",
+    "beginnerTip": "'d は had だけでなく would の省略にもなる。後ろが過去分詞なら had と判断しやすい。",
     "searchKeywords": "I had（I'd） 〜していた／〜し終わっていた（過去のある時点より前） 〜していた／〜し終わっていた（過去のある時点より前） 省略形",
     "contractions": [
       "I'd",
@@ -8608,7 +8609,7 @@ const rawDatabase = [
     ],
     "example": "I don't know.",
     "exampleJa": "分かりません。",
-    "beginnerTip": "do の時制・主語に合わせて don’t / doesn’t / didn’t が変わります。",
+    "beginnerTip": "do の時制・主語に合わせて don’t / doesn’t / didn’t が変わる。",
     "searchKeywords": "do not（don't） 〜しない 〜しない 省略形",
     "contractions": [
       "don't",
@@ -8668,7 +8669,7 @@ const rawDatabase = [
     ],
     "example": "I can't go.",
     "exampleJa": "行けません。",
-    "beginnerTip": "cannot は通常1語で書き、会話では can’t が非常によく使われます。",
+    "beginnerTip": "cannot は通常1語で書き、会話では can’t が非常によく使われる。",
     "searchKeywords": "cannot（can't） 〜できない 〜できない 省略形",
     "contractions": [
       "can't",
@@ -8721,7 +8722,7 @@ const rawDatabase = [
     ],
     "example": "She isn't here.",
     "exampleJa": "彼女はここにいません。",
-    "beginnerTip": "主語と時制に合わせて形が変わります。",
+    "beginnerTip": "主語と時制に合わせて形が変わる。",
     "searchKeywords": "be not（isn't / aren't） 〜ではない／〜にいない 〜ではない／〜にいない 省略形",
     "contractions": [
       "isn't",
@@ -8788,7 +8789,7 @@ const rawDatabase = [
     ],
     "example": "I haven't finished yet.",
     "exampleJa": "まだ終わっていません。",
-    "beginnerTip": "have / has / had に応じて省略形が変わります。",
+    "beginnerTip": "have / has / had に応じて省略形が変わる。",
     "searchKeywords": "have not（haven't） まだ〜していない／〜したことがない まだ〜していない／〜したことがない 省略形",
     "contractions": [
       "haven't",
@@ -8836,11 +8837,11 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "enough to + 動詞（原形）",
-        "example": "I am old enough to travel alone.",
+        "example": "I'm old enough to travel alone.",
         "exampleJa": "1人で旅行できる年齢です。"
       }
     ],
-    "example": "I am old enough to travel alone.",
+    "example": "I'm old enough to travel alone.",
     "exampleJa": "1人で旅行できる年齢です。",
     "searchKeywords": "enough to + 動詞（原形） 〜するのに十分…／十分〜なので…できる 〜するのに十分…／十分〜なので…できる 程度"
   },
@@ -8864,11 +8865,11 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "too + 形容詞 + to + 動詞（原形）",
-        "example": "I am too tired to go out.",
+        "example": "I'm too tired to go out.",
         "exampleJa": "疲れすぎて外出できません。"
       }
     ],
-    "example": "I am too tired to go out.",
+    "example": "I'm too tired to go out.",
     "exampleJa": "疲れすぎて外出できません。",
     "searchKeywords": "too ... to + 動詞（原形） 〜すぎて…できない 〜すぎて…できない 程度"
   },
@@ -8892,7 +8893,7 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "nervous",
-        "example": "I am nervous about the call.",
+        "example": "I'm nervous about the call.",
         "exampleJa": "通話のことで緊張しています。"
       }
     ],
@@ -8996,7 +8997,7 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "confused",
-        "example": "I am a little confused.",
+        "example": "I'm a little confused.",
         "exampleJa": "ちょっと混乱しています。"
       }
     ],
@@ -9152,7 +9153,7 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "proud",
-        "example": "I am proud of you.",
+        "example": "I'm proud of you.",
         "exampleJa": "あなたを誇りに思います。"
       }
     ],
@@ -9178,7 +9179,7 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "jealous",
-        "example": "I am a little jealous.",
+        "example": "I'm a little jealous.",
         "exampleJa": "ちょっと羨ましい。"
       }
     ],
@@ -9256,7 +9257,7 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "interested",
-        "example": "I am interested in other cultures.",
+        "example": "I'm interested in other cultures.",
         "exampleJa": "他の文化に興味があります。"
       }
     ],
@@ -9282,7 +9283,7 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "curious",
-        "example": "I am curious about that.",
+        "example": "I'm curious about that.",
         "exampleJa": "それが気になります。"
       }
     ],
@@ -9308,7 +9309,7 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "grateful",
-        "example": "I am grateful for your help.",
+        "example": "I'm grateful for your help.",
         "exampleJa": "助けてくれて感謝しています。"
       }
     ],
@@ -9838,7 +9839,7 @@ const rawDatabase = [
       }
     ],
     "searchKeywords": "may 〜かもしれない 推量",
-    "beginnerTip": "今回は「〜かもしれない」という可能性の用法だけを学びます。"
+    "beginnerTip": "今回は「〜かもしれない」という可能性の用法だけを学ぶ。"
   },
   {
     "id": "exp_like_this",
@@ -9978,11 +9979,11 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "What about you?",
-        "example": "I am doing okay. What about you?",
+        "example": "I'm doing okay. What about you?",
         "exampleJa": "私は元気だよ。あなたは？"
       }
     ],
-    "example": "I am doing okay. What about you?",
+    "example": "I'm doing okay. What about you?",
     "exampleJa": "私は元気だよ。あなたは？",
     "searchKeywords": "What about you? あなたは？ 質問"
   },
@@ -11676,7 +11677,7 @@ const rawDatabase = [
     ],
     "example": "I have visited Kyoto twice.",
     "exampleJa": "京都を2回訪れたことがあります。",
-    "beginnerTip": "現在完了。経験・完了・継続などを表します。「まだ〜していない」は haven’t ... yet、「〜したことがない」は have never ... など、否定表現を使います。",
+    "beginnerTip": "現在完了。経験・完了・継続などを表す。「まだ〜していない」は haven’t ... yet、「〜したことがない」は have never ... など、否定表現を使う。",
     "searchKeywords": "have + 動詞（過去分詞） 〜した／〜したことがある／ずっと〜している 文法"
   },
   {
@@ -11705,7 +11706,7 @@ const rawDatabase = [
     ],
     "example": "I had already eaten when she called.",
     "exampleJa": "彼女から電話が来たとき、私はすでに食べ終わっていました。",
-    "beginnerTip": "過去完了。過去のある時点より前に起きたことを表します。",
+    "beginnerTip": "過去完了。過去のある時点より前に起きたことを表す。",
     "searchKeywords": "had + 動詞（過去分詞） 〜していた／〜し終わっていた（過去のある時点より前） 文法"
   },
   {
@@ -11734,7 +11735,7 @@ const rawDatabase = [
     ],
     "example": "Even though I was tired, I went out.",
     "exampleJa": "疲れていたけど、出かけました。",
-    "beginnerTip": "実際にそうである事実と対照的なことを述べます。",
+    "beginnerTip": "実際にそうである事実と対照的なことを述べる。",
     "searchKeywords": "even though + 文 〜なのに／〜だけど 文法"
   },
   {
@@ -11763,7 +11764,7 @@ const rawDatabase = [
     ],
     "example": "Even if it rains, I will go.",
     "exampleJa": "たとえ雨が降っても行きます。",
-    "beginnerTip": "仮定した条件でも結果は変わらないときに使います。",
+    "beginnerTip": "仮定した条件でも結果は変わらないときに使う。",
     "searchKeywords": "even if + 文 たとえ〜でも 文法"
   },
   {
@@ -11805,7 +11806,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "what は「何」です。what time（何時）、what kind of（どんな種類の）のように、名詞とセットでもよく使います。",
+    "beginnerTip": "what は「何」。what time（何時）、what kind of（どんな種類の）のように、名詞とセットでもよく使う。",
     "searchKeywords": "what 何／どんな 何 どんな〜／何の〜（what + 名詞） なんて〜だ（感嘆） 質問"
   },
   {
@@ -11841,7 +11842,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "疑問文の when は「いつ」、文をつなぐ when は「〜するとき」です。when のあとは、未来のことでも現在形で言います（Call me when you get home.）。",
+    "beginnerTip": "疑問文の when は「いつ」、文をつなぐ when は「〜するとき」。when のあとは、未来のことでも現在形で言います（Call me when you get home.）。",
     "searchKeywords": "when いつ／〜するとき いつ 〜するとき 質問"
   },
   {
@@ -11876,7 +11877,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "Where are you from?（出身はどこ？）のように、前置詞が文末に残る形をよく使います。",
+    "beginnerTip": "Where are you from?（出身はどこ？）のように、前置詞が文末に残る形をよく使う。",
     "searchKeywords": "where どこ／〜する場所 どこ（に・で） 〜する場所 質問"
   },
   {
@@ -11911,7 +11912,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "電話では Who is this?（どちら様ですか？）と相手をたずねられます。",
+    "beginnerTip": "電話では Who is this?（どちら様ですか？）と相手をたずねられる。",
     "searchKeywords": "who 誰／〜する人 誰 〜する人 質問"
   },
   {
@@ -11946,7 +11947,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "答えは Because ... で言います。「〜しない？」と誘う Why don't we ...? は別のカードで学びます。",
+    "beginnerTip": "答えは Because ... で言う。「〜しない？」と誘う Why don't we ...? は別のカードで学ぶ。",
     "searchKeywords": "why なぜ／どうして なぜ だから〜（that's why） 質問"
   },
   {
@@ -11981,7 +11982,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "How are you?（調子はどう？）のように、状態をたずねるときにも使います。長さ・数・頻度をたずねる形は、How + 形容詞／副詞 のカードで学びます。",
+    "beginnerTip": "How are you?（調子はどう？）のように、状態をたずねるときにも使う。長さ・数・頻度をたずねる形は、How + 形容詞／副詞 のカードで学ぶ。",
     "searchKeywords": "how どうやって／どう どうやって／どのように 調子・様子はどう 質問"
   },
   {
@@ -12017,7 +12018,7 @@ const rawDatabase = [
     ],
     "example": "How about tomorrow?",
     "exampleJa": "明日はどう？",
-    "beginnerTip": "What about…? とほぼ同じ意味で、どちらも使えます。How about は提案が中心で、What about は「〜はどうなの？」と話題を出すときにも使います。",
+    "beginnerTip": "What about…? とほぼ同じ意味で、どちらも使える。How about は提案が中心で、What about は「〜はどうなの？」と話題を出すときにも使う。",
     "searchKeywords": "How about…? 〜はどう？／〜はいかが？ 〜はどう？（提案） 〜は？（話を相手に返す） 提案"
   },
   {
@@ -12053,7 +12054,7 @@ const rawDatabase = [
     ],
     "example": "How long does it take?",
     "exampleJa": "どのくらいかかりますか？",
-    "beginnerTip": "How long（期間）、How often（頻度）、How far（距離）、How many（数）、How much（量・値段）の形があります。数えられるものは many、数えられないものは much です。",
+    "beginnerTip": "How long（期間）、How often（頻度）、How far（距離）、How many（数）、How much（量・値段）の形がある。数えられるものは many、数えられないものは much 。",
     "searchKeywords": "How + 形容詞／副詞…? どのくらい〜？ どのくらい〜？（How long / How often など） いくつ／いくら（How many / How much） 質問"
   },
   {
@@ -12088,7 +12089,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "A and B のように並べます。3つ以上のときは、A, B, and C の形（A、B、そして C）にします。",
+    "beginnerTip": "A and B のように並べる。3つ以上のときは、A, B, and C の形（A、B、そして C）にする。",
     "searchKeywords": "and そして／〜と そして／〜と 〜しなさい、そうすれば（命令文 + and） つなぎ"
   },
   {
@@ -12124,7 +12125,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "文のはじめの But も、会話ではよく使います。文末の though（でもね）との違いは、though のカードで学びます。",
+    "beginnerTip": "文のはじめの But も、会話ではよく使う。文末の though（でもね）との違いは、though のカードで学ぶ。",
     "searchKeywords": "but しかし／でも しかし／でも あのね（やんわり切り出す） つなぎ"
   },
   {
@@ -12160,7 +12161,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "because は理由を、so は結果を、あとにつなげます（I missed the bus, so I was late.）。Why? の答えとして、Because だけでも言えます。後ろが名詞のときは because of を使います。",
+    "beginnerTip": "because は理由を、so は結果を、あとにつなげます（I missed the bus, so I was late.）。Why? の答えとして、Because だけでも言える。後ろが名詞のときは because of を使う。",
     "searchKeywords": "because 〜だから／なぜなら 〜だから／なぜなら 〜のせいで／〜のため（because of + 名詞） つなぎ"
   },
   {
@@ -12204,7 +12205,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "so は結果をつなげます（理由を先に言うなら because）。会話のはじめの So, ... は「それで」と話を切り出す合図になります。",
+    "beginnerTip": "so は結果をつなげます（理由を先に言うなら because）。会話のはじめの So, ... は「それで」と話を切り出す合図になる。",
     "searchKeywords": "so だから／とても だから／それで とても／そんなに それで（話題を切り替える） つなぎ"
   },
   {
@@ -12275,7 +12276,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "選択肢を並べるときに使います。Do you want A or B? の B は、文末を下げて言います。",
+    "beginnerTip": "選択肢を並べるときに使う。Do you want A or B? の B は、文末を下げて言う。",
     "searchKeywords": "or または／それとも または／それとも さもないと（命令文 + or） つなぎ"
   },
   {
@@ -12318,7 +12319,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "than（〜より）と綴りが似ているので注意します。会話では Then...?（それで？）と続きを聞くときにも使います。",
+    "beginnerTip": "than（〜より）と綴りが似ているので注意する。会話では Then...?（それで？）と続きを聞くときにも使う。",
     "searchKeywords": "then それから／それなら それから／その後 それなら その頃 つなぎ"
   },
   {
@@ -12354,7 +12355,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "while のあとには文が続きます。名詞が続くときは during を使います（during the meeting）。",
+    "beginnerTip": "while のあとには文が続く。名詞が続くときは during を使います（during the meeting）。",
     "searchKeywords": "while 〜している間／〜だけど 〜している間 〜な一方で つなぎ"
   },
   {
@@ -12390,7 +12391,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "until は「その時までずっと続く」ことに使います。「その時までに済ませる」ときは by を使います。",
+    "beginnerTip": "until は「その時までずっと続く」ことに使う。「その時までに済ませる」ときは by を使う。",
     "searchKeywords": "until 〜まで 〜まで（ずっと） 〜するまで 時間"
   },
   {
@@ -12426,7 +12427,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "比較級（newer, more important など）のあとに than をつけます。then（それから）と綴りが似ているので注意します。",
+    "beginnerTip": "比較級（newer, more important など）のあとに than をつける。then（それから）と綴りが似ているので注意する。",
     "searchKeywords": "than 〜より 〜より（比較） 〜以上（more than） 比較"
   },
   {
@@ -12468,7 +12469,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "in は広がりのある「中」、on は表面に接している「上」、at は「一点」のイメージです。in・on・at の違いは、3つのカードで見比べます。",
+    "beginnerTip": "in は広がりのある「中」、on は表面に接している「上」、at は「一点」のイメージ。in・on・at の違いは、3つのカードで見比べる。",
     "searchKeywords": "in 〜の中に／〜で 〜の中に／〜で（場所・月・年） 〜後に（これから先の期間） 〜語で 場所"
   },
   {
@@ -12538,7 +12539,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "at は時刻（at five）や、一点としての場所（at home, at work）に使います。",
+    "beginnerTip": "at は時刻（at five）や、一点としての場所（at home, at work）に使う。",
     "searchKeywords": "at 〜に／〜で 〜に／〜で（時刻・一点の場所） 〜に向かって 場所"
   },
   {
@@ -12580,7 +12581,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "道具には with を使います。「〜と話す」は talk with でも talk to でも言えます。",
+    "beginnerTip": "道具には with を使う。「〜と話す」は talk with でも talk to でも言える。",
     "searchKeywords": "with 〜と一緒に／〜を使って 〜と一緒に 〜を使って 〜つきの／〜を持った 関係"
   },
   {
@@ -12622,7 +12623,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "for は期間の長さ（for three years）、since は始まりの時点（since 2020）、during は出来事の間（during the meeting）です。",
+    "beginnerTip": "for は期間の長さ（for three years）、since は始まりの時点（since 2020）、during は出来事の間（during the meeting）。",
     "searchKeywords": "for 〜のために／〜の間 〜のために／〜用に 〜の間（期間） 〜にとって 関係"
   },
   {
@@ -12665,7 +12666,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "to のあとに動詞が来る形（want to go など）は、want to のカードで学びます。into（〜の中へ）とは別のカードです。",
+    "beginnerTip": "to のあとに動詞が来る形（want to go など）は、want to のカードで学ぶ。into（〜の中へ）とは別のカード。",
     "searchKeywords": "to 〜へ／〜まで／〜に 〜へ（方向・目的地） 〜まで 〜に（相手） 方向"
   },
   {
@@ -12700,7 +12701,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "Where are you from?（出身はどこ？）は、自己紹介でいちばんよく使う形のひとつです。",
+    "beginnerTip": "Where are you from?（出身はどこ？）は、自己紹介でいちばんよく使う形のひとつ。",
     "searchKeywords": "from 〜から／〜出身の 〜から（場所・時間の始まり） 〜出身の 方向"
   },
   {
@@ -12736,7 +12737,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "talk about（〜について話す）、think about（〜について考える）のように、動詞とセットでよく使います。",
+    "beginnerTip": "talk about（〜について話す）、think about（〜について考える）のように、動詞とセットでよく使う。",
     "searchKeywords": "about 〜について／約〜 〜について 約〜／およそ 関係"
   },
   {
@@ -12771,7 +12772,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "a lot of、a cup of、one of のように、数や量を表す言葉のあとによく出ます。",
+    "beginnerTip": "a lot of、a cup of、one of のように、数や量を表す言葉のあとによく出る。",
     "searchKeywords": "of 〜の／〜のうちの 〜の（一部・所属） 〜のうちの 関係"
   },
   {
@@ -12814,7 +12815,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "by は「その時までに」（期限）、until は「その時までずっと」です。",
+    "beginnerTip": "by は「その時までに」（期限）、until は「その時までずっと」。",
     "searchKeywords": "by 〜までに／〜で／〜のそばに 〜までに（期限） 〜で（手段） 〜のそばに 時間"
   },
   {
@@ -12856,7 +12857,7 @@ const rawDatabase = [
     ],
     "example": "Can you open the door?",
     "exampleJa": "ドアを開けてくれますか？",
-    "beginnerTip": "Could you は Can you より丁寧です。親しい友達には Can you、初めての相手や頼みにくいときは Could you を使います。",
+    "beginnerTip": "Could you は Can you より丁寧。親しい友達には Can you、初めての相手や頼みにくいときは Could you を使う。",
     "searchKeywords": "Can you / Could you + 動詞（原形）? 〜してくれますか？ 〜してくれますか？（依頼） 〜できますか？ 依頼"
   },
   {
@@ -12892,7 +12893,7 @@ const rawDatabase = [
     ],
     "example": "Would you like some coffee?",
     "exampleJa": "コーヒーはいかがですか？",
-    "beginnerTip": "Do you want ...? より丁寧な言い方です。「I'd like ...（〜がほしいです）」に対応する、たずねる形です。",
+    "beginnerTip": "Do you want ...? より丁寧な言い方。「I'd like ...（〜がほしいです）」に対応する、たずねる形。",
     "searchKeywords": "Would you like + 名詞／to + 動詞（原形）? 〜はいかがですか？／〜しませんか？ 〜はいかがですか？（名詞） 〜しませんか？（to + 動詞（原形）） 依頼"
   },
   {
@@ -12927,7 +12928,7 @@ const rawDatabase = [
     ],
     "example": "Let's go.",
     "exampleJa": "行こう。",
-    "beginnerTip": "Let's は Let us の省略形です。相手を直接誘う言い方で、Why don't we ...? より、はっきりした提案になります。",
+    "beginnerTip": "Let's は Let us の省略形。相手を直接誘う言い方で、Why don't we ...? より、はっきりした提案になる。",
     "searchKeywords": "Let's + 動詞（原形） 〜しよう 〜しよう（誘い） 提案"
   },
   {
@@ -12963,7 +12964,7 @@ const rawDatabase = [
     ],
     "example": "Why don't we eat out tonight?",
     "exampleJa": "今夜は外食しない？",
-    "beginnerTip": "Let's より柔らかく、相手の気持ちを聞く感じの提案です。主語を you にすると（Why don't you ...?）、「〜したらどう？」という助言になります。",
+    "beginnerTip": "Let's より柔らかく、相手の気持ちを聞く感じの提案。主語を you にすると（Why don't you ...?）、「〜したらどう？」という助言になる。",
     "searchKeywords": "Why don't we + 動詞（原形）? 〜しない？／〜しようよ 〜しない？（一緒に） 〜したらどう？（Why don't you） 提案"
   },
   {
@@ -12992,7 +12993,7 @@ const rawDatabase = [
     ],
     "example": "Do you want me to call you back?",
     "exampleJa": "折り返し電話しましょうか？",
-    "beginnerTip": "「私が〜しましょうか？」と申し出るときに使います。もっと丁寧に言うなら Would you like me to ...? です。",
+    "beginnerTip": "「私が〜しましょうか？」と申し出るときに使う。もっと丁寧に言うなら Would you like me to ...? 。",
     "searchKeywords": "Do you want me to + 動詞（原形）? 〜しましょうか？ 〜しましょうか？（申し出） 依頼"
   },
   {
@@ -13028,7 +13029,7 @@ const rawDatabase = [
     ],
     "example": "Would you mind opening the window?",
     "exampleJa": "窓を開けていただけませんか？",
-    "beginnerTip": "mind は「嫌だと思う」なので、「いいですよ」と答えるときは No, not at all. と No を使います。",
+    "beginnerTip": "mind は「嫌だと思う」なので、「いいですよ」と答えるときは No, not at all. と No を使う。",
     "searchKeywords": "Would you mind + 動詞（ing形）? 〜していただけませんか？ 〜していただけませんか？（丁寧な依頼） 〜してもよろしいですか？（Would you mind if I ...?） 依頼"
   },
   {
@@ -13071,7 +13072,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "助言・義務の強さの目安は、must ＞ had better ＞ should です。should は「〜したほうがいい」という、ふつうの助言です。",
+    "beginnerTip": "助言・義務の強さの目安は、must ＞ had better ＞ should 。should は「〜したほうがいい」という、ふつうの助言。",
     "searchKeywords": "should 〜したほうがいい／〜はずだ 〜したほうがいい／〜すべき 〜はずだ（当然そうなるはず） 助言"
   },
   {
@@ -13114,7 +13115,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "must not は「〜してはいけない（禁止）」です。have to の否定の don't have to（〜しなくていい）とは意味が違います。会話の「〜しなければ」は、have to のほうがよく使われます。",
+    "beginnerTip": "must not は「〜してはいけない（禁止）」。have to の否定の don't have to（〜しなくていい）とは意味が違う。会話の「〜しなければ」は、have to のほうがよく使われる。",
     "searchKeywords": "must 〜しなければならない／〜に違いない 〜しなければならない（強い義務） 〜に違いない（強い推量） 義務"
   },
   {
@@ -13148,7 +13149,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "あまり高くない可能性を言います。maybe（もしかすると）は文のはじめに置き、might は動詞の前に置きます（Maybe I will go. / I might go.）。",
+    "beginnerTip": "あまり高くない可能性を言う。maybe（もしかすると）は文のはじめに置き、might は動詞の前に置きます（Maybe I will go. / I might go.）。",
     "searchKeywords": "might 〜かもしれない 〜かもしれない 可能性"
   },
   {
@@ -13190,7 +13191,7 @@ const rawDatabase = [
     ],
     "example": "You'd better go now.",
     "exampleJa": "もう行ったほうがいいよ。",
-    "beginnerTip": "should より強く、「しないと困ったことになる」という忠告・警告になります。目上の人には使わないほうが無難です。",
+    "beginnerTip": "should より強く、「しないと困ったことになる」という忠告・警告になる。目上の人には使わないほうが無難。",
     "searchKeywords": "had better + 動詞（原形） 〜したほうがいい（しないと困る） 〜したほうがいい（しないと困る） そろそろ〜しなきゃ（I'd better） 助言",
     "spokenForm": [
       "better"
@@ -13235,7 +13236,7 @@ const rawDatabase = [
     ],
     "example": "I'm supposed to call him at five.",
     "exampleJa": "5時に彼に電話することになっています。",
-    "beginnerTip": "予定・決まり・期待に使います。実際にはしなかったことを「〜するはずだったのに」と言うときは was supposed to です。",
+    "beginnerTip": "予定・決まり・期待に使う。実際にはしなかったことを「〜するはずだったのに」と言うときは was supposed to 。",
     "searchKeywords": "be supposed to + 動詞（原形） 〜することになっている 〜することになっている／〜するはず 〜してはいけない（否定） 予定"
   },
   {
@@ -13264,7 +13265,7 @@ const rawDatabase = [
     ],
     "example": "Do you think it will rain?",
     "exampleJa": "雨が降ると思いますか？",
-    "beginnerTip": "I think + 文 の疑問形です。Do you think のあとは、ふつうの文の語順のままです（it will rain）。",
+    "beginnerTip": "I think + 文 の疑問形。Do you think のあとは、ふつうの文の語順のままです（it will rain）。",
     "searchKeywords": "Do you think + 文? 〜だと思いますか？ 〜だと思いますか？ 質問"
   },
   {
@@ -13300,7 +13301,7 @@ const rawDatabase = [
     ],
     "example": "Hold on a second.",
     "exampleJa": "ちょっと待って。",
-    "beginnerTip": "電話や会話で「ちょっと待って」と言う定番です。wait より口語的で、Hold on a second. / Hold on a minute. の形でもよく使います。",
+    "beginnerTip": "電話や会話で「ちょっと待って」と言う定番。wait より口語的で、Hold on a second. / Hold on a minute. の形でもよく使う。",
     "searchKeywords": "hold on ちょっと待って／つかまっていて ちょっと待って しっかりつかまる 電話"
   },
   {
@@ -13329,7 +13330,7 @@ const rawDatabase = [
     ],
     "example": "I'll call you back later.",
     "exampleJa": "あとで折り返します。",
-    "beginnerTip": "「折り返す」は call + 人 + back の語順です。「あとで電話する」は call you later と言います。",
+    "beginnerTip": "「折り返す」は call + 人 + back の語順。「あとで電話する」は call you later と言う。",
     "searchKeywords": "call back 折り返し電話する 折り返し電話する 電話"
   },
   {
@@ -13382,7 +13383,7 @@ const rawDatabase = [
     ],
     "example": "Please don't hang up.",
     "exampleJa": "切らないでください。",
-    "beginnerTip": "hang の過去形・過去分詞は hung です。「電話を切る」は hang up、「電話に出る」は answer や pick up です。",
+    "beginnerTip": "hang の過去形・過去分詞は hung 。「電話を切る」は hang up、「電話に出る」は answer や pick up 。",
     "searchKeywords": "hang up 電話を切る 電話を切る 電話"
   },
   {
@@ -13418,7 +13419,7 @@ const rawDatabase = [
     ],
     "example": "Can you speak up, please?",
     "exampleJa": "もう少し大きな声で話してもらえますか？",
-    "beginnerTip": "speak up は「声を大きく」です。ゆっくり話してほしいときは speak more slowly、はっきり話してほしいときは speak clearly を使います。",
+    "beginnerTip": "speak up は「声を大きく」。ゆっくり話してほしいときは speak more slowly、はっきり話してほしいときは speak clearly を使う。",
     "searchKeywords": "speak up もっと大きな声で話す／はっきり意見を言う もっと大きな声で話す 遠慮せず意見を言う 電話"
   },
   {
@@ -13478,7 +13479,7 @@ const rawDatabase = [
     ],
     "example": "The call might break up in the tunnel.",
     "exampleJa": "トンネルの中では電話が途切れるかもしれません。",
-    "beginnerTip": "電話で You're breaking up.（声が途切れてるよ）と言えます。break の変化は break → broke → broken です。",
+    "beginnerTip": "電話で You're breaking up.（声が途切れてるよ）と言える。break の変化は break → broke → broken 。",
     "searchKeywords": "break up 電波が途切れる／別れる 電波が途切れる（You're breaking up.） 別れる 電話"
   },
   {
@@ -13545,8 +13546,8 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "規則変化 (-ed)",
-    "beginnerTip": "answer のあとには、そのまま名詞が来ます（answer the phone, answer a question）。answer the phone は、pick up the phone とほぼ同じ場面で、電話に出ることです。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。",
+    "changeType": "規則変化 (-ed)｜answer[ˈænsɚ] → answered[ˈænsɚd] → answered[ˈænsɚd]",
+    "beginnerTip": "answer のあとには、そのまま名詞が来ます（answer the phone, answer a question）。answer the phone は、pick up the phone とほぼ同じ場面で、電話に出ること。 名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。",
     "searchKeywords": "answer 答える／電話に出る 答える／応答する 電話に出る 答え 電話"
   },
   {
@@ -13614,8 +13615,8 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "不規則 A-B-B",
-    "beginnerTip": "I didn't catch that.（聞き取れなかった）は、電話で聞き返すときの定番です。hear は音が聞こえること、catch は聞こえた言葉を聞き取ることです。聞こえているのに分からないときは catch を使います。",
+    "changeType": "不規則 A-B-B｜catch[kætʃ] → caught[kɑt] → caught[kɑt]",
+    "beginnerTip": "I didn't catch that.（聞き取れなかった）は、電話で聞き返すときの定番。hear は音が聞こえること、catch は聞こえた言葉を聞き取ること。聞こえているのに分からないときは catch を使う。",
     "searchKeywords": "catch つかまえる／聞き取る／（病気に）かかる つかまえる／受け止める 聞き取る （風邪などに）かかる 電話"
   },
   {
@@ -13668,8 +13669,8 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "規則変化 (-ed)",
-    "beginnerTip": "Can you repeat that? は聞き返しの定番です。Say that again? や Come again? も同じ場面で使えます。",
+    "changeType": "規則変化 (-ed)｜repeat[ɹɪˈpit] → repeated[ɹɪˈpitɪd] → repeated[ɹɪˈpitɪd]",
+    "beginnerTip": "Can you repeat that? は聞き返しの定番。Say that again? や Come again? も同じ場面で使える。",
     "searchKeywords": "repeat 繰り返す／もう一度言う 繰り返す／もう一度言う 電話"
   },
   {
@@ -13704,7 +13705,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "slow + ly",
-    "beginnerTip": "slow（遅い）に -ly がついた副詞です。-ly は「〜に／〜く」という副詞の目印になることが多いです。",
+    "beginnerTip": "slow（遅い）に -ly がついた副詞。-ly は「〜に／〜く」という副詞の目印になることが多い。",
     "searchKeywords": "slowly ゆっくり ゆっくり 電話"
   },
   {
@@ -13746,7 +13747,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "clear + ly",
-    "beginnerTip": "clear（はっきりした）に -ly がついた副詞です。電話では Can you speak more clearly? のように頼めます。",
+    "beginnerTip": "clear（はっきりした）に -ly がついた副詞。電話では Can you speak more clearly? のように頼める。",
     "searchKeywords": "clearly はっきり／明らかに はっきりと 明らかに 電話"
   },
   {
@@ -13775,7 +13776,7 @@ const rawDatabase = [
     ],
     "example": "Let me know if you can come.",
     "exampleJa": "来られるか教えてね。",
-    "beginnerTip": "Let me know + if / when / what ... の形で使います。tell me より気軽な、「分かったら教えてね」という頼み方です。",
+    "beginnerTip": "Let me know + if / when / what ... の形で使う。tell me より気軽な、「分かったら教えてね」という頼み方。",
     "searchKeywords": "Let me know 知らせて／教えて 〜を知らせて 会話"
   },
   {
@@ -13804,7 +13805,7 @@ const rawDatabase = [
     ],
     "example": "Talk to you later!",
     "exampleJa": "じゃあ、また後で話そう！",
-    "beginnerTip": "電話やチャットの終わりのあいさつです。See you later.（また後で）や Catch you later. も近い使い方です。",
+    "beginnerTip": "電話やチャットの終わりのあいさつ。See you later.（また後で）や Catch you later. も近い使い方。",
     "searchKeywords": "Talk to you later また後で（電話・会話の終わり） また後で話そう（別れのあいさつ） 電話"
   },
   {
@@ -13846,7 +13847,7 @@ const rawDatabase = [
     ],
     "example": "Hey, what's up?",
     "exampleJa": "やあ、元気？",
-    "beginnerTip": "友達へのあいさつです。返事は Not much.（特に何も）や Pretty good.（かなりいいよ）などです。What's up? は「何かあった？」と聞こえることもあります。",
+    "beginnerTip": "友達へのあいさつ。返事は Not much.（特に何も）や Pretty good.（かなりいいよ）など。What's up? は「何かあった？」と聞こえることもある。",
     "searchKeywords": "What's up? / How's it going? やあ、元気？／調子はどう？ やあ、元気？（What's up?） 調子はどう？（How's it going?） 会話"
   },
   {
@@ -13875,7 +13876,7 @@ const rawDatabase = [
     ],
     "example": "Hi, is this a good time to talk?",
     "exampleJa": "もしもし、今話しても大丈夫？",
-    "beginnerTip": "電話をかけたときの最初のひとことです。返事は Sure.（いいよ）や Can I call you back?（あとでかけ直してもいい？）などです。",
+    "beginnerTip": "電話をかけたときの最初のひとこと。返事は Sure.（いいよ）や Can I call you back?（あとでかけ直してもいい？）など。",
     "searchKeywords": "Is this a good time to talk? 今、話しても大丈夫？ 今、話しても大丈夫？ 電話"
   },
   {
@@ -13911,7 +13912,7 @@ const rawDatabase = [
     ],
     "example": "Hi, this is Emma.",
     "exampleJa": "もしもし、エマです。",
-    "beginnerTip": "電話では I am ではなく This is を使います。相手を確かめるときは Is this ...? や Who is this?（どちら様ですか？）と言います。",
+    "beginnerTip": "電話では I'm ではなく This is を使う。相手を確かめるときは Is this ...? や Who is this?（どちら様ですか？）と言う。",
     "searchKeywords": "This is + 名前 （電話で）こちらは〜です （電話で）こちらは〜です 〜さんですか？（Is this + 名前?） 電話"
   },
   {
@@ -13946,7 +13947,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "late（遅い）の比較級 later と同じ形ですが、会話では「あとで」の意味でとてもよく使います。after（〜のあとに）は、基準になる言葉が必要です。",
+    "beginnerTip": "late（遅い）の比較級 later と同じ形ですが、会話では「あとで」の意味でとてもよく使う。after（〜のあとに）は、基準になる言葉が必要。",
     "searchKeywords": "later あとで／〜後に あとで／もっとあとに 〜後に（two days later など） 時間"
   },
   {
@@ -13990,7 +13991,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "名詞の前（before lunch）にも、文の前（before you leave）にも使えます。after の反対です。",
+    "beginnerTip": "名詞の前（before lunch）にも、文の前（before you leave）にも使える。after の反対。",
     "searchKeywords": "before 〜の前に／〜する前に／以前に 〜の前に（名詞） 〜する前に（文） 以前に 時間"
   },
   {
@@ -14026,7 +14027,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "名詞の前（after work）にも、文の前（after you finish）にも使えます。later は単独で「あとで」、after は「何かのあと」と基準を言います。",
+    "beginnerTip": "名詞の前（after work）にも、文の前（after you finish）にも使える。later は単独で「あとで」、after は「何かのあと」と基準を言う。",
     "searchKeywords": "after 〜のあとに／〜したあとに 〜のあとに（名詞） 〜したあとに（文） 時間"
   },
   {
@@ -14090,7 +14091,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "since は「始まりの時点」、for は「期間の長さ」です（since 2020 / for six years）。どちらも have + 過去分詞の形といっしょによく出ます。",
+    "beginnerTip": "since は「始まりの時点」、for は「期間の長さ」です（since 2020 / for six years）。どちらも have + 過去分詞の形といっしょによく出る。",
     "searchKeywords": "since 〜から（ずっと）／〜なので 〜から（ずっと） 〜なので 時間"
   },
   {
@@ -14118,7 +14119,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "during は「出来事の間」（during the meeting）です。期間の長さは for（for two hours）、文が続くときは while を使います。",
+    "beginnerTip": "during は「出来事の間」（during the meeting）。期間の長さは for（for two hours）、文が続くときは while を使う。",
     "searchKeywords": "during 〜の間（に） 〜の間（に） 時間"
   },
   {
@@ -14190,7 +14191,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "yesterday の前にも前置詞はつけません。過去形の文といっしょに使います。 「昨日」の意味では冠詞なし。",
+    "beginnerTip": "yesterday の前にも前置詞はつけません。過去形の文といっしょに使う。 「昨日」の意味では冠詞なし。",
     "searchKeywords": "yesterday 昨日 昨日（に） 昨日 時間"
   },
   {
@@ -14225,7 +14226,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "quick + ly",
-    "beginnerTip": "quick（すばやい）に -ly をつけた副詞です。fast とほぼ同じ意味で使えます。",
+    "beginnerTip": "quick（すばやい）に -ly をつけた副詞。fast とほぼ同じ意味で使える。",
     "searchKeywords": "quickly すばやく／すぐに すばやく／すぐに 速さ"
   },
   {
@@ -14324,8 +14325,8 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "規則変化 (-ed)",
-    "beginnerTip": "enjoy のあとに動詞が来るときは、〜ing の形です（enjoy talking。× enjoy to talk）。like（好き）より、実際にやって楽しむ感じです。Enjoy! だけで「楽しんでね」にもなります。",
+    "changeType": "規則変化 (-ed)｜enjoy[ɪnˈdʒɔɪ] → enjoyed[ɪnˈdʒɔɪd] → enjoyed[ɪnˈdʒɔɪd]",
+    "beginnerTip": "enjoy のあとに動詞が来るときは、〜ing の形です（enjoy talking。× enjoy to talk）。like（好き）より、実際にやって楽しむ感じ。Enjoy! だけで「楽しんでね」にもなる。",
     "searchKeywords": "enjoy 楽しむ 楽しむ 感情"
   },
   {
@@ -14376,8 +14377,8 @@ const rawDatabase = [
         "exampleJa": "宿題を終わらせるところです。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
-    "beginnerTip": "finish のあとに動詞が来るときは〜ing の形です（finish eating）。「終わらせる」も「終わる」も finish で言えます。",
+    "changeType": "規則変化 (-ed)｜finish[ˈfɪnɪʃ] → finished[ˈfɪnɪʃt] → finished[ˈfɪnɪʃt]",
+    "beginnerTip": "finish のあとに動詞が来るときは〜ing の形です（finish eating）。「終わらせる」も「終わる」も finish で言える。",
     "searchKeywords": "finish 終える／終わる 終える 行動"
   },
   {
@@ -14430,8 +14431,8 @@ const rawDatabase = [
         "exampleJa": "私はそれには同意しません。"
       }
     ],
-    "changeType": "規則変化 (-d)",
-    "beginnerTip": "agree with + 人・意見（〜に賛成）、agree to + 提案（〜に同意する）、agree on + 内容（〜で合意する）を使い分けます。I agree. だけでも言えます。",
+    "changeType": "規則変化 (-d)｜agree[əˈɡɹi] → agreed[əˈɡɹid] → agreed[əˈɡɹid]",
+    "beginnerTip": "agree with + 人・意見（〜に賛成）、agree to + 提案（〜に同意する）、agree on + 内容（〜で合意する）を使い分ける。I agree. だけでも言える。",
     "searchKeywords": "agree 賛成する／同意する 賛成する 意見"
   },
   {
@@ -14492,8 +14493,8 @@ const rawDatabase = [
         "exampleJa": "来月の旅行を計画しています。"
       }
     ],
-    "changeType": "n重ね + -ed / -ing",
-    "beginnerTip": "plan to + 動詞（原形）は「〜するつもり」で、be going to とほぼ同じ意味ですが、考えて準備していることを強調します。名詞の plan（予定）もよく使います。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。",
+    "changeType": "n重ね + -ed / -ing｜plan[plæn] → planned[plænd] → planned[plænd]",
+    "beginnerTip": "plan to + 動詞（原形）は「〜するつもり」で、be going to とほぼ同じ意味ですが、考えて準備していることを強調する。名詞の plan（予定）もよく使う。 名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。",
     "searchKeywords": "plan 計画する／予定する 計画する／予定する 計画／予定 予定"
   },
   {
@@ -14548,8 +14549,8 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "規則変化 (-d)",
-    "beginnerTip": "invite + 人 + to + 場所・行事（〜に誘う）の形で使います。",
+    "changeType": "規則変化 (-d)｜invite[ɪnˈvaɪt] → invited[ɪnˈvaɪtɪd] → invited[ɪnˈvaɪtɪd]",
+    "beginnerTip": "invite + 人 + to + 場所・行事（〜に誘う）の形で使う。",
     "searchKeywords": "invite 招待する／誘う 招待する 人間関係"
   },
   {
@@ -14602,8 +14603,8 @@ const rawDatabase = [
         "exampleJa": "ルールを説明しているところです。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
-    "beginnerTip": "explain + 内容 + to + 人 の語順です（× explain me）。Can you explain it to me? のように言います。",
+    "changeType": "規則変化 (-ed)｜explain[ɪkˈspleɪn] → explained[ɪkˈspleɪnd] → explained[ɪkˈspleɪnd]",
+    "beginnerTip": "explain + 内容 + to + 人 の語順です（× explain me）。Can you explain it to me? のように言う。",
     "searchKeywords": "explain 説明する 説明する 会話"
   },
   {
@@ -14666,8 +14667,8 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "規則変化 (-ed)",
-    "beginnerTip": "expect は「そうなると思う」という予想です。hope（そうなってほしい）より、実際に起こる可能性が高いと考えているときに使います。wait（待つ）とは違います。",
+    "changeType": "規則変化 (-ed)｜expect[ɪkˈspɛkt] → expected[ɪkˈspɛktɪd] → expected[ɪkˈspɛktɪd]",
+    "beginnerTip": "expect は「そうなると思う」という予想。hope（そうなってほしい）より、実際に起こる可能性が高いと考えているときに使う。wait（待つ）とは違う。",
     "searchKeywords": "expect 予想する／期待する 予想する／期待する 来ると思う／待っている 考え"
   },
   {
@@ -14721,8 +14722,8 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "規則変化 (y→ied)",
-    "beginnerTip": "worry about + 名詞（〜を心配する）の形です。worried（心配している）は形容詞のカードで、worry は「心配する」という動作です。Don't worry about it.（気にしないで）はよく使います。",
+    "changeType": "規則変化 (y→ied)｜worry[ˈwɝi] → worried[ˈwɝid] → worried[ˈwɝid]",
+    "beginnerTip": "worry about + 名詞（〜を心配する）の形。worried（心配している）は形容詞のカードで、worry は「心配する」という動作。Don't worry about it.（気にしないで）はよく使う。",
     "searchKeywords": "worry 心配する 心配する 感情"
   },
   {
@@ -14784,8 +14785,8 @@ const rawDatabase = [
         "exampleJa": "彼女は母親の世話をしています。"
       }
     ],
-    "changeType": "規則変化 (-d)",
-    "beginnerTip": "I don't care.（どうでもいい）は、言い方によってはきつく聞こえます。Take care!（またね・気をつけて）は別れのあいさつです。",
+    "changeType": "規則変化 (-d)｜care[kɛɹ] → cared[kɛɹd] → cared[kɛɹd]",
+    "beginnerTip": "I don't care.（どうでもいい）は、言い方によってはきつく聞こえる。Take care!（またね・気をつけて）は別れのあいさつ。",
     "searchKeywords": "care 気にかける／世話をする 気にかける／大切に思う 世話をする（care for） 感情"
   },
   {
@@ -14836,8 +14837,8 @@ const rawDatabase = [
         "exampleJa": "友達と部屋を共有しています。"
       }
     ],
-    "changeType": "規則変化 (-d)",
-    "beginnerTip": "share A with B（AをBと分け合う）の形でよく使います。SNSで「シェアする」と言うときも、同じ share です。",
+    "changeType": "規則変化 (-d)｜share[ʃɛɹ] → shared[ʃɛɹd] → shared[ʃɛɹd]",
+    "beginnerTip": "share A with B（AをBと分け合う）の形でよく使う。SNSで「シェアする」と言うときも、同じ share 。",
     "searchKeywords": "share 共有する／分け合う 共有する 行動"
   },
   {
@@ -14889,7 +14890,7 @@ const rawDatabase = [
         "exampleJa": "今、会議に参加します。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
+    "changeType": "規則変化 (-ed)｜join[dʒɔɪn] → joined[dʒɔɪnd] → joined[dʒɔɪnd]",
     "beginnerTip": "join のあとには、前置詞なしで名詞が来ます（× join to us）。",
     "searchKeywords": "join 参加する／加わる 参加する 行動"
   },
@@ -14946,8 +14947,8 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "規則変化 (-ed)",
-    "beginnerTip": "borrow は「借りる」、lend は「貸す」です。Can I borrow ...?（借りてもいい？）と Can you lend me ...?（貸してくれる？）で、動詞が逆になります。",
+    "changeType": "規則変化 (-ed)｜borrow[ˈbɑɹoʊ] → borrowed[ˈbɑɹoʊd] → borrowed[ˈbɑɹoʊd]",
+    "beginnerTip": "borrow は「借りる」、lend は「貸す」。Can I borrow ...?（借りてもいい？）と Can you lend me ...?（貸してくれる？）で、動詞が逆になる。",
     "searchKeywords": "borrow 借りる 借りる 行動"
   },
   {
@@ -15001,8 +15002,8 @@ const rawDatabase = [
         "exampleJa": "料理を習っているところです。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
-    "beginnerTip": "learn は「身につける」、study は「勉強する」という行為、practice は「練習して慣らす」ことです。アメリカ英語の過去形は learned です。",
+    "changeType": "規則変化 (-ed)｜learn[lɝn] → learned[lɝnd] → learned[lɝnd]",
+    "beginnerTip": "learn は「身につける」、study は「勉強する」という行為、practice は「練習して慣らす」こと。アメリカ英語の過去形は learned 。",
     "searchKeywords": "learn 学ぶ／覚える 学ぶ 学習"
   },
   {
@@ -15058,8 +15059,8 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "規則変化 (y→ied)",
-    "beginnerTip": "study は「勉強する」という行為そのものです。learn は「身につく」という結果に重点があります。",
+    "changeType": "規則変化 (y→ied)｜study[ˈstʌdi] → studied[ˈstʌdid] → studied[ˈstʌdid]",
+    "beginnerTip": "study は「勉強する」という行為そのもの。learn は「身につく」という結果に重点がある。",
     "searchKeywords": "study 勉強する 勉強する 学習"
   },
   {
@@ -15123,8 +15124,8 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "規則変化 (-d)",
-    "beginnerTip": "アメリカ英語では、名詞も動詞も practice と書きます。練習して慣らすときに使い、learn（身につける）、study（勉強する）とは少し違います。 「練習」は通常不可算。some practice（練習）。",
+    "changeType": "規則変化 (-d)｜practice[ˈpɹæktəs] → practiced[ˈpɹæktəst] → practiced[ˈpɹæktəst]",
+    "beginnerTip": "アメリカ英語では、名詞も動詞も practice と書く。練習して慣らすときに使い、learn（身につける）、study（勉強する）とは少し違う。 「練習」は通常不可算。some practice（練習）。",
     "searchKeywords": "practice 練習する 練習する 練習 学習"
   },
   {
@@ -15180,8 +15181,8 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "規則変化 (-ed)",
-    "beginnerTip": "check は「合っているか確かめる」、look for は「探す」、find out は「調べて分かる」です。Let me check. は、電話で「確認するね」と言うときの定番です。",
+    "changeType": "規則変化 (-ed)｜check[tʃɛk] → checked[tʃɛkt] → checked[tʃɛkt]",
+    "beginnerTip": "check は「合っているか確かめる」、look for は「探す」、find out は「調べて分かる」。Let me check. は、電話で「確認するね」と言うときの定番。",
     "searchKeywords": "check 確認する／調べる 確認する 行動"
   },
   {
@@ -15241,7 +15242,7 @@ const rawDatabase = [
         "exampleJa": "あなたの幸せを祈っています。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
+    "changeType": "規則変化 (-ed)｜wish[wɪʃ] → wished[wɪʃt] → wished[wɪʃt]",
     "beginnerTip": "hope は「そうなるかもしれないこと」、wish は「実際にはそうではないこと」への願いです（I hope you're okay. / I wish I were there.）。",
     "searchKeywords": "wish 願う／〜だったらいいのに 願う 〜だったらいいのに（I wish + 過去形） 希望"
   },
@@ -15309,7 +15310,7 @@ const rawDatabase = [
         "exampleJa": "子どもたちは外で遊んでいます。"
       }
     ],
-    "changeType": "規則変化 (-ed)",
+    "changeType": "規則変化 (-ed)｜play[pleɪ] → played[pleɪd] → played[pleɪd]",
     "beginnerTip": "スポーツやゲームにはつけず（play tennis）、楽器には the をつけます（play the piano）。",
     "searchKeywords": "play 遊ぶ／（スポーツ・ゲームを）する／演奏する 遊ぶ／（スポーツ・ゲームを）する 演奏する （音楽・動画を）再生する 行動"
   },
@@ -15365,8 +15366,8 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "不規則 A-B-C",
-    "beginnerTip": "write → wrote → written と変化します。right（正しい）と発音が同じなので、聞いて覚えるときに注意します。",
+    "changeType": "不規則 A-B-C｜write[ɹaɪt] → wrote[ɹoʊt] → written[ˈɹɪtən]",
+    "beginnerTip": "write → wrote → written と変化する。right（正しい）と発音が同じなので、聞いて覚えるときに注意する。",
     "searchKeywords": "write 書く 書く 行動"
   },
   {
@@ -15430,8 +15431,8 @@ const rawDatabase = [
         "needsHint": true
       }
     ],
-    "changeType": "規則変化 (-ed)",
-    "beginnerTip": "visit のあとには、前置詞なしで場所や人が来ます（× visit to）。come over（遊びに来る）との違いは、visit は訪ねる側から見た言い方です。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。",
+    "changeType": "規則変化 (-ed)｜visit[ˈvɪzɪt] → visited[ˈvɪzɪtɪd] → visited[ˈvɪzɪtɪd]",
+    "beginnerTip": "visit のあとには、前置詞なしで場所や人が来ます（× visit to）。come over（遊びに来る）との違いは、visit は訪ねる側から見た言い方。 名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。",
     "searchKeywords": "visit 訪問する／訪れる 訪れる／訪問する 訪問 移動"
   },
   {
@@ -15466,7 +15467,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "this は近いもの、that は少し離れたものを指します。相手の言ったことを受けるときは、That's great.（それはいいね）のように that を使います。",
+    "beginnerTip": "this は近いもの、that は少し離れたものを指する。相手の言ったことを受けるときは、That's great.（それはいいね）のように that を使う。",
     "searchKeywords": "this / that これ／あれ これ／あれ（this は近く、that は離れたもの） 相づちの that（それは〜だ） 指示"
   },
   {
@@ -15494,7 +15495,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "this / that の複数形です。these は近いもの、those は離れたものを指します。",
+    "beginnerTip": "this / that の複数形。these は近いもの、those は離れたものを指する。",
     "searchKeywords": "these / those これら／あれら これら／あれら（these は近く、those は離れたもの） 指示"
   },
   {
@@ -15538,7 +15539,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "ふつうの文は something、疑問文や否定文は anything、「何もない」は nothing です。Would you like something to drink? のように、すすめるときは疑問文でも something を使います。",
+    "beginnerTip": "ふつうの文は something、疑問文や否定文は anything、「何もない」は nothing 。Would you like something to drink? のように、すすめるときは疑問文でも something を使う。",
     "searchKeywords": "something / anything / nothing 何か／何も 何か（something） 何か（anything・疑問文と否定文） 何も〜ない（nothing） 数量"
   },
   {
@@ -15582,7 +15583,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "someone と somebody、anyone と anybody は同じ意味です。会話では -body の形もよく使います。",
+    "beginnerTip": "someone と somebody、anyone と anybody は同じ意味。会話では -body の形もよく使う。",
     "searchKeywords": "someone / anyone / no one 誰か／誰も〜ない 誰か（someone） 誰か（anyone・疑問文と否定文） 誰も〜ない（no one） 数量"
   },
   {
@@ -15617,7 +15618,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "数えられるもの（friends, books）は many、数えられないもの（time, water）は much です。ふつうの文では a lot of のほうが自然です（I have a lot of time.）。",
+    "beginnerTip": "数えられるもの（friends, books）は many、数えられないもの（time, water）は much 。ふつうの文では a lot of のほうが自然です（I have a lot of time.）。",
     "searchKeywords": "many / much たくさんの たくさんの（数えられるもの：many） たくさんの（数えられないもの：much） 数量"
   },
   {
@@ -15654,7 +15655,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "ふつうの文は some、疑問文や否定文は any が基本です。Would you like some tea? のように、すすめるときは some を使います。",
+    "beginnerTip": "ふつうの文は some、疑問文や否定文は any が基本。Would you like some tea? のように、すすめるときは some を使う。",
     "searchKeywords": "some / any いくつかの／少しの／少しも いくつかの／少しの（some） 少しも〜ない／何か（any） 数量"
   },
   {
@@ -15691,7 +15692,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "every は全体をひとまとめにして、each は1つ1つを見るイメージです。どちらも、あとには単数の名詞が来ます。",
+    "beginnerTip": "every は全体をひとまとめにして、each は1つ1つを見るイメージ。どちらも、あとには単数の名詞が来る。",
     "searchKeywords": "every / each すべての／毎〜／それぞれ すべての／毎〜（every） それぞれの（each） 数量"
   },
   {
@@ -15728,7 +15729,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "both は2つ（2人）、all は3つ（3人）以上に使います。",
+    "beginnerTip": "both は2つ（2人）、all は3つ（3人）以上に使う。",
     "searchKeywords": "both / all 両方／すべて 両方（both） すべて（all） 数量"
   },
   {
@@ -15757,7 +15758,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "a few は数えられるもの、a little は数えられないものに使います。a をとって few だけだと、「ほとんどない」という否定的な意味になります。",
+    "beginnerTip": "a few は数えられるもの、a little は数えられないものに使う。a をとって few だけだと、「ほとんどない」という否定的な意味になる。",
     "searchKeywords": "a few 少しの（数個の）／いくつかの 少しの（数個の）／いくつかの 数量"
   },
   {
@@ -15793,7 +15794,7 @@ const rawDatabase = [
     ],
     "example": "Turn on the light, please.",
     "exampleJa": "電気をつけてください。",
-    "beginnerTip": "turn on は動かす・つける、turn off は止める・消すです。活用は turn のカードと同じです（turned on, turning off）。",
+    "beginnerTip": "turn on は動かす・つける、turn off は止める・消す。活用は turn のカードと同じです（turned on, turning off）。",
     "searchKeywords": "turn on / turn off つける／消す （電気・機器を）つける （電気・機器を）消す 日常動作"
   },
   {
@@ -15853,7 +15854,7 @@ const rawDatabase = [
     ],
     "example": "I wake up at seven.",
     "exampleJa": "7時に起きます。",
-    "beginnerTip": "wake up は自分が起きること、wake + 人 + up は人を起こすことです。get up（布団やベッドから出る）とは少し違います。wake の変化は wake → woke → woken です。",
+    "beginnerTip": "wake up は自分が起きること、wake + 人 + up は人を起こすこと。get up（布団やベッドから出る）とは少し違う。wake の変化は wake → woke → woken 。",
     "searchKeywords": "wake up 目を覚ます／起こす 目を覚ます／起きる 起こす 日常動作"
   },
   {
@@ -15913,7 +15914,7 @@ const rawDatabase = [
     ],
     "example": "Can you slow down a little?",
     "exampleJa": "もう少しゆっくり話してもらえますか？",
-    "beginnerTip": "電話で話が速いときは Can you slow down? と言えます。speak more slowly とほぼ同じ意味です。",
+    "beginnerTip": "電話で話が速いときは Can you slow down? と言える。speak more slowly とほぼ同じ意味。",
     "searchKeywords": "slow down 速度を落とす／ゆっくりにする 速度を落とす ペースを落とす／落ち着く 電話"
   },
   {
@@ -15949,7 +15950,7 @@ const rawDatabase = [
     ],
     "example": "Do you want to come over tonight?",
     "exampleJa": "今夜うちに来ない？",
-    "beginnerTip": "come over は、相手の家などに遊びに行くときの定番です。hang out（一緒に過ごす）とセットでよく使います。活用は come のカードと同じです（came over）。",
+    "beginnerTip": "come over は、相手の家などに遊びに行くときの定番。hang out（一緒に過ごす）とセットでよく使う。活用は come のカードと同じです（came over）。",
     "searchKeywords": "come over 遊びに来る／立ち寄る 遊びに来る／家に来る こちらへ来る 日常動作"
   },
   {
@@ -15985,7 +15986,7 @@ const rawDatabase = [
     ],
     "example": "Do you want to go out tonight?",
     "exampleJa": "今夜出かけない？",
-    "beginnerTip": "活用は go のカードと同じです（went out, going out）。「付き合う」の意味では、go out with + 人 の形です。",
+    "beginnerTip": "活用は go のカードと同じです（went out, going out）。「付き合う」の意味では、go out with + 人 の形。",
     "searchKeywords": "go out 外出する／付き合う 外出する／出かける 付き合う（go out with） 日常動作"
   },
   {
@@ -16014,7 +16015,7 @@ const rawDatabase = [
     ],
     "example": "Let me write that down.",
     "exampleJa": "それを書き留めさせて。",
-    "beginnerTip": "電話で番号や住所を聞くときに便利です。活用は write のカードと同じです（wrote down, written down）。",
+    "beginnerTip": "電話で番号や住所を聞くときに便利。活用は write のカードと同じです（wrote down, written down）。",
     "searchKeywords": "write down 書き留める 書き留める 日常動作"
   },
   {
@@ -17598,7 +17599,7 @@ const rawDatabase = [
     "forms": [],
     "example": "Can I have it without them?",
     "exampleJa": "それらを抜いてもらえますか？",
-    "beginnerTip": "直前の raw onions など複数形の名詞を them で受けます。単数形なら食材名を繰り返すと明確です。",
+    "beginnerTip": "直前の raw onions など複数形の名詞を them で受ける。単数形なら食材名を繰り返すと明確。",
     "searchKeywords": "Can I have it without them? それらを抜いてもらえますか？ 旅行 香港"
   },
   {
@@ -17620,7 +17621,7 @@ const rawDatabase = [
     "forms": [],
     "example": "Are the onions raw or cooked?",
     "exampleJa": "玉ねぎは生ですか？ 火が通っていますか？",
-    "beginnerTip": "玉ねぎの加熱状態を確認する表現です。青ネギ・長ネギの有無までは確認できません。",
+    "beginnerTip": "玉ねぎの加熱状態を確認する表現。青ネギ・長ネギの有無までは確認できません。",
     "searchKeywords": "Are the onions raw or cooked? 玉ねぎは生ですか？ 火が通っていますか？ 旅行 香港"
   },
   {
@@ -17730,7 +17731,7 @@ const rawDatabase = [
     "forms": [],
     "example": "Is there a restroom nearby?",
     "exampleJa": "近くに〜はありますか？",
-    "beginnerTip": "数えられる単数名詞には a / an を使います。例：Is there a restroom nearby? / Is there an ATM nearby?",
+    "beginnerTip": "数えられる単数名詞には a / an を使う。例：Is there a restroom nearby? / Is there an ATM nearby?",
     "searchKeywords": "Is there a + 場所 + nearby? 近くに〜はありますか？ 旅行 香港"
   },
   {
@@ -17752,7 +17753,7 @@ const rawDatabase = [
     "forms": [],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "boarding pass a boarding pass 搭乗券 旅行"
   },
   {
@@ -17774,7 +17775,7 @@ const rawDatabase = [
     "forms": [],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "gate a gate 搭乗口／ゲート 旅行"
   },
   {
@@ -17796,7 +17797,7 @@ const rawDatabase = [
     "forms": [],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "terminal a terminal ターミナル 旅行"
   },
   {
@@ -17818,7 +17819,7 @@ const rawDatabase = [
     "forms": [],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "departure a departure 出発 旅行"
   },
   {
@@ -17840,7 +17841,7 @@ const rawDatabase = [
     "forms": [],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "arrival an arrival 到着 旅行"
   },
   {
@@ -17885,7 +17886,7 @@ const rawDatabase = [
     "forms": [],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "形容詞・過去分詞なので a / an は付けません。a canceled flight（欠航した便）のように名詞の前に置けます。",
+    "beginnerTip": "形容詞・過去分詞なので a / an は付けない。a canceled flight（欠航した便）のように名詞の前に置ける。",
     "searchKeywords": "canceled canceled 中止された／欠航になった 旅行"
   },
   {
@@ -17907,7 +17908,7 @@ const rawDatabase = [
     "forms": [],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "carry-on a carry-on 機内持ち込み手荷物 旅行"
   },
   {
@@ -17929,7 +17930,7 @@ const rawDatabase = [
     "forms": [],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "personal item a personal item 身の回り品 旅行"
   },
   {
@@ -17951,7 +17952,7 @@ const rawDatabase = [
     "forms": [],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "保安検査・安全は通常不可算名詞です。security check（保安検査）のように具体的な名詞と組み合わせます。",
+    "beginnerTip": "保安検査・安全は通常不可算名詞。security check（保安検査）のように具体的な名詞と組み合わせる。",
     "searchKeywords": "security security 保安検査／安全 旅行"
   },
   {
@@ -17973,7 +17974,7 @@ const rawDatabase = [
     "forms": [],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "入国審査・出入国管理は通常不可算名詞です。go through immigration（入国審査を通る）。",
+    "beginnerTip": "入国審査・出入国管理は通常不可算名詞。go through immigration（入国審査を通る）。",
     "searchKeywords": "immigration immigration 入国審査／出入国管理 旅行"
   },
   {
@@ -17995,7 +17996,7 @@ const rawDatabase = [
     "forms": [],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "税関の意味では customs と複数形の形で使います。go through customs（税関を通る）。a customs とはしません。",
+    "beginnerTip": "税関の意味では customs と複数形の形で使う。go through customs（税関を通る）。a customs とはしません。",
     "searchKeywords": "customs customs 税関 旅行"
   },
   {
@@ -18017,7 +18018,7 @@ const rawDatabase = [
     "forms": [],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "fare a fare 運賃 旅行"
   },
   {
@@ -18039,7 +18040,7 @@ const rawDatabase = [
     "forms": [],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "platform a platform ホーム／乗り場 旅行"
   },
   {
@@ -18084,7 +18085,7 @@ const rawDatabase = [
     "forms": [],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "route a route 経路／ルート 旅行"
   },
   {
@@ -18106,7 +18107,7 @@ const rawDatabase = [
     "forms": [],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "queue a queue 列／待機列 旅行"
   },
   {
@@ -18128,7 +18129,7 @@ const rawDatabase = [
     "forms": [],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "entrance an entrance 入口 旅行"
   },
   {
@@ -18150,7 +18151,7 @@ const rawDatabase = [
     "forms": [],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "exit an exit 出口 旅行"
   },
   {
@@ -18172,7 +18173,7 @@ const rawDatabase = [
     "forms": [],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "receipt a receipt レシート／領収書 旅行"
   },
   {
@@ -18194,7 +18195,7 @@ const rawDatabase = [
     "forms": [],
     "example": "Does this have green onions in it?",
     "exampleJa": "これには青ネギが入っていますか？",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。 アメリカ英語では green onion と scallion はほぼ同じ意味です。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。 アメリカ英語では green onion と scallion はほぼ同じ意味。",
     "searchKeywords": "green onion / scallion a green onion / a scallion 青ネギ・小ネギ 旅行"
   },
   {
@@ -18216,7 +18217,7 @@ const rawDatabase = [
     "forms": [],
     "example": "Is this a Japanese long onion?",
     "exampleJa": "これは長ネギですか？",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "Japanese long onion a Japanese long onion 長ネギ 旅行"
   },
   {
@@ -18238,7 +18239,7 @@ const rawDatabase = [
     "forms": [],
     "example": "Is there leek in this soup?",
     "exampleJa": "このスープには西洋ネギが入っていますか？",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。 日本の長ネギとは異なる西洋ネギです。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。 日本の長ネギとは異なる西洋ネギ。",
     "searchKeywords": "leek a leek 西洋ネギ・ポロネギ 旅行"
   },
   {
@@ -18260,7 +18261,7 @@ const rawDatabase = [
     "forms": [],
     "example": "Is there a restroom nearby?",
     "exampleJa": "近くにトイレはありますか？",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "restroom a restroom トイレ 旅行"
   },
   {
@@ -18282,7 +18283,7 @@ const rawDatabase = [
     "forms": [],
     "example": "Is there a vending machine nearby?",
     "exampleJa": "近くに自動販売機はありますか？",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "vending machine a vending machine 自動販売機 旅行"
   },
   {
@@ -18304,7 +18305,7 @@ const rawDatabase = [
     "forms": [],
     "example": "Is there a convenience store nearby?",
     "exampleJa": "近くにコンビニはありますか？",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "convenience store a convenience store コンビニ 旅行"
   },
   {
@@ -18326,7 +18327,7 @@ const rawDatabase = [
     "forms": [],
     "example": "Is there a pharmacy nearby?",
     "exampleJa": "近くに薬局はありますか？",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "pharmacy a pharmacy 薬局 旅行"
   },
   {
@@ -18348,7 +18349,7 @@ const rawDatabase = [
     "forms": [],
     "example": "Is there an ATM nearby?",
     "exampleJa": "近くにATMはありますか？",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "ATM an ATM ATM 旅行"
   },
   {
@@ -18370,7 +18371,7 @@ const rawDatabase = [
     "forms": [],
     "example": "Is there a charging station nearby?",
     "exampleJa": "近くに充電スポットはありますか？",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "charging station a charging station 充電スポット 旅行"
   },
   {
@@ -18392,7 +18393,7 @@ const rawDatabase = [
     "forms": [],
     "example": "Is there a water refill station nearby?",
     "exampleJa": "近くに給水所はありますか？",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。 飲料水をボトルに補充できる給水所です。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。 飲料水をボトルに補充できる給水所。",
     "searchKeywords": "water refill station a water refill station 給水所 旅行"
   },
   {
@@ -18414,7 +18415,7 @@ const rawDatabase = [
     "forms": [],
     "example": "Is there a bus stop nearby?",
     "exampleJa": "近くにバス停はありますか？",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "bus stop a bus stop バス停 旅行"
   },
   {
@@ -18436,7 +18437,7 @@ const rawDatabase = [
     "forms": [],
     "example": "Is there a station nearby?",
     "exampleJa": "近くに駅はありますか？",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。 電車の話題なら station だけで「駅」と通じます。",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。 電車の話題なら station だけで「駅」と通じる。",
     "searchKeywords": "station a station 駅 旅行"
   }
 ];
