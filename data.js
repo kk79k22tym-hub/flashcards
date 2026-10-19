@@ -1,4 +1,4 @@
-// Flashcards vocabulary: existing 1-200 + 301-400 + later 100 items.
+// Flashcards: 404 existing cards (noun articles reviewed) + 110 travel cards.
 const rawDatabase = [
   {
     "id": "v_be",
@@ -714,7 +714,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則変化 (-ed)",
-    "beginnerTip": "need to + 動詞（原形）は別の表現カードで学びます。",
+    "beginnerTip": "need to + 動詞（原形）は別の表現カードで学びます。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。",
     "searchKeywords": "need 必要とする／必要／必要なもの 必要とする 必要／必要なもの 必要"
   },
   {
@@ -835,7 +835,7 @@ const rawDatabase = [
     ],
     "changeType": "規則変化 (-ed)",
     "searchKeywords": "love 大好き／愛する／愛／愛情 大好き／愛する 愛／愛情 感情",
-    "beginnerTip": "love は like より強い「大好き」です。会話では物や食べ物にもよく使います（I love this song.）。"
+    "beginnerTip": "love は like より強い「大好き」です。会話では物や食べ物にもよく使います（I love this song.）。 「愛」は通常不可算。some love など。"
   },
   {
     "id": "v_see",
@@ -973,7 +973,7 @@ const rawDatabase = [
       "目を向ける",
       "見た目"
     ],
-    "beginnerTip": "look は意識して目を向ける動作です。see は自然に目に入る、watch は動きを追って見るときに使います。"
+    "beginnerTip": "look は意識して目を向ける動作です。see は自然に目に入る、watch は動きを追って見るときに使います。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。"
   },
   {
     "id": "v_watch",
@@ -1039,7 +1039,7 @@ const rawDatabase = [
       "動きを見る",
       "視聴"
     ],
-    "beginnerTip": "watch はテレビ・動画・試合など、動くものをある程度続けて見るときに使います。see は自然に目に入る、look は目を向ける動作です。"
+    "beginnerTip": "watch はテレビ・動画・試合など、動くものをある程度続けて見るときに使います。see は自然に目に入る、look は目を向ける動作です。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。"
   },
   {
     "id": "v_hear",
@@ -1391,7 +1391,7 @@ const rawDatabase = [
       "会話",
       "やり取り"
     ],
-    "beginnerTip": "talk は相手と会話するイメージです。speak は言語を話すときや、やや改まった「話す」に使います。"
+    "beginnerTip": "talk は相手と会話するイメージです。speak は言語を話すときや、やや改まった「話す」に使います。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。"
   },
   {
     "id": "v_ask",
@@ -1605,7 +1605,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則変化 (-ed)",
-    "searchKeywords": "work 働く／機能する／仕事／作業 働く／機能する 仕事／作業 仕事"
+    "searchKeywords": "work 働く／機能する／仕事／作業 働く／機能する 仕事／作業 仕事",
+    "beginnerTip": "「仕事」は通常不可算。some work（仕事が少し）、a job（1つの仕事）。"
   },
   {
     "id": "v_live",
@@ -1773,7 +1774,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則 A-B-C",
-    "searchKeywords": "drink 飲む／飲み物 飲む 飲み物 食事"
+    "searchKeywords": "drink 飲む／飲み物 飲む 飲み物 食事",
+    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。"
   },
   {
     "id": "v_buy",
@@ -1991,7 +1993,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則変化 (-ed)",
-    "searchKeywords": "help 助ける／手伝う／助け／手伝い 助ける／手伝う 助け／手伝い 人間関係"
+    "searchKeywords": "help 助ける／手伝う／助け／手伝い 助ける／手伝う 助け／手伝い 人間関係",
+    "beginnerTip": "「助け」は通常不可算。some help（手助け）。"
   },
   {
     "id": "v_try",
@@ -2051,7 +2054,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則変化 (y→ied)",
-    "searchKeywords": "try 試す／やってみる／試み／挑戦 試す／やってみる 試み／挑戦 行動"
+    "searchKeywords": "try 試す／やってみる／試み／挑戦 試す／やってみる 試み／挑戦 行動",
+    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。"
   },
   {
     "id": "v_feel",
@@ -2271,7 +2275,7 @@ const rawDatabase = [
       "名詞"
     ],
     "category": "人",
-    "english": "person",
+    "english": "a person",
     "japanese": "人",
     "senses": [
       {
@@ -2295,8 +2299,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則複数形",
-    "beginnerTip": "複数形は persons ではなく、通常 people を使います。",
-    "searchKeywords": "person 人 人 人"
+    "beginnerTip": "複数形は persons ではなく、通常 people を使います。 数えられる名詞の単数形では a person のように a / an を付けます。動詞などとして使う場合は不要です。",
+    "searchKeywords": "person 人 人 人 person a person"
   },
   {
     "id": "n_time",
@@ -2336,7 +2340,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "意味によって数え方が変わる",
-    "beginnerTip": "「時間」の time は数えないことが多く、「〜回」の意味では times と数えます。",
+    "beginnerTip": "「時間」の time は数えないことが多く、「〜回」の意味では times と数えます。 時間（不可算用法）と「回」（可算用法）があるため、使い方で冠詞が変わります。a time（ある時／1回）、some time（少しの時間）。",
     "searchKeywords": "time 時間／回／機会 時間 回／機会 時間"
   },
   {
@@ -2346,7 +2350,7 @@ const rawDatabase = [
       "名詞"
     ],
     "category": "時間",
-    "english": "day",
+    "english": "a day",
     "japanese": "日／1日",
     "senses": [
       {
@@ -2370,7 +2374,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則複数形 (-s)",
-    "searchKeywords": "day 日／1日 日／1日 時間"
+    "searchKeywords": "day 日／1日 日／1日 時間 day a day",
+    "beginnerTip": "数えられる名詞の単数形では a day のように a / an を付けます。動詞などとして使う場合は不要です。"
   },
   {
     "id": "n_year",
@@ -2379,7 +2384,7 @@ const rawDatabase = [
       "名詞"
     ],
     "category": "時間",
-    "english": "year",
+    "english": "a year",
     "japanese": "年／1年間",
     "senses": [
       {
@@ -2410,7 +2415,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則複数形 (-s)",
-    "searchKeywords": "year 年／1年間 年／1年間 時間"
+    "searchKeywords": "year 年／1年間 年／1年間 時間 year a year",
+    "beginnerTip": "数えられる名詞の単数形では a year のように a / an を付けます。動詞などとして使う場合は不要です。"
   },
   {
     "id": "n_place",
@@ -2419,7 +2425,7 @@ const rawDatabase = [
       "名詞"
     ],
     "category": "場所",
-    "english": "place",
+    "english": "a place",
     "japanese": "場所",
     "senses": [
       {
@@ -2443,7 +2449,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則複数形 (-s)",
-    "searchKeywords": "place 場所 場所 場所"
+    "searchKeywords": "place 場所 場所 場所 place a place",
+    "beginnerTip": "数えられる名詞の単数形では a place のように a / an を付けます。動詞などとして使う場合は不要です。"
   },
   {
     "id": "n_home",
@@ -2479,7 +2486,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "品詞で使い方が変わる",
-    "beginnerTip": "go home の home の前には通常 to を付けません。",
+    "beginnerTip": "go home の home の前には通常 to を付けません。 「家に／家へ」は at home / go home のように冠詞なし。a home は「住まい1軒」を指す場合。",
     "searchKeywords": "home 家／家庭／家へ／家に 家／家庭 家へ／家に 場所"
   },
   {
@@ -2513,7 +2520,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "通常は不可算・種類を表すとき複数可",
-    "beginnerTip": "普段の「食べ物」は food のまま使うことが多いです。",
+    "beginnerTip": "普段の「食べ物」は food のまま使うことが多いです。 通常は不可算名詞。some food（食べ物）、a kind of food（食べ物の一種）。",
     "searchKeywords": "food 食べ物／食事 食べ物／食事 食事"
   },
   {
@@ -2523,7 +2530,7 @@ const rawDatabase = [
       "名詞"
     ],
     "category": "仕事",
-    "english": "job",
+    "english": "a job",
     "japanese": "仕事／職",
     "senses": [
       {
@@ -2547,7 +2554,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則複数形 (-s)",
-    "searchKeywords": "job 仕事／職 仕事／職 仕事"
+    "searchKeywords": "job 仕事／職 仕事／職 仕事 job a job",
+    "beginnerTip": "数えられる名詞の単数形では a job のように a / an を付けます。動詞などとして使う場合は不要です。"
   },
   {
     "id": "n_language",
@@ -2580,7 +2588,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則複数形 (-s)",
-    "searchKeywords": "language 言語 言語 学習"
+    "searchKeywords": "language 言語 言語 学習",
+    "beginnerTip": "可算名詞。a language（1つの言語）。"
   },
   {
     "id": "n_thing",
@@ -2589,7 +2598,7 @@ const rawDatabase = [
       "名詞"
     ],
     "category": "基本名詞",
-    "english": "thing",
+    "english": "a thing",
     "japanese": "もの／こと",
     "senses": [
       {
@@ -2613,7 +2622,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則複数形 (-s)",
-    "searchKeywords": "thing もの／こと もの／こと 基本名詞"
+    "searchKeywords": "thing もの／こと もの／こと 基本名詞 thing a thing",
+    "beginnerTip": "数えられる名詞の単数形では a thing のように a / an を付けます。動詞などとして使う場合は不要です。"
   },
   {
     "id": "n_problem",
@@ -2622,7 +2632,7 @@ const rawDatabase = [
       "名詞"
     ],
     "category": "日常生活",
-    "english": "problem",
+    "english": "a problem",
     "japanese": "問題／困りごと",
     "senses": [
       {
@@ -2646,7 +2656,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則複数形 (-s)",
-    "searchKeywords": "problem 問題／困りごと 問題／困りごと 日常生活"
+    "searchKeywords": "problem 問題／困りごと 問題／困りごと 日常生活 problem a problem",
+    "beginnerTip": "数えられる名詞の単数形では a problem のように a / an を付けます。動詞などとして使う場合は不要です。"
   },
   {
     "id": "adj_good",
@@ -3657,7 +3668,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "品詞で使い方が変わる",
-    "searchKeywords": "now 今／今すぐ／今／現在 今／今すぐ 今／現在 時間"
+    "searchKeywords": "now 今／今すぐ／今／現在 今／今すぐ 今／現在 時間",
+    "beginnerTip": "副詞「今」が基本で冠詞は付けません。"
   },
   {
     "id": "adv_here",
@@ -4326,7 +4338,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "fast → faster → fastest",
-    "beginnerTip": "「速い／速く」が最も一般的です。fast には「断食する」「断食」という別の意味もあります。",
+    "beginnerTip": "「速い／速く」が最も一般的です。fast には「断食する」「断食」という別の意味もあります。 形容詞・副詞として使う場合は冠詞なし。",
     "searchKeywords": "fast 速い／速く 速い 速く 断食する 断食 速さ"
   },
   {
@@ -4718,7 +4730,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則変化",
-    "searchKeywords": "call 呼ぶ／電話する 呼ぶ／電話する 会話"
+    "searchKeywords": "call 呼ぶ／電話する 呼ぶ／電話する 会話",
+    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。"
   },
   {
     "id": "v_bring",
@@ -5695,7 +5708,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "",
-    "beginnerTip": "sound + 形容詞 で「〜に聞こえる／〜そうだ」を表せます。",
+    "beginnerTip": "sound + 形容詞 で「〜に聞こえる／〜そうだ」を表せます。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。",
     "searchKeywords": "sound 〜に聞こえる／音 〜に聞こえる 音 印象"
   },
   {
@@ -5755,7 +5768,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "",
-    "beginnerTip": "Do you mind ...? は直訳よりも「〜しても構いませんか？」として覚えると使いやすいです。",
+    "beginnerTip": "Do you mind ...? は直訳よりも「〜しても構いませんか？」として覚えると使いやすいです。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。",
     "searchKeywords": "mind 気にする／嫌がる／心 気にする／嫌がる 心／考え 会話"
   },
   {
@@ -5814,7 +5827,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "",
-    "beginnerTip": "It doesn’t matter. は「問題ないよ／気にしないで」の意味で頻出します。",
+    "beginnerTip": "It doesn’t matter. は「問題ないよ／気にしないで」の意味で頻出します。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。",
     "searchKeywords": "matter 重要である／問題 重要である／問題になる 問題／事柄 評価"
   },
   {
@@ -6089,7 +6102,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "",
-    "searchKeywords": "change 変える／変わる／変化 変える／変わる 変化／変更 変化"
+    "searchKeywords": "change 変える／変わる／変化 変える／変わる 変化／変更 変化",
+    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。"
   },
   {
     "id": "v_follow",
@@ -7358,7 +7372,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "searchKeywords": "back 戻って／後ろへ 戻って／後ろへ 方向"
+    "searchKeywords": "back 戻って／後ろへ 戻って／後ろへ 方向",
+    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。"
   },
   {
     "id": "adv_again",
@@ -7531,7 +7546,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "",
-    "beginnerTip": "right は「正しい」だけでなく「右」「ちょうど」など頻出の意味があります。",
+    "beginnerTip": "right は「正しい」だけでなく「右」「ちょうど」など頻出の意味があります。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。",
     "searchKeywords": "right 正しい／右の／ちょうど 正しい 右／右側 ちょうど／すぐ 評価"
   },
   {
@@ -7908,7 +7923,7 @@ const rawDatabase = [
       "名詞"
     ],
     "category": "人・物",
-    "english": "child",
+    "english": "a child",
     "japanese": "子ども",
     "senses": [
       {
@@ -7932,7 +7947,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則複数形",
-    "searchKeywords": "child 子ども 子ども 人・物"
+    "searchKeywords": "child 子ども 子ども 人・物 child a child",
+    "beginnerTip": "数えられる名詞の単数形では a child のように a / an を付けます。動詞などとして使う場合は不要です。"
   },
   {
     "id": "n_man",
@@ -7941,7 +7957,7 @@ const rawDatabase = [
       "名詞"
     ],
     "category": "人・物",
-    "english": "man",
+    "english": "a man",
     "japanese": "男性／男の人",
     "senses": [
       {
@@ -7965,7 +7981,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則複数形",
-    "searchKeywords": "man 男性／男の人 男性／男の人 人・物"
+    "searchKeywords": "man 男性／男の人 男性／男の人 人・物 man a man",
+    "beginnerTip": "数えられる名詞の単数形では a man のように a / an を付けます。動詞などとして使う場合は不要です。"
   },
   {
     "id": "n_woman",
@@ -7974,7 +7991,7 @@ const rawDatabase = [
       "名詞"
     ],
     "category": "人・物",
-    "english": "woman",
+    "english": "a woman",
     "japanese": "女性／女の人",
     "senses": [
       {
@@ -7998,8 +8015,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則複数形",
-    "beginnerTip": "woman / women は綴りだけでなく発音も変わります。",
-    "searchKeywords": "woman 女性／女の人 女性／女の人 人・物"
+    "beginnerTip": "woman / women は綴りだけでなく発音も変わります。 数えられる名詞の単数形では a woman のように a / an を付けます。動詞などとして使う場合は不要です。",
+    "searchKeywords": "woman 女性／女の人 女性／女の人 人・物 woman a woman"
   },
   {
     "id": "n_tooth",
@@ -8008,7 +8025,7 @@ const rawDatabase = [
       "名詞"
     ],
     "category": "人・物",
-    "english": "tooth",
+    "english": "a tooth",
     "japanese": "歯",
     "senses": [
       {
@@ -8032,7 +8049,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則複数形",
-    "searchKeywords": "tooth 歯 歯 人・物"
+    "searchKeywords": "tooth 歯 歯 人・物 tooth a tooth",
+    "beginnerTip": "数えられる名詞の単数形では a tooth のように a / an を付けます。動詞などとして使う場合は不要です。"
   },
   {
     "id": "n_foot",
@@ -8041,7 +8059,7 @@ const rawDatabase = [
       "名詞"
     ],
     "category": "人・物",
-    "english": "foot",
+    "english": "a foot",
     "japanese": "足／足部",
     "senses": [
       {
@@ -8065,7 +8083,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則複数形",
-    "searchKeywords": "foot 足／足部 足／足部 人・物"
+    "searchKeywords": "foot 足／足部 足／足部 人・物 foot a foot",
+    "beginnerTip": "数えられる名詞の単数形では a foot のように a / an を付けます。動詞などとして使う場合は不要です。"
   },
   {
     "id": "n_life",
@@ -8074,7 +8093,7 @@ const rawDatabase = [
       "名詞"
     ],
     "category": "生活",
-    "english": "life",
+    "english": "a life",
     "japanese": "人生／生活／命",
     "senses": [
       {
@@ -8098,8 +8117,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "f → ves",
-    "beginnerTip": "life の複数形は lives です。",
-    "searchKeywords": "life 人生／生活／命 人生／生活／命 生活"
+    "beginnerTip": "life の複数形は lives です。 数えられる名詞の単数形では a life のように a / an を付けます。動詞などとして使う場合は不要です。",
+    "searchKeywords": "life 人生／生活／命 人生／生活／命 生活 life a life"
   },
   {
     "id": "exp_i_am_contr",
@@ -13527,7 +13546,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則変化 (-ed)",
-    "beginnerTip": "answer のあとには、そのまま名詞が来ます（answer the phone, answer a question）。answer the phone は、pick up the phone とほぼ同じ場面で、電話に出ることです。",
+    "beginnerTip": "answer のあとには、そのまま名詞が来ます（answer the phone, answer a question）。answer the phone は、pick up the phone とほぼ同じ場面で、電話に出ることです。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。",
     "searchKeywords": "answer 答える／電話に出る 答える／応答する 電話に出る 答え 電話"
   },
   {
@@ -14135,7 +14154,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "tomorrow の前に on や in はつけません（× on tomorrow）。",
+    "beginnerTip": "tomorrow の前に on や in はつけません（× on tomorrow）。 「明日」の意味では冠詞なし。",
     "searchKeywords": "tomorrow 明日 明日（に） 明日 時間"
   },
   {
@@ -14171,7 +14190,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "yesterday の前にも前置詞はつけません。過去形の文といっしょに使います。",
+    "beginnerTip": "yesterday の前にも前置詞はつけません。過去形の文といっしょに使います。 「昨日」の意味では冠詞なし。",
     "searchKeywords": "yesterday 昨日 昨日（に） 昨日 時間"
   },
   {
@@ -14474,7 +14493,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "n重ね + -ed / -ing",
-    "beginnerTip": "plan to + 動詞（原形）は「〜するつもり」で、be going to とほぼ同じ意味ですが、考えて準備していることを強調します。名詞の plan（予定）もよく使います。",
+    "beginnerTip": "plan to + 動詞（原形）は「〜するつもり」で、be going to とほぼ同じ意味ですが、考えて準備していることを強調します。名詞の plan（予定）もよく使います。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。",
     "searchKeywords": "plan 計画する／予定する 計画する／予定する 計画／予定 予定"
   },
   {
@@ -15105,7 +15124,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則変化 (-d)",
-    "beginnerTip": "アメリカ英語では、名詞も動詞も practice と書きます。練習して慣らすときに使い、learn（身につける）、study（勉強する）とは少し違います。",
+    "beginnerTip": "アメリカ英語では、名詞も動詞も practice と書きます。練習して慣らすときに使い、learn（身につける）、study（勉強する）とは少し違います。 「練習」は通常不可算。some practice（練習）。",
     "searchKeywords": "practice 練習する 練習する 練習 学習"
   },
   {
@@ -15412,7 +15431,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則変化 (-ed)",
-    "beginnerTip": "visit のあとには、前置詞なしで場所や人が来ます（× visit to）。come over（遊びに来る）との違いは、visit は訪ねる側から見た言い方です。",
+    "beginnerTip": "visit のあとには、前置詞なしで場所や人が来ます（× visit to）。come over（遊びに来る）との違いは、visit は訪ねる側から見た言い方です。 名詞として使う場合、数えられる単数形なら a / an を付けます。動詞・形容詞などの用法では不要です。",
     "searchKeywords": "visit 訪問する／訪れる 訪れる／訪問する 訪問 移動"
   },
   {
@@ -15997,5 +16016,2427 @@ const rawDatabase = [
     "exampleJa": "それを書き留めさせて。",
     "beginnerTip": "電話で番号や住所を聞くときに便利です。活用は write のカードと同じです（wrote down, written down）。",
     "searchKeywords": "write down 書き留める 書き留める 日常動作"
+  },
+  {
+    "id": "travel_exp_001",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Where is the check-in counter?",
+    "japanese": "チェックインカウンターはどこですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "チェックインカウンターはどこですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Where is the check-in counter?",
+    "exampleJa": "チェックインカウンターはどこですか？",
+    "beginnerTip": "",
+    "searchKeywords": "Where is the check-in counter? チェックインカウンターはどこですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_002",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Where is the security checkpoint?",
+    "japanese": "保安検査場はどこですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "保安検査場はどこですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Where is the security checkpoint?",
+    "exampleJa": "保安検査場はどこですか？",
+    "beginnerTip": "",
+    "searchKeywords": "Where is the security checkpoint? 保安検査場はどこですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_003",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Where is the departure gate?",
+    "japanese": "搭乗口はどこですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "搭乗口はどこですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Where is the departure gate?",
+    "exampleJa": "搭乗口はどこですか？",
+    "beginnerTip": "",
+    "searchKeywords": "Where is the departure gate? 搭乗口はどこですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_004",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Has boarding started yet?",
+    "japanese": "もう搭乗は始まっていますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "もう搭乗は始まっていますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Has boarding started yet?",
+    "exampleJa": "もう搭乗は始まっていますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Has boarding started yet? もう搭乗は始まっていますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_005",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "What time does boarding start?",
+    "japanese": "搭乗は何時からですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "搭乗は何時からですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "What time does boarding start?",
+    "exampleJa": "搭乗は何時からですか？",
+    "beginnerTip": "",
+    "searchKeywords": "What time does boarding start? 搭乗は何時からですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_006",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Is this the right line?",
+    "japanese": "この列で合っていますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "この列で合っていますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is this the right line?",
+    "exampleJa": "この列で合っていますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Is this the right line? この列で合っていますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_007",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Do I need to take this out?",
+    "japanese": "これを取り出す必要がありますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "これを取り出す必要がありますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Do I need to take this out?",
+    "exampleJa": "これを取り出す必要がありますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Do I need to take this out? これを取り出す必要がありますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_008",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Do I need to remove my shoes?",
+    "japanese": "靴を脱ぐ必要がありますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "靴を脱ぐ必要がありますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Do I need to remove my shoes?",
+    "exampleJa": "靴を脱ぐ必要がありますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Do I need to remove my shoes? 靴を脱ぐ必要がありますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_009",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Is this allowed in my carry-on?",
+    "japanese": "これは機内持ち込みできますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "これは機内持ち込みできますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is this allowed in my carry-on?",
+    "exampleJa": "これは機内持ち込みできますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Is this allowed in my carry-on? これは機内持ち込みできますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_010",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "I'm only bringing a personal item.",
+    "japanese": "身の回り品だけ持っていきます",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "身の回り品だけ持っていきます",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "I'm only bringing a personal item.",
+    "exampleJa": "身の回り品だけ持っていきます",
+    "beginnerTip": "",
+    "searchKeywords": "I'm only bringing a personal item. 身の回り品だけ持っていきます 旅行 香港"
+  },
+  {
+    "id": "travel_exp_011",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "I'm here for sightseeing.",
+    "japanese": "観光で来ました",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "観光で来ました",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "I'm here for sightseeing.",
+    "exampleJa": "観光で来ました",
+    "beginnerTip": "",
+    "searchKeywords": "I'm here for sightseeing. 観光で来ました 旅行 香港"
+  },
+  {
+    "id": "travel_exp_012",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "I'm leaving tonight.",
+    "japanese": "今夜出国します",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "今夜出国します",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "I'm leaving tonight.",
+    "exampleJa": "今夜出国します",
+    "beginnerTip": "",
+    "searchKeywords": "I'm leaving tonight. 今夜出国します 旅行 香港"
+  },
+  {
+    "id": "travel_exp_013",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "I'm not staying overnight.",
+    "japanese": "宿泊しません",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "宿泊しません",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "I'm not staying overnight.",
+    "exampleJa": "宿泊しません",
+    "beginnerTip": "",
+    "searchKeywords": "I'm not staying overnight. 宿泊しません 旅行 香港"
+  },
+  {
+    "id": "travel_exp_014",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "I have a return flight tonight.",
+    "japanese": "今夜の帰国便を予約しています",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "今夜の帰国便を予約しています",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "I have a return flight tonight.",
+    "exampleJa": "今夜の帰国便を予約しています",
+    "beginnerTip": "",
+    "searchKeywords": "I have a return flight tonight. 今夜の帰国便を予約しています 旅行 香港"
+  },
+  {
+    "id": "travel_exp_015",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Where is the immigration checkpoint?",
+    "japanese": "入国審査場はどこですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "入国審査場はどこですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Where is the immigration checkpoint?",
+    "exampleJa": "入国審査場はどこですか？",
+    "beginnerTip": "",
+    "searchKeywords": "Where is the immigration checkpoint? 入国審査場はどこですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_016",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Could you let me through?",
+    "japanese": "通していただけますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "通していただけますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Could you let me through?",
+    "exampleJa": "通していただけますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Could you let me through? 通していただけますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_017",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Could you move your bag?",
+    "japanese": "バッグを動かしてもらえますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "バッグを動かしてもらえますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Could you move your bag?",
+    "exampleJa": "バッグを動かしてもらえますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Could you move your bag? バッグを動かしてもらえますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_018",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Is this seat taken?",
+    "japanese": "この席は空いていますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "この席は空いていますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is this seat taken?",
+    "exampleJa": "この席は空いていますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Is this seat taken? この席は空いていますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_019",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Could I have some water?",
+    "japanese": "お水をいただけますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "お水をいただけますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Could I have some water?",
+    "exampleJa": "お水をいただけますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Could I have some water? お水をいただけますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_020",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Could you turn off the light?",
+    "japanese": "明かりを消してもらえますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "明かりを消してもらえますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Could you turn off the light?",
+    "exampleJa": "明かりを消してもらえますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Could you turn off the light? 明かりを消してもらえますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_021",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Could you lower your voice?",
+    "japanese": "声を小さくしてもらえますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "声を小さくしてもらえますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Could you lower your voice?",
+    "exampleJa": "声を小さくしてもらえますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Could you lower your voice? 声を小さくしてもらえますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_022",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Where can I charge my phone?",
+    "japanese": "スマホはどこで充電できますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "スマホはどこで充電できますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Where can I charge my phone?",
+    "exampleJa": "スマホはどこで充電できますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Where can I charge my phone? スマホはどこで充電できますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_023",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Is there a water refill station nearby?",
+    "japanese": "近くに給水所はありますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "近くに給水所はありますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is there a water refill station nearby?",
+    "exampleJa": "近くに給水所はありますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Is there a water refill station nearby? 近くに給水所はありますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_024",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Is anything open this early?",
+    "japanese": "こんな早朝に開いているところはありますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "こんな早朝に開いているところはありますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is anything open this early?",
+    "exampleJa": "こんな早朝に開いているところはありますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Is anything open this early? こんな早朝に開いているところはありますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_025",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Is the airport open all night?",
+    "japanese": "空港は24時間開いていますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "空港は24時間開いていますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is the airport open all night?",
+    "exampleJa": "空港は24時間開いていますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Is the airport open all night? 空港は24時間開いていますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_026",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "How do I get to + 場所?",
+    "japanese": "〜にはどうやって行きますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜にはどうやって行きますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "How do I get to Hong Kong Disneyland?",
+    "exampleJa": "〜にはどうやって行きますか？",
+    "beginnerTip": "",
+    "searchKeywords": "How do I get to + 場所? 〜にはどうやって行きますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_027",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Does this bus go to + 場所?",
+    "japanese": "このバスは〜に行きますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "このバスは〜に行きますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Does this bus go to Hong Kong Disneyland?",
+    "exampleJa": "このバスは〜に行きますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Does this bus go to + 場所? このバスは〜に行きますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_028",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Does this train stop at + 場所?",
+    "japanese": "この電車は〜に停まりますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "この電車は〜に停まりますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Does this train stop at Hong Kong Disneyland?",
+    "exampleJa": "この電車は〜に停まりますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Does this train stop at + 場所? この電車は〜に停まりますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_029",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Where do I catch the bus?",
+    "japanese": "バスはどこから乗れますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "バスはどこから乗れますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Where do I catch the bus?",
+    "exampleJa": "バスはどこから乗れますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Where do I catch the bus? バスはどこから乗れますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_030",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Which bus should I take?",
+    "japanese": "どのバスに乗ればいいですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "どのバスに乗ればいいですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Which bus should I take?",
+    "exampleJa": "どのバスに乗ればいいですか？",
+    "beginnerTip": "",
+    "searchKeywords": "Which bus should I take? どのバスに乗ればいいですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_031",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Which platform should I go to?",
+    "japanese": "どのホームに行けばいいですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "どのホームに行けばいいですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Which platform should I go to?",
+    "exampleJa": "どのホームに行けばいいですか？",
+    "beginnerTip": "",
+    "searchKeywords": "Which platform should I go to? どのホームに行けばいいですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_032",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Do I need to transfer?",
+    "japanese": "乗り換えが必要ですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "乗り換えが必要ですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Do I need to transfer?",
+    "exampleJa": "乗り換えが必要ですか？",
+    "beginnerTip": "",
+    "searchKeywords": "Do I need to transfer? 乗り換えが必要ですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_033",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Where do I transfer?",
+    "japanese": "どこで乗り換えますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "どこで乗り換えますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Where do I transfer?",
+    "exampleJa": "どこで乗り換えますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Where do I transfer? どこで乗り換えますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_034",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "How many stops is it?",
+    "japanese": "何駅（何停留所）先ですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "何駅（何停留所）先ですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "How many stops is it?",
+    "exampleJa": "何駅（何停留所）先ですか？",
+    "beginnerTip": "",
+    "searchKeywords": "How many stops is it? 何駅（何停留所）先ですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_035",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "How long does it take to get there?",
+    "japanese": "そこまでどのくらいかかりますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "そこまでどのくらいかかりますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "How long does it take to get there?",
+    "exampleJa": "そこまでどのくらいかかりますか？",
+    "beginnerTip": "",
+    "searchKeywords": "How long does it take to get there? そこまでどのくらいかかりますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_036",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "How much is the fare?",
+    "japanese": "運賃はいくらですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "運賃はいくらですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "How much is the fare?",
+    "exampleJa": "運賃はいくらですか？",
+    "beginnerTip": "",
+    "searchKeywords": "How much is the fare? 運賃はいくらですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_037",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Can I pay with a credit card?",
+    "japanese": "クレジットカードで払えますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "クレジットカードで払えますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Can I pay with a credit card?",
+    "exampleJa": "クレジットカードで払えますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Can I pay with a credit card? クレジットカードで払えますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_038",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Can I use a contactless card?",
+    "japanese": "タッチ決済のカードは使えますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "タッチ決済のカードは使えますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Can I use a contactless card?",
+    "exampleJa": "タッチ決済のカードは使えますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Can I use a contactless card? タッチ決済のカードは使えますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_039",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Do I need to tap in and out?",
+    "japanese": "乗るときと降りるときにタッチが必要ですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "乗るときと降りるときにタッチが必要ですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Do I need to tap in and out?",
+    "exampleJa": "乗るときと降りるときにタッチが必要ですか？",
+    "beginnerTip": "",
+    "searchKeywords": "Do I need to tap in and out? 乗るときと降りるときにタッチが必要ですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_040",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Is this the last train?",
+    "japanese": "これが終電ですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "これが終電ですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is this the last train?",
+    "exampleJa": "これが終電ですか？",
+    "beginnerTip": "",
+    "searchKeywords": "Is this the last train? これが終電ですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_041",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "What time is the last bus?",
+    "japanese": "最終バスは何時ですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "最終バスは何時ですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "What time is the last bus?",
+    "exampleJa": "最終バスは何時ですか？",
+    "beginnerTip": "",
+    "searchKeywords": "What time is the last bus? 最終バスは何時ですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_042",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Am I going the right way?",
+    "japanese": "こちらの方向で合っていますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "こちらの方向で合っていますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Am I going the right way?",
+    "exampleJa": "こちらの方向で合っていますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Am I going the right way? こちらの方向で合っていますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_043",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Could you show me on the map?",
+    "japanese": "地図で教えてもらえますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "地図で教えてもらえますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Could you show me on the map?",
+    "exampleJa": "地図で教えてもらえますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Could you show me on the map? 地図で教えてもらえますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_044",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Is it within walking distance?",
+    "japanese": "歩いて行ける距離ですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "歩いて行ける距離ですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is it within walking distance?",
+    "exampleJa": "歩いて行ける距離ですか？",
+    "beginnerTip": "",
+    "searchKeywords": "Is it within walking distance? 歩いて行ける距離ですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_045",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Where is the entrance?",
+    "japanese": "入口はどこですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "入口はどこですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Where is the entrance?",
+    "exampleJa": "入口はどこですか？",
+    "beginnerTip": "",
+    "searchKeywords": "Where is the entrance? 入口はどこですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_046",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Where is the exit?",
+    "japanese": "出口はどこですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "出口はどこですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Where is the exit?",
+    "exampleJa": "出口はどこですか？",
+    "beginnerTip": "",
+    "searchKeywords": "Where is the exit? 出口はどこですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_047",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Is this the line for + アトラクション?",
+    "japanese": "これは〜の待機列ですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "これは〜の待機列ですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is this the line for this ride?",
+    "exampleJa": "これは〜の待機列ですか？",
+    "beginnerTip": "",
+    "searchKeywords": "Is this the line for + アトラクション? これは〜の待機列ですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_048",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "How long is the wait?",
+    "japanese": "待ち時間はどのくらいですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "待ち時間はどのくらいですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "How long is the wait?",
+    "exampleJa": "待ち時間はどのくらいですか？",
+    "beginnerTip": "",
+    "searchKeywords": "How long is the wait? 待ち時間はどのくらいですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_049",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Is the ride open?",
+    "japanese": "アトラクションは運営していますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "アトラクションは運営していますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is the ride open?",
+    "exampleJa": "アトラクションは運営していますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Is the ride open? アトラクションは運営していますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_050",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Is the ride temporarily closed?",
+    "japanese": "アトラクションは一時休止中ですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "アトラクションは一時休止中ですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is the ride temporarily closed?",
+    "exampleJa": "アトラクションは一時休止中ですか？",
+    "beginnerTip": "",
+    "searchKeywords": "Is the ride temporarily closed? アトラクションは一時休止中ですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_051",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "When will it reopen?",
+    "japanese": "いつ再開しますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "いつ再開しますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "When will it reopen?",
+    "exampleJa": "いつ再開しますか？",
+    "beginnerTip": "",
+    "searchKeywords": "When will it reopen? いつ再開しますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_052",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "What time does the show start?",
+    "japanese": "ショーは何時からですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "ショーは何時からですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "What time does the show start?",
+    "exampleJa": "ショーは何時からですか？",
+    "beginnerTip": "",
+    "searchKeywords": "What time does the show start? ショーは何時からですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_053",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Is the show canceled today?",
+    "japanese": "今日のショーは中止ですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "今日のショーは中止ですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is the show canceled today?",
+    "exampleJa": "今日のショーは中止ですか？",
+    "beginnerTip": "",
+    "searchKeywords": "Is the show canceled today? 今日のショーは中止ですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_054",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Where is the best place to watch?",
+    "japanese": "どこで見るのが一番いいですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "どこで見るのが一番いいですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Where is the best place to watch?",
+    "exampleJa": "どこで見るのが一番いいですか？",
+    "beginnerTip": "",
+    "searchKeywords": "Where is the best place to watch? どこで見るのが一番いいですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_055",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Can we sit here?",
+    "japanese": "ここに座ってもいいですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "ここに座ってもいいですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Can we sit here?",
+    "exampleJa": "ここに座ってもいいですか？",
+    "beginnerTip": "",
+    "searchKeywords": "Can we sit here? ここに座ってもいいですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_056",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Could you take a picture of us?",
+    "japanese": "私たちの写真を撮ってもらえますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "私たちの写真を撮ってもらえますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Could you take a picture of us?",
+    "exampleJa": "私たちの写真を撮ってもらえますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Could you take a picture of us? 私たちの写真を撮ってもらえますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_057",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Could you take one more?",
+    "japanese": "もう1枚撮ってもらえますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "もう1枚撮ってもらえますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Could you take one more?",
+    "exampleJa": "もう1枚撮ってもらえますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Could you take one more? もう1枚撮ってもらえますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_058",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Could you fit the whole castle in the picture?",
+    "japanese": "お城全体が入るように撮ってもらえますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "お城全体が入るように撮ってもらえますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Could you fit the whole castle in the picture?",
+    "exampleJa": "お城全体が入るように撮ってもらえますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Could you fit the whole castle in the picture? お城全体が入るように撮ってもらえますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_059",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Where can I find + キャラクター／商品?",
+    "japanese": "〜はどこで会えますか／見つかりますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜はどこで会えますか／見つかりますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Where can I find this souvenir?",
+    "exampleJa": "〜はどこで会えますか／見つかりますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Where can I find + キャラクター／商品? 〜はどこで会えますか／見つかりますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_060",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Can I have it without + 食材?",
+    "japanese": "〜抜きにできますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜抜きにできますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Can I have it without raw onions?",
+    "exampleJa": "〜抜きにできますか？",
+    "beginnerTip": "例：Can I have it without raw onions?（生の玉ねぎ抜きにできますか？）",
+    "searchKeywords": "Can I have it without + 食材? 〜抜きにできますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_061",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Is this spicy?",
+    "japanese": "これは辛いですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "これは辛いですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is this spicy?",
+    "exampleJa": "これは辛いですか？",
+    "beginnerTip": "",
+    "searchKeywords": "Is this spicy? これは辛いですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_062",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "What's in this?",
+    "japanese": "これには何が入っていますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "これには何が入っていますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "What's in this?",
+    "exampleJa": "これには何が入っていますか？",
+    "beginnerTip": "",
+    "searchKeywords": "What's in this? これには何が入っていますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_063",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Which one do you recommend?",
+    "japanese": "どちらがおすすめですか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "どちらがおすすめですか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Which one do you recommend?",
+    "exampleJa": "どちらがおすすめですか？",
+    "beginnerTip": "",
+    "searchKeywords": "Which one do you recommend? どちらがおすすめですか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_064",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Could I have the bill, please?",
+    "japanese": "お会計をお願いします",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "お会計をお願いします",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Could I have the bill, please?",
+    "exampleJa": "お会計をお願いします",
+    "beginnerTip": "",
+    "searchKeywords": "Could I have the bill, please? お会計をお願いします 旅行 香港"
+  },
+  {
+    "id": "travel_exp_065",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Do you have this in a different size?",
+    "japanese": "これの別サイズはありますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "これの別サイズはありますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Do you have this in a different size?",
+    "exampleJa": "これの別サイズはありますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Do you have this in a different size? これの別サイズはありますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_066",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Do you have any more in stock?",
+    "japanese": "まだ在庫はありますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "まだ在庫はありますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Do you have any more in stock?",
+    "exampleJa": "まだ在庫はありますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Do you have any more in stock? まだ在庫はありますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_067",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Can I pay separately?",
+    "japanese": "別々に支払えますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "別々に支払えますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Can I pay separately?",
+    "exampleJa": "別々に支払えますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Can I pay separately? 別々に支払えますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_068",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Could I get a receipt?",
+    "japanese": "レシートをもらえますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "レシートをもらえますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Could I get a receipt?",
+    "exampleJa": "レシートをもらえますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Could I get a receipt? レシートをもらえますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_069",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "I think I left something behind.",
+    "japanese": "忘れ物をしたかもしれません",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "忘れ物をしたかもしれません",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "I think I left something behind.",
+    "exampleJa": "忘れ物をしたかもしれません",
+    "beginnerTip": "",
+    "searchKeywords": "I think I left something behind. 忘れ物をしたかもしれません 旅行 香港"
+  },
+  {
+    "id": "travel_exp_070",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Has anyone turned in a lost item?",
+    "japanese": "落とし物は届いていますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "落とし物は届いていますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Has anyone turned in a lost item?",
+    "exampleJa": "落とし物は届いていますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Has anyone turned in a lost item? 落とし物は届いていますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_071",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Does this have any raw onions in it?",
+    "japanese": "これに生の玉ねぎは入っていますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "これに生の玉ねぎは入っていますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Does this have any raw onions in it?",
+    "exampleJa": "これに生の玉ねぎは入っていますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Does this have any raw onions in it? これに生の玉ねぎは入っていますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_072",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Can I have it without them?",
+    "japanese": "それらを抜いてもらえますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "それらを抜いてもらえますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Can I have it without them?",
+    "exampleJa": "それらを抜いてもらえますか？",
+    "beginnerTip": "直前の raw onions など複数形の名詞を them で受けます。単数形なら食材名を繰り返すと明確です。",
+    "searchKeywords": "Can I have it without them? それらを抜いてもらえますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_073",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Are the onions raw or cooked?",
+    "japanese": "玉ねぎは生ですか？ 火が通っていますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "玉ねぎは生ですか？ 火が通っていますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Are the onions raw or cooked?",
+    "exampleJa": "玉ねぎは生ですか？ 火が通っていますか？",
+    "beginnerTip": "玉ねぎの加熱状態を確認する表現です。青ネギ・長ネギの有無までは確認できません。",
+    "searchKeywords": "Are the onions raw or cooked? 玉ねぎは生ですか？ 火が通っていますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_074",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Then that's fine. I'll have it, please.",
+    "japanese": "それなら大丈夫です。お願いします。",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "それなら大丈夫です。お願いします。",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Then that's fine. I'll have it, please.",
+    "exampleJa": "それなら大丈夫です。お願いします。",
+    "beginnerTip": "",
+    "searchKeywords": "Then that's fine. I'll have it, please. それなら大丈夫です。お願いします。 旅行 香港"
+  },
+  {
+    "id": "travel_exp_075",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Then I'll pass. Thank you.",
+    "japanese": "それならやめておきます。ありがとうございます。",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "それならやめておきます。ありがとうございます。",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Then I'll pass. Thank you.",
+    "exampleJa": "それならやめておきます。ありがとうございます。",
+    "beginnerTip": "",
+    "searchKeywords": "Then I'll pass. Thank you. それならやめておきます。ありがとうございます。 旅行 香港"
+  },
+  {
+    "id": "travel_exp_076",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "I'll have this one instead, please.",
+    "japanese": "じゃあ代わりにこっちをお願いします。",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "じゃあ代わりにこっちをお願いします。",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "I'll have this one instead, please.",
+    "exampleJa": "じゃあ代わりにこっちをお願いします。",
+    "beginnerTip": "",
+    "searchKeywords": "I'll have this one instead, please. じゃあ代わりにこっちをお願いします。 旅行 香港"
+  },
+  {
+    "id": "travel_exp_077",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Could you say that again, please?",
+    "japanese": "もう一度言っていただけますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "もう一度言っていただけますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Could you say that again, please?",
+    "exampleJa": "もう一度言っていただけますか？",
+    "beginnerTip": "",
+    "searchKeywords": "Could you say that again, please? もう一度言っていただけますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_exp_078",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "旅行・香港（日帰り）",
+    "english": "Is there a + 場所 + nearby?",
+    "japanese": "近くに〜はありますか？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "近くに〜はありますか？",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is there a restroom nearby?",
+    "exampleJa": "近くに〜はありますか？",
+    "beginnerTip": "数えられる単数名詞には a / an を使います。例：Is there a restroom nearby? / Is there an ATM nearby?",
+    "searchKeywords": "Is there a + 場所 + nearby? 近くに〜はありますか？ 旅行 香港"
+  },
+  {
+    "id": "travel_word_001",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "a boarding pass",
+    "japanese": "搭乗券",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "搭乗券",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "boarding pass a boarding pass 搭乗券 旅行"
+  },
+  {
+    "id": "travel_word_002",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "a gate",
+    "japanese": "搭乗口／ゲート",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "搭乗口／ゲート",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "gate a gate 搭乗口／ゲート 旅行"
+  },
+  {
+    "id": "travel_word_003",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "a terminal",
+    "japanese": "ターミナル",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "ターミナル",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "terminal a terminal ターミナル 旅行"
+  },
+  {
+    "id": "travel_word_004",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "a departure",
+    "japanese": "出発",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "出発",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "departure a departure 出発 旅行"
+  },
+  {
+    "id": "travel_word_005",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "an arrival",
+    "japanese": "到着",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "到着",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "arrival an arrival 到着 旅行"
+  },
+  {
+    "id": "travel_word_006",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞",
+      "動詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "a delay",
+    "japanese": "遅延／遅れる",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "遅延／遅れる",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "名詞では a delay（遅延）、動詞では delay（遅らせる）。",
+    "searchKeywords": "delay a delay 遅延／遅れる 旅行"
+  },
+  {
+    "id": "travel_word_007",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "canceled",
+    "japanese": "中止された／欠航になった",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "中止された／欠航になった",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "形容詞・過去分詞なので a / an は付けません。a canceled flight（欠航した便）のように名詞の前に置けます。",
+    "searchKeywords": "canceled canceled 中止された／欠航になった 旅行"
+  },
+  {
+    "id": "travel_word_008",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "a carry-on",
+    "japanese": "機内持ち込み手荷物",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "機内持ち込み手荷物",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "carry-on a carry-on 機内持ち込み手荷物 旅行"
+  },
+  {
+    "id": "travel_word_009",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "a personal item",
+    "japanese": "身の回り品",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "身の回り品",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "personal item a personal item 身の回り品 旅行"
+  },
+  {
+    "id": "travel_word_010",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "security",
+    "japanese": "保安検査／安全",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "保安検査／安全",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "保安検査・安全は通常不可算名詞です。security check（保安検査）のように具体的な名詞と組み合わせます。",
+    "searchKeywords": "security security 保安検査／安全 旅行"
+  },
+  {
+    "id": "travel_word_011",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "immigration",
+    "japanese": "入国審査／出入国管理",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "入国審査／出入国管理",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "入国審査・出入国管理は通常不可算名詞です。go through immigration（入国審査を通る）。",
+    "searchKeywords": "immigration immigration 入国審査／出入国管理 旅行"
+  },
+  {
+    "id": "travel_word_012",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "customs",
+    "japanese": "税関",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "税関",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "税関の意味では customs と複数形の形で使います。go through customs（税関を通る）。a customs とはしません。",
+    "searchKeywords": "customs customs 税関 旅行"
+  },
+  {
+    "id": "travel_word_013",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "a fare",
+    "japanese": "運賃",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "運賃",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "fare a fare 運賃 旅行"
+  },
+  {
+    "id": "travel_word_014",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "a platform",
+    "japanese": "ホーム／乗り場",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "ホーム／乗り場",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "platform a platform ホーム／乗り場 旅行"
+  },
+  {
+    "id": "travel_word_015",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞",
+      "動詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "a transfer",
+    "japanese": "乗り換える／乗り換え",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "乗り換える／乗り換え",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "名詞では a transfer（乗り換え）、動詞では transfer（乗り換える）。",
+    "searchKeywords": "transfer a transfer 乗り換える／乗り換え 旅行"
+  },
+  {
+    "id": "travel_word_016",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "a route",
+    "japanese": "経路／ルート",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "経路／ルート",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "route a route 経路／ルート 旅行"
+  },
+  {
+    "id": "travel_word_017",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "a queue",
+    "japanese": "列／待機列",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "列／待機列",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "queue a queue 列／待機列 旅行"
+  },
+  {
+    "id": "travel_word_018",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "an entrance",
+    "japanese": "入口",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "入口",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "entrance an entrance 入口 旅行"
+  },
+  {
+    "id": "travel_word_019",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "an exit",
+    "japanese": "出口",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "出口",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "exit an exit 出口 旅行"
+  },
+  {
+    "id": "travel_word_020",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "a receipt",
+    "japanese": "レシート／領収書",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "レシート／領収書",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "",
+    "exampleJa": "",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "receipt a receipt レシート／領収書 旅行"
+  },
+  {
+    "id": "travel_word_021",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "a green onion / a scallion",
+    "japanese": "青ネギ・小ネギ",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "青ネギ・小ネギ",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Does this have green onions in it?",
+    "exampleJa": "これには青ネギが入っていますか？",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。 アメリカ英語では green onion と scallion はほぼ同じ意味です。",
+    "searchKeywords": "green onion / scallion a green onion / a scallion 青ネギ・小ネギ 旅行"
+  },
+  {
+    "id": "travel_word_022",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "a Japanese long onion",
+    "japanese": "長ネギ",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "長ネギ",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is this a Japanese long onion?",
+    "exampleJa": "これは長ネギですか？",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "Japanese long onion a Japanese long onion 長ネギ 旅行"
+  },
+  {
+    "id": "travel_word_023",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・空港／交通",
+    "english": "a leek",
+    "japanese": "西洋ネギ・ポロネギ",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "西洋ネギ・ポロネギ",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is there leek in this soup?",
+    "exampleJa": "このスープには西洋ネギが入っていますか？",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。 日本の長ネギとは異なる西洋ネギです。",
+    "searchKeywords": "leek a leek 西洋ネギ・ポロネギ 旅行"
+  },
+  {
+    "id": "travel_word_024",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・施設",
+    "english": "a restroom",
+    "japanese": "トイレ",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "トイレ",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is there a restroom nearby?",
+    "exampleJa": "近くにトイレはありますか？",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "restroom a restroom トイレ 旅行"
+  },
+  {
+    "id": "travel_word_025",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・施設",
+    "english": "a vending machine",
+    "japanese": "自動販売機",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "自動販売機",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is there a vending machine nearby?",
+    "exampleJa": "近くに自動販売機はありますか？",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "vending machine a vending machine 自動販売機 旅行"
+  },
+  {
+    "id": "travel_word_026",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・施設",
+    "english": "a convenience store",
+    "japanese": "コンビニ",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "コンビニ",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is there a convenience store nearby?",
+    "exampleJa": "近くにコンビニはありますか？",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "convenience store a convenience store コンビニ 旅行"
+  },
+  {
+    "id": "travel_word_027",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・施設",
+    "english": "a pharmacy",
+    "japanese": "薬局",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "薬局",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is there a pharmacy nearby?",
+    "exampleJa": "近くに薬局はありますか？",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "pharmacy a pharmacy 薬局 旅行"
+  },
+  {
+    "id": "travel_word_028",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・施設",
+    "english": "an ATM",
+    "japanese": "ATM",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "ATM",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is there an ATM nearby?",
+    "exampleJa": "近くにATMはありますか？",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "ATM an ATM ATM 旅行"
+  },
+  {
+    "id": "travel_word_029",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・施設",
+    "english": "a charging station",
+    "japanese": "充電スポット",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "充電スポット",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is there a charging station nearby?",
+    "exampleJa": "近くに充電スポットはありますか？",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "charging station a charging station 充電スポット 旅行"
+  },
+  {
+    "id": "travel_word_030",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・施設",
+    "english": "a water refill station",
+    "japanese": "給水所",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "給水所",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is there a water refill station nearby?",
+    "exampleJa": "近くに給水所はありますか？",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。 飲料水をボトルに補充できる給水所です。",
+    "searchKeywords": "water refill station a water refill station 給水所 旅行"
+  },
+  {
+    "id": "travel_word_031",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・施設",
+    "english": "a bus stop",
+    "japanese": "バス停",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "バス停",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is there a bus stop nearby?",
+    "exampleJa": "近くにバス停はありますか？",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。",
+    "searchKeywords": "bus stop a bus stop バス停 旅行"
+  },
+  {
+    "id": "travel_word_032",
+    "type": "word",
+    "partOfSpeech": [
+      "名詞"
+    ],
+    "category": "旅行・施設",
+    "english": "a station",
+    "japanese": "駅",
+    "senses": [
+      {
+        "pos": "名詞",
+        "meaning": "駅",
+        "category": "旅行"
+      }
+    ],
+    "forms": [],
+    "example": "Is there a station nearby?",
+    "exampleJa": "近くに駅はありますか？",
+    "beginnerTip": "数えられる名詞の単数形なので a / an を付けます。 電車の話題なら station だけで「駅」と通じます。",
+    "searchKeywords": "station a station 駅 旅行"
   }
 ];
