@@ -64,19 +64,18 @@
             font-size: 16px !important;
         }
 
-        /* Keep weak-practice actions immediately below the card on both sides. */
-        #flashcard-modal.weak-practice-mode { justify-content: flex-start; }
-        #flashcard-modal.weak-practice-mode > div:nth-child(2) {
-            flex: 0 1 auto;
-            padding-top: 12px;
-            padding-bottom: 0;
-            min-height: 0;
+        /* Keep the weak flashcard centered like the regular card. */
+        #flashcard-modal.weak-practice-mode #flashcard-stage {
+            flex-direction: column;
+            gap: 8px;
         }
         #flashcard-modal.weak-practice-mode #flashcard-card-body {
-            min-height: min(420px, calc(100dvh - 175px));
-            max-height: calc(100dvh - 175px);
+            flex: 0 1 auto;
         }
-        #flashcard-modal.weak-practice-mode #flashcard-action-bar { margin-top: 8px; }
+        #flashcard-modal.weak-practice-mode #flashcard-action-bar {
+            width: 100%;
+            flex-shrink: 0;
+        }
     </style>
 </head>
 <body class="min-h-screen pb-24">
@@ -272,7 +271,7 @@
             <div class="text-xs font-bold bg-[#faf8f5] border border-[#e5dfd7] px-3 py-1 rounded-full text-[#4a4540] shadow-sm" id="flashcard-counter">カード 1 / 10</div>
             <button onclick="closeFlashcards()" class="w-9 h-9 rounded-full bg-[#faf8f5] hover:bg-[#f0ece5] text-[#2b2927] flex items-center justify-center font-bold text-lg border border-[#e5dfd7] shadow-sm">✕</button>
         </div>
-        <div class="max-w-md mx-auto w-full flex-1 flex items-center justify-center py-4">
+        <div id="flashcard-stage" class="max-w-md mx-auto w-full flex-1 flex items-center justify-center py-4">
             <div id="flashcard-card-body" onclick="handleCardBodyClick(event)" class="w-full bg-[#faf8f5] text-[#2b2927] rounded-3xl p-6 sm:p-8 shadow-xl border border-[#e5dfd7] min-h-[420px] flex flex-col justify-between cursor-pointer transform transition-all duration-300 relative overflow-y-auto max-h-[75vh]"></div>
         </div>
         <div class="max-w-md mx-auto w-full grid grid-cols-2 gap-3" id="flashcard-action-bar"></div>
@@ -766,6 +765,13 @@
         function startFlashcards(isWeakOnly = false) {
             isDedicatedWeakPractice = isWeakOnly;
             document.getElementById('flashcard-modal').classList.toggle('weak-practice-mode', isWeakOnly);
+            const bar = document.getElementById('flashcard-action-bar');
+            const stage = document.getElementById('flashcard-stage');
+            const modal = document.getElementById('flashcard-modal');
+            // Weak mode: keep the card and its Next button together in the centered stage.
+            // Regular mode: keep the existing bottom action bar unchanged.
+            if (isWeakOnly) stage.appendChild(bar);
+            else modal.appendChild(bar);
             const now = new Date();
 
             if (isWeakOnly) {
@@ -821,6 +827,7 @@
             document.getElementById('flashcard-modal').classList.add('hidden');
             isDedicatedWeakPractice = false;
             document.getElementById('flashcard-modal').classList.remove('weak-practice-mode');
+            document.getElementById('flashcard-modal').appendChild(document.getElementById('flashcard-action-bar'));
             statsDirty = true;
             renderProgressTab();
             if (isWordsTabRendered) renderWordsTab();
@@ -1205,7 +1212,7 @@
                     tagClass = 'tag-status-learning';
                     tagText = '学習中';
                 }
-                return `<div onclick="openDetailModal('${item.id}')" class="bg-[#faf8f5] p-4 rounded-2xl border border-[#e5dfd7] shadow-sm cursor-pointer hover:border-[#78829c] transition"><div class="flex justify-between items-start mb-1"><div class="flex items-center space-x-2 flex-wrap gap-1"><span class="text-[10px] px-2 py-0.5 rounded-full font-medium ${tagClass}">${tagText}</span>${renderTagsHtml(item)}</div><span class="text-xs text-[#78829c] bg-[#f4efe8] px-2.5 py-1 rounded-lg border border-[#e5dfd7]">詳細 →</span></div><div class="font-bold text-[#2b2927] text-base mb-1">${item.english}</div><div class="text-xs font-semibold text-[#78829c] mb-2">${item.japanese}</div><div class="bg-[#f4efe8] p-2.5 rounded-xl text-xs text-[#4a4540] border border-[#e5dfd7]">例文: "${item.example.replace(/<\/?[^>]+(>|$)/g, "")}" <span class="text-[#7c736c]">(${item.exampleJa})</span></div></div>`;
+                return `<div onclick="openDetailModal('${item.id}')" class="bg-[#faf8f5] p-4 rounded-2xl border border-[#e5dfd7] shadow-sm cursor-pointer hover:border-[#78829c] transition"><div class="flex justify-between items-start mb-1"><div class="flex items-center space-x-2 flex-wrap gap-1"><span class="text-[10px] px-2 py-0.5 rounded-full font-medium ${tagClass}">${tagText}</span>${renderTagsHtml(item)}</div><span class="text-xs text-[#78829c] bg-[#f4efe8] px-2.5 py-1 rounded-lg border border-[#e5dfd7]">詳細 →</span></div><div class="font-bold text-[#2b2927] text-base mb-1">${item.english}</div><div class="text-xs font-semibold text-[#78829c] mb-2">${item.japanese}</div>${typeof item.example === 'string' && item.example.trim() ? `<div class="bg-[#f4efe8] p-2.5 rounded-xl text-xs text-[#4a4540] border border-[#e5dfd7]">例文: "${item.example.replace(/<\/?[^>]+(>|$)/g, "")}" <span class="text-[#7c736c]">(${item.exampleJa || ''})</span></div>` : ''}</div>`;
             }).join('');
         }
 
