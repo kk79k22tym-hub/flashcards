@@ -49,10 +49,34 @@
             border: 1px solid #e2dad1;
         }
 
+        /* Sticky search is a direct child of its tab, avoiding clipping by short wrappers. */
+        .search-sticky {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 53px;
+            z-index: 30;
+            background: #f3f0ec;
+            padding: 7px 0;
+            margin-top: -7px;
+        }
         /* iPhone Safari: inputs below 16px trigger automatic page zoom. */
         #word-search-input, #expr-search-input {
             font-size: 16px !important;
         }
+
+        /* Keep weak-practice actions immediately below the card on both sides. */
+        #flashcard-modal.weak-practice-mode { justify-content: flex-start; }
+        #flashcard-modal.weak-practice-mode > div:nth-child(2) {
+            flex: 0 1 auto;
+            padding-top: 12px;
+            padding-bottom: 0;
+            min-height: 0;
+        }
+        #flashcard-modal.weak-practice-mode #flashcard-card-body {
+            min-height: min(420px, calc(100dvh - 175px));
+            max-height: calc(100dvh - 175px);
+        }
+        #flashcard-modal.weak-practice-mode #flashcard-action-bar { margin-top: 8px; }
     </style>
 </head>
 <body class="min-h-screen pb-24">
@@ -133,11 +157,14 @@
                 <span class="text-xs text-[#6b625b] font-medium" id="word-count-label">全0語</span>
             </div>
 
-            <div class="mb-4 space-y-2">
+            <div class="search-sticky mb-3">
                 <div class="relative">
-                    <input type="text" id="word-search-input" placeholder="英語、日本語、変化形で検索..." oninput="handleWordSearch()" class="w-full bg-[#faf8f5] border border-[#e5dfd7] text-[#2b2927] rounded-xl px-4 py-2.5 text-sm pl-10 focus:outline-none focus:ring-2 focus:ring-[#78829c] shadow-sm placeholder-[#9c938c]">
+                    <input type="text" id="word-search-input" placeholder="英語、日本語、変化形で検索..." oninput="handleWordSearch()" class="w-full bg-[#faf8f5] border border-[#e5dfd7] text-[#2b2927] rounded-xl px-4 py-2.5 text-sm pl-10 pr-11 focus:outline-none focus:ring-2 focus:ring-[#78829c] shadow-sm placeholder-[#9c938c]">
                     <svg class="w-4 h-4 text-[#7c736c] absolute left-3.5 top-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <button type="button" id="word-search-clear" onclick="clearSearchInput('word')" class="hidden absolute right-1.5 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full text-[#7c736c] hover:bg-[#eee9e2]" aria-label="検索文字をすべて削除" title="検索をクリア"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
                 </div>
+            </div>
+            <div class="mb-4 space-y-2">
                 <div class="flex gap-2 overflow-x-auto pb-1 text-xs" id="word-category-filter-container"></div>
                 <div id="word-filter-panel" class="hidden bg-[#faf8f5] border border-[#e5dfd7] rounded-2xl p-3 shadow-sm space-y-3">
                     <div>
@@ -162,10 +189,11 @@
                 <span class="text-xs text-[#6b625b] font-medium" id="expr-count-label">全0件</span>
             </div>
 
-            <div class="mb-4">
+            <div class="search-sticky mb-3">
                 <div class="relative">
-                    <input type="text" id="expr-search-input" placeholder="表現や意味で検索..." oninput="handleExprSearch()" class="w-full bg-[#faf8f5] border border-[#e5dfd7] text-[#2b2927] rounded-xl px-4 py-2.5 text-sm pl-10 focus:outline-none focus:ring-2 focus:ring-[#78829c] shadow-sm placeholder-[#9c938c]">
+                    <input type="text" id="expr-search-input" placeholder="表現や意味で検索..." oninput="handleExprSearch()" class="w-full bg-[#faf8f5] border border-[#e5dfd7] text-[#2b2927] rounded-xl px-4 py-2.5 text-sm pl-10 pr-11 focus:outline-none focus:ring-2 focus:ring-[#78829c] shadow-sm placeholder-[#9c938c]">
                     <svg class="w-4 h-4 text-[#7c736c] absolute left-3.5 top-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <button type="button" id="expr-search-clear" onclick="clearSearchInput('expr')" class="hidden absolute right-1.5 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full text-[#7c736c] hover:bg-[#eee9e2]" aria-label="検索文字をすべて削除" title="検索をクリア"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
                 </div>
             </div>
 
@@ -245,7 +273,7 @@
             <button onclick="closeFlashcards()" class="w-9 h-9 rounded-full bg-[#faf8f5] hover:bg-[#f0ece5] text-[#2b2927] flex items-center justify-center font-bold text-lg border border-[#e5dfd7] shadow-sm">✕</button>
         </div>
         <div class="max-w-md mx-auto w-full flex-1 flex items-center justify-center py-4">
-            <div id="flashcard-card-body" onclick="handleCardBodyClick(event)" class="w-full bg-[#faf8f5] text-[#2b2927] rounded-3xl p-6 sm:p-8 shadow-xl border border-[#e5dfd7] min-h-[420px] flex flex-col justify-between cursor-pointer transform transition-all duration-300 relative overflow-hidden"></div>
+            <div id="flashcard-card-body" onclick="handleCardBodyClick(event)" class="w-full bg-[#faf8f5] text-[#2b2927] rounded-3xl p-6 sm:p-8 shadow-xl border border-[#e5dfd7] min-h-[420px] flex flex-col justify-between cursor-pointer transform transition-all duration-300 relative overflow-y-auto max-h-[75vh]"></div>
         </div>
         <div class="max-w-md mx-auto w-full grid grid-cols-2 gap-3" id="flashcard-action-bar"></div>
     </div>
@@ -315,7 +343,7 @@
         </div>
     </nav>
 
-    <script src="./data.js?v=20261003-fix1"></script>
+    <script src="./data.js?v=20261020-search-final"></script>
     <script>
         // Stable storage key: keep this unchanged across UI/data updates so learning history survives.
         const STORAGE_KEY = 'english_app_user_data_v9';
@@ -385,6 +413,11 @@
         function renderUsageTagsHtml(item) {
             if (!Array.isArray(item.usageTags) || !item.usageTags.length) return '';
             return '<div class="flex flex-wrap gap-1.5 mt-2">' + item.usageTags.map(tag => '<span class="text-[10px] bg-[#eef2f7] text-[#5f6f8d] border border-[#d8e0eb] px-2 py-0.5 rounded-full">' + tag + '</span>').join('') + '</div>';
+        }
+
+        function renderComparisonNote(item) {
+            if (!item.comparisonNote) return '';
+            return '<div class="text-left mb-3"><div class="text-xs text-[#5c534c] bg-[#f4efe8] p-3 rounded-xl border border-[#e5dfd7] leading-relaxed"><span class="font-bold text-[#78829c]">使い分け：</span>' + item.comparisonNote + '</div></div>';
         }
 
         function renderContractionsSection(item) {
@@ -567,7 +600,7 @@
                         srsStage: 0, weakRemaining: 0,
                         fsrsDifficulty: null, fsrsStability: null, fsrsReps: 0,
                         fsrsLapses: 0, fsrsState: 'new', fsrsRetrievability: 1,
-                        introducedAt: null
+                        introducedAt: null, seenInFlashcards: false
                     };
                 }
                 const st = appData.itemsState[item.id];
@@ -578,6 +611,8 @@
                 if (st.fsrsState === undefined) st.fsrsState = st.lastStudied ? 'review' : 'new';
                 if (st.fsrsRetrievability === undefined) st.fsrsRetrievability = 1;
                 if (st.introducedAt === undefined) st.introducedAt = st.lastStudied || null;
+                // Cards already studied in older versions must remain eligible for quizzes.
+                if (st.seenInFlashcards === undefined) st.seenInFlashcards = Boolean(st.introducedAt || st.lastStudied);
 
                 // Migrate existing learning history without deleting it.
                 if (st.lastStudied && (st.fsrsStability == null || st.fsrsDifficulty == null)) {
@@ -730,6 +765,7 @@
 
         function startFlashcards(isWeakOnly = false) {
             isDedicatedWeakPractice = isWeakOnly;
+            document.getElementById('flashcard-modal').classList.toggle('weak-practice-mode', isWeakOnly);
             const now = new Date();
 
             if (isWeakOnly) {
@@ -784,6 +820,7 @@
         function closeFlashcards() {
             document.getElementById('flashcard-modal').classList.add('hidden');
             isDedicatedWeakPractice = false;
+            document.getElementById('flashcard-modal').classList.remove('weak-practice-mode');
             statsDirty = true;
             renderProgressTab();
             if (isWordsTabRendered) renderWordsTab();
@@ -809,9 +846,14 @@
             isCardFlipped = false;
             const item = flashcardQueue[currentCardIndex];
             const st = appData.itemsState[item.id];
+            // A card becomes quiz-eligible as soon as it has actually appeared in flashcards.
+            if (st && !st.seenInFlashcards) {
+                st.seenInFlashcards = true;
+                saveUserData();
+            }
             document.getElementById('flashcard-counter').innerText = `カード ${currentCardIndex + 1} / ${flashcardQueue.length}`;
             
-            let errorBadgeHtml = '<div class="mb-3" style="visibility:hidden" aria-hidden="true"><span class="text-xs px-3 py-1 rounded-full font-medium border border-transparent">間違い回数: 0回</span></div>';
+            let errorBadgeHtml = '';
             if (st && st.actualErrorCount > 0) {
                 errorBadgeHtml = `<div class="mb-3"><span class="text-xs bg-[#fdf0f2] text-rose-800 border border-rose-300 px-3 py-1 rounded-full font-medium shadow-sm">間違い回数: ${st.actualErrorCount}回</span></div>`;
             }
@@ -834,7 +876,7 @@
                     <span class="text-xs font-bold text-[#78829c] bg-[#f4efe8] px-4 py-2 rounded-xl inline-block shadow-sm border border-[#e5dfd7]">答えを見る</span>
                 </div>
             `;
-            document.getElementById('flashcard-action-bar').innerHTML = `
+            document.getElementById('flashcard-action-bar').innerHTML = isDedicatedWeakPractice ? '' : `
                 <button onclick="closeFlashcards()" class="bg-[#f4efe8] hover:bg-[#eae4dc] text-[#5c534c] font-bold py-3 rounded-2xl text-sm transition border border-[#e5dfd7] col-span-2 shadow-sm">終了する</button>
             `;
         }
@@ -846,7 +888,7 @@
             const item = flashcardQueue[currentCardIndex];
 
             let backHtml = `
-                <div class="relative w-full pb-6" style="max-height: calc(75vh - 3rem); overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;">
+                <div class="relative w-full pb-6">
                     <div class="relative flex items-center justify-center mb-4 min-h-[2.5rem]">
                         <div class="text-2xl font-bold text-[#2b2927] text-center px-12">${item.english}</div>
                         <button onclick="playSpeech(event, '${item.english.replace(/'/g, "\'")}')" class="absolute right-0 w-9 h-9 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm shrink-0" aria-label="発音">
@@ -860,6 +902,8 @@
                 backHtml += `<div class="text-left mb-3"><div class="text-xs text-[#5c534c] bg-[#f4efe8] p-3 rounded-xl border border-[#e5dfd7] leading-relaxed flex items-start space-x-2"><svg class="w-4 h-4 text-[#78829c] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg><span>${item.beginnerTip}</span></div></div>`;
             }
 
+            backHtml += renderComparisonNote(item);
+
             if (item.forms && item.forms.length) {
                 const primaryPos = getItemSenses(item)[0]?.pos;
                 const regularForms = item.forms.filter(f => f.label !== '会話形' && (!f.pos || !primaryPos || f.pos === primaryPos));
@@ -867,12 +911,11 @@
 
                 if (regularForms.length) {
                     backHtml += `<div class="space-y-2.5 bg-[#edf1f7] p-3.5 rounded-2xl border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] uppercase tracking-wider">活用・変化</div><div class="text-xs space-y-2.5">`;
-                    regularForms.forEach((f, fi) => {
-                        const senseMark = (fi === 0 && getOtherMeanings(item).length > 0) ? '<span class="text-sm font-bold text-[#334155]">①</span>' : '';
+                    regularForms.forEach(f => {
                         const spoken = String(f.speechText || f.formName).replace(/'/g, "\'");
                         const lowFreq = f.lowFrequency ? `<span class="text-[10px] bg-[#fff7ed] text-[#9a5b13] border border-[#fed7aa] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">低頻度</span>` : '';
                         const exampleHtml = f.example ? `<div class="text-[#2b2927] text-xs font-normal">"${f.example}" ${f.exampleJa ? `<span class="text-[#64748b] font-normal">(${f.exampleJa})</span>` : ''}</div>` : '';
-                        backHtml += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0 relative"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2 min-w-0 flex-1 flex-wrap">${senseMark}<span class="text-sm font-bold text-[#2b2927] min-w-0 break-words">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">${f.label}</span>${lowFreq}</div><button onclick="playSpeech(event, '${spoken}')" class="w-8 h-8 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-4 h-4 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></button></div>${exampleHtml}</div>`;
+                        backHtml += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0 relative"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2 min-w-0 flex-1 flex-wrap"><span class="text-sm font-bold text-[#2b2927] min-w-0 break-words">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">${f.label}</span>${lowFreq}</div><button onclick="playSpeech(event, '${spoken}')" class="w-8 h-8 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-4 h-4 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></button></div>${exampleHtml}</div>`;
                     });
                     if (item.changeType) {
                         backHtml += `<div class="pt-1 text-[#64748b]">変化タイプ: <b class="text-[#2b2927]">${item.changeType}</b></div>`;
@@ -1115,7 +1158,22 @@
         // Backward-compatible alias for older inline calls.
         function filterWordCategory(cat) { setWordThemeFilter(cat); }
 
+        function syncSearchClearButton(prefix) {
+            const input = document.getElementById(prefix + '-search-input');
+            const button = document.getElementById(prefix + '-search-clear');
+            if (input && button) button.classList.toggle('hidden', input.value.length === 0);
+        }
+
+        function clearSearchInput(prefix) {
+            const input = document.getElementById(prefix + '-search-input');
+            if (!input) return;
+            input.value = '';
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+            syncSearchClearButton(prefix);
+        }
+
         function handleWordSearch() {
+            syncSearchClearButton('word');
             const query = document.getElementById('word-search-input').value.toLowerCase();
             if (query !== lastWordSearchQuery) {
                 lastWordSearchQuery = query;
@@ -1151,7 +1209,8 @@
             }).join('');
         }
 
-        function handleExprSearch() { 
+        function handleExprSearch() {
+            syncSearchClearButton('expr'); 
             const query = document.getElementById('expr-search-input').value.toLowerCase();
             if (query !== lastExprSearchQuery) {
                 lastExprSearchQuery = query;
@@ -1182,6 +1241,8 @@
                 html += `<div class="bg-[#f4efe8] rounded-xl p-3 border border-[#e5dfd7] text-left mb-4"><p class="text-xs text-[#5c534c] leading-relaxed flex items-start space-x-2"><svg class="w-4 h-4 text-[#78829c] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg><span>${item.beginnerTip}</span></p></div>`;
             }
 
+            html += renderComparisonNote(item);
+
             if (item.forms && item.forms.length) {
                 const primaryPos = getItemSenses(item)[0]?.pos;
                 const regularForms = item.forms.filter(f => f.label !== '会話形' && (!f.pos || !primaryPos || f.pos === primaryPos));
@@ -1189,12 +1250,11 @@
 
                 if (regularForms.length) {
                     html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-3 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase tracking-wider">活用・変化</div>`;
-                    regularForms.forEach((f, fi) => {
-                        const senseMark = (fi === 0 && getOtherMeanings(item).length > 0) ? '<span class="text-sm font-bold text-[#334155]">①</span>' : '';
+                    regularForms.forEach(f => {
                         const formSpoken = String(f.speechText || f.formName).replace(/'/g, "\'");
                         const lowFreq = f.lowFrequency ? `<span class="text-[10px] bg-[#fff7ed] text-[#9a5b13] border border-[#fed7aa] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">低頻度</span>` : '';
                         const exampleHtml = f.example ? `<div class="text-[#2b2927]">"${f.example}" ${f.exampleJa ? `<span class="text-[#64748b]">(${f.exampleJa})</span>` : ''}</div>` : '';
-                        html += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2 min-w-0 flex-1 flex-wrap">${senseMark}<span class="text-sm font-bold text-[#2b2927] min-w-0 break-words">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">${f.label}</span>${lowFreq}</div><button onclick="playSpeech(event, '${formSpoken}')" class="w-7 h-7 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-3.5 h-3.5 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div>${exampleHtml}</div>`;
+                        html += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2 min-w-0 flex-1 flex-wrap"><span class="text-sm font-bold text-[#2b2927] min-w-0 break-words">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">${f.label}</span>${lowFreq}</div><button onclick="playSpeech(event, '${formSpoken}')" class="w-7 h-7 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-3.5 h-3.5 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div>${exampleHtml}</div>`;
                     });
                     if (item.changeType) {
                         html += `<div class="pt-2 border-t border-[#e2e8f0] text-[#64748b]">変化タイプ: <b class="text-[#2b2927]">${item.changeType}</b></div>`;
@@ -1268,7 +1328,10 @@
             quizQuestions = generateQuizQuestions(mode, 10);
             currentQuizIdx = 0;
             quizScore = 0;
-            if (quizQuestions.length === 0) return;
+            if (quizQuestions.length === 0) {
+                alert('クイズ対象のカードがまだありません。先にフラッシュカードで学習してください。');
+                return;
+            }
 
             document.getElementById('quiz-setup-view').classList.add('hidden');
             document.getElementById('quiz-play-view').classList.remove('hidden');
@@ -1305,14 +1368,13 @@
             if (!candidates.length) return null;
             const f = candidates[Math.floor(Math.random() * candidates.length)];
             const escaped = f.formName.replace(/[.*+?^$\{\}()|[\]\\]/g, '\\$&');
-            const blankText = f.needsHint ? f.formName.charAt(0) + ' _'.repeat(f.formName.length - 1) : '_____';
-            const blank = f.example.replace(new RegExp('\\b' + escaped + '\\b', 'i'), () => blankText);
+            const blank = f.example.replace(new RegExp('\\b' + escaped + '\\b', 'i'), '_____');
             if (blank === f.example) return null;
-            return {itemId:item.id, subKey:f.label, type:'typing', typeBadge:'文の穴埋め', questionText:blank, questionJa:f.exampleJa, correctAnswer:f.formName, blankText:blankText};
+            return {itemId:item.id, subKey:f.label, type:'typing', typeBadge:'文の穴埋め', questionText:blank, questionJa:f.exampleJa, correctAnswer:f.formName};
         }
 
-        function buildContractionQuestion() {
-            const items = rawDatabase.filter(i => Array.isArray(i.contractionPairs) && i.contractionPairs.length);
+        function buildContractionQuestion(eligibleItems) {
+            const items = eligibleItems.filter(i => Array.isArray(i.contractionPairs) && i.contractionPairs.length);
             if (!items.length) return null;
             const item = items[Math.floor(Math.random() * items.length)];
             const pair = item.contractionPairs[Math.floor(Math.random() * item.contractionPairs.length)];
@@ -1320,16 +1382,23 @@
             const preferred = item.contractionPairs.filter(p => p.full !== pair.full).map(p => p.full);
             const options = makeFourOptions(pair.full, preferred, allFull);
             if (!options) return null;
-            const marked = pair.example.replace(new RegExp(pair.short.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'), m => '<b>' + m + '</b>');
+            const marked = pair.example.replace(pair.short, '<b>' + pair.short + '</b>');
             return {itemId:item.id, subKey:'contraction', type:'choice', typeBadge:'省略形クイズ', questionText:'“' + marked + '” の <b>' + pair.short + '</b> は何の省略？', options, correctAnswer:pair.full};
         }
 
         function generateQuizQuestions(mode, count) {
-            const words = rawDatabase.filter(i => i.type === 'word');
-            const allItems = rawDatabase;
+            // Quiz questions and distractors come only from cards already shown at least once in flashcards.
+            const eligibleItems = rawDatabase.filter(i => {
+                const st = appData.itemsState[i.id];
+                return st && st.seenInFlashcards === true;
+            });
+            if (!eligibleItems.length) return [];
+
+            const words = eligibleItems.filter(i => i.type === 'word');
+            const allItems = eligibleItems;
             const allJapanese = uniqueValues(allItems.map(i => i.japanese));
             const allEnglish = uniqueValues(allItems.map(i => i.english));
-            const allForms = uniqueValues(allItems.flatMap(i => (i.forms || []).filter(f => !f.lowFrequency && !f.quizExclude).map(f => f.formName)));
+            const allForms = uniqueValues(allItems.flatMap(i => (i.forms || []).filter(f => !f.lowFrequency).map(f => f.formName)));
             const generated = [];
             let attempts = 0;
             while (generated.length < count && attempts < count * 80) {
@@ -1349,26 +1418,30 @@
                     const item = allItems[Math.floor(Math.random() * allItems.length)];
                     const options = makeFourOptions(item.japanese, [], allJapanese);
                     if (options) q = {itemId:item.id, subKey:'meaning', type:'choice', typeBadge:'英語 → 日本語', questionText:item.english, options, correctAnswer:item.japanese};
-                } else if (subType === 'reverse') {
+                } else if (subType === 'reverse' && words.length) {
                     const item = words[Math.floor(Math.random() * words.length)];
                     const options = makeFourOptions(item.english, [], words.map(w => w.english));
                     if (options) q = {itemId:item.id, subKey:'reverse', type:'choice', typeBadge:'日本語 → 英単語', questionText:item.japanese, options, correctAnswer:item.english};
                 } else if (subType === 'form') {
-                    const items = allItems.filter(i => (i.forms || []).length);
-                    const item = items[Math.floor(Math.random() * items.length)];
-                    const validForms = (item.forms || []).filter(f => f.label !== '会話形' && !f.lowFrequency && !f.quizExclude && f.formName);
-                    if (validForms.length) {
-                        const target = validForms[Math.floor(Math.random() * validForms.length)];
-                        const sameLabel = allItems.flatMap(i => (i.forms || []).filter(f => f.label === target.label && !f.lowFrequency && !f.quizExclude).map(f => f.formName));
-                        const options = makeFourOptions(target.formName, validForms.map(f=>f.formName), [...sameLabel,...allForms]);
-                        if (options) q = {itemId:item.id, subKey:target.label, type:'choice', typeBadge:'活用・変化クイズ', questionText:'「' + item.english + '」の ' + target.label + ' は？', options, correctAnswer:target.formName};
+                    const items = allItems.filter(i => (i.forms || []).some(f => f.label !== '会話形' && !f.lowFrequency && f.formName));
+                    if (items.length) {
+                        const item = items[Math.floor(Math.random() * items.length)];
+                        const validForms = (item.forms || []).filter(f => f.label !== '会話形' && !f.lowFrequency && f.formName);
+                        if (validForms.length) {
+                            const target = validForms[Math.floor(Math.random() * validForms.length)];
+                            const sameLabel = allItems.flatMap(i => (i.forms || []).filter(f => f.label === target.label && !f.lowFrequency).map(f => f.formName));
+                            const options = makeFourOptions(target.formName, validForms.map(f=>f.formName), [...sameLabel,...allForms]);
+                            if (options) q = {itemId:item.id, subKey:target.label, type:'choice', typeBadge:'活用・変化クイズ', questionText:'「' + item.english + '」の ' + target.label + ' は？', options, correctAnswer:target.formName};
+                        }
                     }
-                } else if (subType === 'fill') {
-                    const fillItems = words.filter(i => (i.forms || []).some(f => f.example && f.formName));
-                    const item = fillItems[Math.floor(Math.random() * fillItems.length)];
-                    q = buildFillBlankCandidate(item);
+                } else if (subType === 'fill' && words.length) {
+                    const fillItems = words.filter(i => (i.forms || []).some(f => f.example && f.exampleJa && f.formName && !f.lowFrequency));
+                    if (fillItems.length) {
+                        const item = fillItems[Math.floor(Math.random() * fillItems.length)];
+                        q = buildFillBlankCandidate(item);
+                    }
                 } else if (subType === 'contraction') {
-                    q = buildContractionQuestion();
+                    q = buildContractionQuestion(eligibleItems);
                 }
                 if (q) generated.push(q);
             }
@@ -1423,7 +1496,7 @@
             input.className = 'w-full rounded-xl px-4 py-3 text-base border font-semibold ' + (isCorrect ? 'bg-[#e8f8f1] border-[#34d399] text-[#065f46]' : 'bg-[#fdf0f2] border-[#fb7185] text-[#9f1239]');
 
             // Reveal the correct word in the blank above without adding a separate answer message.
-            const answeredSentence = String(q.questionText || '').replace(q.blankText || '_____', '<span class="text-[#2b2927] font-extrabold">' + q.correctAnswer + '</span>');
+            const answeredSentence = String(q.questionText || '').replace('_____', '<span class="text-[#2b2927] font-extrabold">' + q.correctAnswer + '</span>');
             document.getElementById('quiz-question-text').innerHTML = '<div class="text-sm font-bold text-[#64748b] mb-3 leading-relaxed">' + (q.questionJa || '') + '</div><div>' + answeredSentence + '</div>';
 
             const container = document.getElementById('quiz-options-container');
