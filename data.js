@@ -1664,9 +1664,9 @@ const rawDatabase = [
         "exampleJa": "彼は今カナダに住んでいます。"
       }
     ],
-    "changeType": "規則変化 (-ed)<br>live[laɪv] → lived[lɪvd] → lived[lɪvd]",
+    "changeType": "規則変化 (-ed)<br>live[lɪv] → lived[lɪvd] → lived[lɪvd]",
     "searchKeywords": "live 住む／生きる 住む／生きる 生活",
-    "beginnerTip": "live は住んでいること。stay は一時的に泊まる・とどまること。"
+    "beginnerTip": "live＝生活の拠点として住む。stay＝一時的に泊まる・滞在する。"
   },
   {
     "id": "v_eat",
@@ -1783,7 +1783,7 @@ const rawDatabase = [
     ],
     "changeType": "不規則 A-B-C<br>drink[dɹɪŋk] → drank[dɹæŋk] → drunk[dɹʌŋk]",
     "searchKeywords": "drink 飲む／飲み物 飲む 飲み物 食事",
-    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。"
+    "beginnerTip": "drink は「飲む」という動詞のほか、「飲み物」という名詞でも使う。a drink＝飲み物1杯・1つ。文脈によってはお酒を指すこともある。"
   },
   {
     "id": "v_buy",
@@ -2062,8 +2062,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則変化 (y→ied)<br>try[tɹaɪ] → tried[tɹaɪd] → tried[tɹaɪd]",
-    "searchKeywords": "try 試す／やってみる／試み／挑戦 試す／やってみる 試み／挑戦 行動",
-    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。"
+    "searchKeywords": "try 試す／やってみる／試み／挑戦 試す／やってみる 試み／挑戦 行動"
   },
   {
     "id": "v_feel",
@@ -2150,8 +2149,8 @@ const rawDatabase = [
       {
         "label": "過去形",
         "formName": "remembered",
-        "example": "I remembered the key.",
-        "exampleJa": "鍵のことを思い出しました。"
+        "example": "I remembered where I put my keys.",
+        "exampleJa": "鍵をどこに置いたか思い出しました。"
       },
       {
         "label": "過去分詞",
@@ -2163,7 +2162,8 @@ const rawDatabase = [
         "label": "ing形",
         "formName": "remembering",
         "example": "I'm remembering more now.",
-        "exampleJa": "今少しずつ思い出しています。"
+        "exampleJa": "今少しずつ思い出しています。",
+        "lowFrequency": true
       }
     ],
     "changeType": "規則変化 (-ed)<br>remember[ɹɪˈmɛmbɚ] → remembered[ɹɪˈmɛmbɚd] → remembered[ɹɪˈmɛmbɚd]",
@@ -2273,7 +2273,6 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則（綴りは同じ・発音が変わる）<br>read[ɹid] → read[ɹɛd] → read[ɹɛd]",
-    "beginnerTip": "過去形・過去分詞の read は綴りは同じですが発音が変わる。",
     "searchKeywords": "read 読む 読む 学習"
   },
   {
@@ -3790,7 +3789,7 @@ const rawDatabase = [
       "gonna"
     ],
     "searchKeywords": "be going to + 動詞（原形） 〜する予定／〜するつもり 〜する予定／〜するつもり 予定",
-    "beginnerTip": "前から決めていた予定・つもりに使います（I'm going to study tonight.）。その場で決めたときは I'll を使います（I'll help you.）。今の状況から見て「そうなりそう」と言うときにも使います（It's going to rain.）。"
+    "beginnerTip": "前から決めていた予定・つもりに使います（I'm going to study tonight.）。その場で決めたときは I'll を使います（I'll help you.）。今の状況から見て「そうなりそう」と言うときにも使います（It's going to rain.）。<br>I'm going to cry.（泣きそう）"
   },
   {
     "id": "exp_want_to",

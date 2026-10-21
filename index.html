@@ -64,17 +64,14 @@
             font-size: 16px !important;
         }
 
-        /* Keep the weak flashcard centered like the regular card. */
-        #flashcard-modal.weak-practice-mode #flashcard-stage {
-            flex-direction: column;
-            gap: 8px;
-        }
-        #flashcard-modal.weak-practice-mode #flashcard-card-body {
-            flex: 0 1 auto;
-        }
+        /* Identical card centering for regular and weak practice. */
+        #flashcard-stage { position: relative; }
         #flashcard-modal.weak-practice-mode #flashcard-action-bar {
+            position: absolute;
+            left: 0;
+            top: calc(50% + var(--weak-card-half-height, 210px) + 8px);
             width: 100%;
-            flex-shrink: 0;
+            z-index: 2;
         }
     </style>
 </head>
@@ -762,13 +759,30 @@
             document.getElementById('bar-expr').style.width = `${stats.exprPercent}%`;
         }
 
+        // The card stays centered by the shared stage layout; the weak Next button
+        // is positioned separately, using the actual rendered card height.
+        function updateWeakButtonPosition() {
+            if (!isDedicatedWeakPractice) return;
+            const stage = document.getElementById('flashcard-stage');
+            const card = document.getElementById('flashcard-card-body');
+            if (!stage || !card) return;
+            stage.style.setProperty('--weak-card-half-height', `${card.getBoundingClientRect().height / 2}px`);
+        }
+        window.addEventListener('resize', updateWeakButtonPosition);
+        document.addEventListener('DOMContentLoaded', () => {
+            const card = document.getElementById('flashcard-card-body');
+            if (card && typeof ResizeObserver !== 'undefined') {
+                new ResizeObserver(updateWeakButtonPosition).observe(card);
+            }
+        });
+
         function startFlashcards(isWeakOnly = false) {
             isDedicatedWeakPractice = isWeakOnly;
             document.getElementById('flashcard-modal').classList.toggle('weak-practice-mode', isWeakOnly);
             const bar = document.getElementById('flashcard-action-bar');
             const stage = document.getElementById('flashcard-stage');
             const modal = document.getElementById('flashcard-modal');
-            // Weak mode: keep the card and its Next button together in the centered stage.
+            // Weak mode: position Next below the card without shifting its center.
             // Regular mode: keep the existing bottom action bar unchanged.
             if (isWeakOnly) stage.appendChild(bar);
             else modal.appendChild(bar);
@@ -883,6 +897,7 @@
                     <span class="text-xs font-bold text-[#78829c] bg-[#f4efe8] px-4 py-2 rounded-xl inline-block shadow-sm border border-[#e5dfd7]">答えを見る</span>
                 </div>
             `;
+            updateWeakButtonPosition();
             document.getElementById('flashcard-action-bar').innerHTML = isDedicatedWeakPractice ? '' : `
                 <button onclick="closeFlashcards()" class="bg-[#f4efe8] hover:bg-[#eae4dc] text-[#5c534c] font-bold py-3 rounded-2xl text-sm transition border border-[#e5dfd7] col-span-2 shadow-sm">終了する</button>
             `;
@@ -945,6 +960,7 @@
 
             backHtml += `</div>`;
             document.getElementById('flashcard-card-body').innerHTML = backHtml;
+            updateWeakButtonPosition();
 
             if (isDedicatedWeakPractice) {
                 document.getElementById('flashcard-action-bar').innerHTML = `
