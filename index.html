@@ -64,15 +64,8 @@
             font-size: 16px !important;
         }
 
-        /* Identical card centering for regular and weak practice. */
-        #flashcard-stage { position: relative; }
-        #flashcard-modal.weak-practice-mode #flashcard-action-bar {
-            position: absolute;
-            left: 0;
-            top: calc(50% + var(--weak-card-half-height, 210px) + 8px);
-            width: 100%;
-            z-index: 2;
-        }
+        /* Weak practice keeps the same action-bar footprint as regular practice. */
+        #flashcard-modal.weak-practice-mode #flashcard-action-bar { visibility: hidden; pointer-events: none; }
     </style>
 </head>
 <body class="min-h-screen pb-24">
@@ -263,7 +256,7 @@
 
     </main>
 
-    <div id="flashcard-modal" class="fixed inset-0 bg-[#2b2927]/60 z-50 hidden flex flex-col justify-between p-4 sm:p-8 backdrop-blur-sm">
+    <div id="flashcard-modal" onclick="handleWeakModalTap(event)" ontouchstart="weakTapStart(event)" ontouchmove="weakTapMove(event)" class="fixed inset-0 bg-[#2b2927]/60 z-50 hidden flex flex-col justify-between p-4 sm:p-8 backdrop-blur-sm">
         <div class="flex justify-between items-center max-w-md mx-auto w-full">
             <div class="text-xs font-bold bg-[#faf8f5] border border-[#e5dfd7] px-3 py-1 rounded-full text-[#4a4540] shadow-sm" id="flashcard-counter">カード 1 / 10</div>
             <button onclick="closeFlashcards()" class="w-9 h-9 rounded-full bg-[#faf8f5] hover:bg-[#f0ece5] text-[#2b2927] flex items-center justify-center font-bold text-lg border border-[#e5dfd7] shadow-sm">✕</button>
@@ -759,22 +752,26 @@
             document.getElementById('bar-expr').style.width = `${stats.exprPercent}%`;
         }
 
-        // The card stays centered by the shared stage layout; the weak Next button
-        // is positioned separately, using the actual rendered card height.
-        function updateWeakButtonPosition() {
-            if (!isDedicatedWeakPractice) return;
-            const stage = document.getElementById('flashcard-stage');
-            const card = document.getElementById('flashcard-card-body');
-            if (!stage || !card) return;
-            stage.style.setProperty('--weak-card-half-height', `${card.getBoundingClientRect().height / 2}px`);
+        // Ignore a drag/scroll gesture when advancing weak flashcards.
+        let weakTapOrigin = null;
+        let weakTapDragged = false;
+        function weakTapStart(event) {
+            if (!isDedicatedWeakPractice || !event.touches.length) return;
+            weakTapDragged = false;
+            weakTapOrigin = { x: event.touches[0].clientX, y: event.touches[0].clientY };
         }
-        window.addEventListener('resize', updateWeakButtonPosition);
-        document.addEventListener('DOMContentLoaded', () => {
-            const card = document.getElementById('flashcard-card-body');
-            if (card && typeof ResizeObserver !== 'undefined') {
-                new ResizeObserver(updateWeakButtonPosition).observe(card);
-            }
-        });
+        function weakTapMove(event) {
+            if (!weakTapOrigin || !event.touches.length) return;
+            if (Math.abs(event.touches[0].clientX - weakTapOrigin.x) > 10 ||
+                Math.abs(event.touches[0].clientY - weakTapOrigin.y) > 10) weakTapDragged = true;
+        }
+        function handleWeakModalTap(event) {
+            if (!isDedicatedWeakPractice || weakTapDragged || event.target.closest('button')) return;
+            // Card clicks are already handled by the card handler below.
+            if (event.target.closest('#flashcard-card-body')) return;
+            if (isCardFlipped) handleWeakPracticeResult();
+            else flipFlashcard(event);
+        }
 
         function startFlashcards(isWeakOnly = false) {
             isDedicatedWeakPractice = isWeakOnly;
@@ -782,10 +779,8 @@
             const bar = document.getElementById('flashcard-action-bar');
             const stage = document.getElementById('flashcard-stage');
             const modal = document.getElementById('flashcard-modal');
-            // Weak mode: position Next below the card without shifting its center.
-            // Regular mode: keep the existing bottom action bar unchanged.
-            if (isWeakOnly) stage.appendChild(bar);
-            else modal.appendChild(bar);
+            // Keep the normal modal structure in both modes so card center is identical.
+            modal.appendChild(bar);
             const now = new Date();
 
             if (isWeakOnly) {
@@ -850,8 +845,11 @@
         }
 
         function handleCardBodyClick(e) {
-            if (!isCardFlipped) {
-                flipFlashcard(e);
+            if (isDedicatedWeakPractice && weakTapDragged) return;
+            if (!isCardFlipped) flipFlashcard(e);
+            else if (isDedicatedWeakPractice && !e.target.closest('button')) {
+                e.stopPropagation();
+                handleWeakPracticeResult();
             }
         }
 
@@ -897,8 +895,7 @@
                     <span class="text-xs font-bold text-[#78829c] bg-[#f4efe8] px-4 py-2 rounded-xl inline-block shadow-sm border border-[#e5dfd7]">答えを見る</span>
                 </div>
             `;
-            updateWeakButtonPosition();
-            document.getElementById('flashcard-action-bar').innerHTML = isDedicatedWeakPractice ? '' : `
+            document.getElementById('flashcard-action-bar').innerHTML = `
                 <button onclick="closeFlashcards()" class="bg-[#f4efe8] hover:bg-[#eae4dc] text-[#5c534c] font-bold py-3 rounded-2xl text-sm transition border border-[#e5dfd7] col-span-2 shadow-sm">終了する</button>
             `;
         }
@@ -960,19 +957,13 @@
 
             backHtml += `</div>`;
             document.getElementById('flashcard-card-body').innerHTML = backHtml;
-            updateWeakButtonPosition();
 
-            if (isDedicatedWeakPractice) {
-                document.getElementById('flashcard-action-bar').innerHTML = `
-                    <button onclick="handleWeakPracticeResult()" class="bg-[#78829c] hover:bg-[#68728c] text-white font-bold py-3 rounded-2xl text-sm shadow-md transition col-span-2 border border-[#68728c]">次へ</button>
-                `;
-            } else {
-                document.getElementById('flashcard-action-bar').innerHTML = `
-                    <button onclick="handleFlashcardResult('again')" class="bg-rose-100 hover:bg-rose-200 text-rose-800 font-bold py-3 rounded-2xl text-sm border border-rose-300 transition">Again</button>
-                    <button onclick="handleFlashcardResult('unsure')" class="bg-amber-100 hover:bg-amber-200 text-amber-800 font-bold py-3 rounded-2xl text-sm border border-amber-300 transition">Unsure</button>
-                    <button onclick="handleFlashcardResult('got_it')" class="bg-[#e8f8f1] hover:bg-[#d1f5e6] text-[#065f46] font-bold py-3 rounded-2xl text-sm shadow-md transition col-span-2 border border-[#34d399]">Got it</button>
-                `;
-            }
+            // The action bar is hidden in weak practice, but retains its usual height.
+            document.getElementById('flashcard-action-bar').innerHTML = `
+                <button onclick="handleFlashcardResult('again')" class="bg-rose-100 hover:bg-rose-200 text-rose-800 font-bold py-3 rounded-2xl text-sm border border-rose-300 transition">Again</button>
+                <button onclick="handleFlashcardResult('unsure')" class="bg-amber-100 hover:bg-amber-200 text-amber-800 font-bold py-3 rounded-2xl text-sm border border-amber-300 transition">Unsure</button>
+                <button onclick="handleFlashcardResult('got_it')" class="bg-[#e8f8f1] hover:bg-[#d1f5e6] text-[#065f46] font-bold py-3 rounded-2xl text-sm shadow-md transition col-span-2 border border-[#34d399]">Got it</button>
+            `;
         }
 
         function handleWeakPracticeResult() {
