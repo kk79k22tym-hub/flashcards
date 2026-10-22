@@ -411,6 +411,7 @@
                     <div class="text-xs font-bold text-[#64748b] mb-1">${part.heading}</div>
                     <div class="font-bold text-[#2b2927]">${part.word} — ${part.meaning}</div>
                     <div class="text-xs text-[#2b2927]">${part.example} <span class="text-[#64748b]">（${part.exampleJa}）</span></div>
+                    ${part.changeNote ? `<div class="text-xs text-[#64748b] mt-1.5">${part.changeNote}</div>` : ''}
                 </div>`).join('') + `</div>`;
         }
 

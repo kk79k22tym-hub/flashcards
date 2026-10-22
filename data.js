@@ -1,4 +1,4 @@
-// Flashcards: updated 2026-10-22; stable IDs preserved for existing cards
+// Flashcards: confirmed updates 2026-10-22; existing IDs retained
 const rawDatabase = [
   {
     "id": "v_be",
@@ -2972,11 +2972,11 @@ const rawDatabase = [
     ],
     "category": "体調",
     "english": "tired",
-    "japanese": "疲れた",
+    "japanese": "疲れた／眠い",
     "senses": [
       {
         "pos": "形容詞",
-        "meaning": "疲れた",
+        "meaning": "疲れた／眠い",
         "category": "体調"
       }
     ],
@@ -3001,7 +3001,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "more / most を使う",
-    "searchKeywords": "tired 疲れた 疲れた 体調"
+    "searchKeywords": "tired 疲れた 疲れた 体調 眠い"
   },
   {
     "id": "adj_busy",
@@ -3219,36 +3219,16 @@ const rawDatabase = [
     ],
     "category": "感情",
     "english": "interested / interesting",
-    "japanese": "興味がある／面白い・興味深い",
+    "japanese": "興味がある／興味深い",
     "senses": [
       {
         "pos": "形容詞",
-        "meaning": "興味がある／面白い・興味深い",
+        "meaning": "興味がある／興味深い",
         "category": "感情"
       }
     ],
-    "forms": [
-      {
-        "label": "原級",
-        "formName": "interesting",
-        "example": "This book is interesting.",
-        "exampleJa": "この本は面白いです。"
-      },
-      {
-        "label": "比較級",
-        "formName": "more interesting",
-        "example": "The second story is more interesting.",
-        "exampleJa": "2つ目の話の方が面白いです。"
-      },
-      {
-        "label": "最上級",
-        "formName": "most interesting",
-        "example": "That was the most interesting part.",
-        "exampleJa": "そこが一番面白い部分でした。"
-      }
-    ],
-    "changeType": "interesting は比較変化あり（more / most）",
-    "searchKeywords": "interesting 興味深い／面白い 興味深い／面白い 感情 interested 興味がある",
+    "forms": [],
+    "searchKeywords": "interested interesting 興味がある 興味深い 感情",
     "emotionPair": [
       {
         "heading": "自身が感じる感情",
@@ -3260,9 +3240,10 @@ const rawDatabase = [
       {
         "heading": "対象が他者に感じさせる感情",
         "word": "interesting",
-        "meaning": "面白い・興味深い",
+        "meaning": "興味深い",
         "example": "Different cultures are interesting.",
-        "exampleJa": "さまざまな文化は興味深いです。"
+        "exampleJa": "さまざまな文化は興味深いです。",
+        "changeNote": "変化タイプ：interesting は比較変化あり（more / most）"
       }
     ]
   },
@@ -3288,10 +3269,23 @@ const rawDatabase = [
         "formName": "different",
         "example": "This one is different.",
         "exampleJa": "これは違います。"
+      },
+      {
+        "label": "比較級",
+        "formName": "more different",
+        "example": "They're more different than I expected.",
+        "exampleJa": "それらは思っていた以上に違います。",
+        "lowFrequency": true
+      },
+      {
+        "label": "最上級",
+        "formName": "most different",
+        "example": "This one is the most different.",
+        "exampleJa": "これが一番違います。",
+        "lowFrequency": true
       }
     ],
-    "changeType": "比較級は必要なとき more を使える",
-    "beginnerTip": "different は通常、語形を変えて比較する単語として覚える必要はない。必要に応じて more different と言うことはある。",
+    "changeType": "比較変化はあるが、通常は原級を使う。",
     "searchKeywords": "different 違う／異なる 違う／異なる 比較"
   },
   {
@@ -3319,7 +3313,7 @@ const rawDatabase = [
         "pos": "副詞"
       }
     ],
-    "beginnerTip": "形容詞や動詞などを強めるほか、Really? だけで「本当に？」とも言える。強さの目安：really（とても）＞ quite（かなり）＞ kind of（ちょっと）＞ a little（少し）。",
+    "beginnerTip": "really は「本当に」「とても」の意味で気持ちを強める。Really? だけで「本当に？」と聞くこともできる。",
     "searchKeywords": "really 本当に／とても 本当に／とても 強調"
   },
   {
@@ -3342,12 +3336,33 @@ const rawDatabase = [
       {
         "label": "基本用法",
         "formName": "actually",
-        "example": "Actually, I do not know.",
+        "example": "Actually, I don't know.",
         "exampleJa": "実は、分かりません。",
+        "pos": "副詞"
+      },
+      {
+        "label": "基本用法",
+        "formName": "actually",
+        "example": "Actually, I don't like coffee.",
+        "exampleJa": "実は、コーヒーが好きじゃないんだ。",
+        "pos": "副詞"
+      },
+      {
+        "label": "基本用法",
+        "formName": "actually",
+        "example": "Actually, I'll have tea instead.",
+        "exampleJa": "いや、やっぱり紅茶にします。",
+        "pos": "副詞"
+      },
+      {
+        "label": "基本用法",
+        "formName": "actually",
+        "example": "This is actually pretty good!",
+        "exampleJa": "これ、意外とかなりおいしい！",
         "pos": "副詞"
       }
     ],
-    "beginnerTip": "相手の予想と違うことを言うときや、言い直しでよく使う。",
+    "beginnerTip": "actually は「実は」「実際には」という意味。相手の予想と違うことを伝えたり、前の発言を訂正したりするときに使う。文脈によって「やっぱり」「意外と」と訳すこともある。",
     "searchKeywords": "actually 実は／実際には 実は／実際には 会話"
   },
   {
@@ -3373,6 +3388,13 @@ const rawDatabase = [
         "example": "I will probably go.",
         "exampleJa": "たぶん行きます。",
         "pos": "副詞"
+      },
+      {
+        "label": "基本用法",
+        "formName": "probably",
+        "example": "Probably.",
+        "exampleJa": "たぶんね。※質問への返答",
+        "pos": "副詞"
       }
     ],
     "beginnerTip": "maybe より「そうなる可能性が高い」という感じで使われることが多い。",
@@ -3386,11 +3408,11 @@ const rawDatabase = [
     ],
     "category": "確信度",
     "english": "definitely",
-    "japanese": "絶対に／間違いなく",
+    "japanese": "絶対に／間違いなく／もちろん",
     "senses": [
       {
         "pos": "副詞",
-        "meaning": "絶対に／間違いなく",
+        "meaning": "絶対に／間違いなく／もちろん",
         "category": "確信度"
       }
     ],
@@ -3398,13 +3420,62 @@ const rawDatabase = [
       {
         "label": "基本用法",
         "formName": "definitely",
-        "example": "I will definitely call you.",
-        "exampleJa": "絶対に電話します。",
+        "example": "I'll definitely call you.",
+        "exampleJa": "絶対に電話するね。",
+        "pos": "副詞"
+      },
+      {
+        "label": "基本用法",
+        "formName": "definitely",
+        "example": "Definitely!",
+        "exampleJa": "絶対に！／もちろん！ ※質問や誘いへの返答",
         "pos": "副詞"
       }
     ],
-    "beginnerTip": "probably より確信が強い表現。",
+    "beginnerTip": "definitely は確信や意思を強調する。absolutely と意味は近いが、definitely は内容の確実さを伝えることが中心。",
     "searchKeywords": "definitely 絶対に／間違いなく 絶対に／間違いなく 確信度"
+  },
+  {
+    "id": "adv_absolutely",
+    "type": "word",
+    "partOfSpeech": [
+      "副詞"
+    ],
+    "category": "確信度",
+    "english": "absolutely",
+    "japanese": "絶対に／完全に／もちろん",
+    "senses": [
+      {
+        "pos": "副詞",
+        "meaning": "絶対に／完全に／もちろん",
+        "category": "確信度"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本用法",
+        "formName": "absolutely",
+        "example": "You're absolutely right.",
+        "exampleJa": "あなたの言うとおりだよ！",
+        "pos": "副詞"
+      },
+      {
+        "label": "基本用法",
+        "formName": "absolutely",
+        "example": "I absolutely love this place!",
+        "exampleJa": "ここが本当に大好き！",
+        "pos": "副詞"
+      },
+      {
+        "label": "基本用法",
+        "formName": "absolutely",
+        "example": "Absolutely!",
+        "exampleJa": "もちろん！／絶対に！ ※質問や誘いへの返答",
+        "pos": "副詞"
+      }
+    ],
+    "beginnerTip": "absolutely は強い肯定や気持ちを表す。definitely と意味は近いが、absolutely は同意や感情の強さを伝えることが中心。",
+    "searchKeywords": "absolutely 絶対に 完全に もちろん 強調 確信度"
   },
   {
     "id": "adv_usually",
@@ -3429,9 +3500,23 @@ const rawDatabase = [
         "example": "I usually wake up early.",
         "exampleJa": "普段は早く起きます。",
         "pos": "副詞"
+      },
+      {
+        "label": "基本用法",
+        "formName": "usually",
+        "example": "I'm usually busy on Mondays.",
+        "exampleJa": "月曜日はたいてい忙しいです。",
+        "pos": "副詞"
+      },
+      {
+        "label": "基本用法",
+        "formName": "usually",
+        "example": "Usually.",
+        "exampleJa": "たいていはね。※質問への返答",
+        "pos": "副詞"
       }
     ],
-    "beginnerTip": "always より頻度が低く、「たいてい」の感覚。",
+    "beginnerTip": "usually は「普段は・たいてい」という習慣や普段の状態を表す。一般動詞の前、be動詞の後ろに置くことが多い。",
     "searchKeywords": "usually 普段は／たいてい 普段は／たいてい 頻度"
   },
   {
@@ -3448,13 +3533,6 @@ const rawDatabase = [
         "pos": "副詞",
         "meaning": "正確に／まさに／その通り",
         "category": "会話"
-      },
-      {
-        "pos": "副詞",
-        "meaning": "その通り／まさにそれ（相づち）",
-        "category": "会話",
-        "example": "Exactly! That's what I meant.",
-        "exampleJa": "その通り！それが言いたかったの。"
       }
     ],
     "forms": [
@@ -3465,10 +3543,24 @@ const rawDatabase = [
         "exampleJa": "まさにそういう意味です。",
         "pos": "副詞",
         "needsHint": true
+      },
+      {
+        "label": "基本用法",
+        "formName": "exactly",
+        "example": "Exactly!",
+        "exampleJa": "その通り！ ※質問への返答",
+        "pos": "副詞"
+      },
+      {
+        "label": "基本用法",
+        "formName": "exactly",
+        "example": "It's exactly 5 o'clock.",
+        "exampleJa": "ちょうど5時です。",
+        "pos": "副詞"
       }
     ],
-    "beginnerTip": "単独の Exactly. は「その通り」と強く同意するときにも使う。",
-    "searchKeywords": "exactly 正確に／まさに／その通り 正確に／まさに／その通り 会話 その通り／まさにそれ（相づち） Exactly! That's what I meant."
+    "beginnerTip": "exactly は数字・時間・内容が「正確に一致する」ことを表す。",
+    "searchKeywords": "exactly 正確に まさに その通り 会話"
   },
   {
     "id": "adv_maybe",
@@ -3494,6 +3586,13 @@ const rawDatabase = [
         "exampleJa": "もしかしたら家にいるかも。",
         "pos": "副詞",
         "needsHint": true
+      },
+      {
+        "label": "基本用法",
+        "formName": "maybe",
+        "example": "Maybe.",
+        "exampleJa": "そうかもね。／たぶんね。※質問への返答",
+        "pos": "副詞"
       }
     ],
     "beginnerTip": "probably より確信が弱い「もしかしたら」に近い使い方が多い。",
@@ -3522,9 +3621,24 @@ const rawDatabase = [
         "example": "She always helps me.",
         "exampleJa": "彼女はいつも助けてくれます。",
         "pos": "副詞"
+      },
+      {
+        "label": "基本用法",
+        "formName": "always",
+        "example": "I'm always busy.",
+        "exampleJa": "私はいつも忙しいです。",
+        "pos": "副詞"
+      },
+      {
+        "label": "基本用法",
+        "formName": "always",
+        "example": "I'll always remember this.",
+        "exampleJa": "このことはずっと忘れないよ。",
+        "pos": "副詞"
       }
     ],
-    "searchKeywords": "always いつも／常に いつも／常に 頻度"
+    "searchKeywords": "always いつも／常に いつも／常に 頻度",
+    "beginnerTip": "一般動詞の前、be動詞の後ろに置くことが多い。"
   },
   {
     "id": "adv_sometimes",
@@ -3548,6 +3662,13 @@ const rawDatabase = [
         "formName": "sometimes",
         "example": "I sometimes eat out.",
         "exampleJa": "ときどき外食します。",
+        "pos": "副詞"
+      },
+      {
+        "label": "基本用法",
+        "formName": "sometimes",
+        "example": "Sometimes I cook at home.",
+        "exampleJa": "ときどき家で料理します。",
         "pos": "副詞"
       }
     ],
@@ -3575,6 +3696,13 @@ const rawDatabase = [
         "formName": "never",
         "example": "I never drink coffee at night.",
         "exampleJa": "夜はコーヒーを飲みません。",
+        "pos": "副詞"
+      },
+      {
+        "label": "基本用法",
+        "formName": "never",
+        "example": "I'm never late.",
+        "exampleJa": "私は決して遅刻しません。",
         "pos": "副詞"
       }
     ],
@@ -3604,9 +3732,16 @@ const rawDatabase = [
         "example": "I already ate.",
         "exampleJa": "もう食べました。",
         "pos": "副詞"
+      },
+      {
+        "label": "基本用法",
+        "formName": "already",
+        "example": "Are you already home?",
+        "exampleJa": "もう家にいるの？",
+        "pos": "副詞"
       }
     ],
-    "beginnerTip": "「予想より早く、もう」という感覚を含むことがある。",
+    "beginnerTip": "already は「すでに・もう」という意味。予想より早く何かが終わったり、ある状態になっていたりするときには、驚きの気持ちを含むこともある。",
     "searchKeywords": "already すでに／もう すでに／もう 時間"
   },
   {
@@ -3618,7 +3753,7 @@ const rawDatabase = [
     ],
     "category": "時間・状態",
     "english": "still",
-    "japanese": "まだ／今でも／じっとした／動かない",
+    "japanese": "まだ／今でも／じっとした／動かない／それでも",
     "senses": [
       {
         "pos": "副詞",
@@ -3631,6 +3766,13 @@ const rawDatabase = [
         "category": "状態",
         "example": "Stay still.",
         "exampleJa": "じっとしていて。"
+      },
+      {
+        "pos": "副詞",
+        "meaning": "それでも",
+        "category": "時間・状態",
+        "example": "Still, I want to try.",
+        "exampleJa": "それでも、やってみたい。"
       }
     ],
     "forms": [
@@ -3642,9 +3784,8 @@ const rawDatabase = [
         "pos": "副詞"
       }
     ],
-    "changeType": "品詞で意味が変わる",
-    "beginnerTip": "「まだ」の still と「じっとした」の still を文の形から見分ける。",
-    "searchKeywords": "still まだ／今でも／じっとした／動かない まだ／今でも じっとした／動かない 時間・状態"
+    "beginnerTip": "still は「まだ」という継続、「じっとした」という状態を表す。文頭では「それでも」という意味でも使う。",
+    "searchKeywords": "still まだ／今でも／じっとした／動かない まだ／今でも じっとした／動かない 時間・状態 それでも"
   },
   {
     "id": "adv_now",
@@ -3679,9 +3820,7 @@ const rawDatabase = [
         "pos": "副詞"
       }
     ],
-    "changeType": "品詞で使い方が変わる",
-    "searchKeywords": "now 今／今すぐ／今／現在 今／今すぐ 今／現在 時間",
-    "beginnerTip": "副詞「今」が基本で冠詞は付けない。"
+    "searchKeywords": "now 今／今すぐ／今／現在 今／今すぐ 今／現在 時間"
   },
   {
     "id": "adv_here",
@@ -9367,23 +9506,24 @@ const rawDatabase = [
     ],
     "category": "感情・状態",
     "english": "exhausted",
-    "japanese": "へとへとに疲れた",
+    "japanese": "疲れ果てた／へとへとになった",
     "senses": [
       {
         "pos": "形容詞",
-        "meaning": "へとへとに疲れた",
+        "meaning": "疲れ果てた／へとへとになった",
         "category": "感情・状態"
       }
     ],
     "forms": [
       {
-        "label": "基本形",
+        "label": "基本用法",
         "formName": "exhausted",
-        "example": "I was exhausted after work.",
-        "exampleJa": "仕事の後はへとへとでした。"
+        "example": "I'm exhausted.",
+        "exampleJa": "もうへとへとだよ。"
       }
     ],
-    "searchKeywords": "exhausted へとへとに疲れた 感情・状態"
+    "searchKeywords": "exhausted へとへとに疲れた 感情・状態 疲れ果てた へとへと",
+    "beginnerTip": "tired は一般的な「疲れた」という状態を表し、exhausted はそれよりも強い疲労を表す。"
   },
   {
     "id": "w_overwhelmed",
