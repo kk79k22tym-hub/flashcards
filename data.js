@@ -1,4 +1,4 @@
-// Flashcards 514 cards - confirmed updates and search UI companion, Oct 20 2026
+// Flashcards: updated 2026-10-22; stable IDs preserved for existing cards
 const rawDatabase = [
   {
     "id": "v_be",
@@ -2295,8 +2295,8 @@ const rawDatabase = [
       {
         "label": "単数形",
         "formName": "person",
-        "example": "There is one person outside.",
-        "exampleJa": "外に1人います。"
+        "example": "She's a nice person.",
+        "exampleJa": "彼女はいい人です。"
       },
       {
         "label": "複数形",
@@ -2306,7 +2306,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則複数形",
-    "beginnerTip": "複数形は persons ではなく、通常 people を使う。 数えられる名詞の単数形では a person のように a / an を付ける。動詞などとして使う場合は不要。",
+    "beginnerTip": "person＝1人、people＝2人以上。通常、person の複数形には people を使う。1人を表す場合は a person のように a を付ける。",
     "searchKeywords": "person 人 人 人 person a person"
   },
   {
@@ -2323,13 +2323,6 @@ const rawDatabase = [
         "pos": "名詞",
         "meaning": "時間",
         "category": "時間"
-      },
-      {
-        "pos": "名詞",
-        "meaning": "回／機会",
-        "category": "時間",
-        "example": "I have been there three times.",
-        "exampleJa": "そこへ3回行ったことがあります。"
       }
     ],
     "forms": [
@@ -2347,7 +2340,6 @@ const rawDatabase = [
       }
     ],
     "changeType": "意味によって数え方が変わる",
-    "beginnerTip": "「時間」の time は数えないことが多く、「〜回」の意味では times と数える。 時間（不可算用法）と「回」（可算用法）があるため、使い方で冠詞が変わる。a time（ある時／1回）、some time（少しの時間）。",
     "searchKeywords": "time 時間／回／機会 時間 回／機会 時間"
   },
   {
@@ -2381,8 +2373,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則複数形 (-s)",
-    "searchKeywords": "day 日／1日 日／1日 時間 day a day",
-    "beginnerTip": "数えられる名詞の単数形では a day のように a / an を付ける。動詞などとして使う場合は不要。"
+    "searchKeywords": "day 日／1日 日／1日 時間 day a day"
   },
   {
     "id": "n_year",
@@ -2422,8 +2413,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則複数形 (-s)",
-    "searchKeywords": "year 年／1年間 年／1年間 時間 year a year",
-    "beginnerTip": "数えられる名詞の単数形では a year のように a / an を付ける。動詞などとして使う場合は不要。"
+    "searchKeywords": "year 年／1年間 年／1年間 時間 year a year"
   },
   {
     "id": "n_place",
@@ -2456,8 +2446,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則複数形 (-s)",
-    "searchKeywords": "place 場所 場所 場所 place a place",
-    "beginnerTip": "数えられる名詞の単数形では a place のように a / an を付ける。動詞などとして使う場合は不要。"
+    "searchKeywords": "place 場所 場所 場所 place a place"
   },
   {
     "id": "n_home",
@@ -2493,7 +2482,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "品詞で使い方が変わる",
-    "beginnerTip": "go home の home の前には通常 to を付けない。 「家に／家へ」は at home / go home のように冠詞なし。a home は「住まい1軒」を指す場合。",
+    "beginnerTip": "「家に帰る」は go home（to は不要）。「家にいる」は at home。",
     "searchKeywords": "home 家／家庭／家へ／家に 家／家庭 家へ／家に 場所"
   },
   {
@@ -2526,8 +2515,7 @@ const rawDatabase = [
         "exampleJa": "いろいろな種類の食べ物を試すのが好きです。"
       }
     ],
-    "changeType": "通常は不可算・種類を表すとき複数可",
-    "beginnerTip": "普段の「食べ物」は food のまま使うことが多い。 通常は不可算名詞。some food（食べ物）、a kind of food（食べ物の一種）。",
+    "changeType": "規則複数形 (-s)",
     "searchKeywords": "food 食べ物／食事 食べ物／食事 食事"
   },
   {
@@ -2595,8 +2583,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則複数形 (-s)",
-    "searchKeywords": "language 言語 言語 学習",
-    "beginnerTip": "可算名詞。a language（1つの言語）。"
+    "searchKeywords": "language 言語 言語 学習"
   },
   {
     "id": "n_thing",
@@ -2618,8 +2605,8 @@ const rawDatabase = [
       {
         "label": "単数形",
         "formName": "thing",
-        "example": "That is the important thing.",
-        "exampleJa": "それが大事なことです。"
+        "example": "That's a good thing.",
+        "exampleJa": "それはいいことです。"
       },
       {
         "label": "複数形",
@@ -2629,8 +2616,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則複数形 (-s)",
-    "searchKeywords": "thing もの／こと もの／こと 基本名詞 thing a thing",
-    "beginnerTip": "数えられる名詞の単数形では a thing のように a / an を付ける。動詞などとして使う場合は不要。"
+    "searchKeywords": "thing もの／こと もの／こと 基本名詞 thing a thing"
   },
   {
     "id": "n_problem",
@@ -2663,8 +2649,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則複数形 (-s)",
-    "searchKeywords": "problem 問題／困りごと 問題／困りごと 日常生活 problem a problem",
-    "beginnerTip": "数えられる名詞の単数形では a problem のように a / an を付ける。動詞などとして使う場合は不要。"
+    "searchKeywords": "problem 問題／困りごと 問題／困りごと 日常生活 problem a problem"
   },
   {
     "id": "adj_good",
@@ -2938,7 +2923,7 @@ const rawDatabase = [
     ],
     "changeType": "y→ier / iest",
     "searchKeywords": "happy 幸せな／嬉しい 幸せな／嬉しい 感情",
-    "beginnerTip": "happy は幸せ・嬉しい気分の状態。glad は出来事に対して「よかった」と思う嬉しさ。"
+    "beginnerTip": "happy＝嬉しい・幸せな気持ちや状態。glad＝何かに対して「嬉しい・よかった」と感じるときによく使う。意味が重なる場面も多い。"
   },
   {
     "id": "adj_sad",
@@ -3098,10 +3083,15 @@ const rawDatabase = [
         "label": "比較級",
         "formName": "freer",
         "lowFrequency": true
+      },
+      {
+        "label": "最上級",
+        "formName": "freest",
+        "lowFrequency": true
       }
     ],
-    "changeType": "意味によって訳が大きく変わる",
-    "beginnerTip": "「暇な」の比較は freer より、more free time など別の言い方をすることが多い。freer は主に「より自由な」の意味で使われる。",
+    "changeType": "規則比較変化（-r / -st）。freer / freest は主に「より／最も自由な」の比較。",
+    "beginnerTip": "「暇な」の比較は freer より、more free time など別の言い方をすることが多い。",
     "searchKeywords": "free 暇な／無料の／自由な 暇な 無料の 自由な 時間"
   },
   {
@@ -3228,12 +3218,12 @@ const rawDatabase = [
       "形容詞"
     ],
     "category": "感情",
-    "english": "interesting",
-    "japanese": "興味深い／面白い",
+    "english": "interested / interesting",
+    "japanese": "興味がある／面白い・興味深い",
     "senses": [
       {
         "pos": "形容詞",
-        "meaning": "興味深い／面白い",
+        "meaning": "興味がある／面白い・興味深い",
         "category": "感情"
       }
     ],
@@ -3257,9 +3247,24 @@ const rawDatabase = [
         "exampleJa": "そこが一番面白い部分でした。"
       }
     ],
-    "changeType": "more / most を使う",
-    "beginnerTip": "interesting は「興味を持たせる側」、interested は「興味を持っている人」の状態。",
-    "searchKeywords": "interesting 興味深い／面白い 興味深い／面白い 感情"
+    "changeType": "interesting は比較変化あり（more / most）",
+    "searchKeywords": "interesting 興味深い／面白い 興味深い／面白い 感情 interested 興味がある",
+    "emotionPair": [
+      {
+        "heading": "自身が感じる感情",
+        "word": "interested",
+        "meaning": "興味がある",
+        "example": "I'm interested in different cultures.",
+        "exampleJa": "私はさまざまな文化に興味があります。"
+      },
+      {
+        "heading": "対象が他者に感じさせる感情",
+        "word": "interesting",
+        "meaning": "面白い・興味深い",
+        "example": "Different cultures are interesting.",
+        "exampleJa": "さまざまな文化は興味深いです。"
+      }
+    ]
   },
   {
     "id": "adj_different",
@@ -3737,7 +3742,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "特殊な用法あり",
-    "beginnerTip": "There is / There are の there は「そこ」という場所を指す通常の there とは働きが異なる。",
+    "beginnerTip": "場所を示す there＝そこ・あそこ。There is / There are は「〜がある・いる」という表現。there’s は there is の短縮形。",
     "searchKeywords": "there そこに／そこで そこに／そこで 場所"
   },
   {
@@ -7269,7 +7274,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "変化なし",
-    "searchKeywords": "recently 最近 最近 時間"
+    "searchKeywords": "recently 最近 最近 時間",
+    "beginnerTip": "recently＝最近起きた出来事にも使う。lately＝最近から今にかけての様子や変化に使うことが多い。意味が重なる場面もある。"
   },
   {
     "id": "adv_soon",
@@ -7715,25 +7721,53 @@ const rawDatabase = [
       "形容詞"
     ],
     "category": "感情",
-    "english": "excited",
-    "japanese": "ワクワクした／興奮した",
+    "english": "excited / exciting",
+    "japanese": "ワクワクしている／ワクワクさせる",
     "senses": [
       {
         "pos": "形容詞",
-        "meaning": "ワクワクした／興奮した",
+        "meaning": "ワクワクしている／ワクワクさせる",
         "category": "感情"
       }
     ],
     "forms": [
       {
         "label": "原級",
-        "formName": "excited",
-        "example": "I'm excited about the trip.",
-        "exampleJa": "旅行が楽しみです。"
+        "formName": "exciting",
+        "example": "This trip is exciting!",
+        "exampleJa": "この旅行はワクワクする！"
+      },
+      {
+        "label": "比較級",
+        "formName": "more exciting",
+        "example": "This trip is more exciting.",
+        "exampleJa": "この旅行はもっとワクワクします。"
+      },
+      {
+        "label": "最上級",
+        "formName": "most exciting",
+        "example": "This was the most exciting part.",
+        "exampleJa": "ここが一番ワクワクするところでした。"
       }
     ],
-    "changeType": "変化なし",
-    "searchKeywords": "excited ワクワクした／興奮した ワクワクした／興奮した 感情"
+    "changeType": "exciting は比較変化あり（more / most）",
+    "searchKeywords": "excited ワクワクした／興奮した ワクワクした／興奮した 感情 exciting ワクワクする",
+    "emotionPair": [
+      {
+        "heading": "自身が感じる感情",
+        "word": "excited",
+        "meaning": "ワクワクしている",
+        "example": "I'm excited about the trip.",
+        "exampleJa": "旅行が楽しみです。"
+      },
+      {
+        "heading": "対象が他者に感じさせる感情",
+        "word": "exciting",
+        "meaning": "ワクワクするような",
+        "example": "This trip is exciting! ",
+        "exampleJa": "この旅行はワクワクする！"
+      }
+    ]
   },
   {
     "id": "adj_worried",
@@ -7961,8 +7995,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則複数形",
-    "searchKeywords": "child 子ども 子ども 人・物 child a child",
-    "beginnerTip": "数えられる名詞の単数形では a child のように a / an を付ける。動詞などとして使う場合は不要。"
+    "searchKeywords": "child 子ども 子ども 人・物 child a child"
   },
   {
     "id": "n_man",
@@ -7995,8 +8028,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則複数形",
-    "searchKeywords": "man 男性／男の人 男性／男の人 人・物 man a man",
-    "beginnerTip": "数えられる名詞の単数形では a man のように a / an を付ける。動詞などとして使う場合は不要。"
+    "searchKeywords": "man 男性／男の人 男性／男の人 人・物 man a man"
   },
   {
     "id": "n_woman",
@@ -8029,7 +8061,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則複数形",
-    "beginnerTip": "woman / women は綴りだけでなく発音も変わる。 数えられる名詞の単数形では a woman のように a / an を付ける。動詞などとして使う場合は不要。",
+    "beginnerTip": "woman / women は綴りだけでなく発音も変わる。",
     "searchKeywords": "woman 女性／女の人 女性／女の人 人・物 woman a woman"
   },
   {
@@ -8063,8 +8095,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則複数形",
-    "searchKeywords": "tooth 歯 歯 人・物 tooth a tooth",
-    "beginnerTip": "数えられる名詞の単数形では a tooth のように a / an を付ける。動詞などとして使う場合は不要。"
+    "searchKeywords": "tooth 歯 歯 人・物 tooth a tooth"
   },
   {
     "id": "n_foot",
@@ -8131,7 +8162,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "f → ves",
-    "beginnerTip": "life の複数形は lives 。 数えられる名詞の単数形では a life のように a / an を付ける。動詞などとして使う場合は不要。",
+    "beginnerTip": "life の複数形は lives 。",
     "searchKeywords": "life 人生／生活／命 人生／生活／命 生活 life a life"
   },
   {
@@ -9249,32 +9280,6 @@ const rawDatabase = [
       }
     ],
     "searchKeywords": "bored 退屈している 感情・状態"
-  },
-  {
-    "id": "w_interested",
-    "type": "word",
-    "partOfSpeech": [
-      "形容詞"
-    ],
-    "category": "感情・状態",
-    "english": "interested",
-    "japanese": "興味がある",
-    "senses": [
-      {
-        "pos": "形容詞",
-        "meaning": "興味がある",
-        "category": "感情・状態"
-      }
-    ],
-    "forms": [
-      {
-        "label": "基本形",
-        "formName": "interested",
-        "example": "I'm interested in other cultures.",
-        "exampleJa": "他の文化に興味があります。"
-      }
-    ],
-    "searchKeywords": "interested 興味がある 感情・状態"
   },
   {
     "id": "w_curious",
@@ -12265,11 +12270,11 @@ const rawDatabase = [
     ],
     "category": "つなぎ",
     "english": "or",
-    "japanese": "または／それとも",
+    "japanese": "〜か／または／〜とか〜とか",
     "senses": [
       {
         "pos": "接続詞",
-        "meaning": "または／それとも",
+        "meaning": "〜か／または／〜とか〜とか",
         "category": "つなぎ"
       },
       {
@@ -12282,14 +12287,20 @@ const rawDatabase = [
     ],
     "forms": [
       {
-        "label": "基本形",
+        "label": "AかB（選択）",
         "formName": "or",
-        "example": "Do you want tea or coffee?",
-        "exampleJa": "紅茶とコーヒー、どちらがいいですか？"
+        "example": "Do you want coffee or tea?",
+        "exampleJa": "コーヒーか紅茶、どっちがいい？"
+      },
+      {
+        "label": "AとかBとか（例示）",
+        "formName": "or",
+        "example": "We could get pizza or tacos or something.",
+        "exampleJa": "ピザとかタコスとか、何か食べようよ。"
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "選択肢を並べるときに使う。Do you want A or B? の B は、文末を下げて言う。",
+    "beginnerTip": "選択肢から選ぶ「AかB」と、例を挙げる「AとかBとか」の両方に使う。or something は「〜とか何か」という意味。",
     "searchKeywords": "or または／それとも または／それとも さもないと（命令文 + or） つなぎ"
   },
   {
@@ -18452,5 +18463,331 @@ const rawDatabase = [
     "exampleJa": "近くに駅はありますか？",
     "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。 電車の話題なら station だけで「駅」と通じる。",
     "searchKeywords": "station a station 駅 旅行"
+  },
+  {
+    "id": "adv_lately",
+    "type": "word",
+    "partOfSpeech": [
+      "副詞"
+    ],
+    "category": "時間",
+    "english": "lately",
+    "japanese": "最近／このところ",
+    "senses": [
+      {
+        "pos": "副詞",
+        "meaning": "最近／このところ",
+        "category": "時間"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "lately",
+        "example": "I've been really busy lately.",
+        "exampleJa": "このところ、ずっと忙しいです。"
+      }
+    ],
+    "searchKeywords": "lately 最近／このところ 時間",
+    "beginnerTip": "lately は「このところ」という最近から今までの流れを表すことが多い。recently は最近の個別の出来事にも使える。"
+  },
+  {
+    "id": "adj_huge",
+    "type": "word",
+    "partOfSpeech": [
+      "形容詞"
+    ],
+    "category": "形容詞",
+    "english": "huge",
+    "japanese": "ものすごく大きい／巨大な",
+    "senses": [
+      {
+        "pos": "形容詞",
+        "meaning": "ものすごく大きい／巨大な",
+        "category": "形容詞"
+      }
+    ],
+    "forms": [
+      {
+        "label": "原級",
+        "formName": "huge",
+        "example": "This room is huge!",
+        "exampleJa": "この部屋、ものすごく広い！"
+      },
+      {
+        "label": "比較級",
+        "formName": "huger",
+        "example": "This one is even huger.",
+        "exampleJa": "こっちはもっと巨大です。",
+        "lowFrequency": true
+      },
+      {
+        "label": "最上級",
+        "formName": "hugest",
+        "example": "This is the hugest one.",
+        "exampleJa": "これが最も巨大です。",
+        "lowFrequency": true
+      }
+    ],
+    "searchKeywords": "huge ものすごく大きい／巨大な 形容詞",
+    "beginnerTip": "big よりもずっと大きいことを強調する。比較では much bigger などを使うことも多い。",
+    "changeType": "規則比較変化（-r / -st）※比較級・最上級は低頻度"
+  },
+  {
+    "id": "pron_this_these",
+    "type": "word",
+    "partOfSpeech": [
+      "代名詞"
+    ],
+    "category": "指示語",
+    "english": "this / these",
+    "japanese": "これ／これら",
+    "senses": [
+      {
+        "pos": "代名詞",
+        "meaning": "これ／これら",
+        "category": "指示語"
+      }
+    ],
+    "forms": [
+      {
+        "label": "単数",
+        "formName": "this",
+        "example": "This is my bag.",
+        "exampleJa": "これは私のバッグです。"
+      },
+      {
+        "label": "複数",
+        "formName": "these",
+        "example": "These are my shoes.",
+        "exampleJa": "これらは私の靴です。"
+      }
+    ],
+    "searchKeywords": "this / these これ／これら 指示語",
+    "beginnerTip": "this は近くの1つ、these は近くの複数を指す。",
+    "changeType": "単数 this → 複数 these"
+  },
+  {
+    "id": "pron_that_those",
+    "type": "word",
+    "partOfSpeech": [
+      "代名詞"
+    ],
+    "category": "指示語",
+    "english": "that / those",
+    "japanese": "それ・あれ／それら・あれら",
+    "senses": [
+      {
+        "pos": "代名詞",
+        "meaning": "それ・あれ／それら・あれら",
+        "category": "指示語"
+      }
+    ],
+    "forms": [
+      {
+        "label": "単数",
+        "formName": "that",
+        "example": "That is my friend.",
+        "exampleJa": "あれは私の友達です。"
+      },
+      {
+        "label": "複数",
+        "formName": "those",
+        "example": "Those are my books.",
+        "exampleJa": "あれらは私の本です。"
+      }
+    ],
+    "searchKeywords": "that / those それ・あれ／それら・あれら 指示語",
+    "beginnerTip": "that は離れた1つ、those は離れた複数を指す。",
+    "changeType": "単数 that → 複数 those"
+  },
+  {
+    "id": "pron_it",
+    "type": "word",
+    "partOfSpeech": [
+      "代名詞"
+    ],
+    "category": "代名詞",
+    "english": "it",
+    "japanese": "それ",
+    "senses": [
+      {
+        "pos": "代名詞",
+        "meaning": "それ",
+        "category": "代名詞"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "it",
+        "example": "I bought it yesterday.",
+        "exampleJa": "昨日それを買いました。"
+      }
+    ],
+    "searchKeywords": "it それ 代名詞",
+    "beginnerTip": "すでに話題に出た物や事柄を指すときによく使う。"
+  },
+  {
+    "id": "pron_they",
+    "type": "word",
+    "partOfSpeech": [
+      "代名詞"
+    ],
+    "category": "代名詞",
+    "english": "they",
+    "japanese": "彼らは／それらは",
+    "senses": [
+      {
+        "pos": "代名詞",
+        "meaning": "彼らは／それらは",
+        "category": "代名詞"
+      }
+    ],
+    "forms": [
+      {
+        "label": "主語",
+        "formName": "they",
+        "example": "They are my friends.",
+        "exampleJa": "彼らは私の友達です。"
+      }
+    ],
+    "searchKeywords": "they 彼らは／それらは 代名詞",
+    "beginnerTip": "they＝彼らは・それらは（主語）。them＝彼らを・それらを（目的語）。"
+  },
+  {
+    "id": "pron_them",
+    "type": "word",
+    "partOfSpeech": [
+      "代名詞"
+    ],
+    "category": "代名詞",
+    "english": "them",
+    "japanese": "彼らを／それらを",
+    "senses": [
+      {
+        "pos": "代名詞",
+        "meaning": "彼らを／それらを",
+        "category": "代名詞"
+      }
+    ],
+    "forms": [
+      {
+        "label": "目的語",
+        "formName": "them",
+        "example": "I know them.",
+        "exampleJa": "私は彼らを知っています。"
+      }
+    ],
+    "searchKeywords": "them 彼らを／それらを 代名詞",
+    "beginnerTip": "they は「彼らは」、them は「彼らを・彼らに」。物の複数にも使える。"
+  },
+  {
+    "id": "pron_their",
+    "type": "word",
+    "partOfSpeech": [
+      "代名詞"
+    ],
+    "category": "代名詞",
+    "english": "their",
+    "japanese": "彼らの／それらの",
+    "senses": [
+      {
+        "pos": "代名詞",
+        "meaning": "彼らの／それらの",
+        "category": "代名詞"
+      }
+    ],
+    "forms": [
+      {
+        "label": "所有",
+        "formName": "their",
+        "example": "This is their house.",
+        "exampleJa": "これは彼らの家です。"
+      }
+    ],
+    "searchKeywords": "their 彼らの／それらの 代名詞",
+    "beginnerTip": "their の後ろには名詞を置く。their house＝彼らの家。"
+  },
+  {
+    "id": "pron_theirs",
+    "type": "word",
+    "partOfSpeech": [
+      "代名詞"
+    ],
+    "category": "代名詞",
+    "english": "theirs",
+    "japanese": "彼らのもの／それらのもの",
+    "senses": [
+      {
+        "pos": "代名詞",
+        "meaning": "彼らのもの／それらのもの",
+        "category": "代名詞"
+      }
+    ],
+    "forms": [
+      {
+        "label": "所有代名詞",
+        "formName": "theirs",
+        "example": "This bag is theirs.",
+        "exampleJa": "このバッグは彼らのものです。"
+      }
+    ],
+    "searchKeywords": "theirs 彼らのもの／それらのもの 代名詞",
+    "beginnerTip": "theirs は「彼らのもの」という意味で、後ろに名詞を置かない。"
+  },
+  {
+    "id": "contract_theyre",
+    "type": "word",
+    "partOfSpeech": [
+      "短縮形"
+    ],
+    "category": "短縮形",
+    "english": "they're",
+    "japanese": "they are の短縮形",
+    "senses": [
+      {
+        "pos": "短縮形",
+        "meaning": "they are の短縮形",
+        "category": "短縮形"
+      }
+    ],
+    "forms": [
+      {
+        "label": "短縮形",
+        "formName": "they're",
+        "example": "They're coming tomorrow.",
+        "exampleJa": "彼らは明日来ます。"
+      }
+    ],
+    "searchKeywords": "they're they are の短縮形 短縮形",
+    "beginnerTip": "they're＝they are。their（彼らの）、there（そこ）と区別する。"
+  },
+  {
+    "id": "contract_theres",
+    "type": "word",
+    "partOfSpeech": [
+      "短縮形"
+    ],
+    "category": "短縮形",
+    "english": "there's",
+    "japanese": "there is の短縮形",
+    "senses": [
+      {
+        "pos": "短縮形",
+        "meaning": "there is の短縮形",
+        "category": "短縮形"
+      }
+    ],
+    "forms": [
+      {
+        "label": "短縮形",
+        "formName": "there's",
+        "example": "There's a cafe nearby.",
+        "exampleJa": "近くにカフェがあります。"
+      }
+    ],
+    "searchKeywords": "there's there is の短縮形 短縮形",
+    "beginnerTip": "there's＝there is。場所の there（そこ）とは役割が違う。"
   }
 ];

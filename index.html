@@ -404,6 +404,16 @@
             return '<div class="flex flex-wrap gap-1.5 mt-2">' + item.usageTags.map(tag => '<span class="text-[10px] bg-[#eef2f7] text-[#5f6f8d] border border-[#d8e0eb] px-2 py-0.5 rounded-full">' + tag + '</span>').join('') + '</div>';
         }
 
+        function renderEmotionPair(item) {
+            if (!Array.isArray(item.emotionPair) || !item.emotionPair.length) return '';
+            return `<div class="bg-[#edf1f7] border border-[#e2e8f0] p-3.5 rounded-2xl mb-3 text-left space-y-3">` +
+                item.emotionPair.map(part => `<div class="border-b border-[#e2e8f0] last:border-0 pb-2 last:pb-0">
+                    <div class="text-xs font-bold text-[#64748b] mb-1">${part.heading}</div>
+                    <div class="font-bold text-[#2b2927]">${part.word} — ${part.meaning}</div>
+                    <div class="text-xs text-[#2b2927]">${part.example} <span class="text-[#64748b]">（${part.exampleJa}）</span></div>
+                </div>`).join('') + `</div>`;
+        }
+
         function renderComparisonNote(item) {
             if (!item.comparisonNote) return '';
             return '<div class="text-left mb-3"><div class="text-xs text-[#5c534c] bg-[#f4efe8] p-3 rounded-xl border border-[#e5dfd7] leading-relaxed"><span class="font-bold text-[#78829c]">使い分け：</span>' + item.comparisonNote + '</div></div>';
@@ -581,6 +591,18 @@
         }
 
         function initItemsState() {
+            // Preserve prior interested reviews under their original ID while bringing
+            // the most advanced progress into the merged interested/interesting card.
+            if (appData.itemsState && appData.itemsState.w_interested && appData.itemsState.adj_interesting) {
+                const previous = appData.itemsState.w_interested;
+                const combined = appData.itemsState.adj_interesting;
+                if ((previous.correctCount || 0) > (combined.correctCount || 0)) {
+                    Object.assign(combined, { correctCount: previous.correctCount, lastStudied: previous.lastStudied || combined.lastStudied,
+                        status: previous.status || combined.status, nextReview: previous.nextReview || combined.nextReview,
+                        srsStage: Math.max(previous.srsStage || 0, combined.srsStage || 0) });
+                }
+            }
+
             rawDatabase.forEach(item => {
                 if (!appData.itemsState[item.id]) {
                     appData.itemsState[item.id] = {
@@ -884,7 +906,7 @@
                     <div class="text-xs font-bold text-[#78829c] uppercase tracking-wider mb-2">${posText}</div>
                     <div class="text-3xl sm:text-4xl font-extrabold text-[#2b2927] mb-2">${item.english}</div>
                 </div>
-                <button onclick="playSpeech(event, '${item.english}')" style="position: absolute; top: 72%; right: 8%; transform: translateY(-50%);" class="w-11 h-11 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm z-20" aria-label="発音">
+                <button onclick="playSpeech(event, decodeURIComponent('${encodeURIComponent(item.english)}'))" style="position: absolute; top: 72%; right: 8%; transform: translateY(-50%);" class="w-11 h-11 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm z-20" aria-label="発音">
                     <svg class="w-5 h-5 text-[#78829c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
                         <path d="M19 10v1a7 7 0 0 1-14 0v-1"></path>
@@ -910,7 +932,7 @@
                 <div class="relative w-full pb-6">
                     <div class="relative flex items-center justify-center mb-4 min-h-[2.5rem]">
                         <div class="text-2xl font-bold text-[#2b2927] text-center px-12">${item.english}</div>
-                        <button onclick="playSpeech(event, '${item.english.replace(/'/g, "\'")}')" class="absolute right-0 w-9 h-9 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm shrink-0" aria-label="発音">
+                        <button onclick="playSpeech(event, decodeURIComponent('${encodeURIComponent(item.english)}'))" class="absolute right-0 w-9 h-9 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm shrink-0" aria-label="発音">
                             <svg class="w-4 h-4 text-[#78829c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
                         </button>
                     </div>
@@ -921,20 +943,21 @@
                 backHtml += `<div class="text-left mb-3"><div class="text-xs text-[#5c534c] bg-[#f4efe8] p-3 rounded-xl border border-[#e5dfd7] leading-relaxed flex items-start space-x-2"><svg class="w-4 h-4 text-[#78829c] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg><span>${item.beginnerTip}</span></div></div>`;
             }
 
+            backHtml += renderEmotionPair(item);
             backHtml += renderComparisonNote(item);
 
             if (item.forms && item.forms.length) {
                 const primaryPos = getItemSenses(item)[0]?.pos;
-                const regularForms = item.forms.filter(f => f.label !== '会話形' && (!f.pos || !primaryPos || f.pos === primaryPos));
+                const regularForms = item.forms.filter(f => f.label !== '会話形' && (!f.pos || !primaryPos || f.pos === primaryPos) && (!item.emotionPair || f.label !== '原級'));
                 const spokenForms = item.forms.filter(f => f.label === '会話形');
 
                 if (regularForms.length) {
-                    backHtml += `<div class="space-y-2.5 bg-[#edf1f7] p-3.5 rounded-2xl border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] uppercase tracking-wider">活用・変化</div><div class="text-xs space-y-2.5">`;
+                    backHtml += `<div class="space-y-2.5 bg-[#edf1f7] p-3.5 rounded-2xl border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] uppercase tracking-wider">${item.emotionPair ? "比較変化" : "活用・変化"}</div><div class="text-xs space-y-2.5">`;
                     regularForms.forEach(f => {
                         const spoken = String(f.speechText || f.formName).replace(/'/g, "\'");
                         const lowFreq = f.lowFrequency ? `<span class="text-[10px] bg-[#fff7ed] text-[#9a5b13] border border-[#fed7aa] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">低頻度</span>` : '';
                         const exampleHtml = f.example ? `<div class="text-[#2b2927] text-xs font-normal">"${f.example}" ${f.exampleJa ? `<span class="text-[#64748b] font-normal">(${f.exampleJa})</span>` : ''}</div>` : '';
-                        backHtml += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0 relative"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2 min-w-0 flex-1 flex-wrap"><span class="text-sm font-bold text-[#2b2927] min-w-0 break-words">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">${f.label}</span>${lowFreq}</div><button onclick="playSpeech(event, '${spoken}')" class="w-8 h-8 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-4 h-4 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></button></div>${exampleHtml}</div>`;
+                        backHtml += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0 relative"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2 min-w-0 flex-1 flex-wrap"><span class="text-sm font-bold text-[#2b2927] min-w-0 break-words">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">${f.label}</span>${lowFreq}</div><button onclick="playSpeech(event, decodeURIComponent('${encodeURIComponent(spoken)}'))" class="w-8 h-8 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-4 h-4 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></button></div>${exampleHtml}</div>`;
                     });
                     if (item.changeType) {
                         backHtml += `<div class="pt-1 text-[#64748b]">変化タイプ: <b class="text-[#2b2927]">${item.changeType}</b></div>`;
@@ -949,7 +972,7 @@
                     backHtml += `<div class="space-y-2.5 bg-[#edf1f7] p-3.5 rounded-2xl border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] uppercase tracking-wider">口語</div><div class="text-xs space-y-2.5">`;
                     spokenForms.forEach(f => {
                         const spoken = String(f.speechText || f.formName).replace(/'/g, "\'");
-                        backHtml += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0 relative"><div class="flex items-center justify-between mb-1"><div class="flex items-center space-x-2"><span class="text-sm font-bold text-[#2b2927]">${f.formName}</span></div><button onclick="playSpeech(event, '${spoken}')" class="w-8 h-8 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-4 h-4 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></button></div><div class="text-[#2b2927] text-xs font-normal">"${f.example}" <span class="text-[#64748b] font-normal">(${f.exampleJa})</span></div></div>`;
+                        backHtml += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0 relative"><div class="flex items-center justify-between mb-1"><div class="flex items-center space-x-2"><span class="text-sm font-bold text-[#2b2927]">${f.formName}</span></div><button onclick="playSpeech(event, decodeURIComponent('${encodeURIComponent(spoken)}'))" class="w-8 h-8 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-4 h-4 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></button></div><div class="text-[#2b2927] text-xs font-normal">"${f.example}" <span class="text-[#64748b] font-normal">(${f.exampleJa})</span></div></div>`;
                     });
                     backHtml += `</div></div>`;
                 }
@@ -1149,7 +1172,7 @@
                 else if (st.status === 'learning') { tagClass = 'tag-status-learning'; tagText = '学習中'; }
                 const spoken = String(w.english).replace(/'/g, "\\'");
                 return `<div onclick="openDetailModal('${w.id}')" class="bg-[#faf8f5] p-4 rounded-2xl border border-[#e5dfd7] shadow-sm cursor-pointer hover:border-[#78829c] transition">
-                    <div class="flex items-center justify-between gap-3 mb-2"><div class="flex items-center gap-2 min-w-0"><div class="font-bold text-[#2b2927] text-base truncate">${w.english}</div><span class="text-[10px] px-2 py-0.5 rounded-full font-medium shrink-0 ${tagClass}">${tagText}</span></div><button onclick="playSpeech(event, '${spoken}')" class="w-8 h-8 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm shrink-0" aria-label="発音"><svg class="w-4 h-4 text-[#78829c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div>
+                    <div class="flex items-center justify-between gap-3 mb-2"><div class="flex items-center gap-2 min-w-0"><div class="font-bold text-[#2b2927] text-base truncate">${w.english}</div><span class="text-[10px] px-2 py-0.5 rounded-full font-medium shrink-0 ${tagClass}">${tagText}</span></div><button onclick="playSpeech(event, decodeURIComponent('${encodeURIComponent(spoken)}'))" class="w-8 h-8 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm shrink-0" aria-label="発音"><svg class="w-4 h-4 text-[#78829c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div>
                     ${renderSensesHtml(w, true)}
                     ${renderOtherMeaningsSection(w, false)}
                 </div>`;
@@ -1243,7 +1266,7 @@
                 <div class="mb-3">
                     <div class="flex items-center justify-between gap-3 mb-3">
                         <div class="text-2xl font-bold text-[#2b2927]">${item.english}</div>
-                        <button onclick="playSpeech(event, '${spoken}')" class="w-10 h-10 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm shrink-0" aria-label="発音">
+                        <button onclick="playSpeech(event, decodeURIComponent('${encodeURIComponent(spoken)}'))" class="w-10 h-10 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm shrink-0" aria-label="発音">
                             <svg class="w-4 h-4 text-[#78829c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
                         </button>
                     </div>
@@ -1255,20 +1278,21 @@
                 html += `<div class="bg-[#f4efe8] rounded-xl p-3 border border-[#e5dfd7] text-left mb-4"><p class="text-xs text-[#5c534c] leading-relaxed flex items-start space-x-2"><svg class="w-4 h-4 text-[#78829c] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg><span>${item.beginnerTip}</span></p></div>`;
             }
 
+            html += renderEmotionPair(item);
             html += renderComparisonNote(item);
 
             if (item.forms && item.forms.length) {
                 const primaryPos = getItemSenses(item)[0]?.pos;
-                const regularForms = item.forms.filter(f => f.label !== '会話形' && (!f.pos || !primaryPos || f.pos === primaryPos));
+                const regularForms = item.forms.filter(f => f.label !== '会話形' && (!f.pos || !primaryPos || f.pos === primaryPos) && (!item.emotionPair || f.label !== '原級'));
                 const spokenForms = item.forms.filter(f => f.label === '会話形');
 
                 if (regularForms.length) {
-                    html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-3 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase tracking-wider">活用・変化</div>`;
+                    html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-3 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase tracking-wider">${item.emotionPair ? "比較変化" : "活用・変化"}</div>`;
                     regularForms.forEach(f => {
                         const formSpoken = String(f.speechText || f.formName).replace(/'/g, "\'");
                         const lowFreq = f.lowFrequency ? `<span class="text-[10px] bg-[#fff7ed] text-[#9a5b13] border border-[#fed7aa] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">低頻度</span>` : '';
                         const exampleHtml = f.example ? `<div class="text-[#2b2927]">"${f.example}" ${f.exampleJa ? `<span class="text-[#64748b]">(${f.exampleJa})</span>` : ''}</div>` : '';
-                        html += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2 min-w-0 flex-1 flex-wrap"><span class="text-sm font-bold text-[#2b2927] min-w-0 break-words">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">${f.label}</span>${lowFreq}</div><button onclick="playSpeech(event, '${formSpoken}')" class="w-7 h-7 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-3.5 h-3.5 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div>${exampleHtml}</div>`;
+                        html += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2 min-w-0 flex-1 flex-wrap"><span class="text-sm font-bold text-[#2b2927] min-w-0 break-words">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">${f.label}</span>${lowFreq}</div><button onclick="playSpeech(event, decodeURIComponent('${encodeURIComponent(formSpoken)}'))" class="w-7 h-7 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-3.5 h-3.5 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div>${exampleHtml}</div>`;
                     });
                     if (item.changeType) {
                         html += `<div class="pt-2 border-t border-[#e2e8f0] text-[#64748b]">変化タイプ: <b class="text-[#2b2927]">${item.changeType}</b></div>`;
@@ -1283,7 +1307,7 @@
                     html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-3 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase tracking-wider">口語</div>`;
                     spokenForms.forEach(f => {
                         const formSpoken = String(f.formName).replace(/'/g, "\'");
-                        html += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0"><div class="flex items-center justify-between mb-1"><div class="flex items-center space-x-2"><span class="text-sm font-bold text-[#2b2927]">${f.formName}</span></div><button onclick="playSpeech(event, '${formSpoken}')" class="w-7 h-7 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-3.5 h-3.5 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div><div class="text-[#2b2927]">"${f.example}" <span class="text-[#64748b]">(${f.exampleJa})</span></div></div>`;
+                        html += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0"><div class="flex items-center justify-between mb-1"><div class="flex items-center space-x-2"><span class="text-sm font-bold text-[#2b2927]">${f.formName}</span></div><button onclick="playSpeech(event, decodeURIComponent('${encodeURIComponent(formSpoken)}'))" class="w-7 h-7 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-3.5 h-3.5 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div><div class="text-[#2b2927]">"${f.example}" <span class="text-[#64748b]">(${f.exampleJa})</span></div></div>`;
                     });
                     html += `</div>`;
                 }
