@@ -446,6 +446,11 @@
             return others.map((sense, i) => {
                 const ex = findExampleForSense(item, sense);
                 const spokenExample = ex ? String(ex.example).replace(/'/g, "\\'") : '';
+                if (sense.linkExpression) {
+                    const target = rawDatabase.find(x => x.id === sense.linkExpression && x.type === 'expression');
+                    if (target) return `<button type="button" onclick="openRelatedExpression('${target.id}')" class="w-full text-left pb-3 border-b border-[#e2e8f0] last:border-b-0 last:pb-0 cursor-pointer" aria-label="${sense.formName || target.english} の表現カードを開く">
+                        <div class="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-[#4a4540]"><span class="font-bold text-[#334155]">${['②','③','④','⑤'][i] || (i + 2)}</span><span class="font-bold text-[#334155]">${sense.formName || target.english}</span><span class="font-bold">：</span><span class="font-bold">${sense.meaning || target.japanese}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold">表現</span>${sense.grammarTag ? `<span class="text-[10px] bg-[#f4efe8] text-[#5c534c] border border-[#e2dad1] px-1.5 py-0.5 rounded">${sense.grammarTag}</span>` : ''}<span class="ml-auto text-[#78829c]">›</span></div></button>`;
+                }
                 return `<div class="pb-3 border-b border-[#e2e8f0] last:border-b-0 last:pb-0">
                     ${renderSenseRow(sense, false, true, i + 1)}
                     ${ex ? `<div class="mt-2 flex items-start justify-between gap-2"><div class="text-xs text-[#2b2927] leading-relaxed">"${ex.example}" ${ex.exampleJa ? `<span class="text-[#64748b]">(${ex.exampleJa})</span>` : ''}</div><button onclick="playSpeech(event, '${spokenExample}')" class="w-8 h-8 shrink-0 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-4 h-4 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div>` : ''}
@@ -1256,7 +1261,18 @@
             }
         }
 
-        function openDetailModal(id) {
+        let detailModalHistory = [];
+        function openRelatedExpression(id) {
+            const modal = document.getElementById('detail-modal');
+            if (modal.classList.contains('hidden')) return;
+            const content = document.getElementById('modal-body-content');
+            const scrollPane = modal.querySelector('.overflow-y-auto');
+            detailModalHistory.push({ html: content.innerHTML, scrollTop: scrollPane ? scrollPane.scrollTop : 0 });
+            openDetailModal(id, true);
+            if (scrollPane) scrollPane.scrollTop = 0;
+        }
+        function openDetailModal(id, fromRelated = false) {
+            if (!fromRelated) detailModalHistory = [];
             const item = rawDatabase.find(i => i.id === id);
             if (!item) return;
             document.getElementById('modal-tags-container').innerHTML = '';
@@ -1292,7 +1308,8 @@
                     regularForms.forEach(f => {
                         const formSpoken = String(f.speechText || f.formName).replace(/'/g, "\'");
                         const lowFreq = f.lowFrequency ? `<span class="text-[10px] bg-[#fff7ed] text-[#9a5b13] border border-[#fed7aa] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">低頻度</span>` : '';
-                        const exampleHtml = f.example ? `<div class="text-[#2b2927]">"${f.example}" ${f.exampleJa ? `<span class="text-[#64748b]">(${f.exampleJa})</span>` : ''}</div>` : '';
+                        const examples = Array.isArray(f.examples) && f.examples.length ? f.examples : (f.example ? [{example:f.example,exampleJa:f.exampleJa}] : []);
+                        const exampleHtml = examples.map(e => `<div class="text-[#2b2927] mb-1">"${e.example}" ${e.exampleJa ? `<span class="text-[#64748b]">(${e.exampleJa})</span>` : ''}</div>`).join('');
                         html += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2 min-w-0 flex-1 flex-wrap"><span class="text-sm font-bold text-[#2b2927] min-w-0 break-words">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">${f.label}</span>${lowFreq}</div><button onclick="playSpeech(event, decodeURIComponent('${encodeURIComponent(formSpoken)}'))" class="w-7 h-7 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-3.5 h-3.5 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div>${exampleHtml}</div>`;
                     });
                     if (item.changeType) {
@@ -1323,7 +1340,16 @@
             document.getElementById('detail-modal').classList.remove('hidden');
         }
 
-        function closeModal() { document.getElementById('detail-modal').classList.add('hidden'); }
+        function closeModal() {
+            const prev = detailModalHistory.pop();
+            if (prev) {
+                document.getElementById('modal-body-content').innerHTML = prev.html;
+                const scrollPane = document.querySelector('#detail-modal .overflow-y-auto');
+                if (scrollPane) scrollPane.scrollTop = prev.scrollTop;
+                return;
+            }
+            document.getElementById('detail-modal').classList.add('hidden');
+        }
 
         function updateItemStatus(id, status) {
             const st = appData.itemsState[id];

@@ -1,4 +1,4 @@
-// Flashcards: confirmed updates 2026-10-22; existing IDs retained
+// Flashcards preview: confirmed changes and related expression links
 const rawDatabase = [
   {
     "id": "v_be",
@@ -3844,7 +3844,17 @@ const rawDatabase = [
         "formName": "here",
         "example": "Come here.",
         "exampleJa": "ここに来て。",
-        "pos": "副詞"
+        "pos": "副詞",
+        "examples": [
+          {
+            "example": "Come here.",
+            "exampleJa": "ここに来て。"
+          },
+          {
+            "example": "I'm here.",
+            "exampleJa": "ここにいるよ。"
+          }
+        ]
       }
     ],
     "searchKeywords": "here ここに／ここで ここに／ここで 場所"
@@ -3872,16 +3882,9 @@ const rawDatabase = [
         "example": "Put it there.",
         "exampleJa": "それをそこに置いて。",
         "pos": "副詞"
-      },
-      {
-        "label": "存在を表す形",
-        "formName": "there",
-        "example": "There is a cafe nearby.",
-        "exampleJa": "近くにカフェがあります。"
       }
     ],
-    "changeType": "特殊な用法あり",
-    "beginnerTip": "場所を示す there＝そこ・あそこ。There is / There are は「〜がある・いる」という表現。there’s は there is の短縮形。",
+    "beginnerTip": "there は「そこに・そこで」という場所を表し、here （ここに・ここで）と対になる。that は「それ・あれ」とものや内容を指す。",
     "searchKeywords": "there そこに／そこで そこに／そこで 場所"
   },
   {
@@ -4489,7 +4492,7 @@ const rawDatabase = [
       }
     ],
     "changeType": "fast → faster → fastest",
-    "beginnerTip": "「速い／速く」が最も一般的。fast には「断食する」「断食」という別の意味もある。 形容詞・副詞として使う場合は冠詞なし。",
+    "beginnerTip": "fast は形容詞で「速い」、副詞で「速く」という意味。fastly という形にはせず、どちらも fast を使う。",
     "searchKeywords": "fast 速い／速く 速い 速く 断食する 断食 速さ"
   },
   {
@@ -4500,19 +4503,12 @@ const rawDatabase = [
     ],
     "category": "方向",
     "english": "into",
-    "japanese": "〜の中へ／〜にハマって",
+    "japanese": "〜の中へ／〜の中に",
     "senses": [
       {
         "pos": "前置詞",
         "meaning": "〜の中へ／〜の中に",
         "category": "方向"
-      },
-      {
-        "pos": "前置詞",
-        "meaning": "〜に夢中で／〜にハマって",
-        "category": "興味",
-        "example": "I'm really into this game.",
-        "exampleJa": "このゲームにすごくハマっています。"
       }
     ],
     "forms": [
@@ -4523,37 +4519,7 @@ const rawDatabase = [
         "exampleJa": "彼女は部屋の中へ入りました。"
       }
     ],
-    "changeType": "変化なし",
-    "beginnerTip": "into は「中へ」という方向だけでなく、be into ... で「〜にハマっている／興味がある」もよく使う。",
     "searchKeywords": "into 〜の中へ／〜にハマって 〜の中へ／〜の中に 〜に夢中で／〜にハマって 方向"
-  },
-  {
-    "id": "adj_soso",
-    "type": "word",
-    "partOfSpeech": [
-      "形容詞"
-    ],
-    "category": "評価",
-    "english": "so-so",
-    "japanese": "まあまあ／可もなく不可もなく",
-    "senses": [
-      {
-        "pos": "形容詞",
-        "meaning": "まあまあ／可もなく不可もなく",
-        "category": "評価"
-      }
-    ],
-    "forms": [
-      {
-        "label": "基本形",
-        "formName": "so-so",
-        "example": "The movie was so-so.",
-        "exampleJa": "その映画はまあまあでした。"
-      }
-    ],
-    "changeType": "変化なし",
-    "beginnerTip": "会話では How are you? への返答にも使えますが、ややそっけなく聞こえることがある。",
-    "searchKeywords": "so-so まあまあ／可もなく不可もなく まあまあ／可もなく不可もなく 評価"
   },
   {
     "id": "v_put",
@@ -4596,8 +4562,8 @@ const rawDatabase = [
       {
         "label": "過去分詞",
         "formName": "put",
-        "example": "I have put it away.",
-        "exampleJa": "それを片付けました。"
+        "example": "I've put my bag on the chair.",
+        "exampleJa": "バッグを椅子の上に置きました。"
       },
       {
         "label": "ing形",
@@ -4607,7 +4573,15 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則変化<br>put[pʊt] → put[pʊt] → put[pʊt]",
-    "searchKeywords": "put 置く／入れる 置く／入れる 基本動詞"
+    "searchKeywords": "put 置く／入れる 置く／入れる 基本動詞",
+    "otherMeanings": [
+      {
+        "pos": "表現",
+        "meaning": "片付ける",
+        "formName": "put away",
+        "linkExpression": "exp_put_away"
+      }
+    ]
   },
   {
     "id": "v_keep",
@@ -18929,5 +18903,89 @@ const rawDatabase = [
     ],
     "searchKeywords": "there's there is の短縮形 短縮形",
     "beginnerTip": "there's＝there is。場所の there（そこ）とは役割が違う。"
+  },
+  {
+    "id": "exp_put_away",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "日常会話",
+    "english": "put away",
+    "japanese": "片付ける",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "片付ける",
+        "category": "日常会話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本用法",
+        "formName": "put away",
+        "example": "I have put it away.",
+        "exampleJa": "それを片付けました。"
+      }
+    ],
+    "example": "I have put it away.",
+    "exampleJa": "それを片付けました。",
+    "searchKeywords": "put away 片付ける"
+  },
+  {
+    "id": "exp_be_into",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "日常会話",
+    "english": "be into ...",
+    "japanese": "〜にハマっている／興味がある",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜にハマっている／興味がある",
+        "category": "日常会話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本用法",
+        "formName": "be into ...",
+        "example": "I'm really into this game.",
+        "exampleJa": "このゲームにすごくハマっています。"
+      }
+    ],
+    "example": "I'm really into this game.",
+    "exampleJa": "このゲームにすごくハマっています。",
+    "searchKeywords": "be into ... 〜にハマっている／興味がある"
+  },
+  {
+    "id": "exp_there_is_are",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "日常会話",
+    "english": "There is / There are",
+    "japanese": "〜がある／いる",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜がある／いる",
+        "category": "日常会話"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本用法",
+        "formName": "There is / There are",
+        "example": "There is a cafe nearby.",
+        "exampleJa": "近くにカフェがあります。"
+      }
+    ],
+    "example": "There is a cafe nearby.",
+    "exampleJa": "近くにカフェがあります。",
+    "searchKeywords": "There is / There are 〜がある／いる"
   }
 ];
