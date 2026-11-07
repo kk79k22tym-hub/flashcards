@@ -332,7 +332,7 @@
         </div>
     </nav>
 
-    <script src="./data.js?v=20261020-search-final"></script>
+    <script src="./data.js?v=20261107-confirmed-updates"></script>
     <script>
         // Stable storage key: keep this unchanged across UI/data updates so learning history survives.
         const STORAGE_KEY = 'english_app_user_data_v9';
@@ -449,7 +449,7 @@
                 if (sense.linkExpression) {
                     const target = rawDatabase.find(x => x.id === sense.linkExpression && x.type === 'expression');
                     if (target) return `<button type="button" onclick="openRelatedExpression('${target.id}')" class="w-full text-left pb-3 border-b border-[#e2e8f0] last:border-b-0 last:pb-0 cursor-pointer" aria-label="${sense.formName || target.english} の表現カードを開く">
-                        <div class="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-[#4a4540]"><span class="font-bold text-[#334155]">${['②','③','④','⑤'][i] || (i + 2)}</span><span class="font-bold text-[#334155]">${sense.formName || target.english}</span><span class="font-bold">：</span><span class="font-normal">${sense.meaning || target.japanese}</span><span class="text-[11px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">表現</span>${sense.grammarTag ? `<span class="text-[10px] bg-[#f4efe8] text-[#5c534c] border border-[#e2dad1] px-1.5 py-0.5 rounded">${sense.grammarTag}</span>` : ''}<span class="ml-auto text-[#78829c]">›</span></div></button>`;
+                        <div class="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-[#4a4540]"><span class="font-bold text-[#334155]">${['②','③','④','⑤'][i] || (i + 2)}</span><span class="font-bold text-[#334155]">${sense.formName || target.english}</span><span class="font-bold">：</span><span class="font-normal">${sense.meaning || target.japanese}</span>${sense.grammarTag ? `<span class="text-[10px] bg-[#f4efe8] text-[#5c534c] border border-[#e2dad1] px-1.5 py-0.5 rounded">${sense.grammarTag}</span>` : ''}<span class="ml-auto text-[#78829c]">›</span></div></button>`;
                 }
                 return `<div class="pb-3 border-b border-[#e2e8f0] last:border-b-0 last:pb-0">
                     ${renderSenseRow(sense, false, true, i + 1)}
@@ -962,7 +962,8 @@
                     regularForms.forEach(f => {
                         const spoken = String(f.speechText || f.formName).replace(/'/g, "\'");
                         const lowFreq = f.lowFrequency ? `<span class="text-[10px] bg-[#fff7ed] text-[#9a5b13] border border-[#fed7aa] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">低頻度</span>` : '';
-                        const exampleHtml = f.example ? `<div class="text-[#2b2927] text-xs font-normal">"${f.example}" ${f.exampleJa ? `<span class="text-[#64748b] font-normal">(${f.exampleJa})</span>` : ''}</div>` : '';
+                        const examples = Array.isArray(f.examples) && f.examples.length ? f.examples : (f.example ? [{example:f.example,exampleJa:f.exampleJa}] : []);
+                        const exampleHtml = examples.map(e => `<div class="text-[#2b2927] text-xs font-normal mb-1">"${e.example}" ${e.exampleJa ? `<span class="text-[#64748b] font-normal">(${e.exampleJa})</span>` : ''}</div>`).join('');
                         backHtml += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0 relative"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2 min-w-0 flex-1 flex-wrap"><span class="text-sm font-bold text-[#2b2927] min-w-0 break-words">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">${f.label}</span>${lowFreq}</div><button onclick="playSpeech(event, decodeURIComponent('${encodeURIComponent(spoken)}'))" class="w-8 h-8 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-4 h-4 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></button></div>${exampleHtml}</div>`;
                     });
                     if (item.changeType) {

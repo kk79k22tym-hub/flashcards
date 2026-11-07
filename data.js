@@ -1,4 +1,4 @@
-// Flashcards preview: confirmed changes and related expression links
+// Flashcards verified update; preserves all existing card IDs and storage key
 const rawDatabase = [
   {
     "id": "v_be",
@@ -3885,7 +3885,14 @@ const rawDatabase = [
       }
     ],
     "beginnerTip": "there は「そこに・そこで」という場所を表し、here （ここに・ここで）と対になる。that は「それ・あれ」とものや内容を指す。",
-    "searchKeywords": "there そこに／そこで そこに／そこで 場所"
+    "searchKeywords": "there そこに／そこで そこに／そこで 場所",
+    "otherMeanings": [
+      {
+        "linkExpression": "exp_there_is_are",
+        "formName": "There is / There are",
+        "meaning": "〜がある／いる"
+      }
+    ]
   },
   {
     "id": "exp_going_to",
@@ -4519,7 +4526,14 @@ const rawDatabase = [
         "exampleJa": "彼女は部屋の中へ入りました。"
       }
     ],
-    "searchKeywords": "into 〜の中へ／〜にハマって 〜の中へ／〜の中に 〜に夢中で／〜にハマって 方向"
+    "searchKeywords": "into 〜の中へ／〜にハマって 〜の中へ／〜の中に 〜に夢中で／〜にハマって 方向",
+    "otherMeanings": [
+      {
+        "linkExpression": "exp_be_into",
+        "formName": "be into ...",
+        "meaning": "〜にハマっている／興味がある"
+      }
+    ]
   },
   {
     "id": "v_put",
@@ -4597,13 +4611,6 @@ const rawDatabase = [
         "pos": "動詞",
         "meaning": "保つ／取っておく",
         "category": "基本動詞"
-      },
-      {
-        "pos": "動詞",
-        "meaning": "〜し続ける（keep + 動詞（ing形））",
-        "category": "基本動詞",
-        "example": "Keep trying.",
-        "exampleJa": "あきらめずに続けて。"
       }
     ],
     "forms": [
@@ -4640,7 +4647,14 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則変化<br>keep[kip] → kept[kɛpt] → kept[kɛpt]",
-    "searchKeywords": "keep 保つ／続ける／取っておく 保つ／続ける／取っておく 基本動詞"
+    "searchKeywords": "keep 保つ／続ける／取っておく 保つ／続ける／取っておく 基本動詞",
+    "otherMeanings": [
+      {
+        "linkExpression": "exp_keep_ing",
+        "formName": "keep + 動詞(ing)",
+        "meaning": "〜し続ける"
+      }
+    ]
   },
   {
     "id": "v_leave",
@@ -4717,7 +4731,17 @@ const rawDatabase = [
         "label": "原形",
         "formName": "mean",
         "example": "What does this mean?",
-        "exampleJa": "これはどういう意味？"
+        "exampleJa": "これはどういう意味？",
+        "examples": [
+          {
+            "example": "What does this mean?",
+            "exampleJa": "これはどういう意味？"
+          },
+          {
+            "example": "What do you mean?",
+            "exampleJa": "どういう意味？"
+          }
+        ]
       },
       {
         "label": "三人称単数現在",
@@ -4741,7 +4765,8 @@ const rawDatabase = [
         "label": "ing形",
         "formName": "meaning",
         "example": "I left without meaning to upset you.",
-        "exampleJa": "あなたを傷つけるつもりはなく、その場を離れました。"
+        "exampleJa": "あなたを傷つけるつもりはなく、その場を離れました。",
+        "lowFrequency": true
       }
     ],
     "changeType": "不規則変化<br>mean[min] → meant[mɛnt] → meant[mɛnt]",
@@ -4856,7 +4881,21 @@ const rawDatabase = [
     ],
     "changeType": "規則変化<br>call[kɔl] → called[kɔld] → called[kɔld]",
     "searchKeywords": "call 呼ぶ／電話する 呼ぶ／電話する 会話",
-    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。"
+    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。",
+    "otherMeanings": [
+      {
+        "pos": "名詞",
+        "meaning": "電話・通話",
+        "category": "会話",
+        "example": "Give me a call tonight.",
+        "exampleJa": "今夜電話して。"
+      },
+      {
+        "linkExpression": "exp_give_a_call",
+        "formName": "give + 人 + a call",
+        "meaning": "人に電話する"
+      }
+    ]
   },
   {
     "id": "v_bring",
@@ -4866,11 +4905,11 @@ const rawDatabase = [
     ],
     "category": "移動",
     "english": "bring",
-    "japanese": "持ってくる",
+    "japanese": "持ってくる／持っていく／連れてくる／連れていく",
     "senses": [
       {
         "pos": "動詞",
-        "meaning": "持ってくる",
+        "meaning": "持ってくる／持っていく／連れてくる／連れていく",
         "category": "移動"
       }
     ],
@@ -4879,7 +4918,17 @@ const rawDatabase = [
         "label": "原形",
         "formName": "bring",
         "example": "Bring your passport.",
-        "exampleJa": "パスポートを持ってきて。"
+        "exampleJa": "パスポートを持ってきて。",
+        "examples": [
+          {
+            "example": "Bring your passport.",
+            "exampleJa": "パスポートを持ってきて。"
+          },
+          {
+            "example": "Can I bring my friend?",
+            "exampleJa": "友達も連れて行っていい？"
+          }
+        ]
       },
       {
         "label": "三人称単数現在",
@@ -4912,7 +4961,7 @@ const rawDatabase = [
       "こちらへ持ってくる",
       "移動"
     ],
-    "beginnerTip": "bring は話し手・目的地の方向へ「持ってくる」。take はそこから離れる方向へ「持っていく」イメージ。"
+    "beginnerTip": "bring は話し手や聞き手がいる場所・集まる場所へ「持っていく／連れていく」。take は別の場所へ「持っていく／連れていく」。どこを基準に考えるかで使い分ける。"
   },
   {
     "id": "v_become",
@@ -4968,7 +5017,8 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則変化<br>become[bɪˈkʌm] → became[bɪˈkeɪm] → become[bɪˈkʌm]",
-    "searchKeywords": "become 〜になる 〜になる 変化"
+    "searchKeywords": "become 〜になる 〜になる 変化",
+    "beginnerTip": "become と get はどちらも「〜になる」を表す。become は状態・立場・関係などの変化に幅広く使い、get は形容詞と組み合わせて状態の変化を表すことが多い。"
   },
   {
     "id": "v_start",
@@ -5070,7 +5120,19 @@ const rawDatabase = [
       }
     ],
     "changeType": "p重ね + -ed / -ing<br>stop[stɑp] → stopped[stɑpt] → stopped[stɑpt]",
-    "searchKeywords": "stop 止める／止まる 止める／止まる 行動"
+    "searchKeywords": "stop 止める／止まる 止める／止まる 行動",
+    "otherMeanings": [
+      {
+        "linkExpression": "exp_stop_ing",
+        "formName": "stop + 動詞(ing)",
+        "meaning": "〜するのをやめる"
+      },
+      {
+        "linkExpression": "exp_stop_to",
+        "formName": "stop to + 動詞(原形)",
+        "meaning": "〜するために立ち止まる"
+      }
+    ]
   },
   {
     "id": "v_let",
@@ -5123,7 +5185,14 @@ const rawDatabase = [
     ],
     "changeType": "不規則変化<br>let[lɛt] → let[lɛt] → let[lɛt]",
     "searchKeywords": "let 〜させる／〜してもらう 〜させる／〜してもらう 基本動詞 〜させる",
-    "beginnerTip": "let + 人 + 動詞（原形）で「人が〜するのを許す」。Let me try.（私にやらせて）が定番。"
+    "beginnerTip": "let + 人 + 動詞(原形) で「人に〜させる／〜するのを許す」。",
+    "otherMeanings": [
+      {
+        "linkExpression": "exp_let_know",
+        "formName": "let + 人 + know",
+        "meaning": "人に知らせる"
+      }
+    ]
   },
   {
     "id": "v_show",
@@ -5177,7 +5246,14 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則変化<br>show[ʃoʊ] → showed[ʃoʊd] → shown[ʃoʊn]",
-    "searchKeywords": "show 見せる／示す 見せる／示す 会話"
+    "searchKeywords": "show 見せる／示す 見せる／示す 会話",
+    "otherMeanings": [
+      {
+        "linkExpression": "exp_show_around",
+        "formName": "show + 人 + around",
+        "meaning": "人を案内する"
+      }
+    ]
   },
   {
     "id": "v_move",
@@ -5272,8 +5348,8 @@ const rawDatabase = [
       {
         "label": "過去分詞",
         "formName": "turned",
-        "example": "I have turned off the lights.",
-        "exampleJa": "電気を消しました。"
+        "example": "I've turned the chair around.",
+        "exampleJa": "椅子の向きを変えました。"
       },
       {
         "label": "ing形",
@@ -5284,7 +5360,14 @@ const rawDatabase = [
       }
     ],
     "changeType": "規則変化<br>turn[tɝn] → turned[tɝnd] → turned[tɝnd]",
-    "searchKeywords": "turn 回す／曲がる／〜になる 回す／曲がる／〜になる 移動"
+    "searchKeywords": "turn 回す／曲がる／〜になる 回す／曲がる／〜になる 移動",
+    "otherMeanings": [
+      {
+        "linkExpression": "exp_turn_off",
+        "formName": "turn off",
+        "meaning": "電源・明かりを消す"
+      }
+    ]
   },
   {
     "id": "v_stay",
@@ -5336,7 +5419,7 @@ const rawDatabase = [
     ],
     "changeType": "規則変化<br>stay[steɪ] → stayed[steɪd] → stayed[steɪd]",
     "searchKeywords": "stay 滞在する／〜のままでいる 滞在する／〜のままでいる 旅行",
-    "beginnerTip": "stay は一時的に泊まる・とどまること。live は住んでいること。"
+    "beginnerTip": "stay は一時的に泊まる・滞在する・とどまること。live は生活の拠点として住むこと。"
   },
   {
     "id": "v_meet",
@@ -5430,8 +5513,8 @@ const rawDatabase = [
       {
         "label": "過去分詞",
         "formName": "lost",
-        "example": "I have lost track of time.",
-        "exampleJa": "時間の感覚を失っていました。"
+        "example": "I've lost my keys.",
+        "exampleJa": "鍵をなくしました。"
       },
       {
         "label": "ing形",
@@ -5441,7 +5524,14 @@ const rawDatabase = [
       }
     ],
     "changeType": "不規則変化<br>lose[luz] → lost[lɔst] → lost[lɔst]",
-    "searchKeywords": "lose 失う／なくす／負ける 失う／なくす／負ける 行動"
+    "searchKeywords": "lose 失う／なくす／負ける 失う／なくす／負ける 行動",
+    "otherMeanings": [
+      {
+        "linkExpression": "exp_lose_track_of_time",
+        "formName": "lose track of time",
+        "meaning": "時間を忘れる／時間の感覚を失う"
+      }
+    ]
   },
   {
     "id": "v_win",
@@ -5516,7 +5606,17 @@ const rawDatabase = [
         "formName": "understand",
         "example": "I understand.",
         "exampleJa": "分かりました。",
-        "needsHint": true
+        "needsHint": true,
+        "examples": [
+          {
+            "example": "I understand.",
+            "exampleJa": "分かりました。"
+          },
+          {
+            "example": "I understand how you feel.",
+            "exampleJa": "あなたの気持ちは分かるよ。"
+          }
+        ]
       },
       {
         "label": "三人称単数現在",
@@ -5534,8 +5634,8 @@ const rawDatabase = [
       {
         "label": "過去分詞",
         "formName": "understood",
-        "example": "I have understood everything so far.",
-        "exampleJa": "ここまではすべて理解できています。"
+        "example": "I've finally understood what you meant.",
+        "exampleJa": "やっとあなたの言いたかったことが分かりました。"
       },
       {
         "label": "ing形",
@@ -5600,7 +5700,14 @@ const rawDatabase = [
     ],
     "changeType": "規則変化<br>believe[bɪˈliv] → believed[bɪˈlivd] → believed[bɪˈlivd]",
     "searchKeywords": "believe 信じる／〜と思う 信じる／〜と思う 考え",
-    "beginnerTip": "believe は「信じている」という強めの気持ち。普通の意見は think、そうなってほしい願いは hope を使う。"
+    "beginnerTip": "believe は「本当だと信じる・思う」、think は「〜と思う」、hope は「〜だといいなと願う」。",
+    "otherMeanings": [
+      {
+        "linkExpression": "exp_believe_in_person",
+        "formName": "believe in + 人",
+        "meaning": "人の能力や可能性を信じる"
+      }
+    ]
   },
   {
     "id": "v_hope",
@@ -5655,7 +5762,7 @@ const rawDatabase = [
     ],
     "changeType": "規則変化<br>hope[hoʊp] → hoped[hoʊpt] → hoped[hoʊpt]",
     "searchKeywords": "hope 望む／〜だといいと思う 望む／〜だといいと思う 感情",
-    "beginnerTip": "hope は「そうなってほしい」という願い。普通の意見は think、確信に近いときは believe を使う。"
+    "beginnerTip": "hope は「そうなってほしい」という願いを表す。"
   },
   {
     "id": "v_guess",
@@ -5703,8 +5810,8 @@ const rawDatabase = [
       {
         "label": "過去分詞",
         "formName": "guessed",
-        "example": "I should have guessed.",
-        "exampleJa": "気づくべきでした。",
+        "example": "I've guessed the answer.",
+        "exampleJa": "答えを推測しました。",
         "needsHint": true
       },
       {
@@ -5720,7 +5827,21 @@ const rawDatabase = [
       "控えめな意見",
       "推測"
     ],
-    "beginnerTip": "I guess は、はっきり分からない中で推測するときに使う。I think より自信がなさそうに聞こえることがある。また、「まあ、そうかな」と控えめに受け入れる意味でも使う。確信度は話し方や文脈によって変わる。"
+    "beginnerTip": "I guess は、はっきり分からない中で推測するときに使う。I think より自信がなさそうに聞こえることがある。また、「まあ、そうかな」と控えめに受け入れる意味でも使う。確信度は話し方や文脈によって変わる。",
+    "otherMeanings": [
+      {
+        "pos": "動詞",
+        "meaning": "〜だと思う／〜じゃないかな（I guess）",
+        "category": "会話",
+        "example": "She's busy, I guess.",
+        "exampleJa": "彼女は忙しいんじゃないかな。"
+      },
+      {
+        "linkExpression": "exp_i_guess",
+        "formName": "I guess ...",
+        "meaning": "〜だと思う／〜かな"
+      }
+    ]
   },
   {
     "id": "v_seem",
@@ -9023,12 +9144,27 @@ const rawDatabase = [
         "label": "基本形",
         "formName": "too + 形容詞 + to + 動詞（原形）",
         "example": "I'm too tired to go out.",
-        "exampleJa": "疲れすぎて外出できません。"
+        "exampleJa": "疲れすぎて外出できません。",
+        "examples": [
+          {
+            "example": "I'm too tired to go out.",
+            "exampleJa": "疲れすぎて外出できません。"
+          },
+          {
+            "example": "I'm too tired to cook.",
+            "exampleJa": "疲れすぎて料理できない。"
+          },
+          {
+            "example": "This is too expensive to buy.",
+            "exampleJa": "これは高すぎて買えない。"
+          }
+        ]
       }
     ],
     "example": "I'm too tired to go out.",
     "exampleJa": "疲れすぎて外出できません。",
-    "searchKeywords": "too ... to + 動詞（原形） 〜すぎて…できない 〜すぎて…できない 程度"
+    "searchKeywords": "too ... to + 動詞（原形） 〜すぎて…できない 〜すぎて…できない 程度",
+    "beginnerTip": "too ... to は「〜すぎて…できない」という意味。too の後ろに形容詞や副詞を置き、to の後ろには動詞の原形を置く。can't を使わなくても、できないという意味を表せる。"
   },
   {
     "id": "w_nervous",
@@ -18987,5 +19123,1148 @@ const rawDatabase = [
     "example": "There is a cafe nearby.",
     "exampleJa": "近くにカフェがあります。",
     "searchKeywords": "There is / There are 〜がある／いる"
+  },
+  {
+    "id": "exp_keep_ing",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "表現",
+    "english": "keep + 動詞(ing)",
+    "japanese": "〜し続ける",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜し続ける",
+        "category": "表現"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "keep + 動詞(ing)",
+        "example": "Keep trying.",
+        "exampleJa": "あきらめずに続けて。"
+      }
+    ],
+    "searchKeywords": "keep + 動詞(ing) 〜し続ける"
+  },
+  {
+    "id": "exp_give_a_call",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "表現",
+    "english": "give + 人 + a call",
+    "japanese": "人に電話する",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "人に電話する",
+        "category": "表現"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "give + 人 + a call",
+        "example": "Give me a call tonight.",
+        "exampleJa": "今夜電話して。"
+      }
+    ],
+    "searchKeywords": "give + 人 + a call 人に電話する"
+  },
+  {
+    "id": "exp_stop_ing",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "表現",
+    "english": "stop + 動詞(ing)",
+    "japanese": "〜するのをやめる",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜するのをやめる",
+        "category": "表現"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "stop + 動詞(ing)",
+        "example": "I stopped smoking.",
+        "exampleJa": "タバコを吸うのをやめた。"
+      }
+    ],
+    "searchKeywords": "stop + 動詞(ing) 〜するのをやめる"
+  },
+  {
+    "id": "exp_stop_to",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "表現",
+    "english": "stop to + 動詞(原形)",
+    "japanese": "〜するために立ち止まる",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜するために立ち止まる",
+        "category": "表現"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "stop to + 動詞(原形)",
+        "example": "I stopped to eat.",
+        "exampleJa": "食事をするために立ち止まった。"
+      }
+    ],
+    "searchKeywords": "stop to + 動詞(原形) 〜するために立ち止まる"
+  },
+  {
+    "id": "exp_let_know",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "表現",
+    "english": "let + 人 + know",
+    "japanese": "人に知らせる",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "人に知らせる",
+        "category": "表現"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "let + 人 + know",
+        "example": "Let me know when you get home.",
+        "exampleJa": "家に着いたら教えてね。"
+      }
+    ],
+    "searchKeywords": "let + 人 + know 人に知らせる"
+  },
+  {
+    "id": "exp_show_around",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "表現",
+    "english": "show + 人 + around",
+    "japanese": "人を案内する",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "人を案内する",
+        "category": "表現"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "show + 人 + around",
+        "example": "I'll show you around.",
+        "exampleJa": "案内するよ。"
+      }
+    ],
+    "searchKeywords": "show + 人 + around 人を案内する"
+  },
+  {
+    "id": "exp_turn_off",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "表現",
+    "english": "turn off",
+    "japanese": "電源・明かりを消す",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "電源・明かりを消す",
+        "category": "表現"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "turn off",
+        "example": "I turned off the lights.",
+        "exampleJa": "電気を消しました。"
+      }
+    ],
+    "searchKeywords": "turn off 電源・明かりを消す"
+  },
+  {
+    "id": "exp_lose_track_of_time",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "表現",
+    "english": "lose track of time",
+    "japanese": "時間を忘れる／時間の感覚を失う",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "時間を忘れる／時間の感覚を失う",
+        "category": "表現"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "lose track of time",
+        "example": "I lost track of time.",
+        "exampleJa": "時間を忘れていた。"
+      }
+    ],
+    "searchKeywords": "lose track of time 時間を忘れる／時間の感覚を失う"
+  },
+  {
+    "id": "exp_believe_in_person",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "表現",
+    "english": "believe in + 人",
+    "japanese": "人の能力や可能性を信じる",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "人の能力や可能性を信じる",
+        "category": "表現"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "believe in + 人",
+        "example": "I believe in you.",
+        "exampleJa": "あなたならできると信じているよ。"
+      }
+    ],
+    "searchKeywords": "believe in + 人 人の能力や可能性を信じる"
+  },
+  {
+    "id": "exp_i_guess",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "表現",
+    "english": "I guess ...",
+    "japanese": "〜だと思う／〜かな",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜だと思う／〜かな",
+        "category": "表現"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "I guess ...",
+        "example": "I guess she's busy.",
+        "exampleJa": "彼女は忙しいんじゃないかな。"
+      }
+    ],
+    "searchKeywords": "I guess ... 〜だと思う／〜かな"
+  },
+  {
+    "id": "exp_grammar_be_ing_0a5c1c44eb",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "be動詞 + 動詞(ing)",
+    "japanese": "〜している／〜していた",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜している／〜していた",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "現在進行形",
+        "formName": "be動詞(現在形) + 動詞(ing)",
+        "example": "I'm studying English.",
+        "exampleJa": "英語を勉強しています。"
+      },
+      {
+        "label": "過去進行形",
+        "formName": "be動詞(過去形) + 動詞(ing)",
+        "example": "I was studying English.",
+        "exampleJa": "英語を勉強していました。"
+      },
+      {
+        "label": "助動詞",
+        "formName": "助動詞 + be + 動詞(ing)",
+        "example": "She will be studying.",
+        "exampleJa": "彼女は勉強しているでしょう。",
+        "examples": [
+          {
+            "example": "She will be studying.",
+            "exampleJa": "彼女は勉強しているでしょう。"
+          },
+          {
+            "example": "She might be studying.",
+            "exampleJa": "彼女は勉強しているかもしれません。"
+          }
+        ]
+      }
+    ],
+    "searchKeywords": "be動詞 + 動詞(ing) 〜している／〜していた",
+    "beginnerTip": "進行形は、ある時点で動作が進行中であることを表す。be動詞を現在形・過去形にすると時制が変わり、助動詞を付けると予測・可能性などの意味が加わる。"
+  },
+  {
+    "id": "exp_grammar_be_162efc81d3",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "be動詞 + 動詞(過去分詞)",
+    "japanese": "〜される／〜された",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜される／〜された",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "現在の受動態",
+        "formName": "be動詞(現在形) + 動詞(過去分詞)",
+        "example": "This language is spoken in many countries.",
+        "exampleJa": "この言語は多くの国で話されています。"
+      },
+      {
+        "label": "過去の受動態",
+        "formName": "be動詞(過去形) + 動詞(過去分詞)",
+        "example": "This picture was taken yesterday.",
+        "exampleJa": "この写真は昨日撮られました。"
+      },
+      {
+        "label": "助動詞",
+        "formName": "助動詞 + be + 動詞(過去分詞)",
+        "example": "This will be fixed tomorrow.",
+        "exampleJa": "これは明日修理されます。",
+        "examples": [
+          {
+            "example": "This will be fixed tomorrow.",
+            "exampleJa": "これは明日修理されます。"
+          },
+          {
+            "example": "This might be fixed tomorrow.",
+            "exampleJa": "これは明日修理されるかもしれません。"
+          },
+          {
+            "example": "This must be fixed.",
+            "exampleJa": "これは修理されなければなりません。"
+          }
+        ]
+      }
+    ],
+    "searchKeywords": "be動詞 + 動詞(過去分詞) 〜される／〜された",
+    "beginnerTip": "受動態は「〜される」という受け手側からの表現。be動詞を現在形・過去形にすると時制が変わり、助動詞を付けると可能性・義務・予測などの意味が加わる。"
+  },
+  {
+    "id": "exp_grammar_than_321cc2c48d",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "形容詞(比較級) + than 〜",
+    "japanese": "〜より…だ",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜より…だ",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "形容詞(比較級) + than 〜",
+        "example": "This bag is smaller than mine.",
+        "exampleJa": "このバッグは私のより小さいです。",
+        "examples": [
+          {
+            "example": "This bag is smaller than mine.",
+            "exampleJa": "このバッグは私のより小さいです。"
+          },
+          {
+            "example": "This is more expensive than I thought.",
+            "exampleJa": "これは思ったより高いです。"
+          },
+          {
+            "example": "This one is better than that one.",
+            "exampleJa": "これはあれより良いです。"
+          }
+        ]
+      }
+    ],
+    "searchKeywords": "形容詞(比較級) + than 〜 〜より…だ",
+    "beginnerTip": "比較級は2つのものを比べるときに使う。than の後ろには比較する相手や基準を置く。"
+  },
+  {
+    "id": "exp_grammar_the_5786be93bb",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "the + 形容詞(最上級)",
+    "japanese": "最も〜だ／一番〜だ",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "最も〜だ／一番〜だ",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "the + 形容詞(最上級)",
+        "example": "This is the cheapest one.",
+        "exampleJa": "これが一番安いです。",
+        "examples": [
+          {
+            "example": "This is the cheapest one.",
+            "exampleJa": "これが一番安いです。"
+          },
+          {
+            "example": "This is the most beautiful place I've ever seen.",
+            "exampleJa": "ここは今まで見た中で一番美しい場所です。"
+          },
+          {
+            "example": "This is the best day of my life!",
+            "exampleJa": "人生で最高の日だ！"
+          }
+        ]
+      }
+    ],
+    "searchKeywords": "the + 形容詞(最上級) 最も〜だ／一番〜だ",
+    "beginnerTip": "最上級は、3つ以上のものや、ある範囲の中で「最も〜」と表すときに使う。通常は形容詞の最上級の前に the を付ける。"
+  },
+  {
+    "id": "exp_grammar_as_as_0b89d9723b",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "as + 形容詞・副詞 + as 〜",
+    "japanese": "〜と同じくらい…だ（肯定文）/〜ほど…ではない（否定文）",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜と同じくらい…だ（肯定文）/〜ほど…ではない（否定文）",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "肯定文",
+        "formName": "as + 形容詞・副詞 + as 〜",
+        "example": "This bag is as big as mine.",
+        "exampleJa": "このバッグは私のと同じくらい大きいです。",
+        "examples": [
+          {
+            "example": "This bag is as big as mine.",
+            "exampleJa": "このバッグは私のと同じくらい大きいです。"
+          },
+          {
+            "example": "She runs as fast as her brother.",
+            "exampleJa": "彼女は兄と同じくらい速く走ります。"
+          }
+        ]
+      },
+      {
+        "label": "否定文",
+        "formName": "not as + 形容詞・副詞 + as 〜",
+        "example": "This isn't as expensive as I thought.",
+        "exampleJa": "これは思ったほど高くありません。"
+      }
+    ],
+    "searchKeywords": "as + 形容詞・副詞 + as 〜 〜と同じくらい…だ（肯定文）/〜ほど…ではない（否定文）",
+    "beginnerTip": "as ... as は2つのものを同じ程度で比較する表現。否定文では「〜ほど…ではない」という意味になる。"
+  },
+  {
+    "id": "exp_grammar_who_which_that_8bead182e3",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "名詞 + who / which / that + 動詞 〜",
+    "japanese": "〜する人／〜するもの",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜する人／〜するもの",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "who",
+        "formName": "名詞 + who + 動詞 〜",
+        "example": "I have a friend who lives in America.",
+        "exampleJa": "アメリカに住んでいる友達がいます。"
+      },
+      {
+        "label": "which",
+        "formName": "名詞 + which + 動詞 〜",
+        "example": "This is a camera which takes great pictures.",
+        "exampleJa": "これはきれいな写真が撮れるカメラです。"
+      },
+      {
+        "label": "that",
+        "formName": "名詞 + that + 動詞 〜",
+        "example": "I know someone that speaks Japanese.",
+        "exampleJa": "日本語を話せる人を知っています。"
+      }
+    ],
+    "searchKeywords": "名詞 + who / which / that + 動詞 〜 〜する人／〜するもの",
+    "beginnerTip": "関係代名詞は、前の名詞がどんな人・ものなのかを説明する。who は人、which はもの、that は人・ものの両方に使える。"
+  },
+  {
+    "id": "exp_grammar_who_which_that_whom_8ea7e5b3f1",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "名詞 + who / which / that / whom + 主語 + 動詞 〜",
+    "japanese": "（誰かが）〜する人／もの",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "（誰かが）〜する人／もの",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "who",
+        "formName": "名詞 + who + 主語 + 動詞 〜",
+        "example": "She's the person who I met yesterday.",
+        "exampleJa": "彼女は昨日私が会った人です。"
+      },
+      {
+        "label": "which",
+        "formName": "名詞 + which + 主語 + 動詞 〜",
+        "example": "This is the bag which I bought in Japan.",
+        "exampleJa": "これは私が日本で買ったバッグです。"
+      },
+      {
+        "label": "that",
+        "formName": "名詞 + that + 主語 + 動詞 〜",
+        "example": "This is the movie that I told you about.",
+        "exampleJa": "これがあなたに話した映画です。"
+      },
+      {
+        "label": "whom",
+        "formName": "名詞 + whom + 主語 + 動詞 〜",
+        "example": "She's the person whom I met yesterday.",
+        "exampleJa": "彼女は昨日私が会った人です。",
+        "lowFrequency": true
+      }
+    ],
+    "searchKeywords": "名詞 + who / which / that / whom + 主語 + 動詞 〜 （誰かが）〜する人／もの",
+    "beginnerTip": "目的格の関係代名詞は、前の名詞が後ろの動詞の目的語になるときに使う。省略できることが多い。whom は主に硬い文章で使われ、日常会話では who や省略形が一般的。"
+  },
+  {
+    "id": "exp_grammar_whose_9314a2176b",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "名詞 + whose + 名詞 + 動詞 〜",
+    "japanese": "〜の…が／〜の…を持つ人・もの",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜の…が／〜の…を持つ人・もの",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "名詞 + whose + 名詞 + 動詞 〜",
+        "example": "I have a friend whose mom is Japanese.",
+        "exampleJa": "私にはお母さんが日本人の友達がいます。",
+        "examples": [
+          {
+            "example": "I have a friend whose mom is Japanese.",
+            "exampleJa": "私にはお母さんが日本人の友達がいます。"
+          },
+          {
+            "example": "She's the girl whose bag was stolen.",
+            "exampleJa": "彼女はバッグを盗まれた女の子です。"
+          },
+          {
+            "example": "I work for a company whose products are popular.",
+            "exampleJa": "製品が人気の会社で働いています。"
+          }
+        ]
+      }
+    ],
+    "searchKeywords": "名詞 + whose + 名詞 + 動詞 〜 〜の…が／〜の…を持つ人・もの",
+    "beginnerTip": "whose は前の名詞との所有関係を表し、人にもものにも使える。後ろには名詞が続き、主格・目的格の関係代名詞とは違って通常は省略できない。"
+  },
+  {
+    "id": "exp_grammar__9f0712e3e3",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "文+ 疑問詞 + 主語 + 動詞 〜",
+    "japanese": "どこに〜するか／何を〜するか／いつ〜するか、など",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "どこに〜するか／何を〜するか／いつ〜するか、など",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "where",
+        "formName": "文 + where + 主語 + 動詞",
+        "example": "Do you know where she lives?",
+        "exampleJa": "彼女がどこに住んでいるか知ってる？"
+      },
+      {
+        "label": "what",
+        "formName": "文 + what + 主語 + 動詞",
+        "example": "I don't know what he wants.",
+        "exampleJa": "彼が何を欲しがっているのかわからない。"
+      },
+      {
+        "label": "when",
+        "formName": "文 + when + 主語 + 動詞",
+        "example": "Can you tell me when the movie starts?",
+        "exampleJa": "映画がいつ始まるか教えてくれる？"
+      }
+    ],
+    "searchKeywords": "文+ 疑問詞 + 主語 + 動詞 〜 どこに〜するか／何を〜するか／いつ〜するか、など",
+    "beginnerTip": "間接疑問文は、疑問の内容を別の文の中に組み込む文法。疑問詞の後ろは通常「主語 + 動詞」の順番になる。"
+  },
+  {
+    "id": "exp_grammar_if_dc508db6e8",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "If + 文, 文",
+    "japanese": "もし〜なら／〜の場合は",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "もし〜なら／〜の場合は",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "未来の条件",
+        "formName": "If + 文, 文",
+        "example": "If it rains tomorrow, I'll stay home.",
+        "exampleJa": "明日雨が降ったら、家にいるよ。"
+      },
+      {
+        "label": "相手への提案",
+        "formName": "If + 文, 文",
+        "example": "If you're tired, you should rest.",
+        "exampleJa": "疲れているなら、休んだ方がいいよ。"
+      },
+      {
+        "label": "条件と結果",
+        "formName": "If + 文, 文",
+        "example": "If you heat ice, it melts.",
+        "exampleJa": "氷を温めると溶けます。"
+      }
+    ],
+    "searchKeywords": "If + 文, 文 もし〜なら／〜の場合は",
+    "beginnerTip": "if は「もし〜なら」という条件を表す。未来のことでも、if の後ろは通常、現在形を使う。"
+  },
+  {
+    "id": "exp_grammar_if_would_a8c8f44053",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "If + 主語 + 動詞(過去形), 主語 + would + 動詞(原形)",
+    "japanese": "もし〜だったら、…するのに",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "もし〜だったら、…するのに",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "If + 主語 + 動詞(過去形), 主語 + would + 動詞(原形)",
+        "example": "If I had more money, I would travel more.",
+        "exampleJa": "もっとお金があったら、もっと旅行するのに。",
+        "examples": [
+          {
+            "example": "If I had more money, I would travel more.",
+            "exampleJa": "もっとお金があったら、もっと旅行するのに。"
+          },
+          {
+            "example": "If I had more time, I would study English more.",
+            "exampleJa": "もっと時間があったら、もっと英語を勉強するのに。"
+          },
+          {
+            "example": "If I were you, I would tell her.",
+            "exampleJa": "私があなただったら、彼女に伝えるよ。"
+          }
+        ]
+      }
+    ],
+    "searchKeywords": "If + 主語 + 動詞(過去形), 主語 + would + 動詞(原形) もし〜だったら、…するのに",
+    "beginnerTip": "仮定法過去は、現在の現実とは違うことや、実現する可能性が低いことを想像するときに使う。現在の話でも if の後ろに過去形を使う。"
+  },
+  {
+    "id": "exp_grammar_what_a_an_how_a23b6135b6",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "What + (a/an) + 形容詞 + 名詞! / How + 形容詞・副詞 + 主語 + 動詞!",
+    "japanese": "なんて〜なんだ！／すごく〜だね！",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "なんて〜なんだ！／すごく〜だね！",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "What",
+        "formName": "What + (a/an) + 形容詞 + 名詞!",
+        "example": "What a beautiful place!",
+        "exampleJa": "なんて美しい場所なの！",
+        "examples": [
+          {
+            "example": "What a beautiful place!",
+            "exampleJa": "なんて美しい場所なの！"
+          },
+          {
+            "example": "What a surprise!",
+            "exampleJa": "びっくりした！"
+          }
+        ]
+      },
+      {
+        "label": "How",
+        "formName": "How + 形容詞・副詞 + 主語 + 動詞!",
+        "example": "How beautiful this place is!",
+        "exampleJa": "ここはなんて美しいんだろう！",
+        "examples": [
+          {
+            "example": "How beautiful this place is!",
+            "exampleJa": "ここはなんて美しいんだろう！"
+          },
+          {
+            "example": "How fast he runs!",
+            "exampleJa": "彼はなんて速く走るんだろう！"
+          },
+          {
+            "example": "How cute!",
+            "exampleJa": "なんてかわいいの！"
+          }
+        ]
+      }
+    ],
+    "searchKeywords": "What + (a/an) + 形容詞 + 名詞! / How + 形容詞・副詞 + 主語 + 動詞! なんて〜なんだ！／すごく〜だね！",
+    "beginnerTip": "感嘆文は驚きや感動などを強く伝える表現。What は名詞、How は形容詞・副詞を中心に強調する。会話では主語や動詞を省略することも多い。"
+  },
+  {
+    "id": "exp_grammar__d6838743c0",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "肯定文 + 否定の疑問形? / 否定文 + 肯定の疑問形?",
+    "japanese": "〜だよね？／〜じゃない？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜だよね？／〜じゃない？",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "肯定文",
+        "formName": "肯定文 + 否定の疑問形?",
+        "example": "You're tired, aren't you?",
+        "exampleJa": "疲れてるよね？",
+        "examples": [
+          {
+            "example": "You're tired, aren't you?",
+            "exampleJa": "疲れてるよね？"
+          },
+          {
+            "example": "You can swim, can't you?",
+            "exampleJa": "泳げるよね？"
+          }
+        ]
+      },
+      {
+        "label": "否定文",
+        "formName": "否定文 + 肯定の疑問形?",
+        "example": "You don't like coffee, do you?",
+        "exampleJa": "コーヒーは好きじゃないんだよね？"
+      }
+    ],
+    "searchKeywords": "肯定文 + 否定の疑問形? / 否定文 + 肯定の疑問形? 〜だよね？／〜じゃない？",
+    "beginnerTip": "文末に短い疑問形を付けて確認したり、相手の同意を求めたりする表現。基本的に肯定文には否定形、否定文には肯定形を付ける。"
+  },
+  {
+    "id": "exp_grammar_right_3d832ea9e3",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "文 + right?",
+    "japanese": "〜だよね？／〜で合ってるよね？",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜だよね？／〜で合ってるよね？",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "文 + right?",
+        "example": "You're tired, right?",
+        "exampleJa": "疲れてるよね？",
+        "examples": [
+          {
+            "example": "You're tired, right?",
+            "exampleJa": "疲れてるよね？"
+          },
+          {
+            "example": "You don't like coffee, right?",
+            "exampleJa": "コーヒーは好きじゃないんだよね？"
+          },
+          {
+            "example": "You're coming tomorrow, right?",
+            "exampleJa": "明日来るんだよね？"
+          }
+        ]
+      }
+    ],
+    "searchKeywords": "文 + right? 〜だよね？／〜で合ってるよね？",
+    "beginnerTip": "right? は、自分の認識が合っているか相手に確認するときによく使う口語表現。肯定文・否定文のどちらにも、そのまま付けられる。付加疑問文より形が簡単で、同意を求める場合にも使える。"
+  },
+  {
+    "id": "exp_grammar_to_f31b16c0af",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "疑問詞 + to + 動詞(原形)",
+    "japanese": "何を〜すべきか／どう〜すればいいか／どこで〜すればいいか、など",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "何を〜すべきか／どう〜すればいいか／どこで〜すればいいか、など",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "what",
+        "formName": "what to + 動詞(原形)",
+        "example": "I don't know what to say.",
+        "exampleJa": "何と言えばいいかわからない。"
+      },
+      {
+        "label": "how",
+        "formName": "how to + 動詞(原形)",
+        "example": "Can you show me how to use this?",
+        "exampleJa": "これの使い方を教えてくれる？"
+      },
+      {
+        "label": "where",
+        "formName": "where to + 動詞(原形)",
+        "example": "I don't know where to go.",
+        "exampleJa": "どこに行けばいいかわからない。"
+      },
+      {
+        "label": "when",
+        "formName": "when to + 動詞(原形)",
+        "example": "I don't know when to leave.",
+        "exampleJa": "いつ出発すればいいかわからない。"
+      }
+    ],
+    "searchKeywords": "疑問詞 + to + 動詞(原形) 何を〜すべきか／どう〜すればいいか／どこで〜すればいいか、など",
+    "beginnerTip": "疑問詞の後ろに to + 動詞(原形) を置くと、「何を・どうやって・どこで・いつ〜すればいいか」という意味になる。what、how、where、when などと組み合わせて使える。"
+  },
+  {
+    "id": "exp_grammar_it_is_for_to_a798690e2c",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "It is + 形容詞 + for + 人 + to + 動詞(原形)",
+    "japanese": "人にとって〜することは…だ",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "人にとって〜することは…だ",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "It is + 形容詞 + for + 人 + to + 動詞(原形)",
+        "example": "It's hard for me to speak English.",
+        "exampleJa": "私にとって英語を話すのは難しい。",
+        "examples": [
+          {
+            "example": "It's hard for me to speak English.",
+            "exampleJa": "私にとって英語を話すのは難しい。"
+          },
+          {
+            "example": "It's important for me to have time alone.",
+            "exampleJa": "私にとって一人の時間を持つことは大切です。"
+          },
+          {
+            "example": "It's easy for her to make friends.",
+            "exampleJa": "彼女にとって友達を作るのは簡単です。"
+          },
+          {
+            "example": "It's exciting for me to visit new places.",
+            "exampleJa": "私にとって新しい場所を訪れるのはワクワクすることです。"
+          }
+        ]
+      }
+    ],
+    "searchKeywords": "It is + 形容詞 + for + 人 + to + 動詞(原形) 人にとって〜することは…だ",
+    "beginnerTip": "for + 人 は、誰にとってそうなのかを明確にするときに使う。省略すると、誰にとってなのかを指定しない表現になり、文脈によって一般的な話にも自分の話にもなる。"
+  },
+  {
+    "id": "exp_grammar_so_that_b457e399de",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "so + 形容詞・副詞 + that + 文",
+    "japanese": "とても〜なので…だ／〜なほど…だ",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "とても〜なので…だ／〜なほど…だ",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "so + 形容詞・副詞 + that + 文",
+        "example": "I was so tired that I fell asleep immediately.",
+        "exampleJa": "とても疲れていたので、すぐに寝てしまった。",
+        "examples": [
+          {
+            "example": "I was so tired that I fell asleep immediately.",
+            "exampleJa": "とても疲れていたので、すぐに寝てしまった。"
+          },
+          {
+            "example": "The movie was so good that I watched it twice.",
+            "exampleJa": "その映画がとても良かったので、2回見た。"
+          },
+          {
+            "example": "I was so nervous that I couldn't speak.",
+            "exampleJa": "緊張しすぎて話せなかった。"
+          },
+          {
+            "example": "It was so funny that I couldn't stop laughing.",
+            "exampleJa": "面白すぎて笑いが止まらなかった。"
+          }
+        ]
+      }
+    ],
+    "searchKeywords": "so + 形容詞・副詞 + that + 文 とても〜なので…だ／〜なほど…だ",
+    "beginnerTip": "日常会話では that を省略することも多い。もし so を外すならこの構文が成立せず、that も外す必要があり、その場合は and などでつなげる。"
+  },
+  {
+    "id": "exp_grammar_unless_48b0730cf3",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "unless + 文",
+    "japanese": "〜でない限り／〜しなければ",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜でない限り／〜しなければ",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "unless + 文",
+        "example": "I'll go unless it rains.",
+        "exampleJa": "雨が降らない限り、行くよ。",
+        "examples": [
+          {
+            "example": "I'll go unless it rains.",
+            "exampleJa": "雨が降らない限り、行くよ。"
+          },
+          {
+            "example": "I'll be there unless something comes up.",
+            "exampleJa": "何か予定が入らない限り、行くよ。"
+          },
+          {
+            "example": "You won't understand unless you try.",
+            "exampleJa": "やってみないとわからないよ。"
+          },
+          {
+            "example": "We won't make it unless we leave now.",
+            "exampleJa": "今出発しないと間に合わないよ。"
+          }
+        ]
+      }
+    ],
+    "searchKeywords": "unless + 文 〜でない限り／〜しなければ",
+    "beginnerTip": "unless は if ... not に近い意味を持ち、否定の条件を表す。すでに否定の意味が含まれるため、通常は後ろを肯定形にする。未来の条件を表す場合も、unless の後ろは通常、現在形を使う。"
+  },
+  {
+    "id": "exp_grammar_as_soon_as_2ea297b106",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "as soon as + 文",
+    "japanese": "〜したらすぐに／〜するとすぐに",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜したらすぐに／〜するとすぐに",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "as soon as + 文",
+        "example": "I'll call you as soon as I get home.",
+        "exampleJa": "家に着いたらすぐ電話するね。",
+        "examples": [
+          {
+            "example": "I'll call you as soon as I get home.",
+            "exampleJa": "家に着いたらすぐ電話するね。"
+          },
+          {
+            "example": "I'll let you know as soon as I find out.",
+            "exampleJa": "わかったらすぐ教えるね。"
+          },
+          {
+            "example": "As soon as she replies, I'll tell you.",
+            "exampleJa": "彼女から返事が来たらすぐ教えるね。"
+          },
+          {
+            "example": "I went to bed as soon as I got home.",
+            "exampleJa": "家に着いてすぐ寝た。"
+          }
+        ]
+      }
+    ],
+    "searchKeywords": "as soon as + 文 〜したらすぐに／〜するとすぐに",
+    "beginnerTip": "ある出来事の直後に別のことが起こることを表す。未来の話でも、as soon as の後ろは通常、現在形を使う。過去の出来事には過去形を使う。文頭にも置ける。"
+  },
+  {
+    "id": "exp_grammar_while_04f22bba6b",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "while + 文",
+    "japanese": "〜している間に／〜する間",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜している間に／〜する間",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "while + 文",
+        "example": "I listen to music while I cook.",
+        "exampleJa": "料理をしている間、音楽を聴くよ。",
+        "examples": [
+          {
+            "example": "I listen to music while I cook.",
+            "exampleJa": "料理をしている間、音楽を聴くよ。"
+          },
+          {
+            "example": "I usually read while I'm on the train.",
+            "exampleJa": "電車に乗っている間は、たいてい本を読むよ。"
+          },
+          {
+            "example": "I fell asleep while I was watching TV.",
+            "exampleJa": "テレビを見ている間に寝ちゃった。"
+          },
+          {
+            "example": "While you're here, let's take a picture.",
+            "exampleJa": "ここにいる間に、一緒に写真を撮ろう。"
+          }
+        ]
+      }
+    ],
+    "searchKeywords": "while + 文 〜している間に／〜する間",
+    "beginnerTip": "2つの動作や状態が同じ時間帯に起きることを表す。現在の習慣にも過去の出来事にも使える。文頭にも置ける。"
   }
 ];
