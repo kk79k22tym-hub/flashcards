@@ -98,6 +98,16 @@
                 <div class="w-full bg-[#e5dfd7] rounded-full h-3 mb-4 overflow-hidden border border-[#dcd6ce]">
                     <div id="overall-progress-bar" class="bg-gradient-to-r from-[#8ba7df] to-[#9c8edf] h-3 rounded-full transition-all duration-500" style="width: 0%"></div>
                 </div>
+
+                <div class="rounded-xl border border-[#e5dfd7] bg-[#faf8f5] px-3 py-3 space-y-2">
+                    <label for="study-mode-select" class="block text-xs font-bold text-[#5c534c]">暗記カードの出題対象</label>
+                    <select id="study-mode-select" onchange="changeStudyMode(this.value)" class="w-full rounded-lg border border-[#d9d2c9] bg-white text-[#2b2927] px-3 py-3 text-base">
+                        <option value="selected">選んだ単語だけ（91枚）</option>
+                        <option value="all">すべての単語・表現（570枚）</option>
+                    </select>
+                    <p id="study-mode-caption" class="text-xs text-[#6b625b]">復習61枚＋これから覚える30枚。カード内容は全件保存しています。</p>
+                </div>
+
                 <button onclick="startFlashcards()" class="w-full bg-[#78829c] text-white font-bold py-3.5 rounded-xl text-sm shadow hover:bg-[#68728c] transition active:scale-95 flex items-center justify-center space-x-2 border border-[#68728c]">
                     <span>学習を続ける</span>
                 </button>
@@ -332,11 +342,37 @@
         </div>
     </nav>
 
-    <script src="./data.js?v=20261107-confirmed-updates"></script>
+    <script src="./data.js?v=20261111-selected91"></script>
     <script>
         // Stable storage key: keep this unchanged across UI/data updates so learning history survives.
         const STORAGE_KEY = 'english_app_user_data_v9';
         let appData = { itemsState: {} };
+        // Fixed study subset: 61 familiar review words plus 30 new-to-user words.
+        // All cards (including Expressions) remain in rawDatabase and are still browseable.
+        const SELECTED_STUDY_IDS = new Set(["v_think", "v_know", "v_want", "v_need", "v_like", "v_guess", "v_say", "v_tell", "v_talk", "v_speak", "v_try", "v_see", "v_look", "v_live", "v_remember", "v_love", "v_read", "v_work", "n_job", "adv_here", "v_drink", "adj_fast", "v_get", "v_make", "v_take", "v_give", "v_ask", "v_feel", "v_find", "v_mean", "v_keep", "v_bring", "v_stay", "v_meet", "v_hope", "v_choose", "v_understand", "v_believe", "v_sound", "v_forget", "v_enjoy", "v_agree", "v_share", "v_change", "v_borrow", "v_join", "v_send", "v_check", "adv_actually", "adv_already", "adv_yet", "v_follow", "v_hold", "adv_enough", "adv_ever", "v_wait", "v_plan", "v_wish", "v_move", "w_nervous", "adv_still", "v_happen", "v_leave", "v_decide", "v_seem", "v_miss", "v_spend", "v_matter", "v_worry", "v_care", "v_explain", "v_expect", "v_invite", "adv_probably", "conj_though", "adv_quite", "adv_instead", "v_mind", "v_receive", "v_reach", "adv_almost", "adv_even", "adv_especially", "adj_afraid", "w_confused", "w_relieved", "w_awkward", "w_curious", "w_upset", "w_overwhelmed", "w_disappointed"]);
+        const STUDY_MODE_STORAGE_KEY = 'flashcards_study_mode_20261111';
+        let studyMode = 'selected';
+        function restoreStudyMode() {
+            try { studyMode = localStorage.getItem(STUDY_MODE_STORAGE_KEY) === 'all' ? 'all' : 'selected'; } catch (_) { studyMode='selected'; }
+            const selector = document.getElementById('study-mode-select');
+            if (selector) selector.value = studyMode;
+            updateStudyModeCaption();
+        }
+        function changeStudyMode(value) {
+            studyMode = value === 'all' ? 'all' : 'selected';
+            try { localStorage.setItem(STUDY_MODE_STORAGE_KEY, studyMode); } catch (_) {}
+            updateStudyModeCaption();
+        }
+        function updateStudyModeCaption() {
+            const caption = document.getElementById('study-mode-caption');
+            if (caption) caption.textContent = studyMode === 'selected'
+                ? '復習61枚＋これから覚える30枚。カード内容は全件保存しています。'
+                : '登録済み570枚すべて（単語・表現）を出題対象にします。';
+        }
+        function activeStudyCards() {
+            return studyMode === 'all' ? rawDatabase : rawDatabase.filter(item => SELECTED_STUDY_IDS.has(item.id));
+        }
+
         let currentTab = 'today';
         let selectedWordPos = 'all';
         let selectedWordTheme = 'all';
@@ -359,7 +395,12 @@
         const FSRS_W = [0.212, 1.2931, 2.3065, 8.2956, 6.4133, 0.8334, 3.0194, 0.001, 1.8722, 0.1666, 0.796, 1.4835, 0.0614, 0.2629, 1.6483, 0.6014, 1.8729, 0.5425, 0.0912, 0.0658, 0.1542];
         const FSRS_DESIRED_RETENTION = 0.90;
         const FSRS_MAX_INTERVAL_DAYS = 36500;
-        const NEW_CARDS_PER_DAY = 50;
+        // Honor the 50-card allowance on 2026-11-11 (Japan local date),
+        // then introduce no more than 10 NEW cards each subsequent day.
+        // Previously introduced cards are never reset by this limit change.
+        function newCardsPerDay(date = new Date()) {
+            return localDateKey(date) <= '2026-11-11' ? 50 : 10;
+        }
         const NEW_AGAIN_DELAY_MINUTES = 5;
         const FSRS_DECAY = -FSRS_W[20];
         const FSRS_FACTOR = Math.pow(0.9, 1 / FSRS_DECAY) - 1;
@@ -530,7 +571,7 @@
 
         function introducedTodayCount() {
             const today = localDateKey();
-            return rawDatabase.reduce((count, item) => {
+            return activeStudyCards().reduce((count, item) => {
                 const st = appData.itemsState[item.id];
                 if (!st || !st.introducedAt) return count;
                 return count + (localDateKey(new Date(st.introducedAt)) === today ? 1 : 0);
@@ -580,7 +621,9 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             loadUserData();
+            resetReviewScoresOnce();
             initItemsState();
+            restoreStudyMode();
             renderProgressTab();
             updateNavStyles('today');
         });
@@ -594,6 +637,34 @@
 
         function saveUserData() {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+        }
+
+
+        // User-approved one-time reset of Again / Unsure / Got it study history.
+        // Preserve ALL card data, stable card IDs and the regular storage key.
+        const SCORE_RESET_MARKER = 'flashcards_scores_reset_20261111_v1';
+        const SCORE_RESET_BACKUP = 'flashcards_scores_before_reset_20261111_v1';
+        function resetReviewScoresOnce() {
+            try {
+                if (localStorage.getItem(SCORE_RESET_MARKER) === 'done') return;
+                const old = localStorage.getItem(STORAGE_KEY);
+                if (old !== null) {
+                    // Never reset existing history unless a backup was safely written first.
+                    localStorage.setItem(SCORE_RESET_BACKUP, old);
+                }
+                if (!appData || typeof appData !== 'object') appData = {};
+                appData.itemsState = {};
+                // Other application settings (if any) remain intact.
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+                localStorage.setItem(SCORE_RESET_MARKER, 'done');
+            } catch (error) {
+                console.warn('Could not safely reset history; original data kept.', error);
+                // Keep existing progress if backup/storage fails.
+                try {
+                    const old = localStorage.getItem(STORAGE_KEY);
+                    if (old) appData = JSON.parse(old);
+                } catch (_) {}
+            }
         }
 
         function initItemsState() {
@@ -812,7 +883,7 @@
             const now = new Date();
 
             if (isWeakOnly) {
-                flashcardQueue = shuffleItems(rawDatabase.filter(item => {
+                flashcardQueue = shuffleItems(activeStudyCards().filter(item => {
                     const st = appData.itemsState[item.id];
                     return st && st.weakRemaining > 0;
                 }));
@@ -821,7 +892,7 @@
                 const dueItems = [];
                 const newItems = [];
 
-                rawDatabase.forEach(item => {
+                activeStudyCards().forEach(item => {
                     const st = appData.itemsState[item.id];
                     if (!st || !st.lastStudied || st.status === 'new' || st.fsrsState === 'new') {
                         newItems.push(item);
@@ -830,14 +901,14 @@
                     if (!st.nextReview || new Date(st.nextReview) <= now) dueItems.push(item);
                 });
 
-                const remainingNew = Math.max(0, NEW_CARDS_PER_DAY - introducedTodayCount());
+                const remainingNew = Math.max(0, newCardsPerDay(now) - introducedTodayCount());
                 const selectedNew = shuffleItems(newItems).slice(0, remainingNew);
                 flashcardQueue = [...shuffleItems(dueItems), ...selectedNew];
 
                 if (flashcardQueue.length === 0) {
                     if (!document.getElementById('flashcard-modal').classList.contains('hidden')) closeFlashcards();
                     const todayKey = localDateKey(now);
-                    const laterToday = rawDatabase
+                    const laterToday = activeStudyCards()
                         .map(item => appData.itemsState[item.id])
                         .filter(st => st && st.nextReview && new Date(st.nextReview) > now && localDateKey(new Date(st.nextReview)) === todayKey)
                         .sort((a, b) => new Date(a.nextReview) - new Date(b.nextReview));
