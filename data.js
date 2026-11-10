@@ -20266,5 +20266,641 @@ const rawDatabase = [
     ],
     "searchKeywords": "while + 文 〜している間に／〜する間",
     "beginnerTip": "2つの動作や状態が同じ時間帯に起きることを表す。現在の習慣にも過去の出来事にも使える。文頭にも置ける。"
+  },
+  {
+    "id": "exp_either_a_or_b_20261110",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "either A or B",
+    "japanese": "AかBのどちらか／AまたはB",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "AかBのどちらか／AまたはB",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "either A or B",
+        "example": "You can have either coffee or tea.",
+        "exampleJa": "コーヒーか紅茶のどちらかを選べるよ。",
+        "examples": [
+          {
+            "example": "You can have either coffee or tea.",
+            "exampleJa": "コーヒーか紅茶のどちらかを選べるよ。"
+          },
+          {
+            "example": "Either Saturday or Sunday works for me.",
+            "exampleJa": "土曜日でも日曜日でも大丈夫だよ。"
+          },
+          {
+            "example": "We can either walk or take the bus.",
+            "exampleJa": "歩いてもいいし、バスに乗ってもいいよ。"
+          },
+          {
+            "example": "I don't like either option.",
+            "exampleJa": "どちらの選択肢も好きじゃない。"
+          }
+        ]
+      }
+    ],
+    "example": "You can have either coffee or tea.",
+    "exampleJa": "コーヒーか紅茶のどちらかを選べるよ。",
+    "beginnerTip": "2つの選択肢のうち、どちらか一方を表す。AとBには名詞だけでなく動詞なども置ける。否定文で not ... either を使うと「どちらも〜ない」という意味になる。",
+    "searchKeywords": "either A or B AかBのどちらか／AまたはB"
+  },
+  {
+    "id": "exp_neither_a_nor_b_20261110",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "neither A nor B",
+    "japanese": "AもBも〜ない／AでもBでもない",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "AもBも〜ない／AでもBでもない",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "neither A nor B",
+        "example": "I like neither coffee nor tea.",
+        "exampleJa": "コーヒーも紅茶も好きじゃない。",
+        "examples": [
+          {
+            "example": "I like neither coffee nor tea.",
+            "exampleJa": "コーヒーも紅茶も好きじゃない。"
+          },
+          {
+            "example": "Neither Saturday nor Sunday works for me.",
+            "exampleJa": "土曜日も日曜日も都合が悪いんだ。"
+          },
+          {
+            "example": "Neither option sounds good to me.",
+            "exampleJa": "どちらの選択肢も良さそうに思えない。"
+          },
+          {
+            "example": "He neither called nor texted me.",
+            "exampleJa": "彼は電話もメッセージもしてこなかった。"
+          }
+        ]
+      }
+    ],
+    "example": "I like neither coffee nor tea.",
+    "exampleJa": "コーヒーも紅茶も好きじゃない。",
+    "beginnerTip": "2つのものを両方とも否定する表現。neither 自体に否定の意味があるため、通常は don't などを重ねない。AとBには名詞や動詞などを置ける。",
+    "searchKeywords": "neither A nor B AもBも〜ない／AでもBでもない"
+  },
+  {
+    "id": "exp_both_a_and_b_20261110",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "both A and B",
+    "japanese": "AもBも両方／AもBも",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "AもBも両方／AもBも",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "both A and B",
+        "example": "I like both pizza and pasta.",
+        "exampleJa": "ピザもパスタも両方好きだよ。",
+        "examples": [
+          {
+            "example": "I like both pizza and pasta.",
+            "exampleJa": "ピザもパスタも両方好きだよ。"
+          },
+          {
+            "example": "Both Saturday and Sunday work for me.",
+            "exampleJa": "土曜日も日曜日も都合がいいよ。"
+          },
+          {
+            "example": "I enjoy both traveling and cooking.",
+            "exampleJa": "旅行も料理も好きだよ。"
+          },
+          {
+            "example": "Both my parents speak English.",
+            "exampleJa": "両親は2人とも英語を話すよ。"
+          }
+        ]
+      }
+    ],
+    "example": "I like both pizza and pasta.",
+    "exampleJa": "ピザもパスタも両方好きだよ。",
+    "beginnerTip": "2つのものを両方とも含める表現。AとBには名詞や動詞(ing)など、同じ働きをする言葉を置く。主語に使う場合は通常、複数形の動詞を使う。",
+    "searchKeywords": "both A and B AもBも両方／AもBも"
+  },
+  {
+    "id": "exp_not_only_but_also_20261110",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "not only A but also B",
+    "japanese": "Aだけでなく（さらに）Bも",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "Aだけでなく（さらに）Bも",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "not only A but also B",
+        "example": "I like not only pizza but also pasta.",
+        "exampleJa": "ピザだけでなくパスタも好きだよ。",
+        "examples": [
+          {
+            "example": "I like not only pizza but also pasta.",
+            "exampleJa": "ピザだけでなくパスタも好きだよ。"
+          },
+          {
+            "example": "She speaks not only English but also Spanish.",
+            "exampleJa": "彼女は英語だけでなくスペイン語も話すよ。"
+          },
+          {
+            "example": "I enjoy not only traveling but also cooking.",
+            "exampleJa": "旅行だけでなく料理も楽しんでいるよ。"
+          },
+          {
+            "example": "I'm not only tired but also hungry.",
+            "exampleJa": "疲れているだけじゃなく、お腹も空いているよ。"
+          }
+        ]
+      }
+    ],
+    "example": "I like not only pizza but also pasta.",
+    "exampleJa": "ピザだけでなくパスタも好きだよ。",
+    "beginnerTip": "AだけでなくBも当てはまることを表す。AとBには名詞・形容詞・動詞(ing)など、同じ働きをする言葉を置く。日常会話では also を省略することもある。",
+    "searchKeywords": "not only A but also B Aだけでなく（さらに）Bも"
+  },
+  {
+    "id": "exp_whether_a_or_b_20261110",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "whether A or B",
+    "japanese": "AかBか／Aなのか、それともBなのか",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "AかBか／Aなのか、それともBなのか",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "whether A or B",
+        "example": "I don't know whether I can go or not.",
+        "exampleJa": "行けるかどうかわからない。",
+        "examples": [
+          {
+            "example": "I don't know whether I can go or not.",
+            "exampleJa": "行けるかどうかわからない。"
+          },
+          {
+            "example": "I can't decide whether to eat out or cook.",
+            "exampleJa": "外食するか料理するか決められない。"
+          },
+          {
+            "example": "I wonder whether it'll rain or snow.",
+            "exampleJa": "雨が降るのか雪が降るのか気になる。"
+          },
+          {
+            "example": "Let me know whether you're coming or not.",
+            "exampleJa": "来るかどうか教えてね。"
+          }
+        ]
+      }
+    ],
+    "example": "I don't know whether I can go or not.",
+    "exampleJa": "行けるかどうかわからない。",
+    "beginnerTip": "2つの可能性や選択肢について、どちらなのかを表す。or not を使うと「〜かどうか」という意味になる。",
+    "searchKeywords": "whether A or B AかBか／Aなのか、それともBなのか",
+    "otherMeanings": [
+      {
+        "formName": "whether to + 動詞(原形)",
+        "meaning": "〜するかどうか",
+        "example": "I don't know whether to go.",
+        "exampleJa": "行くかどうか迷っている。"
+      }
+    ]
+  },
+  {
+    "id": "exp_instead_of_20261110",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "instead of + 名詞・動詞(ing)",
+    "japanese": "〜の代わりに／〜ではなく",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜の代わりに／〜ではなく",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "instead of + 名詞・動詞(ing)",
+        "example": "I'll have tea instead of coffee.",
+        "exampleJa": "コーヒーじゃなくて紅茶にするよ。",
+        "examples": [
+          {
+            "example": "I'll have tea instead of coffee.",
+            "exampleJa": "コーヒーじゃなくて紅茶にするよ。"
+          },
+          {
+            "example": "Let's cook at home instead of eating out.",
+            "exampleJa": "外食しないで家で料理しようよ。"
+          },
+          {
+            "example": "We took the bus instead of walking.",
+            "exampleJa": "歩かずにバスに乗ったよ。"
+          },
+          {
+            "example": "I stayed home instead of going out.",
+            "exampleJa": "出かけずに家にいたよ。"
+          }
+        ]
+      }
+    ],
+    "example": "I'll have tea instead of coffee.",
+    "exampleJa": "コーヒーじゃなくて紅茶にするよ。",
+    "beginnerTip": "何かを別のものや行動に置き換えるときに使う。後ろには名詞や動詞のing形を置く。動詞の原形はそのまま置けない。",
+    "searchKeywords": "instead of + 名詞・動詞(ing) 〜の代わりに／〜ではなく"
+  },
+  {
+    "id": "exp_as_long_as_20261110",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "as long as + 文",
+    "japanese": "〜する限り／〜である限り",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜する限り／〜である限り",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "as long as + 文",
+        "example": "I'm happy as long as we're together.",
+        "exampleJa": "一緒にいられるなら、それだけで幸せだよ。",
+        "examples": [
+          {
+            "example": "I'm happy as long as we're together.",
+            "exampleJa": "一緒にいられるなら、それだけで幸せだよ。"
+          },
+          {
+            "example": "We can go as long as it doesn't rain.",
+            "exampleJa": "雨が降らなければ行けるよ。"
+          },
+          {
+            "example": "You can borrow my camera as long as you're careful.",
+            "exampleJa": "大切に扱ってくれるなら、カメラを貸してもいいよ。"
+          },
+          {
+            "example": "As long as you're okay with it, I'm happy to help.",
+            "exampleJa": "あなたがそれでよければ、喜んで手伝うよ。"
+          }
+        ]
+      }
+    ],
+    "example": "I'm happy as long as we're together.",
+    "exampleJa": "一緒にいられるなら、それだけで幸せだよ。",
+    "beginnerTip": "ある条件が満たされている限り、別のことが成り立つことを表す。未来の話でも、後ろは通常、現在形を使う。文頭にも置ける。",
+    "searchKeywords": "as long as + 文 〜する限り／〜である限り"
+  },
+  {
+    "id": "exp_in_case_20261110",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "in case + 文",
+    "japanese": "〜するといけないから／万が一〜の場合に備えて",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜するといけないから／万が一〜の場合に備えて",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "in case + 文",
+        "example": "I'll bring an umbrella in case it rains.",
+        "exampleJa": "雨が降るといけないから、傘を持っていくよ。",
+        "examples": [
+          {
+            "example": "I'll bring an umbrella in case it rains.",
+            "exampleJa": "雨が降るといけないから、傘を持っていくよ。"
+          },
+          {
+            "example": "I'll bring an extra charger in case I need it.",
+            "exampleJa": "必要になるかもしれないから、予備の充電器を持っていくよ。"
+          },
+          {
+            "example": "Here's my number in case you need anything.",
+            "exampleJa": "何か必要になったときのために、私の電話番号を教えておくね。"
+          },
+          {
+            "example": "In case you get hungry, I packed some snacks.",
+            "exampleJa": "お腹が空いたときのために、お菓子を持ってきたよ。"
+          }
+        ]
+      }
+    ],
+    "example": "I'll bring an umbrella in case it rains.",
+    "exampleJa": "雨が降るといけないから、傘を持っていくよ。",
+    "beginnerTip": "何かが起こる可能性を考え、事前に準備するときに使う。未来の話でも、後ろは通常、現在形を使う。文頭にも置ける。",
+    "searchKeywords": "in case + 文 〜するといけないから／万が一〜の場合に備えて"
+  },
+  {
+    "id": "exp_the_comparative_the_comparative_20261110",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "The + 比較級 + 文, the + 比較級 + 文",
+    "japanese": "〜すればするほど、ますます…",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜すればするほど、ますます…",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "The + 比較級 + 文, the + 比較級 + 文",
+        "example": "The more I practice, the better I get.",
+        "exampleJa": "練習すればするほど上達するよ。",
+        "examples": [
+          {
+            "example": "The more I practice, the better I get.",
+            "exampleJa": "練習すればするほど上達するよ。"
+          },
+          {
+            "example": "The more I talk to her, the more I like her.",
+            "exampleJa": "彼女と話せば話すほど、好きになる。"
+          },
+          {
+            "example": "The more I travel, the more I want to see.",
+            "exampleJa": "旅行すればするほど、もっといろいろな場所を見たくなる。"
+          },
+          {
+            "example": "The more you do it, the easier it gets.",
+            "exampleJa": "やればやるほど簡単になるよ。"
+          }
+        ]
+      }
+    ],
+    "example": "The more I practice, the better I get.",
+    "exampleJa": "練習すればするほど上達するよ。",
+    "beginnerTip": "あることが変化すると、それに合わせて別のことも変化することを表す。比較級を2回使い、前半に条件となる変化、後半にその結果を置く。",
+    "searchKeywords": "The + 比較級 + 文, the + 比較級 + 文 〜すればするほど、ますます…"
+  },
+  {
+    "id": "exp_no_matter_how_20261110",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "no matter how + 形容詞・副詞 + 文",
+    "japanese": "どんなに〜でも／どれほど〜しても",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "どんなに〜でも／どれほど〜しても",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "no matter how + 形容詞・副詞 + 文",
+        "example": "No matter how busy I am, I make time for my friends.",
+        "exampleJa": "どんなに忙しくても、友達との時間は作るよ。",
+        "examples": [
+          {
+            "example": "No matter how busy I am, I make time for my friends.",
+            "exampleJa": "どんなに忙しくても、友達との時間は作るよ。"
+          },
+          {
+            "example": "I'll keep trying no matter how hard it gets.",
+            "exampleJa": "どんなに難しくなっても、挑戦し続けるよ。"
+          },
+          {
+            "example": "No matter how tired I am, I can't fall asleep.",
+            "exampleJa": "どんなに疲れていても、眠れないんだ。"
+          },
+          {
+            "example": "No matter how far away you are, we'll stay in touch.",
+            "exampleJa": "どんなに遠く離れていても、連絡を取り合おうね。"
+          }
+        ]
+      }
+    ],
+    "example": "No matter how busy I am, I make time for my friends.",
+    "exampleJa": "どんなに忙しくても、友達との時間は作るよ。",
+    "beginnerTip": "程度がどれほど大きくても、結果や考えが変わらないことを表す。文頭にも置ける。後ろには形容詞・副詞と、主語・動詞を含む文を続ける。",
+    "searchKeywords": "no matter how + 形容詞・副詞 + 文 どんなに〜でも／どれほど〜しても"
+  },
+  {
+    "id": "exp_modal_can_20261110",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "can + 動詞(原形)",
+    "japanese": "〜できる／〜してもいい",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜できる／〜してもいい",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "can + 動詞(原形)",
+        "example": "I can speak a little English.",
+        "exampleJa": "少し英語を話せるよ。"
+      },
+      {
+        "label": "否定文",
+        "formName": "can't + 動詞(原形)",
+        "example": "I can't swim.",
+        "exampleJa": "泳げないんだ。"
+      },
+      {
+        "label": "疑問文",
+        "formName": "Can + 主語 + 動詞(原形)?",
+        "example": "Can you help me?",
+        "exampleJa": "手伝ってくれる？"
+      }
+    ],
+    "example": "I can speak a little English.",
+    "exampleJa": "少し英語を話せるよ。",
+    "beginnerTip": "能力・可能性・許可などを表す。後ろには動詞の原形を置く。疑問文では主語の前に置く。",
+    "searchKeywords": "can + 動詞(原形) 〜できる／〜してもいい",
+    "otherMeanings": [
+      {
+        "formName": "could + 動詞(原形)",
+        "meaning": "〜できた／〜していただけますか／〜かもしれない",
+        "linkExpression": "exp_modal_could_20261110"
+      }
+    ]
+  },
+  {
+    "id": "exp_modal_could_20261110",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "could + 動詞(原形)",
+    "japanese": "〜できた／〜していただけますか／〜かもしれない",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜できた／〜していただけますか／〜かもしれない",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "could + 動詞(原形)",
+        "example": "I could swim when I was a kid.",
+        "exampleJa": "子どもの頃は泳げたよ。"
+      },
+      {
+        "label": "否定文",
+        "formName": "couldn't + 動詞(原形)",
+        "example": "I couldn't sleep last night.",
+        "exampleJa": "昨夜は眠れなかった。"
+      },
+      {
+        "label": "疑問文",
+        "formName": "Could + 主語 + 動詞(原形)?",
+        "example": "Could you help me?",
+        "exampleJa": "手伝っていただけますか？"
+      }
+    ],
+    "example": "I could swim when I was a kid.",
+    "exampleJa": "子どもの頃は泳げたよ。",
+    "beginnerTip": "can の過去形だが、過去の能力だけでなく、丁寧な依頼や可能性にも使う。後ろには動詞の原形を置く。疑問文では主語の前に置く。",
+    "searchKeywords": "could + 動詞(原形) 〜できた／〜していただけますか／〜かもしれない",
+    "otherMeanings": [
+      {
+        "formName": "可能性",
+        "meaning": "〜かもしれない",
+        "example": "It could rain tomorrow.",
+        "exampleJa": "明日は雨が降るかもしれない。"
+      },
+      {
+        "formName": "提案",
+        "meaning": "〜するのもいいかも",
+        "example": "We could go together.",
+        "exampleJa": "一緒に行くのもいいかもね。"
+      }
+    ]
+  },
+  {
+    "id": "exp_modal_will_20261110",
+    "type": "expression",
+    "partOfSpeech": [
+      "表現"
+    ],
+    "category": "文法",
+    "english": "will + 動詞(原形)",
+    "japanese": "〜するよ",
+    "senses": [
+      {
+        "pos": "表現",
+        "meaning": "〜するよ",
+        "category": "文法"
+      }
+    ],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "will + 動詞(原形)",
+        "example": "I'll call you tonight.",
+        "exampleJa": "今夜電話するね。"
+      },
+      {
+        "label": "否定文",
+        "formName": "won't + 動詞(原形)",
+        "example": "I won't be late.",
+        "exampleJa": "遅れないからね。"
+      },
+      {
+        "label": "疑問文",
+        "formName": "Will + 主語 + 動詞(原形)?",
+        "example": "Will you be home tomorrow?",
+        "exampleJa": "明日は家にいる？"
+      }
+    ],
+    "example": "I'll call you tonight.",
+    "exampleJa": "今夜電話するね。",
+    "beginnerTip": "その場で決めたこと、申し出、約束などによく使う。否定形の won't は強い拒否（否定）を表すこともある。be going to は、すでに決めている予定や、今ある状況からの予測によく使う。",
+    "searchKeywords": "will + 動詞(原形) 〜するよ",
+    "otherMeanings": [
+      {
+        "formName": "未来の予測",
+        "meaning": "〜だろう／〜と思う",
+        "example": "I think it'll rain tomorrow.",
+        "exampleJa": "明日は雨が降ると思う。"
+      },
+      {
+        "formName": "警告・脅し",
+        "meaning": "〜することになるぞ",
+        "example": "You'll regret it.",
+        "exampleJa": "後悔するよ。"
+      }
+    ]
   }
 ];
