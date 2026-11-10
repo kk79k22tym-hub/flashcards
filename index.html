@@ -932,6 +932,7 @@
         }
 
         function closeFlashcards() {
+            stopFlashcardSpeech();
             document.getElementById('flashcard-modal').classList.add('hidden');
             isDedicatedWeakPractice = false;
             document.getElementById('flashcard-modal').classList.remove('weak-practice-mode');
@@ -953,6 +954,7 @@
         }
 
         function renderCurrentFlashcard() {
+            stopFlashcardSpeech();
             if (currentCardIndex >= flashcardQueue.length) {
                 if (isDedicatedWeakPractice) {
                     closeFlashcards();
@@ -977,7 +979,11 @@
             }
 
             const posText = (item.partOfSpeech || [item.type === 'word' ? '動詞' : '表現']).join('・');
-            document.getElementById('flashcard-card-body').innerHTML = `
+            const flashcardBody = document.getElementById('flashcard-card-body');
+            // On iPhone the previous answer can leave this scrollable panel at the bottom.
+            // Always reset its scroll when the next card front is shown.
+            flashcardBody.scrollTop = 0;
+            flashcardBody.innerHTML = `
                 ${errorBadgeHtml}
                 <div class="text-center my-auto flex flex-col items-center justify-center w-full">
                     <div class="text-xs font-bold text-[#78829c] uppercase tracking-wider mb-2">${posText}</div>
@@ -994,6 +1000,10 @@
                     <span class="text-xs font-bold text-[#78829c] bg-[#f4efe8] px-4 py-2 rounded-xl inline-block shadow-sm border border-[#e5dfd7]">答えを見る</span>
                 </div>
             `;
+            flashcardBody.scrollTop = 0;
+            requestAnimationFrame(() => { if (!isCardFlipped) flashcardBody.scrollTop = 0; });
+            // Speak once when a NEW front is rendered. Never auto-play the answer side.
+            playFlashcardFrontSpeech(item.english);
             document.getElementById('flashcard-action-bar').innerHTML = `
                 <button onclick="closeFlashcards()" class="bg-[#f4efe8] hover:bg-[#eae4dc] text-[#5c534c] font-bold py-3 rounded-2xl text-sm transition border border-[#e5dfd7] col-span-2 shadow-sm">終了する</button>
             `;
@@ -1057,7 +1067,10 @@
             }
 
             backHtml += `</div>`;
-            document.getElementById('flashcard-card-body').innerHTML = backHtml;
+            const flashcardBody = document.getElementById('flashcard-card-body');
+            flashcardBody.innerHTML = backHtml;
+            flashcardBody.scrollTop = 0;
+            requestAnimationFrame(() => { if (isCardFlipped) flashcardBody.scrollTop = 0; });
 
             // The action bar is hidden in weak practice, but retains its usual height.
             document.getElementById('flashcard-action-bar').innerHTML = `
@@ -1706,6 +1719,18 @@
             }).join('');
         }
 
+        // Reuse a single browser speech engine for automatic and manual pronunciation.
+        // iOS may restrict playback depending on how the page was opened; the existing
+        // speech button remains available as a manual fallback.
+        function stopFlashcardSpeech() {
+            if ('speechSynthesis' in window) {
+                try { window.speechSynthesis.cancel(); } catch (_) {}
+            }
+        }
+        function playFlashcardFrontSpeech(text) {
+            if (!text || !String(text).trim()) return;
+            playSpeech(null, String(text));
+        }
         function playSpeech(e, text) {
             if (e) e.stopPropagation();
             if ('speechSynthesis' in window) {
