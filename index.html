@@ -99,13 +99,20 @@
                     <div id="overall-progress-bar" class="bg-gradient-to-r from-[#8ba7df] to-[#9c8edf] h-3 rounded-full transition-all duration-500" style="width: 0%"></div>
                 </div>
 
-                <div class="rounded-xl border border-[#e5dfd7] bg-[#faf8f5] px-3 py-3 space-y-2">
-                    <label for="study-mode-select" class="block text-xs font-bold text-[#5c534c]">暗記カードの出題対象</label>
-                    <select id="study-mode-select" onchange="changeStudyMode(this.value)" class="w-full rounded-lg border border-[#d9d2c9] bg-white text-[#2b2927] px-3 py-3 text-base">
-                        <option value="selected">選んだ単語だけ（91枚）</option>
-                        <option value="all">すべての単語・表現（570枚）</option>
-                    </select>
-                    <p id="study-mode-caption" class="text-xs text-[#6b625b]">復習61枚＋これから覚える30枚。カード内容は全件保存しています。</p>
+                <div class="rounded-xl border border-[#e5dfd7] bg-[#faf8f5] px-3 py-3 space-y-1">
+                    <div class="text-xs font-bold text-[#5c534c]">暗記カードの出題対象</div>
+                    <div id="study-mode-caption" class="text-sm font-bold text-[#2b2927]">選択済み 191枚（それ以外は参照用）</div>
+                    <p class="text-xs text-[#6b625b]">登録カードはすべてWords・Expressionsから閲覧できます。</p>
+                </div>
+
+                <div class="rounded-xl border border-[#e5dfd7] bg-[#faf8f5] px-3 py-3">
+                    <label for="flashcard-auto-speech-toggle" class="flex items-center justify-between gap-3 cursor-pointer">
+                        <span class="flex-1">
+                            <span class="block text-sm font-bold text-[#2b2927]">カードの自動読み上げ</span>
+                            <span class="block mt-1 text-xs text-[#6b625b]">表面が表示されたときだけ英語を1回読み上げます</span>
+                        </span>
+                        <input id="flashcard-auto-speech-toggle" type="checkbox" checked onchange="changeFlashcardAutoSpeech(this.checked)" class="w-5 h-5 shrink-0 accent-[#78829c]" aria-label="カードの自動読み上げをオン・オフ" />
+                    </label>
                 </div>
 
                 <button onclick="startFlashcards()" class="w-full bg-[#78829c] text-white font-bold py-3.5 rounded-xl text-sm shadow hover:bg-[#68728c] transition active:scale-95 flex items-center justify-center space-x-2 border border-[#68728c]">
@@ -342,36 +349,34 @@
         </div>
     </nav>
 
-    <script src="./data.js?v=20261111-selected91"></script>
+    <script src="./data.js?v=20261117-consolidated"></script>
     <script>
         // Stable storage key: keep this unchanged across UI/data updates so learning history survives.
         const STORAGE_KEY = 'english_app_user_data_v9';
         let appData = { itemsState: {} };
         // Fixed study subset: 61 familiar review words plus 30 new-to-user words.
         // All cards (including Expressions) remain in rawDatabase and are still browseable.
-        const SELECTED_STUDY_IDS = new Set(["v_think", "v_know", "v_want", "v_need", "v_like", "v_guess", "v_say", "v_tell", "v_talk", "v_speak", "v_try", "v_see", "v_look", "v_live", "v_remember", "v_love", "v_read", "v_work", "n_job", "adv_here", "v_drink", "adj_fast", "v_get", "v_make", "v_take", "v_give", "v_ask", "v_feel", "v_find", "v_mean", "v_keep", "v_bring", "v_stay", "v_meet", "v_hope", "v_choose", "v_understand", "v_believe", "v_sound", "v_forget", "v_enjoy", "v_agree", "v_share", "v_change", "v_borrow", "v_join", "v_send", "v_check", "adv_actually", "adv_already", "adv_yet", "v_follow", "v_hold", "adv_enough", "adv_ever", "v_wait", "v_plan", "v_wish", "v_move", "w_nervous", "adv_still", "v_happen", "v_leave", "v_decide", "v_seem", "v_miss", "v_spend", "v_matter", "v_worry", "v_care", "v_explain", "v_expect", "v_invite", "adv_probably", "conj_though", "adv_quite", "adv_instead", "v_mind", "v_receive", "v_reach", "adv_almost", "adv_even", "adv_especially", "adj_afraid", "w_confused", "w_relieved", "w_awkward", "w_curious", "w_upset", "w_overwhelmed", "w_disappointed"]);
+        const SELECTED_STUDY_IDS = new Set(["v_think","v_know","v_want","v_need","v_like","v_guess","v_say","v_tell","v_talk","v_speak","v_try","v_see","v_look","v_live","v_remember","v_love","v_read","v_work","n_job","adv_here","v_drink","adj_fast","v_get","v_make","v_take","v_give","v_ask","v_feel","v_find","v_mean","v_keep","v_bring","v_stay","v_meet","v_hope","v_choose","v_understand","v_believe","v_sound","v_forget","v_enjoy","v_agree","v_share","v_change","v_borrow","v_join","v_send","v_check","adv_actually","adv_already","adv_yet","v_follow","v_hold","adv_enough","adv_ever","v_wait","v_plan","v_wish","v_move","w_nervous","adv_still","v_happen","v_leave","v_decide","v_seem","v_miss","v_spend","v_matter","v_worry","v_care","v_explain","v_expect","v_invite","adv_probably","conj_though","adv_quite","adv_instead","v_mind","v_receive","adv_almost","adv_even","adv_especially","adj_afraid","w_confused","w_relieved","w_awkward","w_curious","w_upset","w_overwhelmed","w_disappointed","v_do","v_go","v_come","v_watch","v_hear","v_listen","v_use","v_eat","v_buy","v_pay","v_help","v_put","v_call","v_become","v_start","v_stop","v_let","v_show","v_turn","v_lose","v_win","v_answer","v_catch","v_repeat","v_finish","v_learn","v_study","v_practice","v_visit","adj_good","adj_bad","adj_happy","adj_sad","adj_tired","adj_busy","adj_free","adj_easy","adj_difficult","adj_important","adj_interesting","adj_different","adj_sure","adj_ready","adj_surprised","adj_excited","adj_worried","adj_glad","w_lonely","w_grateful","adv_really","adv_definitely","adv_absolutely","adv_usually","adv_exactly","adv_maybe","adv_always","adv_sometimes","adv_never","adv_just","adv_too","adv_also","adv_only","adv_finally","adv_recently","adv_soon","adv_together","adv_again","adv_later","adv_lately","q_what","q_when","q_where","q_who","q_why","q_how","conj_because","conj_so","conj_if","conj_or","conj_while","conj_until","prep_before","prep_after","adv_then","travel_word_001","travel_word_002","travel_word_006","travel_word_007","travel_word_008","travel_word_009","travel_word_010","travel_word_011","travel_word_012","travel_word_014","travel_word_015","travel_word_016","travel_word_018","travel_word_019","travel_word_024","exp_cant_reach_object","exp_cant_reach_person"]);
         const STUDY_MODE_STORAGE_KEY = 'flashcards_study_mode_20261111';
+        // Speech preference is independent of review history and card content.
+        const FLASHCARD_AUTO_SPEECH_KEY = 'flashcards_auto_speech_enabled_v1';
+        let flashcardAutoSpeechEnabled = true;
+        function restoreFlashcardAutoSpeech() {
+            try { flashcardAutoSpeechEnabled = localStorage.getItem(FLASHCARD_AUTO_SPEECH_KEY) !== 'off'; }
+            catch (_) { flashcardAutoSpeechEnabled = true; }
+            const control = document.getElementById('flashcard-auto-speech-toggle');
+            if (control) control.checked = flashcardAutoSpeechEnabled;
+        }
+        function changeFlashcardAutoSpeech(enabled) {
+            flashcardAutoSpeechEnabled = Boolean(enabled);
+            try { localStorage.setItem(FLASHCARD_AUTO_SPEECH_KEY, flashcardAutoSpeechEnabled ? 'on' : 'off'); } catch (_) {}
+            if (!flashcardAutoSpeechEnabled) stopFlashcardSpeech();
+        }
         let studyMode = 'selected';
-        function restoreStudyMode() {
-            try { studyMode = localStorage.getItem(STUDY_MODE_STORAGE_KEY) === 'all' ? 'all' : 'selected'; } catch (_) { studyMode='selected'; }
-            const selector = document.getElementById('study-mode-select');
-            if (selector) selector.value = studyMode;
-            updateStudyModeCaption();
-        }
-        function changeStudyMode(value) {
-            studyMode = value === 'all' ? 'all' : 'selected';
-            try { localStorage.setItem(STUDY_MODE_STORAGE_KEY, studyMode); } catch (_) {}
-            updateStudyModeCaption();
-        }
-        function updateStudyModeCaption() {
-            const caption = document.getElementById('study-mode-caption');
-            if (caption) caption.textContent = studyMode === 'selected'
-                ? '復習61枚＋これから覚える30枚。カード内容は全件保存しています。'
-                : '登録済み570枚すべて（単語・表現）を出題対象にします。';
-        }
-        function activeStudyCards() {
-            return studyMode === 'all' ? rawDatabase : rawDatabase.filter(item => SELECTED_STUDY_IDS.has(item.id));
-        }
+        function restoreStudyMode() { studyMode='selected'; }
+        function changeStudyMode(_) { studyMode='selected'; }
+        function updateStudyModeCaption() {}
+        function activeStudyCards() { return rawDatabase.filter(item => SELECTED_STUDY_IDS.has(item.id)); }
 
         let currentTab = 'today';
         let selectedWordPos = 'all';
@@ -624,6 +629,7 @@
             resetReviewScoresOnce();
             initItemsState();
             restoreStudyMode();
+            restoreFlashcardAutoSpeech();
             renderProgressTab();
             updateNavStyles('today');
         });
@@ -688,7 +694,8 @@
                         srsStage: 0, weakRemaining: 0,
                         fsrsDifficulty: null, fsrsStability: null, fsrsReps: 0,
                         fsrsLapses: 0, fsrsState: 'new', fsrsRetrievability: 1,
-                        introducedAt: null, seenInFlashcards: false
+                        introducedAt: null, seenInFlashcards: false,
+                        againStreak: 0, consecutiveAgainWeak: false
                     };
                 }
                 const st = appData.itemsState[item.id];
@@ -698,6 +705,8 @@
                 if (st.fsrsLapses === undefined) st.fsrsLapses = st.actualErrorCount || 0;
                 if (st.fsrsState === undefined) st.fsrsState = st.lastStudied ? 'review' : 'new';
                 if (st.fsrsRetrievability === undefined) st.fsrsRetrievability = 1;
+                if (st.againStreak === undefined) st.againStreak = 0;
+                if (st.consecutiveAgainWeak === undefined) st.consecutiveAgainWeak = false;
                 if (st.introducedAt === undefined) st.introducedAt = st.lastStudied || null;
                 // Cards already studied in older versions must remain eligible for quizzes.
                 if (st.seenInFlashcards === undefined) st.seenInFlashcards = Boolean(st.introducedAt || st.lastStudied);
@@ -1002,8 +1011,9 @@
             `;
             flashcardBody.scrollTop = 0;
             requestAnimationFrame(() => { if (!isCardFlipped) flashcardBody.scrollTop = 0; });
-            // Speak once when a NEW front is rendered. Never auto-play the answer side.
-            playFlashcardFrontSpeech(item.english);
+            // Speak once when a NEW front is rendered, only when enabled.
+            // Never auto-play the answer side; manual speech remains available.
+            if (flashcardAutoSpeechEnabled) playFlashcardFrontSpeech(item.english);
             document.getElementById('flashcard-action-bar').innerHTML = `
                 <button onclick="closeFlashcards()" class="bg-[#f4efe8] hover:bg-[#eae4dc] text-[#5c534c] font-bold py-3 rounded-2xl text-sm transition border border-[#e5dfd7] col-span-2 shadow-sm">終了する</button>
             `;
@@ -1039,12 +1049,12 @@
                 const spokenForms = item.forms.filter(f => f.label === '会話形');
 
                 if (regularForms.length) {
-                    backHtml += `<div class="space-y-2.5 bg-[#edf1f7] p-3.5 rounded-2xl border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] uppercase tracking-wider">${item.emotionPair ? "比較変化" : "活用・変化"}</div><div class="text-xs space-y-2.5">`;
+                    backHtml += `<div class="space-y-2.5 bg-[#edf1f7] p-3.5 rounded-2xl border border-[#e2e8f0] mb-3 text-left"><div class="text-xs font-bold text-[#64748b] uppercase tracking-wider">${item.id === "exp_sounds_good" ? "使い方" : (item.emotionPair ? "比較変化" : "活用・変化")}</div><div class="text-xs space-y-2.5">`;
                     regularForms.forEach(f => {
                         const spoken = String(f.speechText || f.formName).replace(/'/g, "\'");
                         const lowFreq = f.lowFrequency ? `<span class="text-[10px] bg-[#fff7ed] text-[#9a5b13] border border-[#fed7aa] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">低頻度</span>` : '';
                         const examples = Array.isArray(f.examples) && f.examples.length ? f.examples : (f.example ? [{example:f.example,exampleJa:f.exampleJa}] : []);
-                        const exampleHtml = examples.map(e => `<div class="text-[#2b2927] text-xs font-normal mb-1">"${e.example}" ${e.exampleJa ? `<span class="text-[#64748b] font-normal">(${e.exampleJa})</span>` : ''}</div>`).join('');
+                        const exampleHtml = examples.map(e => `<div class="text-[#2b2927] text-xs font-normal mb-1">"${item.id === "exp_sounds_good" ? e.example.replace(" B: ", "<br>B: ") : e.example}" ${e.exampleJa ? `<span class="text-[#64748b] font-normal">(${item.id === "exp_sounds_good" ? e.exampleJa.replace(" B: ", "<br>B: ") : e.exampleJa})</span>` : ''}</div>`).join('') + (f.usageNote ? `<div class="mt-2 bg-[#f7f9fc] rounded-lg border border-[#d9e1ec] p-2 text-[#64748b]">${f.usageNote}</div>` : '');
                         backHtml += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0 relative"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2 min-w-0 flex-1 flex-wrap"><span class="text-sm font-bold text-[#2b2927] min-w-0 break-words">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">${f.label}</span>${lowFreq}</div><button onclick="playSpeech(event, decodeURIComponent('${encodeURIComponent(spoken)}'))" class="w-8 h-8 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-4 h-4 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></button></div>${exampleHtml}</div>`;
                     });
                     if (item.changeType) {
@@ -1054,6 +1064,7 @@
                 }
 
                 backHtml += renderOtherMeaningsSection(item, true);
+                backHtml += renderLinkedCards(item);
                 backHtml += renderContractionsSection(item);
 
                 if (spokenForms.length) {
@@ -1064,6 +1075,10 @@
                     });
                     backHtml += `</div></div>`;
                 }
+            }
+
+            if (item.type === 'word' && (!item.forms || !item.forms.length) && item.changeType) {
+                backHtml += `<div class="bg-[#edf1f7] rounded-xl border border-[#e2e8f0] mb-3 p-3 text-xs text-[#64748b]">変化タイプ: <b class="text-[#2b2927]">${item.changeType}</b></div>`;
             }
 
             backHtml += `</div>`;
@@ -1093,6 +1108,10 @@
             const rating = result === 'again' ? 1 : (result === 'unsure' ? 2 : 3);
             const previousReview = st.lastStudied;
             const previousStability = st.fsrsStability;
+            // An Again starts a five-minute relearning cycle. The next response
+            // is checked before any FSRS interval is assigned.
+            const wasRelearningAfterAgain = (st.againStreak || 0) > 0;
+            const consecutiveAgain = result === 'again' && wasRelearningAfterAgain;
             let nextReviewDate = new Date(now);
 
             if (!st.introducedAt) st.introducedAt = now.toISOString();
@@ -1116,7 +1135,10 @@
                 const newDifficulty = fsrsNextDifficulty(st.fsrsDifficulty, rating);
                 let newStability;
 
-                if (elapsedDays < 1) {
+                if (consecutiveAgain) {
+                    // Repeated failure is a genuine lapse, not a short-term success.
+                    newStability = fsrsNextForgetStability(previousStability, newDifficulty, retrievability);
+                } else if (elapsedDays < 1) {
                     newStability = fsrsNextShortTermStability(previousStability, rating);
                 } else if (rating === 1) {
                     newStability = fsrsNextForgetStability(previousStability, newDifficulty, retrievability);
@@ -1129,12 +1151,45 @@
                 st.fsrsRetrievability = retrievability;
                 st.fsrsReps = (st.fsrsReps || 0) + 1;
 
-                if (result === 'again' && st.fsrsState === 'learning') {
+                // Again repeats after five minutes for both new and review cards.
+                // A successful relearning response is rescheduled for tomorrow below.
+                if (result === 'again') {
+                    st.fsrsState = 'learning';
                     nextReviewDate.setMinutes(nextReviewDate.getMinutes() + NEW_AGAIN_DELAY_MINUTES);
                 } else {
                     st.fsrsState = 'review';
                     nextReviewDate.setDate(nextReviewDate.getDate() + fsrsIntervalDays(newStability));
                 }
+            }
+
+            if (result === 'again') {
+                st.againStreak = (st.againStreak || 0) + 1;
+                if (st.againStreak >= 2) {
+                    // Keep a lasting weak-card flag until the user relearns it.
+                    st.consecutiveAgainWeak = true;
+                    st.fsrsStability = Math.min(st.fsrsStability, 1);
+                    st.fsrsState = 'learning';
+                    st.status = 'learning';
+                    st.srsStage = 0;
+                    st.weakRemaining = 3;
+                }
+                // Always exactly five minutes after the last Again answer.
+                nextReviewDate = new Date(now.getTime() + NEW_AGAIN_DELAY_MINUTES * 60000);
+            } else if (wasRelearningAfterAgain) {
+                // Both Unsure and Got it must be reviewed the following day,
+                // regardless of how well the card had been known previously.
+                nextReviewDate = new Date(now);
+                nextReviewDate.setDate(nextReviewDate.getDate() + 1);
+                st.fsrsState = 'review';
+                // After consecutive Again responses, retain conservative memory
+                // stability. Later scheduled reviews use normal FSRS again.
+                if (st.consecutiveAgainWeak) {
+                    st.fsrsStability = Math.min(st.fsrsStability, 1);
+                }
+                st.againStreak = 0;
+                st.consecutiveAgainWeak = false;
+            } else {
+                st.againStreak = 0;
             }
 
             if (result === 'got_it') {
@@ -1263,7 +1318,7 @@
                 else if (st.status === 'learning') { tagClass = 'tag-status-learning'; tagText = '学習中'; }
                 const spoken = String(w.english).replace(/'/g, "\\'");
                 return `<div onclick="openDetailModal('${w.id}')" class="bg-[#faf8f5] p-4 rounded-2xl border border-[#e5dfd7] shadow-sm cursor-pointer hover:border-[#78829c] transition">
-                    <div class="flex items-center justify-between gap-3 mb-2"><div class="flex items-center gap-2 min-w-0"><div class="font-bold text-[#2b2927] text-base truncate">${w.english}</div><span class="text-[10px] px-2 py-0.5 rounded-full font-medium shrink-0 ${tagClass}">${tagText}</span></div><button onclick="playSpeech(event, decodeURIComponent('${encodeURIComponent(spoken)}'))" class="w-8 h-8 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm shrink-0" aria-label="発音"><svg class="w-4 h-4 text-[#78829c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div>
+                    <div class="flex items-center justify-between gap-3 mb-2"><div class="flex items-center gap-2 min-w-0"><div class="font-bold text-[#2b2927] text-base truncate">${w.english}</div><span class="text-[10px] px-2 py-0.5 rounded-full font-medium shrink-0 ${tagClass}">${tagText}</span><span class="text-[10px] px-2 py-0.5 rounded shrink-0 ${SELECTED_STUDY_IDS.has(w.id) ? 'bg-[#e0ebdf] text-[#34533b]' : 'bg-[#ece7df] text-[#615b53]'}">${SELECTED_STUDY_IDS.has(w.id) ? '暗記対象' : '暗記対象外'}</span></div><button onclick="playSpeech(event, decodeURIComponent('${encodeURIComponent(spoken)}'))" class="w-8 h-8 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm shrink-0" aria-label="発音"><svg class="w-4 h-4 text-[#78829c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div>
                     ${renderSensesHtml(w, true)}
                     ${renderOtherMeaningsSection(w, false, false)}
                 </div>`;
@@ -1333,7 +1388,7 @@
                     tagClass = 'tag-status-learning';
                     tagText = '学習中';
                 }
-                return `<div onclick="openDetailModal('${item.id}')" class="bg-[#faf8f5] p-4 rounded-2xl border border-[#e5dfd7] shadow-sm cursor-pointer hover:border-[#78829c] transition"><div class="flex justify-between items-start mb-1"><div class="flex items-center space-x-2 flex-wrap gap-1"><span class="text-[10px] px-2 py-0.5 rounded-full font-medium ${tagClass}">${tagText}</span>${renderTagsHtml(item)}</div><span class="text-xs text-[#78829c] bg-[#f4efe8] px-2.5 py-1 rounded-lg border border-[#e5dfd7]">詳細 →</span></div><div class="font-bold text-[#2b2927] text-base mb-1">${item.english}</div><div class="text-xs font-semibold text-[#78829c] mb-2">${item.japanese}</div>${typeof item.example === 'string' && item.example.trim() ? `<div class="bg-[#f4efe8] p-2.5 rounded-xl text-xs text-[#4a4540] border border-[#e5dfd7]">例文: "${item.example.replace(/<\/?[^>]+(>|$)/g, "")}" <span class="text-[#7c736c]">(${item.exampleJa || ''})</span></div>` : ''}</div>`;
+                return `<div onclick="openDetailModal('${item.id}')" class="bg-[#faf8f5] p-4 rounded-2xl border border-[#e5dfd7] shadow-sm cursor-pointer hover:border-[#78829c] transition"><div class="flex justify-between items-start mb-1"><div class="flex items-center space-x-2 flex-wrap gap-1"><span class="text-[10px] px-2 py-0.5 rounded-full font-medium ${tagClass}">${tagText}</span>${renderTagsHtml(item)}${SELECTED_STUDY_IDS.has(item.id) ? `<span class="text-[10px] text-[#34533b] bg-[#e0ebdf] px-2 py-0.5 rounded">暗記対象</span>` : `<span class="text-[10px] text-[#615b53] bg-[#ece7df] px-2 py-0.5 rounded">暗記対象外</span>`}</div><span class="text-xs text-[#78829c] bg-[#f4efe8] px-2.5 py-1 rounded-lg border border-[#e5dfd7]">詳細 →</span></div><div class="font-bold text-[#2b2927] text-base mb-1">${item.english}</div><div class="text-xs font-semibold text-[#78829c] mb-2">${item.japanese}</div>${typeof item.example === 'string' && item.example.trim() ? `<div class="bg-[#f4efe8] p-2.5 rounded-xl text-xs text-[#4a4540] border border-[#e5dfd7]">例文: "${item.example.replace(/<\/?[^>]+(>|$)/g, "")}" <span class="text-[#7c736c]">(${item.exampleJa || ''})</span></div>` : ''}</div>`;
             }).join('');
         }
 
@@ -1346,6 +1401,16 @@
             }
         }
 
+        // Structured links remain separate from senses and do not merge meanings.
+        function renderLinkedCards(item) {
+            const links = {
+                'v_sound': [['exp_sounds_good','表現','Sounds good!（いいね！／了解！）']],
+                'w_disappointed': [['v_disappoint','別の意味・使い方','動詞：disappoint（がっかりさせる）']],
+                'v_disappoint': [['w_disappointed','別の意味・使い方','形容詞：disappointed（がっかりした）']]
+            }[item.id] || [];
+            if (!links.length) return '';
+            return links.map(([id,label,name]) => `<div class="bg-[#edf1f7] rounded-2xl p-3 border border-[#e2e8f0] mb-4 text-left"><div class="font-bold text-[#64748b] text-xs mb-2">${label}</div><button class="w-full flex items-center justify-between text-left rounded-lg px-3 py-2 bg-[#faf8f5] border border-[#d9e1ec] text-sm text-[#2b2927]" onclick="openRelatedExpression('${id}')">${name}<span>›</span></button></div>`).join('');
+        }
         let detailModalHistory = [];
         function openRelatedExpression(id) {
             const modal = document.getElementById('detail-modal');
@@ -1362,12 +1427,14 @@
             if (!item) return;
             document.getElementById('modal-tags-container').innerHTML = '';
             const st = appData.itemsState[id];
+            const isStudyTarget = SELECTED_STUDY_IDS.has(id);
+            const studyBadge = item.type === 'word' || item.type === 'expression' ? (isStudyTarget ? '<span class="text-[10px] px-2 py-1 rounded-md bg-[#e0ebdf] text-[#34533b]">暗記対象</span>' : '<span class="text-[10px] px-2 py-1 rounded-md bg-[#ece7df] text-[#615b53]">暗記対象外・参照用</span>') : '';
             const spoken = String(item.english).replace(/'/g, "\'");
 
             let html = `
                 <div class="mb-3">
                     <div class="flex items-center justify-between gap-3 mb-3">
-                        <div class="text-2xl font-bold text-[#2b2927]">${item.english}</div>
+                        <div class="flex flex-col gap-1"><div class="text-2xl font-bold text-[#2b2927]">${item.english}</div>${studyBadge}</div>
                         <button onclick="playSpeech(event, decodeURIComponent('${encodeURIComponent(spoken)}'))" class="w-10 h-10 rounded-full bg-[#f0ece5] hover:bg-[#e5dfd7] text-[#4a4540] flex items-center justify-center transition border border-[#e2dad1] shadow-sm shrink-0" aria-label="発音">
                             <svg class="w-4 h-4 text-[#78829c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
                         </button>
@@ -1389,12 +1456,12 @@
                 const spokenForms = item.forms.filter(f => f.label === '会話形');
 
                 if (regularForms.length) {
-                    html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-3 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase tracking-wider">${item.emotionPair ? "比較変化" : "活用・変化"}</div>`;
+                    html += `<div class="bg-[#edf1f7] rounded-2xl p-4 border border-[#e2e8f0] space-y-3 text-xs text-left mb-4"><div class="font-bold text-[#64748b] uppercase tracking-wider">${item.id === "exp_sounds_good" ? "使い方" : (item.emotionPair ? "比較変化" : "活用・変化")}</div>`;
                     regularForms.forEach(f => {
                         const formSpoken = String(f.speechText || f.formName).replace(/'/g, "\'");
                         const lowFreq = f.lowFrequency ? `<span class="text-[10px] bg-[#fff7ed] text-[#9a5b13] border border-[#fed7aa] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">低頻度</span>` : '';
                         const examples = Array.isArray(f.examples) && f.examples.length ? f.examples : (f.example ? [{example:f.example,exampleJa:f.exampleJa}] : []);
-                        const exampleHtml = examples.map(e => `<div class="text-[#2b2927] mb-1">"${e.example}" ${e.exampleJa ? `<span class="text-[#64748b]">(${e.exampleJa})</span>` : ''}</div>`).join('');
+                        const exampleHtml = examples.map(e => `<div class="text-[#2b2927] mb-1">"${item.id === "exp_sounds_good" ? e.example.replace(" B: ", "<br>B: ") : e.example}" ${e.exampleJa ? `<span class="text-[#64748b]">(${item.id === "exp_sounds_good" ? e.exampleJa.replace(" B: ", "<br>B: ") : e.exampleJa})</span>` : ''}</div>`).join('') + (f.usageNote ? `<div class="mt-2 bg-[#f7f9fc] rounded-lg border border-[#d9e1ec] p-2 text-[#64748b]">${f.usageNote}</div>` : '');
                         html += `<div class="pb-2.5 border-b border-[#e2e8f0] last:border-b-0"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-2 min-w-0 flex-1 flex-wrap"><span class="text-sm font-bold text-[#2b2927] min-w-0 break-words">${f.formName}</span><span class="text-[10px] bg-[#d5dce8] text-[#334155] px-2 py-0.5 rounded font-semibold whitespace-nowrap shrink-0">${f.label}</span>${lowFreq}</div><button onclick="playSpeech(event, decodeURIComponent('${encodeURIComponent(formSpoken)}'))" class="w-7 h-7 rounded-full bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#475569] flex items-center justify-center transition border border-[#cbd5e1]" aria-label="音声"><svg class="w-3.5 h-3.5 text-[#64748b]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path></svg></button></div>${exampleHtml}</div>`;
                     });
                     if (item.changeType) {
@@ -1404,6 +1471,7 @@
                 }
 
                 html += renderOtherMeaningsSection(item, false);
+                html += renderLinkedCards(item);
                 html += renderContractionsSection(item);
 
                 if (spokenForms.length) {
@@ -1414,6 +1482,10 @@
                     });
                     html += `</div>`;
                 }
+            }
+
+            if (item.type === 'word' && (!item.forms || !item.forms.length) && item.changeType) {
+                html += `<div class="bg-[#edf1f7] rounded-xl border border-[#e2e8f0] mb-4 p-3 text-xs text-[#64748b]">変化タイプ: <b class="text-[#2b2927]">${item.changeType}</b></div>`;
             }
 
             const isMastered = checkItemMastery(id);
