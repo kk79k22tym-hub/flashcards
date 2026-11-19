@@ -3458,30 +3458,27 @@ const rawDatabase = [
     ],
     "forms": [
       {
-        "label": "基本用法",
+        "label": "基本形",
         "formName": "absolutely",
-        "example": "You're absolutely right.",
-        "exampleJa": "あなたの言うとおりだよ！",
-        "pos": "副詞"
-      },
-      {
-        "label": "基本用法",
-        "formName": "absolutely",
-        "example": "I absolutely love this place!",
-        "exampleJa": "ここが本当に大好き！",
-        "pos": "副詞"
-      },
-      {
-        "label": "基本用法",
-        "formName": "absolutely",
-        "example": "Absolutely!",
-        "exampleJa": "もちろん！／絶対に！ ※質問や誘いへの返答",
-        "pos": "副詞"
+        "examples": [
+          {
+            "example": "You're absolutely right.",
+            "exampleJa": "まったくそのとおりだよ！"
+          },
+          {
+            "example": "I absolutely love this place!",
+            "exampleJa": "ここが本当に大好き！"
+          },
+          {
+            "example": "A: Can I join you? B: Absolutely!",
+            "exampleJa": "A: 一緒に行ってもいい？ B: もちろん！"
+          }
+        ]
       }
     ],
-    "beginnerTip": "absolutely は強い肯定や気持ちを表す。definitely と意味は近いが、absolutely は同意や感情の強さを伝えることが中心。",
     "searchKeywords": "absolutely 絶対に／完全に／もちろん 絶対に／完全に／もちろん",
-    "changeType": "変化なし"
+    "changeType": "変化なし",
+    "beginnerTip": "強い肯定や確信を表し、相手への同意や好きな気持ちなどを強調するときにも使う。definitely は「確実に・間違いなく」という確信を表すことが中心。"
   },
   {
     "id": "adv_usually",
@@ -5796,13 +5793,6 @@ const rawDatabase = [
         "pos": "動詞",
         "meaning": "推測する／〜かなと思う",
         "category": "会話"
-      },
-      {
-        "pos": "動詞",
-        "meaning": "〜だと思う／〜じゃないかな（I guess）",
-        "category": "会話",
-        "example": "She's busy, I guess.",
-        "exampleJa": "彼女は忙しいんじゃないかな。"
       }
     ],
     "forms": [
@@ -5847,13 +5837,6 @@ const rawDatabase = [
     ],
     "beginnerTip": "I guess は、はっきり分からない中で推測するときに使う。I think より自信がなさそうに聞こえることがある。また、「まあ、そうかな」と控えめに受け入れる意味でも使う。確信度は話し方や文脈によって変わる。",
     "otherMeanings": [
-      {
-        "pos": "動詞",
-        "meaning": "〜だと思う／〜じゃないかな（I guess）",
-        "category": "会話",
-        "example": "She's busy, I guess.",
-        "exampleJa": "彼女は忙しいんじゃないかな。"
-      },
       {
         "linkExpression": "exp_i_guess",
         "formName": "I guess ...",
@@ -6569,58 +6552,6 @@ const rawDatabase = [
     "beginnerTip": "少し改まった表現の印象があり、日常会話では get のほうがよく使われる。I got your email.（メール届いたよ。）は、receiveよりくだけた言い方。"
   },
   {
-    "id": "v_reach",
-    "type": "word",
-    "partOfSpeech": [
-      "動詞"
-    ],
-    "category": "移動",
-    "english": "reach",
-    "japanese": "着く／届く／到達する",
-    "senses": [
-      {
-        "pos": "動詞",
-        "meaning": "着く／届く／到達する",
-        "category": "移動"
-      }
-    ],
-    "forms": [
-      {
-        "label": "原形",
-        "formName": "reach",
-        "example": "We should reach the hotel soon.",
-        "exampleJa": "もうすぐホテルに着くはずです。"
-      },
-      {
-        "label": "三人称単数現在",
-        "formName": "reaches",
-        "example": "The train reaches Tokyo at noon.",
-        "exampleJa": "その電車は正午に東京へ着きます。"
-      },
-      {
-        "label": "過去形",
-        "formName": "reached",
-        "example": "I reached home late.",
-        "exampleJa": "家に着くのが遅くなりました。",
-        "needsHint": true
-      },
-      {
-        "label": "過去分詞",
-        "formName": "reached",
-        "example": "We have reached the hotel.",
-        "exampleJa": "ホテルに着きました。"
-      },
-      {
-        "label": "ing形",
-        "formName": "reaching",
-        "example": "We are reaching the end.",
-        "exampleJa": "もうすぐ終わりです。"
-      }
-    ],
-    "changeType": "規則変化<br>reach → reached → reached",
-    "searchKeywords": "reach 着く／届く／到達する 着く／届く／到達する"
-  },
-  {
     "id": "exp_happen_to",
     "type": "expression",
     "partOfSpeech": [
@@ -7118,40 +7049,35 @@ const rawDatabase = [
     ],
     "category": "頻度・強調",
     "english": "just",
-    "japanese": "たった今／ただ／ちょうど",
+    "japanese": "たった今／ただ・〜だけ／ちょうど",
     "senses": [
       {
         "pos": "副詞",
-        "meaning": "たった今",
-        "category": "時間",
-        "example": "I just got home.",
-        "exampleJa": "たった今家に着きました。"
-      },
-      {
-        "pos": "副詞",
-        "meaning": "ただ／単に",
-        "category": "限定",
-        "example": "I just want to help.",
-        "exampleJa": "ただ手伝いたいだけです。"
-      },
-      {
-        "pos": "副詞",
-        "meaning": "ちょうど",
-        "category": "程度",
-        "example": "That is just right.",
-        "exampleJa": "それがちょうどいいです。"
+        "meaning": "たった今／ただ・〜だけ／ちょうど",
+        "category": "頻度・強調"
       }
     ],
     "forms": [
       {
         "label": "基本形",
         "formName": "just",
-        "example": "I just got home.",
-        "exampleJa": "たった今家に着きました。"
+        "examples": [
+          {
+            "example": "I just got home.",
+            "exampleJa": "たった今、家に着いたよ。"
+          },
+          {
+            "example": "I just want to help.",
+            "exampleJa": "ただ手伝いたいだけなんだ。"
+          },
+          {
+            "example": "That's just right.",
+            "exampleJa": "それでちょうどいいよ。"
+          }
+        ]
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "just は文脈で「たった今」「ただ」「ちょうど」「〜だけ」などに変わる。",
     "searchKeywords": "just たった今／ただ／ちょうど たった今 ただ／単に ちょうど"
   },
   {
@@ -7162,34 +7088,33 @@ const rawDatabase = [
     ],
     "category": "時間",
     "english": "yet",
-    "japanese": "まだ／もう",
+    "japanese": "まだ（否定文）／もう（疑問文）",
     "senses": [
       {
         "pos": "副詞",
-        "meaning": "まだ（否定文）",
-        "category": "時間",
-        "example": "I have not eaten yet.",
-        "exampleJa": "まだ食べていません。"
-      },
-      {
-        "pos": "副詞",
-        "meaning": "もう（疑問文）",
-        "category": "時間",
-        "example": "Have you eaten yet?",
-        "exampleJa": "もう食べた？"
+        "meaning": "まだ（否定文）／もう（疑問文）",
+        "category": "時間"
       }
     ],
     "forms": [
       {
         "label": "基本形",
         "formName": "yet",
-        "example": "I have not finished yet.",
-        "exampleJa": "まだ終わっていません。"
+        "examples": [
+          {
+            "example": "I haven't finished yet.",
+            "exampleJa": "まだ終わってないよ。"
+          },
+          {
+            "example": "Have you eaten yet?",
+            "exampleJa": "もう食べた？"
+          }
+        ]
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "否定文では「まだ」、疑問文では「もう」が基本。",
-    "searchKeywords": "yet まだ／もう まだ（否定文） もう（疑問文）"
+    "searchKeywords": "yet まだ／もう まだ（否定文） もう（疑問文）",
+    "beginnerTip": "否定文では「まだ〜していない」、疑問文では「もう〜した？」という意味になり、通常は文末に置く。"
   },
   {
     "id": "adv_even",
@@ -7199,36 +7124,37 @@ const rawDatabase = [
     ],
     "category": "強調",
     "english": "even",
-    "japanese": "〜さえ／〜すら",
+    "japanese": "〜さえ／〜すら／さらに",
     "senses": [
       {
         "pos": "副詞",
-        "meaning": "〜さえ／〜すら",
+        "meaning": "〜さえ／〜すら／さらに",
         "category": "強調"
-      },
-      {
-        "pos": "表現",
-        "meaning": "さらに〜（比較級を強める）",
-        "example": "This is even better.",
-        "exampleJa": "これはさらにいいです。"
-      },
-      {
-        "pos": "表現",
-        "meaning": "〜さえしない（not even）",
-        "example": "I didn't even know that.",
-        "exampleJa": "そのことさえ知りませんでした。"
       }
     ],
     "forms": [
       {
         "label": "基本形",
         "formName": "even",
-        "example": "Even I know that.",
-        "exampleJa": "私でさえそれを知っています。"
+        "examples": [
+          {
+            "example": "Even I was surprised.",
+            "exampleJa": "私でさえ驚いたよ。"
+          },
+          {
+            "example": "This is even better.",
+            "exampleJa": "こっちのほうがさらにいいね。"
+          },
+          {
+            "example": "I didn't even know that.",
+            "exampleJa": "そんなこと、知りもしなかったよ。"
+          }
+        ]
       }
     ],
     "changeType": "変化なし",
-    "searchKeywords": "even 〜さえ／〜すら 〜さえ／〜すら さらに〜（比較級を強める） 〜さえしない（not even）"
+    "searchKeywords": "even 〜さえ／〜すら 〜さえ／〜すら さらに〜（比較級を強める） 〜さえしない（not even）",
+    "beginnerTip": "予想外のことや意外なことを強調するときに使う。比較級の前では「さらに」、否定文では「〜さえない」という意味にもなる。"
   },
   {
     "id": "adv_ever",
@@ -7277,8 +7203,20 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "almost",
-        "example": "I'm almost done.",
-        "exampleJa": "もうほとんど終わりです。"
+        "examples": [
+          {
+            "example": "I'm almost done.",
+            "exampleJa": "もう少しで終わるよ。"
+          },
+          {
+            "example": "I almost missed the train.",
+            "exampleJa": "電車に乗り遅れるところだったよ。"
+          },
+          {
+            "example": "I almost forgot!",
+            "exampleJa": "忘れるところだった！"
+          }
+        ]
       }
     ],
     "changeType": "変化なし",
@@ -7293,34 +7231,48 @@ const rawDatabase = [
     ],
     "category": "程度",
     "english": "enough",
-    "japanese": "十分な／十分に",
+    "japanese": "十分な",
     "senses": [
       {
         "pos": "形容詞",
         "meaning": "十分な",
-        "category": "量",
-        "example": "We have enough food.",
-        "exampleJa": "食べ物は十分あります。"
-      },
-      {
-        "pos": "副詞",
-        "meaning": "十分に",
-        "category": "程度",
-        "example": "It is good enough.",
-        "exampleJa": "十分に良いです。"
+        "category": "程度"
       }
     ],
     "forms": [
       {
         "label": "基本形",
         "formName": "enough",
-        "example": "I have enough time.",
-        "exampleJa": "十分な時間があります。"
+        "examples": [
+          {
+            "example": "I have enough time.",
+            "exampleJa": "時間は十分あるよ。"
+          },
+          {
+            "example": "We don't have enough food.",
+            "exampleJa": "食べ物が足りないよ。"
+          }
+        ]
+      },
+      {
+        "label": "別の使い方",
+        "formName": "enough",
+        "example": "Is it warm enough?",
+        "exampleJa": "十分暖かい？",
+        "pos": "副詞"
       }
     ],
-    "beginnerTip": "形容詞の後では good enough のように後ろに置くのが基本。",
     "searchKeywords": "enough 十分な／十分に 十分な 十分に",
-    "changeType": "変化なし"
+    "changeType": "変化なし",
+    "beginnerTip": "名詞の前では enough time（十分な時間）、形容詞や副詞の後では good enough（十分に良い）のように使う。",
+    "otherMeanings": [
+      {
+        "pos": "副詞",
+        "meaning": "十分に",
+        "example": "It's good enough.",
+        "exampleJa": "それで十分いいよ。"
+      }
+    ]
   },
   {
     "id": "adv_too",
@@ -7334,31 +7286,33 @@ const rawDatabase = [
     "senses": [
       {
         "pos": "副詞",
-        "meaning": "〜も",
-        "category": "追加",
-        "example": "I want to go too.",
-        "exampleJa": "私も行きたいです。"
-      },
-      {
-        "pos": "副詞",
-        "meaning": "〜すぎる",
-        "category": "程度",
-        "example": "It is too expensive.",
-        "exampleJa": "高すぎます。"
+        "meaning": "〜も／〜すぎる",
+        "category": "程度"
       }
     ],
     "forms": [
       {
         "label": "基本形",
         "formName": "too",
-        "example": "I want to go too.",
-        "exampleJa": "私も行きたいです。",
-        "needsHint": true
+        "examples": [
+          {
+            "example": "I want to go too.",
+            "exampleJa": "私も行きたい！"
+          },
+          {
+            "example": "It's too expensive.",
+            "exampleJa": "高すぎるよ。"
+          },
+          {
+            "example": "Me too!",
+            "exampleJa": "私も！"
+          }
+        ]
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "too は「〜も」と「〜すぎる」の2つが非常によく出る。「〜も」の too は文末に置く：I like it, too. 動詞があっても文末で大丈夫で、会話ではこちらがよく使われる。Me too. は too だけ。also との違いは also のカードも参照。",
-    "searchKeywords": "too 〜も／〜すぎる 〜も 〜すぎる"
+    "searchKeywords": "too 〜も／〜すぎる 〜も 〜すぎる",
+    "beginnerTip": "also(~も)との違いはalsoのカード参照"
   },
   {
     "id": "adv_also",
@@ -7397,34 +7351,40 @@ const rawDatabase = [
     ],
     "category": "限定",
     "english": "only",
-    "japanese": "〜だけ／唯一の",
+    "japanese": "〜だけ／〜しか",
     "senses": [
       {
         "pos": "副詞",
-        "meaning": "〜だけ",
-        "category": "限定",
-        "example": "I only need five minutes.",
-        "exampleJa": "5分だけ必要です。"
-      },
-      {
-        "pos": "形容詞",
-        "meaning": "唯一の",
-        "category": "限定",
-        "example": "This is my only chance.",
-        "exampleJa": "これが唯一のチャンスです。"
+        "meaning": "〜だけ／〜しか",
+        "category": "限定"
       }
     ],
     "forms": [
       {
         "label": "基本形",
         "formName": "only",
-        "example": "I only have one.",
-        "exampleJa": "1つしかありません。",
-        "needsHint": true
+        "examples": [
+          {
+            "example": "I only have one ticket.",
+            "exampleJa": "チケットは1枚しか持ってないよ。"
+          },
+          {
+            "example": "I only have five minutes.",
+            "exampleJa": "5分しか時間がないんだ。"
+          }
+        ]
       }
     ],
     "searchKeywords": "only 〜だけ／唯一の 〜だけ 唯一の",
-    "changeType": "変化なし"
+    "changeType": "変化なし",
+    "otherMeanings": [
+      {
+        "pos": "形容詞",
+        "meaning": "唯一の",
+        "example": "This is my only chance.",
+        "exampleJa": "これが唯一のチャンスなんだ。"
+      }
+    ]
   },
   {
     "id": "adv_especially",
@@ -7461,11 +7421,11 @@ const rawDatabase = [
     ],
     "category": "時間",
     "english": "finally",
-    "japanese": "ついに／ようやく",
+    "japanese": "ついに／ようやく／やっと",
     "senses": [
       {
         "pos": "副詞",
-        "meaning": "ついに／ようやく",
+        "meaning": "ついに／ようやく／やっと",
         "category": "時間"
       }
     ],
@@ -7473,8 +7433,16 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "finally",
-        "example": "I finally finished it.",
-        "exampleJa": "ようやく終わりました。"
+        "examples": [
+          {
+            "example": "I finally finished it.",
+            "exampleJa": "やっと終わったよ。"
+          },
+          {
+            "example": "You're finally here!",
+            "exampleJa": "やっと来たね！"
+          }
+        ]
       }
     ],
     "changeType": "変化なし",
@@ -7488,11 +7456,11 @@ const rawDatabase = [
     ],
     "category": "時間",
     "english": "recently",
-    "japanese": "最近",
+    "japanese": "最近／この前",
     "senses": [
       {
         "pos": "副詞",
-        "meaning": "最近",
+        "meaning": "最近／この前",
         "category": "時間"
       }
     ],
@@ -7500,13 +7468,21 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "recently",
-        "example": "I have been busy recently.",
-        "exampleJa": "最近忙しいです。"
+        "examples": [
+          {
+            "example": "I saw her recently.",
+            "exampleJa": "最近、彼女に会ったよ。"
+          },
+          {
+            "example": "I've been busy recently.",
+            "exampleJa": "最近忙しいんだ。"
+          }
+        ]
       }
     ],
     "changeType": "変化なし",
     "searchKeywords": "recently 最近 最近",
-    "beginnerTip": "recently＝最近起きた出来事にも使う。lately＝最近から今にかけての様子や変化に使うことが多い。意味が重なる場面もある。"
+    "beginnerTip": "最近起きた出来事にも、最近から今にかけての状態にも使える。lately は最近続いている状態や変化について使うことが多い。意味が重なる場合もある。"
   },
   {
     "id": "adv_soon",
@@ -7516,11 +7492,11 @@ const rawDatabase = [
     ],
     "category": "時間",
     "english": "soon",
-    "japanese": "すぐに／まもなく",
+    "japanese": "すぐに／まもなく／近いうちに",
     "senses": [
       {
         "pos": "副詞",
-        "meaning": "すぐに／まもなく",
+        "meaning": "すぐに／まもなく／近いうちに",
         "category": "時間"
       }
     ],
@@ -7528,9 +7504,20 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "soon",
-        "example": "See you soon.",
-        "exampleJa": "またすぐにね。",
-        "needsHint": true
+        "examples": [
+          {
+            "example": "See you soon!",
+            "exampleJa": "また近いうちにね！"
+          },
+          {
+            "example": "I'll be there soon.",
+            "exampleJa": "もうすぐ着くよ。"
+          },
+          {
+            "example": "I hope to see you again soon.",
+            "exampleJa": "近いうちにまた会えるといいな。"
+          }
+        ]
       }
     ],
     "changeType": "変化なし",
@@ -7556,8 +7543,20 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "together",
-        "example": "Let us go together.",
-        "exampleJa": "一緒に行こう。"
+        "examples": [
+          {
+            "example": "Let's go together.",
+            "exampleJa": "一緒に行こう。"
+          },
+          {
+            "example": "We can do it together.",
+            "exampleJa": "一緒にできるよ。"
+          },
+          {
+            "example": "I want to spend more time together.",
+            "exampleJa": "もっと一緒に過ごしたいな。"
+          }
+        ]
       }
     ],
     "changeType": "変化なし",
@@ -7583,8 +7582,20 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "away",
-        "example": "She is away this week.",
-        "exampleJa": "彼女は今週不在です。"
+        "examples": [
+          {
+            "example": "She is away this week.",
+            "exampleJa": "彼女は今週いないんだ。"
+          },
+          {
+            "example": "I'm away from home right now.",
+            "exampleJa": "今、家を離れてるんだ。"
+          },
+          {
+            "example": "Please stay away from the edge.",
+            "exampleJa": "端には近づかないでね。"
+          }
+        ]
       }
     ],
     "changeType": "変化なし",
@@ -7605,26 +7616,38 @@ const rawDatabase = [
         "pos": "副詞",
         "meaning": "戻って／後ろへ",
         "category": "方向"
-      },
-      {
-        "pos": "名詞",
-        "meaning": "背中／後ろ",
-        "category": "体",
-        "example": "My back hurts.",
-        "exampleJa": "背中が痛いです。"
       }
     ],
     "forms": [
       {
         "label": "基本形",
         "formName": "back",
-        "example": "I will be back soon.",
-        "exampleJa": "すぐ戻ります。"
+        "examples": [
+          {
+            "example": "I'll be back soon.",
+            "exampleJa": "すぐ戻るよ。"
+          },
+          {
+            "example": "Come back!",
+            "exampleJa": "戻ってきて！"
+          },
+          {
+            "example": "Step back a little.",
+            "exampleJa": "少し下がって。"
+          }
+        ]
       }
     ],
     "changeType": "変化なし",
     "searchKeywords": "back 戻って／後ろへ 戻って／後ろへ 背中／後ろ",
-    "beginnerTip": "名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。"
+    "otherMeanings": [
+      {
+        "pos": "名詞",
+        "meaning": "背中／後ろ",
+        "example": "My back hurts.",
+        "exampleJa": "背中が痛いんだ。"
+      }
+    ]
   },
   {
     "id": "adv_again",
@@ -7646,8 +7669,20 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "again",
-        "example": "Say that again, please.",
-        "exampleJa": "もう一度言ってください。"
+        "examples": [
+          {
+            "example": "Can you say that again?",
+            "exampleJa": "もう一回言ってくれる？"
+          },
+          {
+            "example": "I want to go there again.",
+            "exampleJa": "またそこに行きたいな。"
+          },
+          {
+            "example": "Let's try again.",
+            "exampleJa": "もう一回やってみよう。"
+          }
+        ]
       }
     ],
     "changeType": "変化なし",
@@ -7662,34 +7697,40 @@ const rawDatabase = [
     ],
     "category": "つなぎ",
     "english": "though",
-    "japanese": "〜だけど／でも",
+    "japanese": "〜だけど／〜にもかかわらず",
     "senses": [
       {
         "pos": "接続詞",
         "meaning": "〜だけど／〜にもかかわらず",
-        "category": "つなぎ",
-        "example": "Though I was tired, I went out.",
-        "exampleJa": "疲れていたけど出かけました。"
-      },
-      {
-        "pos": "副詞",
-        "meaning": "でもね／とはいえ（文末）",
-        "category": "会話",
-        "example": "It was expensive. I liked it, though.",
-        "exampleJa": "高かった。でも気に入りました。"
+        "category": "つなぎ"
       }
     ],
     "forms": [
       {
         "label": "基本形",
         "formName": "though",
-        "example": "I like it, though.",
-        "exampleJa": "でも、私はそれが好きです。"
+        "examples": [
+          {
+            "example": "Though I was tired, I went out.",
+            "exampleJa": "疲れてたけど、出かけたよ。"
+          },
+          {
+            "example": "I went out even though I was tired.",
+            "exampleJa": "疲れてたのに、出かけたよ。"
+          }
+        ]
       }
     ],
-    "beginnerTip": "文末の though は会話で「でもね／とはいえ」のように使われる。",
     "searchKeywords": "though 〜だけど／でも 〜だけど／〜にもかかわらず でもね／とはいえ（文末）",
-    "changeType": "変化なし"
+    "changeType": "変化なし",
+    "otherMeanings": [
+      {
+        "pos": "副詞",
+        "meaning": "でもね／とはいえ",
+        "example": "It's expensive. I like it, though.",
+        "exampleJa": "高いんだよね。でも好きなんだ。"
+      }
+    ]
   },
   {
     "id": "adv_instead",
@@ -7699,11 +7740,11 @@ const rawDatabase = [
     ],
     "category": "選択",
     "english": "instead",
-    "japanese": "代わりに",
+    "japanese": "代わりに／その代わりに",
     "senses": [
       {
         "pos": "副詞",
-        "meaning": "代わりに",
+        "meaning": "代わりに／その代わりに",
         "category": "選択"
       }
     ],
@@ -7711,8 +7752,20 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "instead",
-        "example": "I stayed home instead.",
-        "exampleJa": "代わりに家にいました。"
+        "examples": [
+          {
+            "example": "I was going to go out, but I stayed home instead.",
+            "exampleJa": "出かけるつもりだったけど、代わりに(結局)家にいたよ。"
+          },
+          {
+            "example": "Let's get pizza instead.",
+            "exampleJa": "代わりにピザにしようよ。"
+          },
+          {
+            "example": "Do you want to go tomorrow instead?",
+            "exampleJa": "代わりに明日にする？"
+          }
+        ]
       }
     ],
     "changeType": "変化なし",
@@ -7738,14 +7791,25 @@ const rawDatabase = [
       {
         "label": "基本形",
         "formName": "quite",
-        "example": "It is quite good.",
-        "exampleJa": "かなり良いです。",
-        "needsHint": true
+        "examples": [
+          {
+            "example": "It's quite good.",
+            "exampleJa": "なかなかいいね。"
+          },
+          {
+            "example": "I'm quite tired.",
+            "exampleJa": "かなり疲れてるよ。"
+          },
+          {
+            "example": "That was quite a surprise!",
+            "exampleJa": "あれは本当にびっくりしたよ！"
+          }
+        ]
       }
     ],
     "changeType": "変化なし",
-    "beginnerTip": "アメリカ英語では quite は「かなり」の意味で使われることが多い。強さの目安：really（とても）＞ quite（かなり）＞ kind of（ちょっと）＞ a little（少し）。",
-    "searchKeywords": "quite かなり／なかなか かなり／なかなか"
+    "searchKeywords": "quite かなり／なかなか かなり／なかなか",
+    "beginnerTip": "形容詞や副詞の前に置いて、その程度を強める。very ほど強くないこともあるが、文脈や話し方によって強さは変わる。"
   },
   {
     "id": "adj_right",
@@ -7757,46 +7821,48 @@ const rawDatabase = [
     ],
     "category": "評価",
     "english": "right",
-    "japanese": "正しい／右の／ちょうど",
+    "japanese": "正しい／合っている",
     "senses": [
       {
         "pos": "形容詞",
-        "meaning": "正しい",
-        "category": "評価",
-        "example": "You are right.",
-        "exampleJa": "あなたの言う通りです。"
+        "meaning": "正しい／合っている",
+        "category": "評価"
       },
       {
         "pos": "名詞",
         "meaning": "右／右側",
-        "category": "方向",
-        "example": "Turn to the right.",
-        "exampleJa": "右へ曲がって。"
+        "example": "The bathroom is on your right.",
+        "exampleJa": "トイレは右側にあるよ。"
       },
       {
         "pos": "副詞",
         "meaning": "ちょうど／すぐ",
-        "category": "強調",
         "example": "I'm right here.",
-        "exampleJa": "私はここにいます。"
+        "exampleJa": "すぐここにいるよ。"
       },
       {
         "pos": "副詞",
-        "meaning": "〜だよね？（確認）",
-        "category": "会話",
-        "example": "You are coming, right?",
-        "exampleJa": "来るよね？"
+        "meaning": "〜だよね？／でしょ？（確認）",
+        "example": "You're coming, right?",
+        "exampleJa": "来るんだよね？"
       }
     ],
     "forms": [
       {
-        "label": "原級",
+        "label": "基本形",
         "formName": "right",
-        "example": "You are right.",
-        "exampleJa": "あなたの言う通りです。"
+        "examples": [
+          {
+            "example": "You're right.",
+            "exampleJa": "そのとおりだよ。"
+          },
+          {
+            "example": "Is this the right one?",
+            "exampleJa": "これで合ってる？"
+          }
+        ]
       }
     ],
-    "beginnerTip": "right は「正しい」だけでなく「右」「ちょうど」など頻出の意味がある。 名詞として使う場合、数えられる単数形なら a / an を付ける。動詞・形容詞などの用法では不要。",
     "searchKeywords": "right 正しい／右の／ちょうど 正しい 右／右側 ちょうど／すぐ 〜だよね？（確認）",
     "changeType": "変化なし"
   },
@@ -7808,11 +7874,11 @@ const rawDatabase = [
     ],
     "category": "評価",
     "english": "wrong",
-    "japanese": "間違った／おかしい",
+    "japanese": "間違っている／おかしい",
     "senses": [
       {
         "pos": "形容詞",
-        "meaning": "間違った／おかしい",
+        "meaning": "間違っている／おかしい",
         "category": "評価"
       }
     ],
@@ -7820,35 +7886,46 @@ const rawDatabase = [
       {
         "label": "原級",
         "formName": "wrong",
-        "example": "Something is wrong.",
-        "exampleJa": "何かがおかしいです。"
+        "example": "Something's wrong.",
+        "exampleJa": "何かおかしい。"
+      },
+      {
+        "label": "比較級",
+        "formName": "more wrong",
+        "example": "I couldn't have been more wrong.",
+        "exampleJa": "これ以上ないくらい勘違いしてたよ。"
+      },
+      {
+        "label": "最上級",
+        "formName": "most wrong",
+        "lowFrequency": true
       }
     ],
-    "changeType": "変化なし",
-    "beginnerTip": "What is wrong? は「どうしたの？」の定番表現。",
+    "changeType": "more / most を使う",
+    "beginnerTip": "What's wrong? は、相手の様子がおかしいときなどに「どうしたの？」と尋ねる表現。",
     "searchKeywords": "wrong 間違った／おかしい 間違った／おかしい"
   },
   {
     "id": "adj_sure",
     "type": "word",
     "partOfSpeech": [
-      "形容詞"
+      "形容詞",
+      "副詞"
     ],
     "category": "評価",
     "english": "sure",
-    "japanese": "確かな／もちろん",
+    "japanese": "確かな／確信している",
     "senses": [
       {
         "pos": "形容詞",
-        "meaning": "確かな",
+        "meaning": "確かな／確信している",
         "category": "評価"
       },
       {
         "pos": "副詞",
-        "meaning": "返事の「もちろん／いいよ」",
-        "category": "会話",
-        "example": "Sure, I can help.",
-        "exampleJa": "もちろん、手伝うよ。"
+        "meaning": "返事：もちろん／いいよ",
+        "example": "Sure!",
+        "exampleJa": "もちろん！"
       }
     ],
     "forms": [
@@ -7857,10 +7934,21 @@ const rawDatabase = [
         "formName": "sure",
         "example": "Are you sure?",
         "exampleJa": "本当に？／確か？"
+      },
+      {
+        "label": "比較級",
+        "formName": "more sure",
+        "example": "I'm more sure about it now.",
+        "exampleJa": "今は前より確信が持てるよ。"
+      },
+      {
+        "label": "最上級",
+        "formName": "most sure",
+        "lowFrequency": true
       }
     ],
-    "changeType": "変化なし",
-    "beginnerTip": "Sure. だけで気軽な「いいよ／もちろん」の返事になる。Of course. は「言うまでもなく」という、やや強めの返事。",
+    "changeType": "more / most を使う",
+    "beginnerTip": "Sure! は、依頼や提案に気軽に応じるときの返事。Of course! も「もちろん」という意味だが、文脈によっては「当然だよ」という強い印象になることがある。",
     "searchKeywords": "sure 確かな／もちろん 確かな 返事の「もちろん／いいよ」"
   },
   {
@@ -7871,11 +7959,11 @@ const rawDatabase = [
     ],
     "category": "状態",
     "english": "ready",
-    "japanese": "準備ができた",
+    "japanese": "準備ができた／用意ができた",
     "senses": [
       {
         "pos": "形容詞",
-        "meaning": "準備ができた",
+        "meaning": "準備ができた／用意ができた",
         "category": "状態"
       }
     ],
@@ -7884,11 +7972,24 @@ const rawDatabase = [
         "label": "原級",
         "formName": "ready",
         "example": "I'm ready.",
-        "exampleJa": "準備できました。"
+        "exampleJa": "準備できたよ。"
+      },
+      {
+        "label": "比較級",
+        "formName": "more ready",
+        "example": "I feel more ready now.",
+        "exampleJa": "今は前より準備ができてる気がする。"
+      },
+      {
+        "label": "最上級",
+        "formName": "most ready",
+        "example": "I'm the most ready I've ever been.",
+        "exampleJa": "今までで一番準備ができてるよ。"
       }
     ],
-    "changeType": "変化なし",
-    "searchKeywords": "ready 準備ができた 準備ができた"
+    "changeType": "ready → readier → readiest（低頻度）",
+    "searchKeywords": "ready 準備ができた 準備ができた",
+    "beginnerTip": "more / mostを使って表現することが一般的。readier/readiestは硬く感じる。"
   },
   {
     "id": "adj_afraid",
@@ -7914,16 +8015,28 @@ const rawDatabase = [
         "exampleJa": "高いところが怖いんだ。"
       },
       {
-        "label": "別の使い方",
-        "formName": "I'm afraid ...",
-        "example": "I'm afraid I can't make it tomorrow.",
-        "exampleJa": "残念だけど、明日は行けないんだ。",
-        "speechText": "I'm afraid I can't make it tomorrow."
+        "label": "比較級",
+        "formName": "more afraid",
+        "example": "I'm more afraid of spiders than snakes.",
+        "exampleJa": "ヘビよりクモのほうが怖いんだ。"
+      },
+      {
+        "label": "最上級",
+        "formName": "most afraid",
+        "example": "What are you most afraid of?",
+        "exampleJa": "何が一番怖い？"
       }
     ],
-    "changeType": "変化なし",
-    "beginnerTip": "I'm afraid ... は、相手にとって残念なことや都合の悪いことを、やわらかく伝えるときにも使う。",
-    "searchKeywords": "afraid 怖い／残念ながら 怖い／残念ながら"
+    "changeType": "more / most を使う",
+    "searchKeywords": "afraid 怖い／残念ながら 怖い／残念ながら",
+    "otherMeanings": [
+      {
+        "pos": "形容詞",
+        "meaning": "残念ながら（丁寧に伝える）",
+        "example": "I'm afraid I can't make it tomorrow.",
+        "exampleJa": "残念だけど、明日は行けないんだ。"
+      }
+    ]
   },
   {
     "id": "adj_surprised",
@@ -7933,11 +8046,11 @@ const rawDatabase = [
     ],
     "category": "感情",
     "english": "surprised",
-    "japanese": "驚いた",
+    "japanese": "驚いた／びっくりした",
     "senses": [
       {
         "pos": "形容詞",
-        "meaning": "驚いた",
+        "meaning": "驚いた／びっくりした",
         "category": "感情"
       }
     ],
@@ -7946,10 +8059,22 @@ const rawDatabase = [
         "label": "原級",
         "formName": "surprised",
         "example": "I was surprised.",
-        "exampleJa": "驚きました。"
+        "exampleJa": "びっくりしたよ。"
+      },
+      {
+        "label": "比較級",
+        "formName": "more surprised",
+        "example": "I was more surprised than anyone.",
+        "exampleJa": "誰よりも私が驚いたよ。"
+      },
+      {
+        "label": "最上級",
+        "formName": "most surprised",
+        "example": "I was the most surprised of all.",
+        "exampleJa": "私が一番驚いたよ。"
       }
     ],
-    "changeType": "変化なし",
+    "changeType": "more / most を使う",
     "searchKeywords": "surprised 驚いた 驚いた"
   },
   {
@@ -9589,7 +9714,7 @@ const rawDatabase = [
     ],
     "searchKeywords": "curious 気になる／知りたい／好奇心が強い 気になる／知りたい／好奇心が強い",
     "beginnerTip": "「知りたい・確かめたい」という気持ちを表し、「なんだろう？」という好奇心に重点がある。",
-    "changeType": "more / most を使う<br>curious → more curious → most curious"
+    "changeType": "more / most を使う"
   },
   {
     "id": "w_grateful",
@@ -9655,7 +9780,7 @@ const rawDatabase = [
       }
     ],
     "searchKeywords": "awkward 気まずい／ぎこちない 気まずい／ぎこちない",
-    "changeType": "more / most を使う<br>awkward → more awkward → most awkward",
+    "changeType": "more / most を使う",
     "beginnerTip": "会話が途切れたり、どう振る舞えばいいか分からなかったりして、気まずいときに使う。人の動作や態度がぎこちない場合にも使える。"
   },
   {
@@ -18066,12 +18191,24 @@ const rawDatabase = [
         "category": "旅行"
       }
     ],
-    "forms": [],
+    "forms": [
+      {
+        "label": "単数形",
+        "formName": "boarding pass",
+        "example": "Can I see your boarding pass?",
+        "exampleJa": "搭乗券を見せてもらえますか？"
+      },
+      {
+        "label": "複数形",
+        "formName": "boarding passes",
+        "example": "Do you have both boarding passes?",
+        "exampleJa": "搭乗券は2枚とも持ってる？"
+      }
+    ],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "数えられる名詞の単数形なので a / an を付ける。",
     "searchKeywords": "a boarding pass 搭乗券 搭乗券",
-    "changeType": "複数形は -s（boarding pass → boarding passes）"
+    "changeType": "複数形は -es"
   },
   {
     "id": "travel_word_002",
@@ -18266,18 +18403,32 @@ const rawDatabase = [
     ],
     "category": "旅行・空港／交通",
     "english": "security",
-    "japanese": "保安検査／安全",
+    "japanese": "保安検査／警備／安全",
     "senses": [
       {
         "pos": "名詞",
-        "meaning": "保安検査／安全",
-        "category": "旅行"
+        "meaning": "保安検査／警備／安全",
+        "category": "旅行・空港／交通"
       }
     ],
-    "forms": [],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "security",
+        "examples": [
+          {
+            "example": "We need to go through security first.",
+            "exampleJa": "まず保安検査を通らないと。"
+          },
+          {
+            "example": "Security is really tight here.",
+            "exampleJa": "ここは警備がすごく厳しいね。"
+          }
+        ]
+      }
+    ],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "保安検査・安全は通常不可算名詞。security check（保安検査）のように具体的な名詞と組み合わせる。",
     "searchKeywords": "security 保安検査／安全 保安検査／安全",
     "changeType": "変化なし"
   },
@@ -18294,13 +18445,23 @@ const rawDatabase = [
       {
         "pos": "名詞",
         "meaning": "入国審査／出入国管理",
-        "category": "旅行"
+        "category": "旅行・空港／交通"
       }
     ],
-    "forms": [],
+    "forms": [
+      {
+        "label": "基本形",
+        "formName": "immigration",
+        "examples": [
+          {
+            "example": "We have to go through immigration.",
+            "exampleJa": "入国審査を受けなきゃ。"
+          }
+        ]
+      }
+    ],
     "example": "",
     "exampleJa": "",
-    "beginnerTip": "入国審査・出入国管理は通常不可算名詞。go through immigration（入国審査を通る）。",
     "searchKeywords": "immigration 入国審査／出入国管理 入国審査／出入国管理",
     "changeType": "変化なし"
   },
